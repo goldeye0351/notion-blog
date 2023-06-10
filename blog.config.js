@@ -1,5 +1,5 @@
 const BLOG = {
-  title: 'NextWWW',
+  title: '535251',
   author: 'CCC',
   email: 'i@me.com',
   link: 'https://me.com',
