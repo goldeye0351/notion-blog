@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 import FormattedDate from '@/components/Common/FormattedDate'
 
-const BlogPost = ({ post }) => {
+const BlogPost = ({ index , post }) => {
   return (
     <motion.div>
       <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
