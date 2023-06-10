@@ -1,0 +1,41 @@
+/* 静态文件导入 自定义样式   swiper  + my3d */
+
+.mytext{
+    position:absolute;
+    Width:auto;
+    Bottom:1px;
+    padding:21px;
+    color: rgb(255, 255, 255);
+    font-weight:bold;
+    font-size:36px;
+  }
+.myh2{
+    font-weight:100;
+    font-size:25px;
+    color: rgb(255, 255, 255);
+  }
+  
+.my3d {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 500px;
+      height: 300px;
+      background-color: darkgreen;
+      color: white;
+      border: 5px solid black;
+      border-radius: 20px;
+      transform-style: preserve-3d;
+    }
+.my3din {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 35px;
+      color: white;
+      transform: translateZ(50px);
+    }
+
+

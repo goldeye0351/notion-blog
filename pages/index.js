@@ -38,7 +38,7 @@ const blog = ({ postsToShow, page, showNext, blockMap }) => {
     <Container title={BLOG.title} description={BLOG.description}>
       <Hero blockMap={blockMap} />
       {postsToShow.map((post) => (
-        <BlogPost key={post.id} post={post} />
+        <BlogPost key={post.id} post={post} index={postsToShow.indexOf(post)} />
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
