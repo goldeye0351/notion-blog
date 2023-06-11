@@ -44,7 +44,7 @@ const blog = ({ postsToShow, page, showNext, blockMap }) => {
  <div className='hidden md:block'>
 <swiper-container 
 grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" slides-per-view="3"
-  effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="true" loop="true"
+  effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
   coverflow-effect-stretch="10" coverflow-effect-modifier="1" loop-additional-slides="2"
   >      {postsToShow.map((post) => (<>
         
