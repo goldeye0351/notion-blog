@@ -1,10 +1,10 @@
 const BLOG = {
-  title: '535251',
+  title: '535251.xyz 我想，我爱，我要',
   author: 'CCC',
-  email: 'i@me.com',
-  link: 'https://me.com',
+  email: 'admin@535251.xyz',
+  link: 'https://www.535251.xyz',
   newsletter: 'Weekly',
-  description: 'WWW',
+  description: '535251.xyz',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'auto', // ['light', 'dark', 'auto'],
@@ -27,7 +27,7 @@ const BLOG = {
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateHost: 'og-zl.vercel.app', // The link to generate OG image, don't end with a slash
-  defaultCover: '/cover.jpg',
+  defaultCover: '/cover.png',
   socialLink: {
     twitter: 'https://twitter.com/',
     github: 'https://github.com/',
@@ -43,9 +43,9 @@ const BLOG = {
   notionDomain: 'www.notion.site',
   telegramToken: process.env.TELEGRAM_TOKEN, // The token of your Telegram bot
   telegramChatId: '263895784', // The chat id of your Telegram bot
-  telegramChannelUrl: 'https://channel.zuolan.me/', // The link of your Telegram channel
-  telegramChannelName: 'zuolan_me', // The name of your Telegram channel
-  craftConfigShareUrl: 'https://www.craft.do/s/kQtcWqkv98cHhB', // The link to share your craft config
+  telegramChannelUrl: 'https://channel.535251.xyz/', // The link of your Telegram channel
+  telegramChannelName: '535251', // The name of your Telegram channel
+  craftConfigShareUrl: 'https://www.craft.do/', // The link to share your craft config
   analytics: {
     provider: '', // Currently we support Google Analytics, Ackee, Umami and Cloudflare Insights, please fill with 'ga' or 'ackee' or 'umami' or 'cf', leave it empty to disable it.
     ackeeConfig: {
