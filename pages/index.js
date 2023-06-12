@@ -42,7 +42,9 @@ export async function getStaticProps() {
 
 const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
   return ( <> 
+  {/*  这里是swiper 插件  */}
  <div className='hidden md:block'>
+      <Hero tags={tags} posts={posts} blockMap={blockMap} />
       <swiper-container 
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" slides-per-view="3"
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
@@ -50,18 +52,20 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
         >      {postsToShow.map((post) => (<>
         
        <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-       <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
-       <Image src={post?.page_cover} alt={post.title} width={640} height={480} />
-       <span class="mytext">{post.title} <FormattedDate date={post.date} /></span>
-       </Link>
+          <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
+              <Image src={post?.page_cover} alt={post.title} width={640} height={480} />
+              <span class="mytext">{post.title} <FormattedDate date={post.date} /></span>
+          </Link>
        </swiper-slide>
        </>
       ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
       </swiper-container>
-    </div>
 
-    <div className='visible md:hidden '>
+      {showNext && <Pagination page={page} showNext={showNext} />}
+
+  </div>
+
+  <div className='visible md:hidden '>
     <Container title={BLOG.title} description={BLOG.description}>
       <Hero tags={tags} posts={posts} blockMap={blockMap} />
       {postsToShow.map((post) => (
@@ -69,7 +73,7 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
-    </div>
+  </div>
     
     </>
   )
