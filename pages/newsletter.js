@@ -3,7 +3,6 @@ import BlogPost from '@/components/BlogPost'
 import NewsletterHero from '@/components/Hero/Newsletter'
 import { getAllPosts, getAllTagsFromPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
-import InfoCard from '@/components/Card/InfoCard'
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyNewsletter: true })
