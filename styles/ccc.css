@@ -15,25 +15,11 @@
   }
   
 .my3d {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 500px;
-      height: 300px;
-      background-color: darkgreen;
-      color: white;
-      border: 5px solid black;
-      border-radius: 20px;
+
       transform-style: preserve-3d;
     }
 .my3din {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 35px;
-      color: white;
+
       transform: translateZ(50px);
     }
 
