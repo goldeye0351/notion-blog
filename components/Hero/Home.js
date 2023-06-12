@@ -1,48 +1,53 @@
+"use client"
+import Image from 'next/image'
+import LOGOIMG from '@/public/images/logo.png'
+import Tilt from 'react-parallax-tilt'
+import CardTags from '../Card/CardTag.js'
 import BLOG from '@/blog.config'
-import Link from 'next/link'
 import Avatar from './NotionAvatar.js'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
-import My3d from '@/pages/my3d.js'
-import {
-  MailIcon,
-  RssIcon,
-  ClipboardCheckIcon
-} from '@heroicons/react/outline'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 
-const Hero = ({ blockMap }) => {
-  const [showCopied, setShowCopied] = useState(false)
+
+
+const Hero = ({ blockMap,tags, currentTag  }) => {
   const { locale } = useRouter()
   const t = lang[locale]
 
-  const clickCopy = async () => {
-    setShowCopied(true)
-    navigator.clipboard.writeText(BLOG.link + '/feed')
-    setTimeout(() => {
-      setShowCopied(false)
-    }, 1000)
-  }
 
   return (
-    <>
-      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center'>
-        <div className='flex flex-col md:w-3/5 md:items-start mb-6 md:mb-0 text-left'>
+<>
+      <div className='container mx-auto flex px-5 py-2 mb-1 md:flex-row flex-col items-center'>
+        {/* NOTION 文件内容*/}
+        <div className='flex flex-col md:w-3/5 md:items-start mb-0 md:mb-0 text-left'>
           <NotionRenderer
             className='md:ml-0'
             blockMap={blockMap}
             frontMatter={{}}
             subPageTitle={null}
           />
-
-
         </div>
-        <div className=' hidden md:block md:w-1/5'>
-          <Avatar className='text-gray-600 dark:text-gray-300' />
+                {/* TITL 3D 动图 */}
+        <div className="flex items-center justify-center p-8 gap-4 flex-wrap rounded-3xl">
+            <Tilt
+              className="my3d shadow-2xl shadow-gray-500 
+              bg-slate-200 dark:bg-slate-600 max-w-[50rem] min-w-[20rem] rounded-3xl "
+              perspective={500}
+              glareEnable={true}
+              glarePosition={'all'}
+              glareMaxOpacity={0.45}
+              scale={1.02}
+            >
+               
+              <div className="my3din flex flex-col justify-center items-center mb-10">
+                <Image src={LOGOIMG} alt={BLOG.title} width={180} height={180} className=' hover:-rotate-45  duration-300' />
+                <CardTags tags={tags} currentTag={currentTag} />  
+              </div>
+            </Tilt>
         </div>
       </div>
-    </>
+</>
   )
 }
 
