@@ -31,7 +31,7 @@ const BLOG = {
   socialLink: {
     twitter: 'https://twitter.com/',
     github: 'https://github.com/',
-    telegram: 'https://t.me/'
+    telegram: 'https://t.me/iForexMt4'
   },
   seo: {
     keywords: ['notion', 'next', 'Blog'],
@@ -41,9 +41,9 @@ const BLOG = {
   notionSpacesId: process.env.NOTION_SPACES_ID ||'3566433aa75e4eaf80684da17d0ff217' , // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
-  telegramToken: process.env.TELEGRAM_TOKEN, // The token of your Telegram bot
-  telegramChatId: '263895784', // The chat id of your Telegram bot
-  telegramChannelUrl: 'https://channel.535251.xyz/', // The link of your Telegram channel
+  telegramToken: process.env.TELEGRAM_TOKEN ||'AAF1Ofc03QWLmIXvEtrbVfjOAoTX83Binss', // The token of your Telegram bot
+  telegramChatId: '6050897201', // The chat id of your Telegram bot
+  telegramChannelUrl: 'https://t.me/+qhlQu1J3xONkNzYx', // The link of your Telegram channel
   telegramChannelName: '535251', // The name of your Telegram channel
   craftConfigShareUrl: 'https://www.craft.do/', // The link to share your craft config
   analytics: {
