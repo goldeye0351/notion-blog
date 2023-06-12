@@ -2,7 +2,7 @@ const BLOG = {
   title: '535251.xyz 我想，我爱，我要',
   author: 'CCC',
   email: 'admin@535251.xyz',
-  link: 'https://www.535251.xyz',
+  link: 'https://535251.xyz',
   newsletter: 'Weekly',
   description: '535251.xyz',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
