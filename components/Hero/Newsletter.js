@@ -32,11 +32,12 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
               perspective={500}
               glareEnable={true}
               glarePosition={'all'}
-              glareMaxOpacity={0.45}
+              glareMaxOpacity={0.5}
+              glareColor="#000000"
+              glareBorderRadius="12px"
               scale={1.02}
             >
-              <span className=" animate-pulse  rounded-2xl w-full absolute bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"><span class="hidden ">1</span></span>
-              <span className=" animate-pulse  rounded-2xl w-full absolute top-0 h-2 bg-gradient-to-r from-purple-600 via-blue-500 to-green-300"><span class="hidden ">1</span></span>
+              <span className=" animate-pulse  rounded-b-full w-full absolute bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"><span class="hidden ">1</span></span>
                 
               <div className="my3din flex flex-col justify-center items-center">
                 <div className="text-3xl font-bold pt-8">{BLOG.author}</div>
