@@ -11,7 +11,7 @@ const BlogPost = ({ index , post }) => {
       <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
       <article
           key={post.id}
-          className='group hover:ring-2 shadow-lg dark:shadow-emerald-900  hover:scale-105 duration-500 overflow-hidden relative my-5 md:my-8 cursor-pointer rounded-xl p-5'
+          className='group hover:ring-2 shadow-lg shadow-gray-500   hover:scale-105 duration-500 overflow-hidden relative my-5 md:my-8 cursor-pointer rounded-xl p-5'
         >
          <div
                 id='blog-ID'
