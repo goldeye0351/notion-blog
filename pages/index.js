@@ -1,9 +1,7 @@
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
-import MySwiper from '@/components/MySwiper'
 import Image from 'next/image'
 import Link from 'next/link'
-
 import Hero from '@/components/Hero/Home'
 import Pagination from '@/components/Pagination'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
