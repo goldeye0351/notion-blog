@@ -28,23 +28,23 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
         <div className="hidden md:flex items-center justify-center p-24 gap-4 flex-wrap rounded-xl">
             <Tilt
               className="my3d shadow-lg 
-              bg-slate-200 dark:bg-slate-600 max-w-[20rem] min-w-[15rem] rounded-xl"
+               max-w-[20rem] min-w-[15rem] rounded-xl bg-cover
+              bg-[url('../public/images/news.png')]"
               perspective={500}
-              glareEnable={true}
+              glareEnable={false}
               glarePosition={'all'}
-              glareMaxOpacity={0.5}
-              glareColor="#000000"
+              glareMaxOpacity={1}
+              
               glareBorderRadius="12px"
               scale={1.02}
             >
-              <span className=" animate-pulse  rounded-b-full w-full absolute bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"><span class="hidden ">1</span></span>
                 
               <div className="my3din flex flex-col justify-center items-center">
-                <div className="text-3xl font-bold pt-8">{BLOG.author}</div>
+                <div className="text-3xl font-bold pt-16">{BLOG.author}</div>
                 <Image src={LOGOIMG} alt={BLOG.title} width={180} height={180} className=' hover:-rotate-45  duration-300' />
                 <CardTags tags={tags} currentTag={currentTag} />  
 
-              <div className="h-16 py-2">{BLOG.description}</div>
+              <div className=" h-28 py-6">{BLOG.description}</div>
 
               </div>
             </Tilt>
