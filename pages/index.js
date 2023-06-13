@@ -49,14 +49,27 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" slides-per-view="3"
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
         coverflow-effect-stretch="10" coverflow-effect-modifier="1" loop-additional-slides="2"
-        >      {postsToShow.map((post) => (<>
+        > 
+        {postsToShow.map((post) => (<>
         
-       <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
-              <Image src={post?.page_cover} alt={post.title} width={640} height={480} />
-              <span class="mytext">{post.title} <FormattedDate date={post.date} /></span>
-          </Link>
-       </swiper-slide>
+  <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
+    <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
+    {/* <Image src={post?.page_cover} alt={post.title} width={640} height={480} />  */}
+
+    <div className=' max-w-[640px] max-h-[480px] flex flex-col justify-between'>  
+        <Image src={post?.page_cover} alt={post.title} width={640} height={480} 
+        className='rounded-3xl  static 
+        invert dark:invert-0
+        '/>
+        <div className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
+        <div className=' text-sm '>{post.summary}</div>
+        </div>
+
+        <div className='absolute bottom-0 p-8 '><FormattedDate date={post.date} /></div>
+    </div>
+
+    </Link>
+  </swiper-slide>
        </>
       ))}
       </swiper-container>
