@@ -22,5 +22,21 @@
 
       transform: translateZ(50px);
     }
-
+.mypaopaoBG {
+      width: 100%;
+      max-width: 500px;
+      height: 350px;
+      background-color: blueviolet;
+      border-radius: 50px;
+    }
+      
+.mypaopao {
+      width: 100%; /* width expands to fit bubble */
+      height: 100%; /* width expands to fit bubble */
+      border-radius: 50%; /* rounded border forms a circle */
+      background-color: burlywood;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
