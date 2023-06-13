@@ -33,8 +33,10 @@ const About = ({ posts,blockMap }) => {
 <div title={BLOG.about} description={BLOG.description} className='about' >
   <div className="flex justify-center ">
      <Tilt 
-              className="my3d shadow-2xl shadow-gray-500 rounded-xl  bg-slate-200 dark:bg-slate-600 max-w-[80VW] 
-              bg-[url('../public/images/mac.jpg')]"
+              className="my3d shadow-2xl shadow-gray-500 rounded-xl  max-w-[80VW] 
+              bg-[url('../public/images/mac.jpg')]
+              bg-cover
+              "
               perspective={1500}
               glareEnable={true}
               glarePosition={'all'}
