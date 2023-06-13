@@ -7,6 +7,7 @@ import BLOG from '@/blog.config'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
 import NotionRenderer from '@/components/Post/NotionRenderer'
+import { NewspaperIcon} from '@heroicons/react/outline'
 
 const NewsletterHero = ({ blockMap,tags, currentTag }) => {
   const { locale } = useRouter()
@@ -14,9 +15,9 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
 
   return (
     <>
-      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center'>
+      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center  '>
         {/* NOTION 文件内容*/}
-        <div className='flex flex-col md:w-4/5 md:items-start mb-6 md:mb-0 md:text-left'>
+        <div className='flex flex-col md:w-4/5 md:items-start mb-0 md:mb-0 md:text-left '>
           <NotionRenderer
             className='md:ml-0'
             blockMap={blockMap}
@@ -25,11 +26,11 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
           />
         </div>
         {/* TITL 3D 动图 */}
-        <div className="hidden md:flex items-center justify-center p-24 gap-4 flex-wrap rounded-xl">
+        <div className=" -rotate-90 sm:rotate-0 flex items-center justify-center p-0 gap-4 flex-wrap rounded-xl ">
             <Tilt
-              className="my3d shadow-lg 
-               max-w-[20rem] min-w-[15rem] rounded-xl bg-cover
-              bg-[url('../public/images/news.png')]"
+              className="my3d shadow-lg  flex justify-center
+               w-[210px] h-[330px] rounded-xl bg-cover
+               bg-[url('../public/images/iwatcht.png')]"
               perspective={500}
               glareEnable={false}
               glarePosition={'all'}
@@ -39,12 +40,13 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
               scale={1.02}
             >
                 
-              <div className="my3din flex flex-col justify-center items-center">
-                <div className="text-3xl font-bold pt-16">{BLOG.author}</div>
-                <Image src={LOGOIMG} alt={BLOG.title} width={180} height={180} className=' hover:-rotate-45  duration-300' />
-                <CardTags tags={tags} currentTag={currentTag} />  
-
-              <div className=" h-28 py-6">{BLOG.description}</div>
+              <div className="my3din flex flex-col justify-center items-center  ">
+                {/* <div className="text-3xl font-bold pt-16">{BLOG.author}</div> */}
+                {/*<Image src={LOGOIMG} alt={BLOG.title} width={100} height={100} 
+                    className=' hover:-rotate-45  duration-300 ' /> */}
+                <NewspaperIcon className='  rotate-90 sm:rotate-0 w-16 h-16 hover:scale-125 hover:fill-blue-500'/>
+                <CardTags tags={tags} currentTag={currentTag}  className=" rotate-90 sm:rotate-0 p-3" />  
+              {/*<div >{BLOG.description}</div>*/}
 
               </div>
             </Tilt>
