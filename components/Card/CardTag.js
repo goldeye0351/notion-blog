@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-const CardTags = ({ tags, currentTag }) => {
+const CardTags = ({ tags, currentTag,className }) => {
   if (!tags) return null
   return (
-    <div className='tag-container'>
+    <div className={className}>
       <div className='flex justify-center flex-wrap  px-6 '>
         {Object.keys(tags).map((key) => {
           const selected = key === currentTag
