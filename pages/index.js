@@ -74,7 +74,7 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
       ))}
       </swiper-container>
 
-      {showNext && <Pagination page={page} showNext={showNext} />}
+     {/* {showNext && <Pagination page={page} showNext={showNext} />} */}
 
   </div>
 
@@ -84,7 +84,7 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
       {postsToShow.map((post) => (
        <BlogPost key={post.id} post={post} index={postsToShow.indexOf(post)} />
       ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
+      {/* {showNext && <Pagination page={page} showNext={showNext} />} */}
     </Container>
   </div>
     
