@@ -4,6 +4,7 @@ import { getAllPosts, getAllTagsFromPosts,getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
+import SupaComments from "@/components/Post/SupaComments"
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyNewsletter: false })
@@ -52,6 +53,7 @@ const About = ({ posts,blockMap }) => {
               </div>
     </Tilt>
  </div>
+   <SupaComments />
 </div>
 
 )}
