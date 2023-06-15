@@ -9,7 +9,10 @@ import {
   CollectionIcon,
   SparklesIcon,
   SearchIcon,
-  MenuIcon
+  MenuIcon,
+  UserIcon,
+  UsersIcon,
+  MailIcon
 } from '@heroicons/react/outline'
 import Social from '../Common/Social.js'
 import ThemeSwitcher from './ThemeSwitcher.js'
@@ -65,6 +68,27 @@ const NavBar = () => {
       to: '/search',
       icon: <SearchIcon className='inline-block mb-1 h-5 w-5' />,
       show: true
+    },
+    {
+      id: 5,
+      name: t.NAV.ABOUT,
+      to: BLOG.path || '/about',
+      icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
+      show: true
+    },
+    {
+      id: 6,
+      name: t.NAV.FRINEDS,
+      to: '/friends',
+      icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
+      show: false
+    },
+    {
+      id: 7,
+      name: t.NAV.CONTACT,
+      to: '/contact',
+      icon: <MailIcon className='inline-block mb-1 h-5 w-5' />,
+      show: false
     }
   ]
   return (
