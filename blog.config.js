@@ -31,7 +31,7 @@ const BLOG = {
   socialLink: {
     twitter: 'https://twitter.com/',
     github: 'https://github.com/',
-    telegram: 'https://t.me/iForexMt4'
+    telegram: 'https://t.me/'
   },
   seo: {
     keywords: ['notion', 'next', 'Blog'],
