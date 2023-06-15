@@ -42,9 +42,11 @@ export async function getStaticProps() {
 
 const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
   return ( <> 
-  {/*  这里是swiper 插件  */}
+  {/*  这里是HERO 小屏中屏出现, 大屏隐藏  */}
+  <Hero tags={tags} posts={posts} blockMap={blockMap} />
+
+  {/*  这里是swiper 插件 小屏隐藏  中等屏幕开始出现,  */}
  <div className='hidden md:block'>
-      <Hero tags={tags} posts={posts} blockMap={blockMap} />
       <swiper-container 
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" slides-per-view="3"
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
@@ -62,7 +64,7 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
         invert dark:invert-0
         '/>
         <div className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
-        <div className=' text-sm '>{post.summary}</div>
+        <div className=' hidden lg:block text-sm '>{post.summary}</div>
         </div>
 
         <div className='absolute bottom-0 p-8 '><FormattedDate date={post.date} /></div>
@@ -73,14 +75,12 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
        </>
       ))}
       </swiper-container>
-
-     {/* {showNext && <Pagination page={page} showNext={showNext} />} */}
-
+      
   </div>
-
+   {/*  中屏开始隐藏  */}
   <div className='visible md:hidden '>
     <Container title={BLOG.title} description={BLOG.description}>
-      <Hero tags={tags} posts={posts} blockMap={blockMap} />
+      
       {postsToShow.map((post) => (
        <BlogPost key={post.id} post={post} index={postsToShow.indexOf(post)} />
       ))}
