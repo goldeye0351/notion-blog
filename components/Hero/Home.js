@@ -1,35 +1,40 @@
 "use client"
-import Image from 'next/image'
-import LOGOIMG from '@/public/images/logo.png'
-import Dh from '@/public/images/dh.png'
-import Nh from '@/public/images/nh.png'
 import Tilt from 'react-parallax-tilt'
 import CardTags from '../Card/CardTag.js'
+import Typed from 'typed.js'
+import { useEffect } from 'react'
 import BLOG from '@/blog.config'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
-import NotionRenderer from '@/components/Post/NotionRenderer'
-
-
 
 const Hero = ({ blockMap,tags, currentTag  }) => {
   const { locale } = useRouter()
   const t = lang[locale]
 
+  useEffect(() => {
+  new Typed('#typed', {
+          strings: ['<i>I am</i>',' ccc.', '535251.xyz','我想,我要, 我爱!'],
+          typeSpeed: 50,
+          backSpeed: 50,
+          backDelay: 100,  
+          smartBackspace: true,
+          showCursor: true,
+          loop: false,
+          loopCount: 3
+        })})
 
   return (
 <>
       <div className='container mx-auto flex justify-center px-5 py-2 mb-1 md:flex-row flex-col items-center'>
         {/* NOTION 文件内容*/}
-        <div className='hidden md:hidden lg:hidden flex-col md:w-3/5 md:items-start mb-0 md:mb-0 text-left'>
-          <NotionRenderer
-            className='md:ml-0'
-            blockMap={blockMap}
-            frontMatter={{}}
-            subPageTitle={null}
-          />
+
+        <div className=' block w-56 h-40  relative  '> 
+        I am 
+        <span className=' p-5  inline ' id='typed' /> 
+
+
         </div>
-                {/* TITL 3D 动图 */}
+        {/* TITL 3D 动图 */}
         <div className="lg:hidden  flex items-center justify-center p-12 gap-4 flex-wrap rounded-3xl relative w-96 h-48
         bg-cover dark:bg-[url('../public/images/nh.png')] bg-[url('../public/images/dh.png')]
 
