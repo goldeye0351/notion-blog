@@ -32,7 +32,7 @@ export async function getStaticProps() {
 const About = ({ posts,blockMap }) => {
     return (
 <div title={BLOG.about} description={BLOG.description} className='about' >
-  <div className="flex justify-center ">
+  <div className="flex justify-center  pb-12 ">
      <Tilt 
               className="my3d shadow-2xl shadow-gray-500 rounded-xl  max-w-[80VW] 
               bg-[url('../public/images/mac.jpg')]
