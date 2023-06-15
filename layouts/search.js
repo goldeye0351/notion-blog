@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
 
-const SearchLayout = ({ tags, posts, currentTag }) => {
+const SearchLayout = ({ tags, posts, currentTag,post }) => {
   const [searchValue, setSearchValue] = useState('')
   const { locale } = useRouter()
   const t = lang[locale]
@@ -56,8 +56,9 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
           </p>
         )}
         {filteredBlogPosts.slice(0, 20).map((post) => (
-          <BlogPost key={post.id} post={post} />
+          <BlogPost key={post.id} post={post} index={filteredBlogPosts.indexOf(post)} />
         ))}
+
       </div>
     </Container>
   )
