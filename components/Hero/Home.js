@@ -1,6 +1,8 @@
 "use client"
 import Image from 'next/image'
 import LOGOIMG from '@/public/images/logo.png'
+import Dh from '@/public/images/dh.png'
+import Nh from '@/public/images/nh.png'
 import Tilt from 'react-parallax-tilt'
 import CardTags from '../Card/CardTag.js'
 import BLOG from '@/blog.config'
@@ -28,11 +30,13 @@ const Hero = ({ blockMap,tags, currentTag  }) => {
           />
         </div>
                 {/* TITL 3D 动图 */}
-        <div className="lg:hidden  flex items-center justify-center p-8 gap-4 flex-wrap rounded-3xl">
+        <div className="lg:hidden  flex items-center justify-center p-12 gap-4 flex-wrap rounded-3xl relative w-96 h-48
+        bg-cover dark:bg-[url('../public/images/nh.png')] bg-[url('../public/images/dh.png')]
 
+        ">
             <Tilt
               className="my3d shadow-2xl shadow-gray-500 rounded-xl
-              bg-slate-200 dark:bg-slate-600 max-w-[50rem] min-w-[20rem] "
+              "
               perspective={500}
               glareEnable={true}
               glarePosition={'all'}
@@ -43,7 +47,7 @@ const Hero = ({ blockMap,tags, currentTag  }) => {
             >
                
               <div className="my3din flex flex-col justify-center items-center mb-10">
-                <Image src={LOGOIMG} alt={BLOG.title} width={180} height={180} className=' hover:-rotate-45  duration-300' />
+                
                 <CardTags tags={tags} currentTag={currentTag} />  
 
               </div>
