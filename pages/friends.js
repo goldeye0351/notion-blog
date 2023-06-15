@@ -40,7 +40,6 @@ const Friend = ({  posts }) => {
 
             <Image src={post?.page_cover}  alt={post.title} width={300} height={300}
             className=' rounded-lg -z-10'          />
-            <div  className='flex flex-col justify-between  text-xl'>    {post.title}  </div>
             
           </div>
           <div  className='flex flex-col justify-center  text-xl'>    {post.summary}  </div>
