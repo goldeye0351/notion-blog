@@ -18,12 +18,7 @@ export const Contact = () => {
         </p>
         <p className='max-w-screen-md font-light md:text-lg text-center mx-auto'>
           {t.CONTACT.TG_DESCRIPTION}
-          <a
-            href={BLOG.socialLink.telegram}
-            className='hover:text-indigo-500 active:text-indigo-600 underline transition duration-100'
-          >
-            @{BLOG.socialLink.telegram.slice(13)}
-          </a>
+
         </p>
       </div>
       <ContactForm />
