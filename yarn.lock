@@ -2952,6 +2952,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-bubble-ui@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/react-bubble-ui/-/react-bubble-ui-1.1.2.tgz#ac862aa62a2be309a77b2de946305db380e7dcd3"
+  integrity sha512-JZEoHHte7IwIXCXdMc21id+6jBTNFSX5tLMDpFzGHMh45fT8ompWijNmKZiE8d/uPeTI1jUYdp4uDxIaObglsg==
+
 react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
