@@ -36,6 +36,7 @@
     "preact": "^10.5.15",
     "prism-theme-vars": "^0.2.2",
     "react": "^18.2.0",
+    "react-bubble-ui": "^1.1.2",
     "react-dom": "^18.2.0",
     "react-notion-x": "^6.16.0",
     "react-parallax-tilt": "^1.7.145",
