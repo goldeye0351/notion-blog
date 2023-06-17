@@ -13,9 +13,9 @@ const Hero = ({ blockMap,tags, currentTag  }) => {
 
   useEffect(() => {
   new Typed('#typed', {
-          strings: ['<i>I am</i>',' ccc.', '535251.xyz','我想,我要, 我爱!'],
-          typeSpeed: 50,
-          backSpeed: 50,
+          strings: ['<i>I am</i>',' ccc.', '535251.xyz','我想,我爱, 我要!','535251.xyz。我想我爱我要.xyz!'],
+          typeSpeed: 100,
+          backSpeed: 100,
           backDelay: 100,  
           smartBackspace: true,
           showCursor: true,
