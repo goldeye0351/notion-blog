@@ -29,10 +29,22 @@ const TransitionEffect = ({ children }) => {
   const { asPath } = useRouter()
 
   return (
-    <div className='effect-2'>
-      
+    <div className='effect-1'>
+      <AnimatePresence
+        initial={false}
+        exitBeforeEnter
+        onExitComplete={() => window.scrollTo(0, 0)}
+      >
+        <motion.div
+          key={asPath}
+          variants={variants}
+          animate='in'
+          initial='out'
+          exit='out'
+        >
           {children}
-       
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }
