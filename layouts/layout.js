@@ -26,7 +26,7 @@ const Layout = ({ blockMap, frontMatter, fullWidth = false, subPage = false }) =
       type='article'
       fullWidth={fullWidth}
     >
-      <motion.div className='flex flex-row'>
+      <div className='flex flex-row'>
         <Content
           frontMatter={frontMatter}
           blockMap={blockMap}
@@ -37,7 +37,7 @@ const Layout = ({ blockMap, frontMatter, fullWidth = false, subPage = false }) =
           blockMap={blockMap}
           pageTitle={showSubPageTitle ? pageTitle : null}
         />
-      </motion.div>
+      </div>
       <PostFooter />
       <Comments frontMatter={frontMatter} />
     </Container>
