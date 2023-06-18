@@ -1,5 +1,4 @@
 import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
-import InfoCard from '@/components/Card/InfoCard'
 import { register } from 'swiper/element/bundle'
 register()
 import Mswiper from '@/components/Myswiper/Mswiper'
