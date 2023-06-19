@@ -58,7 +58,7 @@ const blog = ({ postsToShow, page, showNext, blockMap, tags, posts,}) => {
     <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
     {/* <Image src={post?.page_cover} alt={post.title} width={640} height={480} />  */}
 
-    <div className=' max-w-[640px] max-h-[480px] flex flex-col justify-between'>  
+    <div className=' max-w-[640px] max-h-[480px] min-w-[480px] min-h-[360px] flex flex-col justify-between'>  
         <Image src={post?.page_cover} alt={post.title} width={640} height={480} 
         className='rounded-3xl  static 
         invert dark:invert-0
