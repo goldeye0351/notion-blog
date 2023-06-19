@@ -5,7 +5,7 @@ import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
 import SupaComments from "@/components/Post/SupaComments"
-
+import FluidAnimation  from "react-fluid-animation"
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyNewsletter: false })
   const tags = getAllTagsFromPosts(posts)
@@ -32,7 +32,8 @@ export async function getStaticProps() {
 const About = ({ posts,blockMap }) => {
     return (
 <div title={BLOG.about} description={BLOG.description} className='about' >
-  <div className="flex justify-center  pb-12 ">
+  <div className="flex flex-col justify-center content-center items-center pb-12  space-y-16">
+    
      <Tilt 
               className="my3d shadow-2xl shadow-gray-500 rounded-xl  max-w-[80VW] 
               bg-[url('../public/images/mac.jpg')]
@@ -51,7 +52,15 @@ const About = ({ posts,blockMap }) => {
                 {/*<Image src={LOGOIMG} alt={BLOG.title}  height={180}  />*/}
                 <NotionRenderer blockMap={blockMap} frontMatter={{}} subPageTitle={null} />
               </div>
+              
     </Tilt>
+ {/*
+    <div className='h-[300px] w-[600px] max-w-[80VW] flex flex-col justify-center content-center items-center overflow-hidden rounded-full' >
+    <FluidAnimation
+            style={{ radius:990,   height: '300px', width:'600px'  }}
+          />
+    </div>
+    */}
  </div>
    <SupaComments />
 </div>
