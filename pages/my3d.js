@@ -41,7 +41,7 @@ const my3d = ({ postsToShow }) => {
   
   return <>
 
-{/*  这里是swiper 插件 小屏隐藏  中等屏幕开始出现,  */}
+{/*  这里是swiper插件 很多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block '>
       <swiper-container 
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" slides-per-view="3"
@@ -53,7 +53,7 @@ const my3d = ({ postsToShow }) => {
           <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
           {/* <Image src={post?.page_cover} alt={post.title} width={640} height={480} />  */}
 
-          <div className=' max-w-[640px] max-h-[480px] flex flex-col justify-between'>  
+          <div className=' max-w-[640px] max-h-[480px] min-w-[480px] min-h-[360px] flex flex-col justify-between'>  
               <Image src={post?.page_cover} alt={post.title} width={640} height={480} 
               className='rounded-3xl  static 
               invert dark:invert-0
@@ -71,7 +71,7 @@ const my3d = ({ postsToShow }) => {
       </swiper-container>
   </div>
 
-   {/*  小屏开始隐藏  */}
+   {/*  单图 模式 中屏开始隐藏  */}
   <div className='visible md:hidden '>
     <div className='max-w-[95VW] justify-center content-center items-center mx-auto' >
       <swiper-container navigation="true" pagination="true" scrollbar="true" loop="true" grab-cursor="true" > 
