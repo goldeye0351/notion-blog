@@ -26,7 +26,7 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
           />
         </div>
         {/* TITL 3D 动图 */}
-        <div className=" -rotate-90 sm:rotate-0 flex items-center justify-center p-0 gap-4 flex-wrap rounded-xl ">
+        <div className=" -rotate-90 duration-1000 sm:rotate-0 flex items-center justify-center p-0 gap-4 flex-wrap rounded-xl ">
             <Tilt
               className="my3d shadow-lg  flex justify-center
                w-[210px] h-[330px] rounded-xl bg-cover
@@ -44,8 +44,8 @@ const NewsletterHero = ({ blockMap,tags, currentTag }) => {
                 {/* <div className="text-3xl font-bold pt-16">{BLOG.author}</div> */}
                 {/*<Image src={LOGOIMG} alt={BLOG.title} width={100} height={100} 
                     className=' hover:-rotate-45  duration-300 ' /> */}
-                <NewspaperIcon className='  rotate-90 sm:rotate-0 w-16 h-16 hover:scale-125 hover:fill-blue-500'/>
-                <CardTags tags={tags} currentTag={currentTag}  className=" rotate-90 sm:rotate-0 p-3" />  
+                <NewspaperIcon className=' duration-1000 rotate-90 sm:rotate-0 w-16 h-16 hover:scale-125 hover:fill-blue-500'/>
+                <CardTags tags={tags} currentTag={currentTag}  className=" duration-1000 rotate-90 sm:rotate-0 p-3" />  
               {/*<div >{BLOG.description}</div>*/}
 
               </div>
