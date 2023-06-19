@@ -2,10 +2,15 @@ import BLOG from '@/blog.config'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-
+import AOS from 'aos'
+import 'aos/dist/aos.css' 
 import FormattedDate from '@/components/Common/FormattedDate'
+import React, { useEffect } from 'react'
 
 const BlogPost = ({ index , post }) => {
+
+  useEffect(() => {    AOS.init()  }, [])
+
   return (
     <motion.div>
       <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
@@ -14,6 +19,13 @@ const BlogPost = ({ index , post }) => {
           className='group hover:ring-2 shadow-lg shadow-gray-500   hover:scale-105 duration-500 overflow-hidden relative my-16  cursor-pointer rounded-xl p-5'
         >
          <div
+                         data-aos="fade-up"
+                         data-aos-offset="200"
+                         data-aos-delay="50"
+                         data-aos-duration="1000"
+                         data-aos-easing="ease-in-out"
+                         data-aos-once="false"
+                         data-aos-anchor-placement="top-bottom"
                 id='blog-ID'
                 key={post.id}
                 className={`h-56 w-full md:flex justify-between  ${index % 2 === 1 ? 'flex-row-reverse ' : ''}
