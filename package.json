@@ -38,6 +38,7 @@
     "prism-theme-vars": "^0.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-fluid-animation": "^1.0.1",
     "react-notion-x": "^6.16.0",
     "react-parallax-tilt": "^1.7.145",
     "sharp": "^0.30.5",
