@@ -10,6 +10,7 @@ import Social from '../Common/Social.js'
 import MenuItem from './MenuItems.js'
 import { motion } from 'framer-motion'
 import Collapse from './Collapse.js'
+import { links } from './Menudata.js'
 const NavBar = () => {
   const router = useRouter()
   const { locale } = useRouter()
@@ -22,81 +23,6 @@ const NavBar = () => {
   } else {
     activeMenu = router.pathname
   }
-
-  const links = [
-    {
-      id: 0,
-      name: t.NAV.INDEX,
-      to: BLOG.path || '/',
-      icon: <HomeIcon className='inline-block mb-1 h-5 w-5' />,
-    },
-    {
-      id: 1,
-      name: t.NAV.BLOG,
-      to: '/blog',
-      icon: <ClipboardListIcon className='inline-block mb-1 h-5 w-5' />,
-    },
-    {
-      id: 2,
-      name: t.NAV.BLOG,
-      to: '',
-      icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
-      submenu:
-      [
-        {
-          id: 3,
-          name: t.NAV.BLOG,
-          to: '/jz01',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 4,
-          name: t.NAV.BLOG,
-          to: '/jz01',
-          icon: <MailIcon className='inline-block mb-1 h-5 w-5' />,
-        }
-      ]
-    },
-    {
-      id: 5,
-      name: t.NAV.SEARCH,
-      to: '/search',
-      icon: <SearchIcon className='inline-block mb-1 h-5 w-5' />,
-    },
-    {
-      id: 6,
-      name: t.NAV.ABOUT,
-      to: BLOG.path || '/about',
-      icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
-      submenu:
-      [
-        {
-          id: 7,
-          name: t.NAV.FRINEDS,
-          to: '/friends',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 8,
-          name: t.NAV.CONTACT,
-          to: '/contact',
-          icon: <MailIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 9,
-          name: t.NAV.FRINEDS,
-          to: '/friends',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 10,
-          name: t.NAV.FRINEDS,
-          to: '/friends',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
-        }
-      ]
-    }
-  ]
 
   const [isOpen, changeOpen] = useState(false)
   const toggleOpen = () => {
