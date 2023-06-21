@@ -3,9 +3,7 @@ import Link from 'next/link'
 import BLOG from '@/blog.config'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
-import {
-  HomeIcon,  SearchIcon,  MenuIcon,  UserIcon,  UsersIcon,  MailIcon,  ClipboardListIcon
-} from '@heroicons/react/outline'
+import {MenuIcon} from '@heroicons/react/outline'
 import Social from '../Common/Social.js'
 import MenuItem from './MenuItems.js'
 import { motion } from 'framer-motion'
