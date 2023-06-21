@@ -5,11 +5,10 @@ import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { register } from 'swiper/element/bundle'
 register()
-import FormattedDate from '@/components/Common/FormattedDate'
 
 
 export async function getStaticProps() {
-  const posts = await getAllPosts({ onlyPost: true })
+  const posts = await getAllPosts({ onlyHot: true })
   const tags = getAllTagsFromPosts(posts)
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'index')
@@ -62,7 +61,6 @@ const my3d = ({ postsToShow }) => {
               <div className=' hidden lg:block text-sm '>{post.summary}</div>
               </div>
 
-              <div className='absolute bottom-0 p-8 '><FormattedDate date={post.date} /></div>
           </div>
           </Link>
         </swiper-slide>
@@ -89,7 +87,6 @@ const my3d = ({ postsToShow }) => {
               <div className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
               <div className=' text-sm '>{post.summary}</div>
               </div>
-              <div className='absolute bottom-0 p-8 '><FormattedDate date={post.date} /></div>
           </div>
           </Link>
         </swiper-slide>
