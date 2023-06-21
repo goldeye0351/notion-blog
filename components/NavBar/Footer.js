@@ -1,14 +1,14 @@
 import Link from 'next/link'
+import Image from 'next/image.js'
+import Githubimg from '@/public/svg/github.svg'
+import Nextimg from '@/public/svg/nextjs.svg'
+import Tailwindimg from '@/public/svg/tailwind.svg'
 import BLOG from '@/blog.config'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
-import {
-  UserIcon,
-  UsersIcon,
-  MailIcon
-} from '@heroicons/react/outline'
-import Social from '../Common/Social.js'
+import {  UserIcon,  UsersIcon,  MailIcon, StarIcon, CursorClickIcon, HeartIcon } from '@heroicons/react/outline'
 import { motion } from 'framer-motion'
+import ThemeSwitcher from './ThemeSwitcher.js'
 
 const Footer = ({ fullWidth }) => {
   const router = useRouter()
@@ -57,42 +57,29 @@ const Footer = ({ fullWidth }) => {
       }`}
     >
       <footer className='max-w-screen-2xl px-4 md:px-8 mx-auto'>
-        <div className='flex flex-col md:flex-row justify-between items-center border-b dark:border-gray-600 py-1'>
-          <ul className='flex flex-wrap justify-center md:justify-start md:gap-1'>
-            {links.map(
-              (link) =>
-                link.show && (
-                  <Link passHref key={link.id} href={link.to} scroll={false}>
-                    <li key={link.id}
-                      className={`${
-                        activeMenu === link.to
-                          ? 'bg-gray-200 dark:bg-gray-700'
-                          : ''
-                      } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block py-1 px-2 nav`}
-                    >
-                      <div className='font-light'>
-                        {link.icon}
-                        <span className='inline-block m-1'>{link.name}</span>
-                      </div>
-                    </li>
-                  </Link>
-                )
-            )}
-          </ul>
-          <div className='hidden md:flex'>
-            <Social />
-          </div>
+        <div className='flex flex-row justify-center border-b dark:border-gray-600 '>
+            <ThemeSwitcher  />
         </div>
 
-        <div className='text-gray-400 text-xs font-light py-4'>
-          © {from === y || !from ? y : `${from} - ${y}`} | {BLOG.author}
-          <p className='md:float-right'>
-            {t.FOOTER.COPYRIGHT_START}
-            <a className='underline' href={`${t.FOOTER.COPYRIGHT_LINK}`}>
-              {t.FOOTER.COPYRIGHT_NAME}
-            </a>
-            {t.FOOTER.COPYRIGHT_END}
-          </p>
+        <div className='text-sm flex justify-between'>
+            <div className="flex items-center space-x-1">
+              <span className="mr-1 ">Built with</span>
+              <div className="flex space-x-1.5">
+               <Link href="https://github.com">
+                 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className=' fill-black dark:fill-white w-5 h-5 '>
+                  <path d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'></path>
+                 </svg>  
+                </Link>     
+
+              </div>
+
+            </div>
+
+          <div className='float-right my-2 flex space-x-2 text-sm '>
+              <div>{`Copyright © ${new Date().getFullYear()}`}</div>  
+              <HeartIcon className=' h-5 inline-block ' />
+              <span> {BLOG.author} </span> 
+          </div>
         </div>
       </footer>
     </motion.div>
