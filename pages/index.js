@@ -49,7 +49,7 @@ const my3d = ({ postsToShow }) => {
         > 
         {postsToShow.map((post) => (<>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
+          <Link passHref href={`${BLOG.path}/${post.Link}`} scroll={false}>
           {/* <Image src={post?.page_cover} alt={post.title} width={640} height={480} />  */}
 
           <div className=' max-w-[800px] max-h-[600px] min-w-[480px] min-h-[360px] flex flex-col justify-between'>  
