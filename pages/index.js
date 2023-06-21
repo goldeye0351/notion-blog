@@ -42,23 +42,21 @@ const my3d = ({ postsToShow }) => {
 
 {/*  这里是swiper插件 很多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block '>
-      <swiper-container 
-        grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" slides-per-view="3"
+      <swiper-container slides-per-view="3"
+        grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
         coverflow-effect-stretch="10" coverflow-effect-modifier="1" loop-additional-slides="2"
         > 
         {postsToShow.map((post) => (<>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link passHref href={`${BLOG.path}/${post.Link}`} scroll={false}>
-          {/* <Image src={post?.page_cover} alt={post.title} width={640} height={480} />  */}
-
-          <div className=' max-w-[800px] max-h-[600px] min-w-[480px] min-h-[360px] flex flex-col justify-between'>  
-              <Image src={post?.page_cover} alt={post.title} width={720} height={540} 
+          <Link key={post.id} href={post.Link} scroll={false}>
+          <div key={post.id} className=' max-w-[1024px] max-h-[768px] min-w-[480px] min-h-[360px] flex flex-col justify-between'>  
+              <Image key={post.id} src={post?.page_cover} alt={post.title} width={1024} height={768} 
               className='rounded-3xl  static 
               
               '/>
-              <div className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
-              <div className=' hidden lg:block text-sm '>{post.summary}</div>
+              <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
+              <div key={post.id} className=' hidden lg:block text-sm '>{post.summary}</div>
               </div>
 
           </div>
@@ -76,16 +74,15 @@ const my3d = ({ postsToShow }) => {
         {postsToShow.map((post) => (
         <>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
-          {/* <Image src={post?.page_cover} alt={post.title} width={640} height={480} />  */}
+          <Link key={post.id} passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
       
           <div key={post.id} className=' max-w-[calc(100vw-10rem)] min-h-[calc(100vh-14rem)]  flex flex-col justify-between'>  
-              <Image src={post?.page_cover} alt={post.title} fill 
+              <Image key={post.id} src={post?.page_cover} alt={post.title} fill 
               className='rounded-3xl  static 
               invert dark:invert-0
               '/>
-              <div className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
-              <div className=' text-sm '>{post.summary}</div>
+              <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
+              <div key={post.id} className=' text-sm '>{post.summary}</div>
               </div>
           </div>
           </Link>
