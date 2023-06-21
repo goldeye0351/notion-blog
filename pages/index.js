@@ -74,7 +74,7 @@ const my3d = ({ postsToShow }) => {
         {postsToShow.map((post) => (
         <>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link key={post.id} passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
+          <Link key={post.id} href={post.Link} scroll={false}>
       
           <div key={post.id} className=' max-w-[calc(100vw-10rem)] min-h-[calc(100vh-14rem)]  flex flex-col justify-between'>  
               <Image key={post.id} src={post?.page_cover} alt={post.title} fill 
