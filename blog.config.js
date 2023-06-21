@@ -3,6 +3,7 @@ const BLOG = {
   author: 'CCC',
   email: 'admin@535251.xyz',
   link: 'https://535251.xyz',
+  hot:'广告',
   newsletter: 'Weekly',
   description: '535251.xyz',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
@@ -12,15 +13,11 @@ const BLOG = {
   lightBackground: '#F6F8FA', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#212936', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Notionic in a folder
-  since: 2022, // If leave this empty, current year will be used.
+  since: 2021, // If leave this empty, current year will be used.
   postsPerPage: 10,
   sortByDate: true,
   pagesShow: {
-    newsletter: true,
-    notes: false,
-    projects: false,
     contact: true,
-    books: false,
     friends: true
   },
   showWeChatPay: true,
@@ -29,9 +26,7 @@ const BLOG = {
   ogImageGenerateHost: 'og-zl.vercel.app', // The link to generate OG image, don't end with a slash
   defaultCover: '/mycover.jpg',
   socialLink: {
-    twitter: 'https://twitter.com/',
-    github: 'https://github.com/goldeye0351',
-    telegram: 'https://t.me/'
+    github: 'https://github.com/goldeye0351'
   },
   seo: {
     keywords: ['notion', 'next', 'Blog'],
@@ -45,7 +40,7 @@ const BLOG = {
   telegramChatId: '754356243', // The chat id of your Telegram bot
   telegramChannelUrl: 'https://t.me/+qhlQu1J3xONkNzYx', // The link of your Telegram channel
   telegramChannelName: '535251', // The name of your Telegram channel
-  craftConfigShareUrl: 'https://www.craft.do/', // The link to share your craft config
+
   analytics: {
     provider: '', // Currently we support Google Analytics, Ackee, Umami and Cloudflare Insights, please fill with 'ga' or 'ackee' or 'umami' or 'cf', leave it empty to disable it.
     ackeeConfig: {
