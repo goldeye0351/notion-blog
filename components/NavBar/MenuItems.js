@@ -53,7 +53,7 @@ const MenuItems = ({ items, depthLevel }) => {
     >
       {items.submenu ? (
         <>
-          <div className='font-light'   
+          <div   
             aria-haspopup="menu"
             aria-expanded={dropdown ? 'true' : 'false'}
             onClick={() => setDropdown((prev) => !prev)}
