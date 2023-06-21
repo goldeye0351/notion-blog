@@ -105,7 +105,7 @@ const NavBar = () => {
   const collapseRef = useRef(null)
 
   return (
-    <motion.div className='flex'>
+    <motion.div className='flex relative'>
       {/* Desktop Menu */}  
       <ul id="desktopmenu" className="hidden md:flex md:gap-1">
         {links.map((menu, index) => {
@@ -113,11 +113,22 @@ const NavBar = () => {
             <MenuItem items={menu} key={index}  />
           )})}        
       </ul>         
-
-      <ul id="mobilemenu" className='md:hidden '>
-        <MenuIcon onClick={toggleOpen} className='w-16 h-16 relative  bg-gray-600  cursor-pointer px-5 block md:hidden' />
-            <Collapse collapseRef={collapseRef} isOpen={isOpen} type='vertical' className='  fixed block top-16 w-48 right-6'>
-                <div className='rounded  p-2 text-sm self-end '>
+      {/* iphone Menu */}
+      <div  id="mobilemenu" className='md:hidden  block absolute right-0 top-0 ' >
+          <button
+            type='button' aria-label='Menu'
+            onClick={toggleOpen}   
+            onDoubleClick={() => setShowMenu((showMenu) => !showMenu)}
+            className='hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block p-2 -mr-3 md:pb-3 '
+          >
+            <MenuIcon className='inline-block mb-1 h-5 w-5 right-0 ' />
+          </button>
+       <div className=' aaa'>
+          <ul>
+            <Collapse collapseRef={collapseRef} isOpen={isOpen} type='vertical' className='  left-[20VW] w-[60VW]  
+             dark:bg-gray-700/60 divide-y divide-gray-200 dark:divide-gray-600 rounded-md shadow-lg outline-none fixed block'
+            >
+                <div className='rounded leading-5  hover:bg-gray-100 dark:hover:bg-gray-600 block pt-8 pb-96 '>
                 {links.map((menu, index) => {
                   return (
                   <MenuItem items={menu} key={index}  />
@@ -125,8 +136,9 @@ const NavBar = () => {
 
                 </div>
             </Collapse>
-      </ul>  
-
+          </ul>  
+        </div>
+      </div>
     </motion.div>
   )
 }
