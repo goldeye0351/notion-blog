@@ -26,7 +26,9 @@ const BLOG = {
   ogImageGenerateHost: 'og-zl.vercel.app', // The link to generate OG image, don't end with a slash
   defaultCover: '/mycover.jpg',
   socialLink: {
-    github: 'https://github.com/goldeye0351'
+    twitter: 'https://twitter.com/',
+    github: 'https://github.com/goldeye0351',
+    telegram: 'https://t.me/'
   },
   seo: {
     keywords: ['notion', 'next', 'Blog'],
