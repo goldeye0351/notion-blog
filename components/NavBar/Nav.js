@@ -9,6 +9,7 @@ import MenuItem from './MenuItems.js'
 import { motion } from 'framer-motion'
 import Collapse from './Collapse.js'
 import { links } from './Menudata.js'
+import ThemeSwitcher from './ThemeSwitcher.js'
 const NavBar = () => {
   const router = useRouter()
   const { locale } = useRouter()
@@ -49,10 +50,10 @@ const NavBar = () => {
           </button>
        <div className=' aaa'>
           <ul>
-            <Collapse collapseRef={collapseRef} isOpen={isOpen} type='vertical' className='  left-[20VW] w-[60VW]  
+            <Collapse collapseRef={collapseRef} isOpen={isOpen} type='vertical' className='  left-[25VW] w-[50VW]  
              dark:bg-gray-700/60 divide-y divide-gray-200 dark:divide-gray-600 rounded-md shadow-lg outline-none fixed block'
             >
-                <div className='rounded leading-5  hover:bg-gray-100 dark:hover:bg-gray-600 block pt-8 pb-96 '>
+                <div className='rounded leading-5   block pt-8 pb-56 '>
                 {links.map((menu, index) => {
                   return (
                   <MenuItem items={menu} key={index}  />
@@ -62,6 +63,9 @@ const NavBar = () => {
             </Collapse>
           </ul>  
         </div>
+      </div>
+      <div className="md:block hidden ">
+         <ThemeSwitcher  />
       </div>
     </motion.div>
   )
