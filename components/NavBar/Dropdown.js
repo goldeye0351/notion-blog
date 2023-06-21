@@ -1,5 +1,5 @@
 import MenuItems from './MenuItems';
-const Dropdown = ({ submenus, dropdown}) => {
+const Dropdown = ({ submenus, dropdown, className}) => {
   const dropdownClass = '';
   return (
     <ul
@@ -8,7 +8,7 @@ const Dropdown = ({ submenus, dropdown}) => {
       }`}
     >
       {submenus.map((submenu, index) => (
-        <MenuItems
+        <MenuItems className={className}
           items={submenu}
           key={index}
         />
