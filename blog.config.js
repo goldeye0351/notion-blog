@@ -4,6 +4,7 @@ const BLOG = {
   email: 'admin@535251.xyz',
   link: 'https://535251.xyz',
   hot:'广告',
+  daziji:['2123','22222222222', 'qqqqqqqqqqqqqqqqqqqq','asdfasdfasdfasdfasdf','123qweasdasdzxcawdasdasd'],
   newsletter: 'Weekly',
   description: '535251.xyz',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
