@@ -1,8 +1,11 @@
+import FluidAnimation from "react-fluid-animation"
 
-const test = ({ postsToShow }) => {
+const test = ( ) => {
   
   return <>
-<div className='w-16 h-16 bg-red-300'></div>
-
+<div className=' w-screen h-screen '>
+<FluidAnimation />
+</div>
+  
 </>}
 export default test
