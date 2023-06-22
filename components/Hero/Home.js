@@ -10,7 +10,7 @@ const Hero = ({ blockMap,tags, currentTag,heropost }) => {
 
   return (
     <>
-      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center justify-center space-x-16 '>
+      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center justify-center md:space-x-16 '>
         {/* TITL 3D 动图 */}
         <div className=" -rotate-90 duration-1000 sm:rotate-0 
         flex items-center justify-center p-0 gap-4 flex-wrap rounded-xl ">
