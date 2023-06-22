@@ -28,16 +28,19 @@ export async function getStaticProps() {
       showNext,
       posts,
       tags,
+      hero,
       blockMap
     },
     revalidate: 1
   }
 }
 
-const blog = ({ postsToShow, page, showNext, tags, posts, blockMap }) => {
+const blog = ({ postsToShow, page, showNext, tags, posts, blockMap,hero }) => {
   return (
     <Container title={BLOG.title} description={BLOG.description}>
-      <Hero  tags={tags} posts={posts} blockMap={blockMap} />
+      
+      <Hero  tags={tags} heropost={hero} blockMap={blockMap} />
+    
       {posts.map((post) => (
         <BlogPost key={post.id} post={post} index={postsToShow.indexOf(post)} />
       ))}
