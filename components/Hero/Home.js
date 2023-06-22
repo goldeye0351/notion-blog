@@ -1,48 +1,45 @@
 "use client"
 import Tilt from 'react-parallax-tilt'
+import Image from "next/image"
+import HomewatchIMG from "@/public/homewatcht.png"
 import CardTags from '../Card/CardTag.js'
-import Typed from 'typed.js'
-import { useEffect } from 'react'
-import BLOG from '@/blog.config'
-import { lang } from '@/lib/lang'
-import { useRouter } from 'next/router'
+import NotionRenderer from '@/components/Post/NotionRenderer'
 
-const Hero = ({ blockMap,tags, currentTag  }) => {
-  const { locale } = useRouter()
-  const t = lang[locale]
+const Hero = ({ blockMap,tags, currentTag,heropost }) => {
 
-  useEffect(() => {
-  new Typed('#typed', {
-          strings: ['<i>I am</i>',' ccc.', '535251.xyz','我想,我爱, 我要!','535251.xyz。我想我爱我要.xyz!'],
-          typeSpeed: 100,
-          backSpeed: 100,
-          backDelay: 100,  
-          smartBackspace: true,
-          showCursor: true,
-          loop: false,
-          loopCount: 3
-        })})
 
   return (
-<>
-      <div className='container mx-auto flex justify-center px-5 py-2 mb-1 md:flex-row flex-col items-center'>
-        {/* NOTION 文件内容*/}
-
-        <div className=' block w-56 h-40  relative  '> 
-        I am 
-        <span className=' p-5  inline ' id='typed' /> 
-
-
-        </div>
+    <>
+      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center justify-center space-x-16 '>
         {/* TITL 3D 动图 */}
-        <div className="lg:hidden  flex items-center justify-center p-12 gap-4 flex-wrap rounded-3xl relative w-96 h-48
-        bg-cover dark:bg-[url('../public/images/nh.png')] bg-[url('../public/images/dh.png')]
-
-        ">
+        <div className=" -rotate-90 duration-1000 sm:rotate-0 
+        flex items-center justify-center p-0 gap-4 flex-wrap rounded-xl ">
             <Tilt
-              className="my3d shadow-2xl shadow-gray-500 rounded-xl
+              className="my3d shadow-lg  flex justify-center w-[210px] h-[330px] rounded-xl 
+              bg-cover bg-[url('../public/homewatcht.png')]
               "
               perspective={500}
+              glareEnable={false}
+              glarePosition={'all'}
+              glareMaxOpacity={1}
+              
+              glareBorderRadius="12px"
+              scale={1.02}
+            >
+              {/* <Image src={HomewatchIMG}  alt="" fill  /> */}
+              <div className="my3din flex flex-col justify-center items-center  ">
+                <CardTags tags={tags} currentTag={currentTag}  className=" duration-1000 rotate-90 sm:rotate-0 p-3" />  
+
+              </div>
+            </Tilt>
+        </div>
+        {/* NOTION 3D文件内容*/}
+        <div className='flex flex-col justify-center'>
+          <Tilt 
+              className="my3d shadow-2xl shadow-gray-500 rounded-xl  max-w-[80VW] 
+              
+              "
+              perspective={1500}
               glareEnable={true}
               glarePosition={'all'}
               glareMaxOpacity={0.5}
@@ -50,18 +47,16 @@ const Hero = ({ blockMap,tags, currentTag  }) => {
               glareBorderRadius="12px"
               scale={1.02}
             >
-               
-              <div className="my3din flex flex-col justify-center items-center mb-10">
-                
-                <CardTags tags={tags} currentTag={currentTag} />  
-
+              <Image  src={heropost?.page_cover} alt="" fill className=' rounded-3xl '/>
+              <div className="my3din flex flex-col justify-center items-center flex-wrap p-12">
+                <NotionRenderer blockMap={blockMap} frontMatter={{}} subPageTitle={null} />
               </div>
-              <span className=" animate-pulse  rounded-b-full w-full absolute bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"><span class="hidden ">1</span></span>
-
-            </Tilt>
+              
+          </Tilt>
         </div>
+        
       </div>
-</>
+    </>
   )
 }
 
