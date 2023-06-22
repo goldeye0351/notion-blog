@@ -78,8 +78,7 @@ const my3d = ({ postsToShow }) => {
       
           <div key={post.id} className=' max-w-[calc(100vw-10rem)] min-h-[calc(100vh-14rem)]  flex flex-col justify-between'>  
               <Image key={post.id} src={post?.page_cover} alt={post.title} fill 
-              className='rounded-3xl  static 
-              invert dark:invert-0
+              className='rounded-3xl  static
               '/>
               <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
               <div key={post.id} className=' text-sm '>{post.summary}</div>

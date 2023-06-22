@@ -1,12 +1,12 @@
 const BLOG = {
-  title: '535251.xyz 我想，我爱，我要',
+  title: 'mynotion.life',
   author: 'CCC',
-  email: 'admin@535251.xyz',
-  link: 'https://535251.xyz',
+  email: 'admin@mynotion.life',
+  link: 'https://mynotion.life',
   hot:'广告',
   daziji:['2123','22222222222', 'qqqqqqqqqqqqqqqqqqqq','asdfasdfasdfasdfasdf','123qweasdasdzxcawdasdasd'],
   newsletter: 'Weekly',
-  description: '535251.xyz',
+  description: 'mynotion.life',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],
