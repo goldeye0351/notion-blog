@@ -42,6 +42,7 @@ const my3d = ({ postsToShow }) => {
 <Container title={BLOG.title} description={BLOG.description}></Container>
 {/*  这里是swiper插件 很多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block '>
+    <div className=' h-[70VH] flex justify-center items-center content-center'>
       <swiper-container slides-per-view="3"
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
@@ -65,6 +66,7 @@ const my3d = ({ postsToShow }) => {
         </>
         ))}
       </swiper-container>
+      </div>
   </div>
 
    {/*  单图 模式 中屏开始隐藏  */}
