@@ -5,7 +5,7 @@ import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { register } from 'swiper/element/bundle'
 register()
-
+import Container from '@/components/Container'
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyHot: true })
@@ -39,7 +39,7 @@ export async function getStaticProps() {
 const my3d = ({ postsToShow }) => {
   
   return <>
-
+<Container title={BLOG.title} description={BLOG.description}></Container>
 {/*  这里是swiper插件 很多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block '>
       <swiper-container slides-per-view="3"
