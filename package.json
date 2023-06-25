@@ -43,7 +43,6 @@
     "react-parallax-tilt": "^1.7.145",
     "sharp": "^0.30.5",
     "swiper": "^9.3.2",
-    "typed.js": "^2.0.16",
     "use-ackee": "^3.0.0"
   },
   "devDependencies": {
