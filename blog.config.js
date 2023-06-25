@@ -3,9 +3,6 @@ const BLOG = {
   author: 'CCC',
   email: 'admin@mynotion.life',
   link: 'https://mynotion.life',
-  hot:'广告',
-  daziji:['2123','22222222222', 'qqqqqqqqqqqqqqqqqqqq','asdfasdfasdfasdfasdf','123qweasdasdzxcawdasdasd'],
-  newsletter: 'Weekly',
   description: 'mynotion.life',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
@@ -24,7 +21,7 @@ const BLOG = {
   showWeChatPay: true,
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
-  ogImageGenerateHost: 'og-zl.vercel.app', // The link to generate OG image, don't end with a slash
+  ogImageGenerateHost: 'notionog.vercel.app', // The link to generate OG image, don't end with a slash
   defaultCover: '/mycover.jpg',
   socialLink: {
     twitter: 'https://twitter.com/',
