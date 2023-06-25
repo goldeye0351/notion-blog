@@ -10,9 +10,9 @@ const Hero = ({ blockMap,tags, currentTag,heropost }) => {
 
   return (
     <>
-      <div className='container mx-auto flex px-5 py-2 mb-10 md:flex-row flex-col items-center justify-center md:space-x-16 '>
+      <div className='container mx-auto flex px-5 py-2 mb-10 flex-row flex-wrap  witems-center justify-center md:space-x-16 '>
         {/* TITL 3D 动图 */}
-        <div className=" -rotate-90 duration-1000 sm:rotate-0 
+        {/* <div className=" -rotate-90 duration-1000 sm:rotate-0 
         flex items-center justify-center p-0 gap-4 flex-wrap rounded-xl ">
             <Tilt
               className="my3d shadow-lg  flex justify-center w-[210px] h-[330px] rounded-xl 
@@ -26,13 +26,13 @@ const Hero = ({ blockMap,tags, currentTag,heropost }) => {
               glareBorderRadius="12px"
               scale={1.02}
             >
-              {/* <Image src={HomewatchIMG}  alt="" fill  /> */}
+            
               <div className="my3din flex flex-col justify-center items-center  ">
                 <CardTags tags={tags} currentTag={currentTag}  className=" duration-1000 rotate-90 sm:rotate-0 p-3" />  
 
               </div>
             </Tilt>
-        </div>
+        </div> */}
         {/* NOTION 3D文件内容*/}
         <div className='flex flex-col justify-center'>
           <Tilt 
