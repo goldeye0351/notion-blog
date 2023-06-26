@@ -12,6 +12,7 @@ const SEO = ({ meta }) => {
       {/* <meta content={BLOG.darkBackground} name='theme-color' /> */}
       <meta name='robots' content='follow, index' />
       <meta name="baidu-site-verification" content="codeva-NbJTIfMImr" />
+      <meta name="baidu-site-verification" content="codeva-rIJI3e52aI" />
       <meta charSet='UTF-8' />
       {BLOG.seo.googleSiteVerification && (
         <meta
