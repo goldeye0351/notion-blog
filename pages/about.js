@@ -1,11 +1,9 @@
 import Image from "next/image"
-import LOGOIMG from "../public/images/mac.jpg"
 import { getAllPosts, getAllTagsFromPosts,getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
 import SupaComments from "@/components/Post/SupaComments"
-import FluidAnimation  from "react-fluid-animation"
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyNewsletter: false })
   const tags = getAllTagsFromPosts(posts)
