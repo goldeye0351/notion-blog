@@ -38,7 +38,8 @@ export async function getStaticProps() {
 }
 const my3d = ({ postsToShow }) => {
   
-  return <>
+  return <div className=' block flex-col justify-center items-center content-center max-w-[100VW]'>
+
 <Container title={BLOG.title} description={BLOG.description}></Container>
 {/*  这里是swiper插件 很多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block '>
@@ -94,5 +95,5 @@ const my3d = ({ postsToShow }) => {
     </div>
   </div>
 
-</>}
+</div>}
 export default my3d
