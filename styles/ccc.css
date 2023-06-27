@@ -47,6 +47,43 @@
     .dropdown.show {
       display: block;
     }
+
     
+.myshape {
+  position: relative;
+  margin-top: 0;
+  /*make sure to use same height/width as in the html*/
+  width: 100%;
+  height: 40px;
+  display: inline-block;
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
+  stroke-width: 6px;
+  fill: transparent;
+  stroke: #938e97;
+  stroke-dasharray: 20 385;
+  stroke-dashoffset: 35;
+  transition: 1s all ease;
+}
+
+
+.mysvgtext {
+  position: absolute;
+  top:182px;
+  margin-top: -150px;
+  margin-left: 35px;
+  text-align: center;
+}
+
+
+
+.myshape:hover {
+  stroke-dasharray: 50 0;
+  stroke-width: 8px;
+  stroke-dashoffset: 0;
+  stroke: #06D6A0;
+}
+
 
     
