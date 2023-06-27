@@ -17,7 +17,7 @@ export async function getStaticProps() {
 }
 
 const Friend = ({  posts }) => {
-  return (<>
+  return (<div>
     <div title={BLOG.title} description={BLOG.description} id="friend" className=' relative flex flex-wrap gap-16 mx-auto justify-center items-center cursor-pointer mb-16 '>
       {posts.map((post) => (
   <article
@@ -49,8 +49,10 @@ const Friend = ({  posts }) => {
       ))}
 
     </div>
-    <SupaComments />
-    </>
+    <div className='flex flex-col justify-center content-center items-center '>
+    <SupaComments className=" flex flex-col justify-center content-center items-center " />
+    </div>
+    </div>
   )
 }
 export default Friend
