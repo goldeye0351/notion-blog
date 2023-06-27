@@ -27,11 +27,7 @@ const BlogPost = ({ index , post,className }) => {
             <header className='flex flex-col justify-between md:flex-row md:items-baseline'>
               <h2 className='text-lg md:text-xl font-medium mb-2 text-black dark:text-gray-100'>
                  <span className="  ">{post.title}</span>
-                 
-                 <svg  className=" w-40 h-10 "  >
-                      <rect className="myshape "    />
-                 </svg>
-                 <span className=" mysvgtext hover:scale-110 duration-500    ">{post.tags}</span>
+                 <span className=" hover:scale-110 duration-500    ">{post.tags}</span>
         
 
                </h2>
