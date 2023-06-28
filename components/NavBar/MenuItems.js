@@ -58,21 +58,21 @@ const MenuItems = ({ items, depthLevel }) => {
             aria-expanded={dropdown ? 'true' : 'false'}
             onClick={() => setDropdown((prev) => !prev)}
           >
-                {items.icon}
-                <span className='inline-block m-1'>{items.name}</span>
-                {' '} <span className="arrow" />
+                <svg height="40" width="112" xmlns="http://www.w3.org/2000/svg" className="myshape" > <rect  className=' w-28 h-10 ' /> </svg>
+                <span className='inline-block m-1 mymenutext'>{items.icon}{items.name}{' '} <span className="arrow" /></span>
+                
           </div>
-          <Dropdown
+          <Dropdown className=""
             depthLevel={depthLevel}
             submenus={items.submenu}
             dropdown={dropdown}
           />
         </>
-      ) : (
-        <Link passHref href={items.to} key={items.id} scroll={false}>
-                {items.icon}
-                <span className='inline-block m-1'>{items.name}</span>
-        </Link>
+      ) : (<>
+        <Link passHref href={items.to} key={items.id} scroll={false} >
+          <svg height="40" width="112" xmlns="http://www.w3.org/2000/svg" className="myshape" > <rect  className=' w-28 h-10 ' /> </svg>
+          <span className='inline-block m-1 mymenutext '>{items.icon}{items.name}</span>
+        </Link></>
       )}
 
 
