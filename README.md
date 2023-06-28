@@ -1,2 +1,2 @@
-# 535251.xyz
-www.535251.xyz
+https://mynotion.life
+
