@@ -3,7 +3,7 @@ const BLOG = {
   author: 'CCC',
   email: 'admin@mynotion.life',
   link: 'https://mynotion.life',
-  description: '最漂亮的Notion博客网站',
+  description: 'Notion博客网站',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],
