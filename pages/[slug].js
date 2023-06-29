@@ -4,9 +4,22 @@ import BLOG from '@/blog.config'
 import { useRouter } from 'next/router'
 import Loading from '@/components/Loading'
 import NotFound from '@/components/NotFound'
+import { ArticleLock } from '@/components/Post/ArticleLock'
+import React from 'react'
 
-const Post = ({ post, blockMap }) => {
+const Post = props => {
+  const { post, blockMap  }=props 
   const router = useRouter()
+  const [lock, setLock] = React.useState(post?.password && post?.password !== '')
+    const validPassword = passInput => {
+    if (passInput  === post.password) {
+      setLock(false)
+     return true
+    }
+    return false
+  }
+  console.log( lock )
+
   if (router.isFallback) {
     return (
       <Loading />
@@ -15,9 +28,13 @@ const Post = ({ post, blockMap }) => {
   if (!post) {
     return <NotFound statusCode={404} />
   }
-  return (
-    <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} />
-  )
+  
+  if (lock) 
+  {  return (<ArticleLock validPassword={validPassword} />)} 
+
+  if (!lock)
+  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} /> }
+
 }
 
 export async function getStaticPaths() {
