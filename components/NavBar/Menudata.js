@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import BLOG from '@/blog.config'
-import {  HomeIcon,  SearchIcon,  MenuIcon,  UserIcon,  UsersIcon,  MailIcon,  ClipboardListIcon} from '@heroicons/react/outline'
+import {  HomeIcon,  SearchIcon, CloudIcon,CloudDownloadIcon ,CloudUploadIcon,FingerPrintIcon,EyeOffIcon,EyeIcon, MenuIcon,  UserIcon,  UsersIcon,  MailIcon,  ClipboardListIcon} from '@heroicons/react/outline'
 
 export const links = [
     {
@@ -19,20 +19,20 @@ export const links = [
       id: 2,
       name: '建站指引',
       to: '',
-      icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
+      icon: <CloudIcon className='inline-block mb-1 h-5 w-5' />,
       submenu:
       [
         {
           id: 3,
           name:'建站指引',
           to: '/jz01',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
+          icon: <CloudDownloadIcon className='inline-block mb-1 h-5 w-5' />,
         },
         {
           id: 4,
           name: '进阶说明',
           to: '/jz02',
-          icon: <MailIcon className='inline-block mb-1 h-5 w-5' />,
+          icon: <CloudUploadIcon className='inline-block mb-1 h-5 w-5' />,
         }
       ]
     },
@@ -71,7 +71,7 @@ export const links = [
           id: 10,
           name: '隐私',
           to: '/privacy',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
+          icon: <EyeOffIcon className='inline-block mb-1 h-5 w-5' />,
         }
       ]
     }
