@@ -20,7 +20,7 @@ const BLOG = {
   },
   showWeChatPay: true,
   previewImagesEnabled: true,
-  autoCollapsedNavBar: true, // The automatically collapsed navigation bar
+  autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   defaultCover: '/mycover.jpg',
   socialLink: {
     twitter: 'https://twitter.com/',
