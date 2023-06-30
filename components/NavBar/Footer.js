@@ -1,8 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image.js'
-import Githubimg from '@/public/svg/github.svg'
-import Nextimg from '@/public/svg/nextjs.svg'
-import Tailwindimg from '@/public/svg/tailwind.svg'
 import BLOG from '@/blog.config'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
