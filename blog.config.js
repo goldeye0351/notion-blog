@@ -20,8 +20,7 @@ const BLOG = {
   },
   showWeChatPay: true,
   previewImagesEnabled: true,
-  autoCollapsedNavBar: false, // The automatically collapsed navigation bar
-  ogImageGenerateHost: 'notionog.vercel.app', // The link to generate OG image, don't end with a slash
+  autoCollapsedNavBar: true, // The automatically collapsed navigation bar
   defaultCover: '/mycover.jpg',
   socialLink: {
     twitter: 'https://twitter.com/',
@@ -29,7 +28,7 @@ const BLOG = {
     telegram: 'https://t.me/'
   },
   seo: {
-    keywords: ['notion', 'next', 'Blog'],
+    keywords: ['notion', 'Blog','mynotion.life'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID || '3d9ebf755c044125b8237c2398021b83', // DO NOT CHANGE THIS! Edit .env file!
