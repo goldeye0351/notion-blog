@@ -1,5 +1,6 @@
 import BLOG from '@/blog.config'
 import Head from 'next/head'
+import Script from 'next/script'
 import { useRouter } from 'next/router'
 
 const SEO = ({ meta }) => {
