@@ -45,6 +45,7 @@ class MyDocument extends Document {
                   ? BLOG.darkBackground
                   : BLOG.lightBackground
               }
+              media='(prefers-color-scheme: dark)'
             />
           )}
         </Head>
