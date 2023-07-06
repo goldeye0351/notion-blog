@@ -12,6 +12,7 @@ const BLOG = {
   darkBackground: '#212936', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Notionic in a folder
   since: 2021, // If leave this empty, current year will be used.
+  googleadid:'ca-pub-2287965691379058',
   postsPerPage: 10,
   sortByDate: true,
   pagesShow: {
