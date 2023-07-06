@@ -48,8 +48,6 @@ const SEO = ({ meta }) => {
           <meta property='article:author' content={BLOG.author} />
         </>
       )}
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2287965691379058"
-     crossorigin="anonymous"></script>
     </Head>
   )
 }
