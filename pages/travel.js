@@ -1,9 +1,32 @@
+import BLOG from "@/blog.config"
+import Link from 'next/link'
 import Image from "next/image"
+import MYIMG from "@/public/1.png"
 import LOGOIMG from "@/public/mycover.jpg"
+import { pngdata } from "@/components/Data"
+import { register } from 'swiper/element/bundle'
+register()
 
-const travel = ( ) => {
+const travel = ( {png} ) => {
   
     return <>
+
+<div className='max-w-[50VW] justify-center content-center items-center mx-auto  duration-500  -rotate-12 border-2 overflow-visible' >
+      <swiper-container loop="true" autoplay="true" slides-per-view="3" autoplay-delay="500"  
+         parallax="true" className="overflow-visible"
+      > 
+       {pngdata.map((png) => (<>
+        <swiper-slide key={png.id}  >
+            <div className=" hover:scale-150 duration-300 overflow-visible ">{png.image}</div>
+            <div class="mymenutext"   data-swiper-parallax="-300" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600">{png.text}     </div>
+
+        </swiper-slide>
+        </>
+        ))}
+      </swiper-container>
+
+</div>
+
 <div className=" flex justify-center items-center  content-center">
     <div className="p-10 rounded-3xl [&_*]:transition-all [&_*]:ease-linear [&_*]:duration-200">
         <div className="text-4xl font-bold flex justify-center ">Popular Collections</div>
@@ -106,7 +129,8 @@ const travel = ( ) => {
 
         </div>
     </div>
-</div>    
+</div>
+
   </>
   }
   export default travel
