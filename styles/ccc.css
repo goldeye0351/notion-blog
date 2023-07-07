@@ -112,10 +112,10 @@
     , #a09fa5, #a67a7afa 43%, #5dac6d);
     opacity: 1;
   transition: opacity .5s;
-  animation: spin 5s linear infinite;
+  animation: myspin 5s linear infinite;
 }
 
-@keyframes spin {
+@keyframes myspin {
   0% {
     --myrotate: 0deg;
   }
