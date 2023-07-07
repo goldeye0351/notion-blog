@@ -8,10 +8,28 @@ import { register } from 'swiper/element/bundle'
 register()
 
 const travel = ( {png} ) => {
-  
+    
     return <>
+<div className='hidden w-96 justify-center  content-center items-center mx-auto   -rotate-12  hover:scale-125 hover:rotate-0 duration-300 ' >
+    <marquee height="100" width="384" behavior="alternate" className=" ">
+        <div className=" flex flex-row  w-24 ">
+        {pngdata.map((png) => (<>
+        {png.image}
+        </>
+        ))}
+        </div>    
+    </marquee>
+    <marquee height="100" width="384" direction="right" behavior="alternate" className=" ">
+        <div className=" flex flex-row  w-24 ">
+        {pngdata.map((png) => (<>
+        {png.image}
+        </>
+        ))}
+        </div>    
+    </marquee>
+</div>
 
-<div className='max-w-[50VW] justify-center content-center items-center mx-auto  duration-500  -rotate-12 border-2 overflow-visible' >
+<div className='hidden max-w-[50VW] justify-center content-center items-center mx-auto  duration-500  -rotate-12 border-2 overflow-visible' >
       <swiper-container loop="true" autoplay="true" slides-per-view="3" autoplay-delay="500"  
          parallax="true" className="overflow-visible"
       > 
@@ -24,7 +42,6 @@ const travel = ( {png} ) => {
         </>
         ))}
       </swiper-container>
-
 </div>
 
 <div className=" flex justify-center items-center  content-center">
@@ -41,9 +58,9 @@ const travel = ( {png} ) => {
         </div>
 
 
-        <div className="flex items-center gap-4 flex-wrap flex justify-center ">  
+        <div className="flex items-center gap-4 flex-wrap justify-center ">  
 
-            <div className="w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
+            <div className="hidden w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
                 <Image  src={LOGOIMG}  alt="" className="h-56 w-full rounded-3xl object-cover object-center cursor-pointer hover:scale-105 hover:-rotate-3" />
                 <div className="flex items-center py-4 justify-between [&>*]:mx-2 [&>*>img]:h-28 [&>*>img]:aspect-square [&>*>img]:object-cover [&>*>img]:object-center [&>*>img]:rounded-xl [&>*>img:hover]:scale-110 [&>*>img:hover]:-rotate-12 [&>*>img]:cursor-pointer">
                     <div>
@@ -70,7 +87,7 @@ const travel = ( {png} ) => {
 
             </div>
 
-            <div className="w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
+            <div className=" hidden w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
                 <Image  src={LOGOIMG}  alt="" className="h-56 w-full rounded-3xl object-cover object-center cursor-pointer hover:scale-105 hover:-rotate-3" />
                 <div className="flex items-center py-4 justify-between [&>*]:mx-2 [&>*>img]:h-28 [&>*>img]:aspect-square [&>*>img]:object-cover [&>*>img]:object-center [&>*>img]:rounded-xl [&>*>img:hover]:scale-110 [&>*>img:hover]:-rotate-12 [&>*>img]:cursor-pointer">
                     <div>
@@ -97,17 +114,45 @@ const travel = ( {png} ) => {
 
             </div>
 
-            <div className="w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
-                <Image  src={LOGOIMG}  alt="" className=" h-56 w-full rounded-3xl object-cover object-center cursor-pointer hover:scale-105 hover:-rotate-3" />
-                <div className="flex items-center py-4 justify-between [&>*]:mx-2 [&>*>img]:h-28 [&>*>img]:aspect-square [&>*>img]:object-cover [&>*>img]:object-center [&>*>img]:rounded-xl [&>*>img:hover]:scale-110 [&>*>img:hover]:-rotate-12 [&>*>img]:cursor-pointer">
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
+            <div className="w-full max-w-[50rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600 relative overflow-hidden">
+                <div  className=" h-56 w-full rounded-3xl  overflow-hidden  object-fill">
+                    <div className=" absolute   flex flex-col overflow-hidden ">
+                        <marquee height="100" width="500" behavior="alternate" className=" ">
+                            <div className=" flex flex-row  w-24 hover:opacity-0">
+                            {pngdata.map((png) => (<>
+                            {png.image}
+                            </>
+                            ))}
+                            </div>    
+                        </marquee>
+                        <marquee height="100" width="500" direction="right" behavior="alternate" className=" ">
+                            <div className=" flex flex-row  w-24 hover:opacity-0">
+                            {pngdata.map((png) => (<>
+                            {png.image}
+                            </>
+                            ))}
+                            </div>    
+                        </marquee>
                     </div>
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
+                    <div className=" absolute text-9xl  flex right-8 left-8 h-56  bg-black  rounded-3xl  cursor-pointer opacity-0 hover:opacity-100 duration-300" >
+                    Read  &rarr; &larr;
+                    </div>    
+
+                </div>
+               
+
+                <div className="flex items-center py-4 justify-between space-x-2  [&>*>img]:rounded-xl [&>*>img]:cursor-pointer">
+                    <div className="  w-4/5  hover:w-full   h-28 flex flex-row justify-center content-center items-center rounded-xl overflow-hidden">
+                        <div >123</div>
+                        <Image  src={LOGOIMG}  alt="" className="h-28 -rotate-45 hover:rotate-0 opacity-50 hover:opacity-100" />
                     </div>
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
+                    <div className="  w-4/5  hover:w-full   h-28 flex flex-row justify-center content-center items-center rounded-xl overflow-hidden">
+                        <div >123</div>
+                        <Image  src={LOGOIMG}  alt="" className="h-28 -rotate-45 hover:rotate-0 opacity-50 hover:opacity-100" />
+                    </div>
+                    <div className="  w-4/5  hover:w-full   h-28 flex flex-row justify-center content-center items-center rounded-xl overflow-hidden">
+                        <div >123</div>
+                        <Image  src={LOGOIMG}  alt="" className="h-28 -rotate-45 hover:rotate-0 opacity-50 hover:opacity-100" />
                     </div>
                 </div>
 
