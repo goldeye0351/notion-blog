@@ -80,4 +80,46 @@
   left:5px;
   text-align: center;
 }
-    
+
+@property --myrotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: true;
+}
+.card {
+
+  width: 210px;
+  height: 380px;
+  border: 12PX;    
+  content: "";
+  border-radius: 12px;
+
+  
+}
+
+.card::after {
+  position: absolute;
+  border-radius: 12px;
+  content: "";  
+  z-index: -1;
+  width: 210px;
+  height: 380px;
+  margin: 0 auto;
+  transform: scale(1);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--myrotate)
+    , #a09fa5, #a67a7afa 43%, #5dac6d);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --myrotate: 0deg;
+  }
+  100% {
+    --myrotate: 360deg;
+  }
+} 
