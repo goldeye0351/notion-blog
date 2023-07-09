@@ -73,20 +73,28 @@ const my3d = ({ postsToShow }) => {
    {/*  单图 模式 中屏开始隐藏  */}
   <div className='visible md:hidden '>
     <div className='max-w-[95VW] justify-center content-center items-center mx-auto' >
-      <swiper-container navigation="true" pagination="true" scrollbar="true" loop="true" grab-cursor="true" > 
+      <swiper-container loop="true" autoplay="true" slides-per-view="1" autoplay-delay="1500"  navigation="true" pagination="true" scrollbar="true" grab-cursor="true" 
+            parallax="true" className="overflow-visible flex  justify-center content-center items-center "
+          > 
         {postsToShow.map((post) => (
         <>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
           <Link key={post.id} href={post.Link} scroll={false}>
       
-          <div key={post.id} className=' max-w-[calc(100vw-10rem)] min-h-[calc(100vh-14rem)]  flex flex-col justify-between'>  
-              <Image key={post.id} src={post?.page_cover} alt={post.title} fill 
-              className='rounded-3xl  static
-              '/>
-              <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
-              <div key={post.id} className=' text-sm '>{post.summary}</div>
-              </div>
+          
+
+          <div className=" duration-300 overflow-visible max-w-[calc(100vw-10rem)] min-h-[calc(100vh-19rem)]  flex flex-col justify-between">
+            <Image src={post?.page_cover}  alt={post.title} fill className=' rounded-3xl'/>
           </div>
+          <div data-swiper-parallax="-300" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
+                className=" absolute top-3 mx-auto p-3 text-lg bg-white/50 dark:bg-black/50"   >
+            {post.title}     
+          </div>
+          <div data-swiper-parallax="-600" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
+                className=" absolute top-16 mx-auto p-3 bg-white/50 dark:bg-black/50"   >
+            {post.summary}     
+          </div>
+
           </Link>
         </swiper-slide>
         </>
