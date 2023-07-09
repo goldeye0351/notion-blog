@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }) {
         />
         <TransitionEffect>
             <div
-              className={`min-h-[calc(100vh-13rem)] md:min-h-[calc(100vh-17rem)] ${
+              className={`min-h-[calc(100vh-19rem)] md:min-h-[calc(100vh-17rem)] ${
                 BLOG.font === 'serif' ? 'font-serif' : 'font-sans'
               }`}
             >
