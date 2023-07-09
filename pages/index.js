@@ -83,7 +83,7 @@ const my3d = ({ postsToShow }) => {
       
           
 
-          <div className=" duration-300 overflow-visible max-w-[calc(100vw-10rem)] min-h-[calc(100vh-19rem)]  flex flex-col justify-between">
+          <div className=" duration-300 overflow-visible max-w-[calc(100vw-10rem)] min-h-[80VH]  flex flex-col justify-between">
             <Image src={post?.page_cover}  alt={post.title} fill className=' rounded-3xl'/>
           </div>
           <div data-swiper-parallax="-300" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
