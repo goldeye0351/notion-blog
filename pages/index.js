@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
+import Hero from '@/components/Hero/Home'
+import Avatar from '@/components/Hero/Avatar'
+import NotionAvatar from '@/components/Hero/NotionAvatar'
 import { register } from 'swiper/element/bundle'
 register()
 import Container from '@/components/Container'
@@ -31,12 +34,13 @@ export async function getStaticProps() {
       showNext,
       posts,
       tags,
+      hero,
       blockMap
     },
     revalidate: 1
   }
 }
-const my3d = ({ postsToShow }) => {
+const my3d = ({ postsToShow,blockMap,hero }) => {
   
   return <div className=' block flex-col justify-center items-center content-center max-w-[100VW]'>
 
@@ -71,8 +75,11 @@ const my3d = ({ postsToShow }) => {
   </div>
 
    {/*  单图 模式 中屏开始隐藏  */}
-  <div className='visible md:hidden '>
-    <div className='max-w-[95VW] justify-center content-center items-center mx-auto' >
+<div className='visible md:hidden '>
+
+  <div className='max-w-[95VW] relative flex flex-col justify-center content-center items-center mx-auto min-h-[60VH]  ' >
+    <Hero blockMap={blockMap} heropost={hero}/>
+    <div className=' relative  justify-center self-center content-center items-center w-full h-full '>
       <swiper-container loop="true" autoplay="true" slides-per-view="1" autoplay-delay="1500"  navigation="true" pagination="true" scrollbar="true" grab-cursor="true" 
             parallax="true" className="overflow-visible flex  justify-center content-center items-center "
           > 
@@ -80,10 +87,7 @@ const my3d = ({ postsToShow }) => {
         <>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
           <Link key={post.id} href={post.Link} scroll={false}>
-      
-          
-
-          <div className=" duration-300 overflow-visible max-w-[calc(100vw-10rem)] min-h-[80VH]  flex flex-col justify-between">
+          <div className=" duration-300 overflow-visible max-w-[calc(100vw-10rem)] min-h-[38VH]  flex flex-col justify-between">
             <Image src={post?.page_cover}  alt={post.title} fill className=' rounded-3xl'/>
           </div>
           <div data-swiper-parallax="-300" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
@@ -94,14 +98,14 @@ const my3d = ({ postsToShow }) => {
                 className=" absolute top-16 mx-auto p-3 bg-white/50 dark:bg-black/50"   >
             {post.summary}     
           </div>
-
           </Link>
         </swiper-slide>
         </>
         ))}
-      </swiper-container>
+      </swiper-container>    
     </div>
   </div>
+</div>
 
 </div>}
 export default my3d
