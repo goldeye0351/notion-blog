@@ -122,4 +122,23 @@
   100% {
     --myrotate: 360deg;
   }
-} 
+}
+
+/* 新主页分类 */
+
+
+.cai1 {
+  background: linear-gradient(to right, #358bff, #15c6ff);
+}
+
+.cai2 {
+  background: linear-gradient(to right, #ff6655, #ffbf37);
+}
+
+.cai3 {
+  background: linear-gradient(to right, #18e7ae, #1eebeb);
+}
+
+
+
+
