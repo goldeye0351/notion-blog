@@ -1,11 +1,10 @@
 import BLOG from '@/blog.config'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
-
 import FormattedDate from '@/components/Common/FormattedDate'
 import TagItem from '@/components/Common/TagItem'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-
+import {EyeIcon} from '@heroicons/react/outline'
 import { ChevronLeftIcon } from '@heroicons/react/outline'
 
 export default function Content (props) {
@@ -39,6 +38,12 @@ export default function Content (props) {
               ))}
             </div>
           )}
+          <div>                
+              <EyeIcon className='inline-block  w-6 h-6 '/>
+              <span id="busuanzi_container_page_pv" className='  inline-block '><span id="busuanzi_value_page_pv"></span></span> 
+          </div>
+
+
         </nav>
       )}
       <div className="-mt-4 relative">
