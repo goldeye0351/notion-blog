@@ -3,7 +3,7 @@ import Image from 'next/image.js'
 import BLOG from '@/blog.config'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
-import {  UserIcon,  UsersIcon,  MailIcon, StarIcon, CursorClickIcon, HeartIcon } from '@heroicons/react/outline'
+import {  UserIcon,  UsersIcon,  MailIcon,EyeIcon, StarIcon, CursorClickIcon, HeartIcon } from '@heroicons/react/outline'
 import { motion } from 'framer-motion'
 import ThemeSwitcher from './ThemeSwitcher.js'
 
@@ -69,14 +69,16 @@ const Footer = ({ fullWidth }) => {
                 </Link>     
 
               </div>
-
             </div>
-
-          <div className='float-right my-2 flex space-x-2 text-sm '>
-              <div>{`Copyright © ${new Date().getFullYear()}`}</div>  
-              <HeartIcon className=' h-5 inline-block hover:animate-ping ' />
-              <span> {BLOG.author} </span> 
-          </div>
+            <div>                
+              <EyeIcon className='inline-block my-2 w-5 h-5 '/>
+              <span id="busuanzi_container_site_pv" className=' my-2 inline-block '><span id="busuanzi_value_site_pv"></span></span> 
+            </div>
+            <div className='float-right my-2 flex space-x-2 text-sm '>
+                <div>{`Copyright © ${new Date().getFullYear()}`}</div>  
+                <HeartIcon className=' h-5 inline-block hover:animate-ping ' />
+                <span> {BLOG.author} </span> 
+            </div>
         </div>
       </footer>
     </motion.div>
