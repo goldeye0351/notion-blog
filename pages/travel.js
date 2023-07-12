@@ -6,7 +6,7 @@ import { UserIcon,PlayIcon,ShareIcon } from "@heroicons/react/outline"
 import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import LOGOIMG from "@/public/mycover.jpg"
 import { pngdata } from "@/components/Data"
-import Mypic from "@/components/Mypic"
+
 import { register } from 'swiper/element/bundle'
 register()
 
