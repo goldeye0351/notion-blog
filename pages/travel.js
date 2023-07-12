@@ -2,180 +2,81 @@ import BLOG from "@/blog.config"
 import Link from 'next/link'
 import Image from "next/image"
 import MYIMG from "@/public/1.png"
+import { UserIcon,PlayIcon,ShareIcon } from "@heroicons/react/outline"
+import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import LOGOIMG from "@/public/mycover.jpg"
 import { pngdata } from "@/components/Data"
+import Mypic from "@/components/Mypic"
 import { register } from 'swiper/element/bundle'
 register()
 
-const travel = ( {png} ) => {
+export async function getStaticProps() {
+    const posts = await getAllPosts({ onlyTravel: true })
+    const tags = getAllTagsFromPosts(posts)
+
+    return {
+      props: {
+        posts,
+        tags
+      },
+      revalidate: 1
+    }
+  }
+
+const travel = ( {png,posts,index} ) => {
     
     return <>
-<div className='hidden w-96 justify-center  content-center items-center mx-auto   -rotate-12  hover:scale-125 hover:rotate-0 duration-300 ' >
-    <marquee height="100" width="384" behavior="alternate" className=" ">
-        <div className=" flex flex-row  w-24 ">
-        {pngdata.map((png) => (<>
-        {png.image}
-        </>
-        ))}
-        </div>    
-    </marquee>
-    <marquee height="100" width="384" direction="right" behavior="alternate" className=" ">
-        <div className=" flex flex-row  w-24 ">
-        {pngdata.map((png) => (<>
-        {png.image}
-        </>
-        ))}
-        </div>    
-    </marquee>
-</div>
+<div id="travel" className="  ">
+    <div id="maintravel" className=" flex flex-col justify-center items-center  content-center">
+        <div id="threetags" className="flex flex-row flex-grow  w-full max-w-[80VW] items-center justify-between space-x-2">
+            
+        {posts.map((png) => (<>
 
-<div className='hidden max-w-[50VW] justify-center content-center items-center mx-auto  duration-500  -rotate-12 border-2 overflow-visible' >
-      <swiper-container loop="true" autoplay="true" slides-per-view="3" autoplay-delay="500"  
-         parallax="true" className="overflow-visible"
-      > 
-       {pngdata.map((png) => (<>
-        <swiper-slide key={png.id}  >
-            <div className=" hover:scale-150 duration-300 overflow-visible ">{png.image}</div>
-            <div class="mymenutext"   data-swiper-parallax="-300" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600">{png.text}     </div>
+            <Link passHref href={`${BLOG.path}/${png.slug}`} scroll={false} 
+            key={png.id} 
+            className={`px-3 w-1/4 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center rounded-xl   ${ posts.indexOf(png)% 2 === 1 ? 'cai1 ' : 'cai2'}
+            overflow-hidden rounded-xl duration-500 `}>
 
-        </swiper-slide>
-        </>
-        ))}
-      </swiper-container>
-</div>
+                <div >{png.title}
+                <svg className=" inline-block" xmlns="http://www.w3.org/2000/svg" height={28} viewBox="0 0 24 24">
 
-<div className=" flex justify-center items-center  content-center">
-    <div className="p-10 rounded-3xl [&_*]:transition-all [&_*]:ease-linear [&_*]:duration-200">
-        <div className="text-4xl font-bold flex justify-center ">Popular Collections</div>
-        <div className="hidden md:flex justify-center items-center gap-4 mt-4 mb-8 [&>*]:px-4 [&>*]:py-2 [&>*]:rounded-lg [&>*]:cursor-pointer
-         [&>*]:bg-gray-300 dark:[&>*]:bg-gray-600  
-          ">
-                    <div className=" hover:bg-slate-500 dark:hover:bg-slate-500" >1</div>
-                    <div className=" hover:bg-slate-500 dark:hover:bg-slate-500" >New York</div>
-                    <div className=" hover:bg-slate-500 dark:hover:bg-slate-500" >Relaxing</div>
-                    <div className=" hover:bg-slate-500 dark:hover:bg-slate-500" >Person</div>
-                    <div className=" hover:bg-slate-500 dark:hover:bg-slate-500" >Fashion</div>
+                    <path fill="currentColor"
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14L6 17h12l-3.86-5.14z" />
+                </svg>
+                
+                </div>
+
+                <ShareIcon 
+                className={`inline-block h-16 w-16 -rotate-45 opacity-50 hover:rotate-0 hover:opacity-100 hover:scale-110     ${ posts.indexOf(png)% 2 === 1 ? 'hidden ' : ''}
+                duration-500 `}/>
+                <PlayIcon 
+                className={`inline-block h-16 w-16 -rotate-45 opacity-50 hover:rotate-0 hover:opacity-100 hover:scale-110     ${ posts.indexOf(png)% 2 === 1 ? ' ' : 'hidden'}
+                duration-500 `}/>
+            </Link>
+
+
+        </>))}
+
         </div>
-
-
-        <div className="flex items-center gap-4 flex-wrap justify-center ">  
-
-            <div className="hidden w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
-                <Image  src={LOGOIMG}  alt="" className="h-56 w-full rounded-3xl object-cover object-center cursor-pointer hover:scale-105 hover:-rotate-3" />
-                <div className="flex items-center py-4 justify-between [&>*]:mx-2 [&>*>img]:h-28 [&>*>img]:aspect-square [&>*>img]:object-cover [&>*>img]:object-center [&>*>img]:rounded-xl [&>*>img:hover]:scale-110 [&>*>img:hover]:-rotate-12 [&>*>img]:cursor-pointer">
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
-                    </div>
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                    <h2>Nature</h2>
-                    <div className="flex items-center justify-center gap-1 cursor-pointer">
-                        <div className="text-xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14L6 17h12l-3.86-5.14z" />
-                            </svg>
-                        </div>
-                        <p className="text-sm">7k</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div className=" hidden w-full max-w-[25rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600">
-                <Image  src={LOGOIMG}  alt="" className="h-56 w-full rounded-3xl object-cover object-center cursor-pointer hover:scale-105 hover:-rotate-3" />
-                <div className="flex items-center py-4 justify-between [&>*]:mx-2 [&>*>img]:h-28 [&>*>img]:aspect-square [&>*>img]:object-cover [&>*>img]:object-center [&>*>img]:rounded-xl [&>*>img:hover]:scale-110 [&>*>img:hover]:-rotate-12 [&>*>img]:cursor-pointer">
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
-                    </div>
-                    <div>
-                        <Image  src={LOGOIMG}  alt="" />
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                    <h2>Nature</h2>
-                    <div className="flex items-center justify-center gap-1 cursor-pointer">
-                        <div className="text-xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14L6 17h12l-3.86-5.14z" />
-                            </svg>
-                        </div>
-                        <p className="text-sm">7k</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div className="w-full max-w-[50rem] p-6 rounded-2xl bg-gray-300 dark:bg-gray-600 relative overflow-hidden">
-                <div  className=" h-56 w-full rounded-3xl  overflow-hidden  object-fill">
-                    <div className=" absolute   flex flex-col overflow-hidden ">
-                        <marquee height="100" width="500" behavior="alternate" className=" ">
-                            <div className=" flex flex-row  w-24 hover:opacity-0">
-                            {pngdata.map((png) => (<>
-                            {png.image}
-                            </>
-                            ))}
-                            </div>    
-                        </marquee>
-                        <marquee height="100" width="500" direction="right" behavior="alternate" className=" ">
-                            <div className=" flex flex-row  w-24 hover:opacity-0">
-                            {pngdata.map((png) => (<>
-                            {png.image}
-                            </>
-                            ))}
-                            </div>    
-                        </marquee>
-                    </div>
-                    <div className=" absolute text-9xl  flex right-8 left-8 h-56  bg-black  rounded-3xl  cursor-pointer opacity-0 hover:opacity-100 duration-300" >
-                    Read  &rarr; &larr;
-                    </div>    
-
-                </div>
-               
-
-                <div className="flex items-center py-4 justify-between space-x-2  [&>*>img]:rounded-xl [&>*>img]:cursor-pointer">
-                    <div className="  w-4/5  hover:w-full   h-28 flex flex-row justify-center content-center items-center rounded-xl overflow-hidden">
-                        <div >123</div>
-                        <Image  src={LOGOIMG}  alt="" className="h-28 -rotate-45 hover:rotate-0 opacity-50 hover:opacity-100" />
-                    </div>
-                    <div className="  w-4/5  hover:w-full   h-28 flex flex-row justify-center content-center items-center rounded-xl overflow-hidden">
-                        <div >123</div>
-                        <Image  src={LOGOIMG}  alt="" className="h-28 -rotate-45 hover:rotate-0 opacity-50 hover:opacity-100" />
-                    </div>
-                    <div className="  w-4/5  hover:w-full   h-28 flex flex-row justify-center content-center items-center rounded-xl overflow-hidden">
-                        <div >123</div>
-                        <Image  src={LOGOIMG}  alt="" className="h-28 -rotate-45 hover:rotate-0 opacity-50 hover:opacity-100" />
-                    </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                    <h2>Nature</h2>
-                    <div className="flex items-center justify-center gap-1 cursor-pointer">
-                        <div className="text-xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                                <path fill="currentColor"
-                                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14L6 17h12l-3.86-5.14z" />
-                            </svg>
-                        </div>
-                        <p className="text-sm">7k</p>
-                    </div>
-                </div>
-
-            </div>
-
+        <div className=" mt-3 w-full max-w-[80VW] min-h-[60vh] max-h-[60vh]   rounded-2xl relative  overflow-clip  ">
+            <swiper-container loop="true" autoplay="true" slides-per-view="auto" autoplay-delay="3000" 
+            effect="panorama" panorama-effect-rotate="30" panorama-effect-depth="500" 
+            navigation="true"  
+            className="" 
+            > 
+            {posts.map((png) => (<>
+                <swiper-slide key={png.id}  >
+                    <Link passHref href={`${BLOG.path}/${png.slug}`} scroll={false}  
+                    className=" h-[60VH] min-h-[60vh] max-h-[60vh] flex flex-col justify-center ">
+                        {png?.page_cover}
+                        <Image key={png.id} src={png?.page_cover} alt={png.title} fill className='rounded-3xl  static '/>
+                    </Link>
+                </swiper-slide>
+            </>))}
+            </swiper-container>
         </div>
     </div>
 </div>
-
-  </>
+</>
   }
   export default travel
