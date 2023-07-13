@@ -22,9 +22,9 @@ const ThemeSwitcher = () => {
         className='p-2 ml-1 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg dark:text-gray-100'
       >
         {hasMounted && theme === 'dark' ? (
-          <SunIcon className='h-6 w-6' />
+          <SunIcon className='h-6 w-6  rotate-0  transition-transform duration-500 dark:-rotate-90 " ' />
         ) : (
-          <MoonIcon className='h-6 w-6' />
+          <MoonIcon className='h-6 w-6 rotate-90  transition-transform duration-500 dark:rotate-0 ' />
         )}
       </motion.button>
     </>
