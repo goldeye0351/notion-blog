@@ -1,29 +1,25 @@
 import BLOG from "@/blog.config"
 import Link from 'next/link'
 import Image from "next/image"
-import MYIMG from "@/public/1.png"
-import { UserIcon,PlayIcon,ShareIcon } from "@heroicons/react/outline"
-import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
-import LOGOIMG from "@/public/mycover.jpg"
-import { pngdata } from "@/components/Data"
+import { PlayIcon,ShareIcon } from "@heroicons/react/outline"
+import { getAllPosts } from '@/lib/notion'
+
 
 import { register } from 'swiper/element/bundle'
 register()
 
 export async function getStaticProps() {
     const posts = await getAllPosts({ onlyTravel: true })
-    const tags = getAllTagsFromPosts(posts)
 
     return {
       props: {
-        posts,
-        tags
+        posts
       },
       revalidate: 1
     }
   }
 
-const travel = ( {png,posts,index} ) => {
+const travel = ( {posts} ) => {
     
     return <>
 <div id="travel" className="  ">
