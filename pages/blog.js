@@ -59,11 +59,11 @@ const blog = ({ postsToShow, page, showNext, tags, posts, blockMap,hero }) => {
                     <Image src={png?.page_cover}  alt={png.title} fill className=' rounded-3xl'/>
                 </div>
                 <div data-swiper-parallax="-300" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
-                className=" absolute top-3 mx-auto p-3 text-lg bg-white/50 dark:bg-black/50"   >
+                className=" absolute top-3 mx-auto p-3 text-lg rounded-lg bg-white/80 dark:bg-black/10"   >
                 {png.title}     
                 </div>
                 <div data-swiper-parallax="-600" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
-                className=" absolute top-16 mx-auto p-3 bg-white/50 dark:bg-black/50"   >
+                className=" absolute top-16 mx-auto p-3 rounded-lg bg-white/50 dark:bg-black/10"   >
                 {png.summary}     
                 </div>
               </Link>
