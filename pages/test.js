@@ -1,6 +1,8 @@
 import { getAllPosts } from '@/lib/notion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import Mytesticon from "@/components/Testicon"
+import { StarIcon, LightningBoltIcon ,CodeIcon, CubeIcon, AnnotationIcon,  BadgeCheckIcon, BeakerIcon, BellIcon, CogIcon, CubeTransparentIcon } from "@heroicons/react/outline"
+
 export async function getStaticProps() {
     const posts = await getAllPosts({ onlyUpdate: true })
     return {
