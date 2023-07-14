@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import Hero from '@/components/Hero/Home'
-import Avatar from '@/components/Hero/Avatar'
-import NotionAvatar from '@/components/Hero/NotionAvatar'
 import { register } from 'swiper/element/bundle'
 register()
 import Container from '@/components/Container'
