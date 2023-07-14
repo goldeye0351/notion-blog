@@ -1,5 +1,4 @@
 /* 静态文件导入 自定义样式   swiper  + my3d */
-
 .mytext{
     position:absolute;
     Width:auto;
@@ -12,19 +11,14 @@
     font-weight:100;
     font-size:25px;
     color: rgb(255, 255, 255);
-  }
-  
+  }  
 .my3d {
-
       transform-style: preserve-3d;
     }
 .my3din {
-
       transform: translateZ(50px);
-    }
-    
-    
-    .arrow::after {
+    }    
+.arrow::after {
       content: "";
       display: inline-block;
       margin-left: 0.28em;
@@ -32,9 +26,8 @@
       border-top: 0.42em solid;
       border-right: 0.32em solid transparent;
       border-left: 0.32em solid transparent;
-    }
-    
-    .dropdown {
+    }    
+.dropdown {
       position: absolute;
       right: 3px;
       left: auto;
@@ -43,12 +36,9 @@
       border-radius: 0.5rem;
       display: none;
     }
-    
-    .dropdown.show {
+.dropdown.show {
       display: block;
     }
-
-    
 .myshape {
   position: relative;
   margin-top: 0;
@@ -80,23 +70,18 @@
   left:5px;
   text-align: center;
 }
-
 @property --myrotate {
   syntax: "<angle>";
   initial-value: 132deg;
   inherits: true;
 }
 .card {
-
   width: 210px;
   height: 380px;
   border: 12PX;    
   content: "";
-  border-radius: 12px;
-
-  
+  border-radius: 12px;  
 }
-
 .card::after {
   position: absolute;
   border-radius: 12px;
@@ -114,7 +99,6 @@
   transition: opacity .5s;
   animation: myspin 5s linear infinite;
 }
-
 @keyframes myspin {
   0% {
     --myrotate: 0deg;
@@ -123,22 +107,30 @@
     --myrotate: 360deg;
   }
 }
-
-/* 新主页分类 */
-
-
 .cai1 {
   background: linear-gradient(to right, #358bff, #15c6ff);
 }
-
 .cai2 {
   background: linear-gradient(to right, #ff6655, #ffbf37);
 }
-
 .cai3 {
   background: linear-gradient(to right, #18e7ae, #1eebeb);
 }
 
-
+.timeline{
+  position: relative;
+}
+.timeline-left{
+  position: relative;
+  flex-direction: row-reverse; 
+  left:-45vw;
+}
+.timeline-panel{
+  position: relative;
+}
+.timeline-panel-left{
+  position: relative;
+  text-align: right;
+}
 
 
