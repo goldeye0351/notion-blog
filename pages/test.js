@@ -4,7 +4,7 @@ import { getAllPosts } from '@/lib/notion'
 import FormattedDate from '@/components/Common/FormattedDate'
 
 export async function getStaticProps() {
-    const posts = await getAllPosts({ onlyHot: true })
+    const posts = await getAllPosts({ onlyUpdate: true })
     return {
       props: {
         posts
