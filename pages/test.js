@@ -1,8 +1,6 @@
-
-import { StarIcon } from "@heroicons/react/outline"
 import { getAllPosts } from '@/lib/notion'
 import FormattedDate from '@/components/Common/FormattedDate'
-
+import Mytesticon from "@/components/Testicon"
 export async function getStaticProps() {
     const posts = await getAllPosts({ onlyUpdate: true })
     return {
@@ -23,7 +21,7 @@ const test = ( {posts}) => {
              className={`min-w-[45vw] w-[45vw] flex flex-row justify-center items-center my-3
              ${ posts.indexOf(post)% 2 === 1 ? 'timeline ' : 'timeline-left'}
              `}>   
-                <StarIcon className=" -mx-6 min-w-[48px] h-min w-12 border-2 rounded-full bg-blue-500"/>
+                < Mytesticon index ={posts.indexOf(post)% 6} />
                 <div 
                 id="timeline-panel"
                 className={`mx-6 border-2 border-gray-500 dark:border-gray-300 rounded-xl flex flex-col w-full p-3 bg-gray-300 dark:bg-gray-600
@@ -33,7 +31,7 @@ const test = ( {posts}) => {
                     <div class="text-sm opacity-80 ">
                         <FormattedDate date={post.date} />
                     </div>
-                    <div class=" ">{post.summary}</div>
+                    <div class=" ">{post.summary} </div>
                 </div>        
         </div>
     </>))}
