@@ -30,7 +30,7 @@ const travel = ( {posts} ) => {
 
             <Link passHref href={`${BLOG.path}/${png.slug}`} scroll={false} 
             key={png.id} 
-            className={`px-3 w-1/4 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center rounded-xl   ${ posts.indexOf(png)% 2 === 1 ? 'cai1 ' : 'cai2'}
+            className={`px-3 w-1/4 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center rounded-xl   ${ posts.indexOf(png)% 3 === 0 ? 'cai1 ' :posts.indexOf(png)% 3 === 1 ? 'cai2 ' : 'cai3'}
             overflow-hidden rounded-xl duration-500 `}>
 
                 <div >{png.title}
