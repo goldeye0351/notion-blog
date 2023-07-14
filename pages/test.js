@@ -1,9 +1,10 @@
 
 import { StarIcon } from "@heroicons/react/outline"
 import { getAllPosts } from '@/lib/notion'
+import FormattedDate from '@/components/Common/FormattedDate'
 
 export async function getStaticProps() {
-    const posts = await getAllPosts({ onlyPost: true })
+    const posts = await getAllPosts({ onlyHot: true })
     return {
       props: {
         posts
@@ -29,7 +30,9 @@ const test = ( {posts}) => {
              ${ posts.indexOf(post)% 2 === 1 ? 'timeline-panel ' : 'timeline-panel-left'}
              `}>  
                     <div class="text-xl  "> {post.title}</div>
-                    <div class="text-sm opacity-80 "> 2023-07-07</div>
+                    <div class="text-sm opacity-80 ">
+                        <FormattedDate date={post.date} />
+                    </div>
                     <div class=" ">{post.summary}</div>
                 </div>        
         </div>
