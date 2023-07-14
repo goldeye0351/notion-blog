@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import BLOG from '@/blog.config'
-import {  HomeIcon,  SearchIcon, GlobeIcon,GlobeAltIconicon, CloudIcon,CloudDownloadIcon ,CloudUploadIcon,FingerPrintIcon,EyeOffIcon,EyeIcon, MenuIcon,  UserIcon,  UsersIcon,  MailIcon,  ClipboardListIcon} from '@heroicons/react/outline'
+import {  HomeIcon,  SearchIcon, GlobeIcon,  TerminalIcon, GlobeAltIconicon, CloudIcon,CloudDownloadIcon ,CloudUploadIcon,FingerPrintIcon,EyeOffIcon,EyeIcon, MenuIcon,  UserIcon,  UsersIcon,  MailIcon,  ClipboardListIcon} from '@heroicons/react/outline'
 
 export const links = [
     {
@@ -57,6 +57,12 @@ export const links = [
           name: 'Privacy',
           to: '/privacy',
           icon: <EyeOffIcon className='inline-block mb-1 h-5 w-5' />,
+        },
+        {
+          id: 9,
+          name: 'Timeline',
+          to: '/test',
+          icon: <TerminalIcon className='inline-block mb-1 h-5 w-5' />,
         }
       ]
     }
