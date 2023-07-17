@@ -17,7 +17,7 @@ const Twikoo = ({ isDarkMode }) => {
       console.log('twikoo 加载成功', url)
       const twikoo = window.twikoo
       twikoo.init({
-        envId: 'https://twikoopinglun.vercel.app', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+        envId: 'https://pinglun.535251.xyz', // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
         el: '#twikoo', // 容器元素
         lang: BLOG.lang // 用于手动设定评论区语言，支持的语言列表 https://github.com/imaegoo/twikoo/blob/main/src/client/utils/i18n/index.js
         // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
@@ -25,7 +25,7 @@ const Twikoo = ({ isDarkMode }) => {
       })
 
       twikoo.getCommentsCount({
-        envId: 'https://twikoopinglun.vercel.app', // 环境 ID
+        envId: 'https://pinglun.535251.xyz', // 环境 ID
         // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
         urls: [ // 不包含协议、域名、参数的文章路径列表，必传参数
           '/article/notion-next',
