@@ -5,6 +5,8 @@ import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
 import SupaComments from "@/components/Post/SupaComments"
+import Container from '@/components/Container'
+
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyNewsletter: false })
   const tags = getAllTagsFromPosts(posts)
@@ -29,9 +31,9 @@ export async function getStaticProps() {
     revalidate: 1
   }
 }
-const About = ({ blockMap,hero }) => {
+const About = ({ blockMap }) => {
     return (
-<div title={BLOG.about} description={BLOG.description} className='about' >
+<Container  title="About Me. Notion Blog" description={BLOG.description} className='about' >
   <div className="flex flex-col justify-center content-center items-center pb-12  space-y-16">
     
      <Tilt 
@@ -57,7 +59,8 @@ const About = ({ blockMap,hero }) => {
     </Tilt>
  </div>
    <SupaComments />
-</div>
+   
+</Container >
 
 )}
 export default About
