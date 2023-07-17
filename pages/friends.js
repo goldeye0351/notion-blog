@@ -4,6 +4,15 @@ import SupaComments from "@/components/Post/SupaComments"
 import Link from 'next/link'
 import Image from 'next/image'
 import Tilt from 'react-parallax-tilt'
+import Container from '@/components/Container'
+import dynamic from 'next/dynamic'
+
+const TwikooCompenent = dynamic(
+  () => {
+    return import('@/components/Post/Twikoo')
+  },
+  { ssr: false }
+)
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyFriend: true })
@@ -17,42 +26,43 @@ export async function getStaticProps() {
 }
 
 const Friend = ({  posts }) => {
-  return (<div>
-    <div title={BLOG.title} description={BLOG.description} id="friend" className=' relative flex flex-wrap gap-16 mx-auto justify-center items-center cursor-pointer mb-16 '>
+  return (<Container  title="Friend. Notion Blog" description={BLOG.description} className='friend' >
+    <div id="friend" className=' relative flex flex-wrap gap-16 mx-auto justify-center items-center cursor-pointer mb-16 '>
       {posts.map((post) => (
-  <article
-          key={post.id}
-          className='flex mx-5 my-5 max-w-min  items-center cursor-pointer  mb-10 ' 
-        >
-    <Link  href={post.title} target='new'>
-      <Tilt id='blog-ID' key={post.id}
-                  className="my3d   bg-slate-200 dark:bg-slate-600 
-                  rounded-lg 
-                  w-[420px] h-[210px] flex flex-row justify-center"
-                  perspective={800}
-                  glareEnable={false}
-                  glarePosition={'all'}
-                  glareMaxOpacity={1}              
-                  glareBorderRadius="9999px"
-                  scale={1}
-                >
-          <div className="my3din  flex flex-col justify-center items-center  self-center  ">
+        <article
+                key={post.id}
+                className='flex mx-5 my-5 max-w-min  items-center cursor-pointer  mb-10 ' 
+              >
+          <Link  href={post.title} target='new'>
+            <Tilt id='blog-ID' key={post.id}
+                        className="my3d   bg-slate-200 dark:bg-slate-600 
+                        rounded-lg 
+                        w-[420px] h-[210px] flex flex-row justify-center"
+                        perspective={800}
+                        glareEnable={false}
+                        glarePosition={'all'}
+                        glareMaxOpacity={1}              
+                        glareBorderRadius="9999px"
+                        scale={1}
+                      >
+                <div className="my3din  flex flex-col justify-center items-center  self-center  ">
 
-            <Image src={post?.page_cover}  alt={post.title} width={300} height={300}
-            className=' rounded-lg -z-10'          />
-            
-          </div>
-          <div  className='flex flex-col justify-center  text-xl'>    {post.summary}  </div>
-      </Tilt>
-    </Link>
-  </article>
+                  <Image src={post?.page_cover}  alt={post.title} width={300} height={300}
+                  className=' rounded-lg -z-10'          />
+                  
+                </div>
+                <div  className='flex flex-col justify-center  text-xl'>    {post.summary}  </div>
+            </Tilt>
+          </Link>
+        </article>
       ))}
 
     </div>
     <div className='flex flex-col justify-center content-center items-center '>
-    <SupaComments className=" flex flex-col justify-center content-center items-center " />
+        <SupaComments className=" flex flex-col justify-center content-center items-center " />
+        <TwikooCompenent id="twikoo" />
     </div>
-    </div>
+    </Container>
   )
 }
 export default Friend
