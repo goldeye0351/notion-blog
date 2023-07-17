@@ -61,7 +61,7 @@ export const links = [
         {
           id: 9,
           name: 'Timeline',
-          to: '/test',
+          to: '/timeline',
           icon: <TerminalIcon className='inline-block mb-1 h-5 w-5' />,
         }
       ]
