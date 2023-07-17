@@ -13,16 +13,24 @@ const SupaCommentsComponent = dynamic(
   },
   { ssr: false }
 )
-
+const TwikooCompenent = dynamic(
+  () => {
+    return import('@/components/Post/Twikoo')
+  },
+  { ssr: false }
+)
 const Comments = ({ frontMatter }) => {
   return (
-    <div>
-      {BLOG.comment && BLOG.comment.provider === 'utterances' && (
-        <UtterancesComponent issueTerm={frontMatter.id} />
-      )}
-      {BLOG.comment && BLOG.comment.provider === 'supacomments' && (
-        <SupaCommentsComponent />
-      )}
+    <div id='comment' >
+      <tabs>
+          {BLOG.comment && BLOG.comment.provider === 'utterances' && (<div key='utterances'>
+            <UtterancesComponent issueTerm={frontMatter.id} /></div>
+          )}
+          {BLOG.comment && BLOG.comment.provider === 'supacomments' && (<div key='supacomments'>
+            <SupaCommentsComponent /></div>
+          )}
+          <div key='twikoo'><TwikooCompenent/></div>
+      </tabs>
     </div>
   )
 }
