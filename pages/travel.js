@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from "next/image"
 import { PlayIcon,ShareIcon } from "@heroicons/react/outline"
 import { getAllPosts } from '@/lib/notion'
-
+import Container from '@/components/Container'
 
 import { register } from 'swiper/element/bundle'
 register()
@@ -21,8 +21,8 @@ export async function getStaticProps() {
 
 const travel = ( {posts} ) => {
     
-    return <>
-<div id="travel" className="  ">
+    return <>    
+<Container title="Travel. Notion Blog" description={BLOG.description} id="travel" className="  ">
     <div id="maintravel" className=" flex flex-col justify-center items-center  content-center">
         <div id="threetags" className="flex flex-row flex-grow  w-full max-w-[80VW] items-center justify-between space-x-2">
             
@@ -72,7 +72,7 @@ const travel = ( {posts} ) => {
             </swiper-container>
         </div>
     </div>
-</div>
+</Container>
 </>
   }
   export default travel
