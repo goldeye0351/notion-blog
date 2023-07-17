@@ -58,10 +58,10 @@ const Friend = ({  posts }) => {
       ))}
 
     </div>
-    <div className='flex flex-col justify-center content-center items-center '>
-        <SupaComments className=" flex flex-col justify-center content-center items-center " />
+
+        {/*<SupaComments id="supacomments" />*/}
         <TwikooCompenent id="twikoo" />
-    </div>
+
     </Container>
   )
 }
