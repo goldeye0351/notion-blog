@@ -22,15 +22,14 @@ const TwikooCompenent = dynamic(
 const Comments = ({ frontMatter }) => {
   return (
     <div id='comment' >
-      <tabs>
           {BLOG.comment && BLOG.comment.provider === 'utterances' && (<div key='utterances'>
             <UtterancesComponent issueTerm={frontMatter.id} /></div>
           )}
           {BLOG.comment && BLOG.comment.provider === 'supacomments' && (<div key='supacomments'>
             <SupaCommentsComponent /></div>
           )}
-          <div key='twikoo'><TwikooCompenent/></div>
-      </tabs>
+          {/* <div key='twikoo'><TwikooCompenent/></div> */}
+
     </div>
   )
 }
