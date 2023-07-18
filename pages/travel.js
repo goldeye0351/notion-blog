@@ -24,7 +24,7 @@ const travel = ( {posts} ) => {
     return <>    
 <Container title="Travel. Notion Blog" description={BLOG.description} id="travel" className="  ">
     <div id="maintravel" className=" flex flex-col justify-center items-center  content-center">
-        <div id="threetags" className="flex flex-row flex-grow  w-full max-w-[80VW] items-center justify-between space-x-2">
+        <div id="threetags" className=" group flex flex-row flex-grow  w-full max-w-[80VW] items-center justify-between space-x-2">
             
         {posts.map((png) => (<>
 
@@ -43,10 +43,10 @@ const travel = ( {posts} ) => {
                 </div>
 
                 <ShareIcon 
-                className={`inline-block h-16 w-16 -rotate-45 opacity-50 hover:rotate-0 hover:opacity-100 hover:scale-110     ${ posts.indexOf(png)% 2 === 1 ? 'hidden ' : ''}
+                className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105     ${ posts.indexOf(png)% 2 === 1 ? 'hidden ' : ''}
                 duration-500 `}/>
                 <PlayIcon 
-                className={`inline-block h-16 w-16 -rotate-45 opacity-50 hover:rotate-0 hover:opacity-100 hover:scale-110     ${ posts.indexOf(png)% 2 === 1 ? ' ' : 'hidden'}
+                className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105      ${ posts.indexOf(png)% 2 === 1 ? ' ' : 'hidden'}
                 duration-500 `}/>
             </Link>
 
