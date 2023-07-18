@@ -11,7 +11,7 @@ export default function Content (props) {
   const { frontMatter, blockMap, pageTitle } = props
 
   return (
-    <article className='flex-none md:overflow-x-visible overflow-x-scroll w-full'>
+    <article className='flex-none md:overflow-x-visible overflow-x-scroll w-full max-w-5xl '>
       {pageTitle && (
         <Link
           passHref
