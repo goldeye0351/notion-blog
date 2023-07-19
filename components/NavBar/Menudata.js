@@ -16,12 +16,6 @@ export const links = [
       icon: <ClipboardListIcon className='inline-block mb-1 h-5 w-5' />,
     },
     {
-      id: 2,
-      name: 'Travel',
-      to: '/travel',
-      icon: <GlobeIcon className='inline-block mb-1 h-5 w-5' />,
-    },
-    {
       id: 3,
       name: 'Search',
       to: '/search',
