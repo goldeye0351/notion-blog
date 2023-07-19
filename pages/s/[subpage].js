@@ -41,7 +41,7 @@ export async function getStaticPaths() {
     .filter((path) => path && path !== '/s/')
 
   // Remove post id
-  const posts = await getAllPosts({ onlyNewsletter: false })
+  const posts = await getAllPosts({ onlyPost: true })
   const postIds = Object.values(posts)
     .map((postId) => '/s' + mapPageUrl(postId.id))
   const noPostsIds = subpageIds.concat(postIds).filter(v => !subpageIds.includes(v) || !postIds.includes(v))
@@ -62,7 +62,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { subpage } }) {
-  const posts = await getAllPosts({ onlyNewsletter: false })
+  const posts = await getAllPosts({ onlyPost: true })
 
   let blockMap, post
   try {
