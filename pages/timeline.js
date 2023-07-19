@@ -2,7 +2,8 @@ import { getAllPosts } from '@/lib/notion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import Mytesticon from "@/components/Testicon"
 import { StarIcon, LightningBoltIcon ,CodeIcon, CubeIcon, AnnotationIcon,  BadgeCheckIcon, BeakerIcon, BellIcon, CogIcon, CubeTransparentIcon } from "@heroicons/react/outline"
-
+import Container from '@/components/Container'
+import BLOG from '@/blog.config'
 export async function getStaticProps() {
     const posts = await getAllPosts({ onlyUpdate: true })
     return {
@@ -14,13 +15,14 @@ export async function getStaticProps() {
   }
 const timeline = ( {posts}) => {
   
-  return <>
-<div  className="  w-[90vw] mx-auto  flex flex-col justify-center items-center border-y-2 border-gray-500 dark:border-gray-300 " >
+  return     <Container title={BLOG.title} description={BLOG.description}>
+
+<div  className="  mx-auto  flex flex-col justify-center items-center border-y-2 border-gray-500 dark:border-gray-300 " >
     <div className="h-full w-1  relative  border-gray-500 dark:border-gray-300 border-2 flex flex-col "  >
     {posts.map((post) => (<>
         <div key={post.id}              
              id="timeline"
-             className={`min-w-[45vw] w-[45vw] flex flex-row justify-center items-center my-3
+             className={`min-w-[35vw] w-[35vw] flex flex-row justify-center items-center my-3
              ${ posts.indexOf(post)% 2 === 1 ? 'timeline ' : 'timeline-left'}
              `}>   
                 < Mytesticon index ={posts.indexOf(post)% 6} />
@@ -40,5 +42,5 @@ const timeline = ( {posts}) => {
     </div>
 </div>
 
-</>}
+</Container>}
 export default timeline
