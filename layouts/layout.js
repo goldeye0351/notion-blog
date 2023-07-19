@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { getPageTitle } from 'notion-utils'
 import { motion } from 'framer-motion'
-
+import ArticleAdjacent from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Aside from '@/components/Post/Aside'
 import Comments from '@/components/Post/Comments'
 import PostFooter from '@/components/Post/PostFooter'
 
-const Layout = ({ blockMap, frontMatter, fullWidth = false, subPage = false }) => {
+const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = false }) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 
   const pageTitle = getPageTitle(blockMap)
@@ -39,6 +39,7 @@ const Layout = ({ blockMap, frontMatter, fullWidth = false, subPage = false }) =
         />
       </motion.div>
       <PostFooter />
+      <ArticleAdjacent prev={prev} next={next} me={frontMatter} />
       <Comments frontMatter={frontMatter} />
     </Container>
   )
