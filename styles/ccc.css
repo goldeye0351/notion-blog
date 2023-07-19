@@ -133,4 +133,14 @@
   text-align: right;
 }
 
-
+.myiconlunbo {
+  animation: rowup 3s linear infinite;
+}
+@keyframes rowup {
+  0% {
+      transform: translateX(-50%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
