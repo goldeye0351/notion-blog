@@ -25,6 +25,7 @@ const SearchLayout = ({ tags, posts, currentTag,post }) => {
       <div className='relative'>
         <input
           type='text'
+          id="inputtext"
           placeholder={
             currentTag
               ? `${t.SEARCH.ONLY_SEARCH} #${currentTag}`
