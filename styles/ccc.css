@@ -123,7 +123,7 @@
 .timeline-left{
   position: relative;
   flex-direction: row-reverse; 
-  left:-45vw;
+  left:-35vw;
 }
 .timeline-panel{
   position: relative;
