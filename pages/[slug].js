@@ -8,7 +8,7 @@ import { ArticleLock } from '@/components/Post/ArticleLock'
 import React from 'react'
 
 const Post = props => {
-  const { post, blockMap  }=props 
+  const { post, blockMap,prev,next  }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -33,12 +33,12 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} /> }
+  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next} /> }
 
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ onlyNewsletter: false })
+  const posts = await getAllPosts({ postAndPage:true })
   return {
     paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
     fallback: true
@@ -46,14 +46,18 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const posts = await getAllPosts({ onlyNewsletter: false })
+  const posts = await getAllPosts({ postAndPage:true })
   const post = posts.find((t) => t.slug === slug)
-
+  const index = posts.indexOf(post)
+  const prev = posts.slice(index - 1, index)[0] ?? posts.slice(-1)[0]
+  const next = posts.slice(index + 1, index + 2)[0] ?? posts[0]
   try {
     const blockMap = await getPostBlocks(post.id)
     return {
       props: {
         post,
+        prev,
+        next,
         blockMap
       },
       revalidate: 1
@@ -63,6 +67,8 @@ export async function getStaticProps({ params: { slug } }) {
     return {
       props: {
         post: null,
+        prev: null,
+        next: null,
         blockMap: null
       }
     }
