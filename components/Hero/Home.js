@@ -3,7 +3,7 @@ import Tilt from 'react-parallax-tilt'
 import Image from "next/image"
 import NotionRenderer from '@/components/Post/NotionRenderer'
 
-const Hero = ({ blockMap,heropost }) => {
+const HeroHome = ({ blockMap,heropost }) => {
 
 
   return (
@@ -109,4 +109,4 @@ const Hero = ({ blockMap,heropost }) => {
   )
 }
 
-export default Hero
+export default HeroHome
