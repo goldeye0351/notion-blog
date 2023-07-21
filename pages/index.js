@@ -3,13 +3,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
-import Hero from '@/components/Hero/Home'
+import Herohome from '@/components/Hero/Home'
 import { register } from 'swiper/element/bundle'
 register()
 import Container from '@/components/Container'
+import HeroLeft from '@/components/Hero/Heroleft'
+import HeroRight from '@/components/Hero/HeroRight'
+import CardTags from '@/components/Card/CardTag'
+import Hero from '@/components/Hero/Hero'
+import Banner from '@/components/Hero/Banner'
 
 export async function getStaticProps() {
-  const posts = await getAllPosts({ onlyHot: true })
+  const posts = await getAllPosts({ onlyPost: true })
   const tags = getAllTagsFromPosts(posts)
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'index')
@@ -38,14 +43,16 @@ export async function getStaticProps() {
     revalidate: 1
   }
 }
-const my3d = ({ postsToShow,blockMap,hero }) => {
-  
-  return <div className=' block flex-col justify-center items-center content-center max-w-[100VW]'>
+const my3d = props => {
+  const  { postsToShow,blockMap,hero, posts,tags} =props
+  return <div className=' block flex-col justify-center items-center content-center max-w-[100VW] space-y-3'>
 
-<Container title={BLOG.title} description={BLOG.description}></Container>
-{/*  这里是swiper插件 很多图的模式  小屏隐藏  中等屏幕开始出现,  */}
+    <Container title={BLOG.title} description={BLOG.description}>
+      
+      </Container>
+{/*  这里是swiper插件 多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block '>
-    <div className=' h-[68VH] flex justify-center items-center content-center'>
+    <div className=' h-[70VH]  flex justify-center items-center content-center'>
       <swiper-container slides-per-view="3"
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
@@ -53,10 +60,10 @@ const my3d = ({ postsToShow,blockMap,hero }) => {
         > 
         {postsToShow.map((post) => (<>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link key={post.id} href={post.Link} scroll={false}>
-          <div key={post.id} className=' max-w-[1024px] max-h-[768px] min-w-[480px] min-h-[360px] flex flex-col justify-between'>  
-              <Image key={post.id} src={post?.page_cover} alt={post.title} width={1024} height={768} 
-              className='rounded-3xl  static 
+          <Link key={post.id} href={`${BLOG.path}/${post.slug}`} scroll={false}>
+          <div key={post.id} className=' max-w-[800px] max-h-[600px] min-w-[600px] min-h-[480px] flex flex-col justify-between'>  
+              <Image key={post.id} src={post?.page_cover} alt={post.title} fill 
+              className='rounded-3xl  static w-[600px] h-[480px]
               
               '/>
               <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
@@ -76,7 +83,7 @@ const my3d = ({ postsToShow,blockMap,hero }) => {
 <div className='visible md:hidden '>
 
   <div className='max-w-[95VW] relative flex flex-col justify-center content-center items-center mx-auto min-h-[60VH]  ' >
-    <Hero blockMap={blockMap} heropost={hero}/>
+    {/*<Hero blockMap={blockMap} heropost={hero}/>*/}
     <div className=' relative  justify-center self-center content-center items-center w-full h-full '>
       <swiper-container loop="true" autoplay="true" slides-per-view="1" autoplay-delay="1500"  navigation="true" pagination="true" scrollbar="true" grab-cursor="true" 
             parallax="true" className="overflow-visible flex  justify-center content-center items-center "
@@ -84,7 +91,7 @@ const my3d = ({ postsToShow,blockMap,hero }) => {
         {postsToShow.map((post) => (
         <>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
-          <Link key={post.id} href={post.Link} scroll={false}>
+          <Link key={post.id} href={`${BLOG.path}/${post.slug}`}  scroll={false}>
           <div className=" duration-300 overflow-visible max-w-[calc(100vw-10rem)] min-h-[38VH]  flex flex-col justify-between">
             <Image src={post?.page_cover}  alt={post.title} fill className=' rounded-3xl'/>
           </div>
@@ -104,6 +111,9 @@ const my3d = ({ postsToShow,blockMap,hero }) => {
     </div>
   </div>
 </div>
+
+
+
 
 </div>}
 export default my3d
