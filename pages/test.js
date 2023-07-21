@@ -1,43 +1,27 @@
-import { getAllPosts } from '@/lib/notion'
-import FormattedDate from '@/components/Common/FormattedDate'
-import Mytesticon from "@/components/Testicon"
-import { StarIcon, LightningBoltIcon ,CodeIcon, CubeIcon, AnnotationIcon,  BadgeCheckIcon, BeakerIcon, BellIcon, CogIcon, CubeTransparentIcon } from "@heroicons/react/outline"
+import { getAllPosts,getAllTagsFromPosts } from '@/lib/notion'
+import Container from '@/components/Container'
+import HeroLeft from '@/components/Hero/Heroleft'
+import HeroRight from '@/components/Hero/HeroRight'
+import CardTags from '@/components/Card/CardTag'
+import Banner from '@/components/Hero/Banner'
 
 export async function getStaticProps() {
-    const posts = await getAllPosts({ onlyUpdate: true })
+    const posts = await getAllPosts({ onlyPost: true })
+    const tags = getAllTagsFromPosts(posts)
     return {
       props: {
-        posts
+        posts,tags,
       },
       revalidate: 1
     }
   }
-const test = ( {posts}) => {
+const test =  props  => {
   
-  return <>
-<div  className="  w-[90vw] mx-auto  flex flex-col justify-center items-center border-y-2 border-gray-500 dark:border-gray-300 " >
-    <div className="h-full w-1  relative  border-gray-500 dark:border-gray-300 border-2 flex flex-col "  >
-    {posts.map((post) => (<>
-        <div key={post.id}              
-             id="timeline"
-             className={`min-w-[45vw] w-[45vw] flex flex-row justify-center items-center my-3
-             ${ posts.indexOf(post)% 2 === 1 ? 'timeline ' : 'timeline-left'}
-             `}>   
-                < Mytesticon index ={posts.indexOf(post)% 6} />
-                <div 
-                id="timeline-panel"
-                className={`mx-6 border-2 border-gray-500 dark:border-gray-300 rounded-xl flex flex-col w-full p-3 bg-gray-300 dark:bg-gray-600
-             ${ posts.indexOf(post)% 2 === 1 ? 'timeline-panel ' : 'timeline-panel-left'}
-             `}>  
-                    <div class="text-xl  "> {post.title}</div>
-                    <div class="text-sm opacity-80 ">
-                        <FormattedDate date={post.date} />
-                    </div>
-                    <div class=" ">{post.summary} </div>
-                </div>        
-        </div>
-    </>))}
-    </div>
-</div>
-</>}
+  return<Container >
+                <div className=' flex justify-center '>
+                <div className=' yinyang  '></div>
+                </div>
+
+<Banner {...props }/>
+</Container>}
 export default test
