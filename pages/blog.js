@@ -33,18 +33,17 @@ const variants = {
 export async function getStaticProps({name}) {
   const posts = await getAllPosts({ onlyPost: true })
   const tags = getAllTagsFromPosts(posts)
-
   return {
     props: {
       posts,
       tags,
-
     },
     revalidate: 1
   }
 }
 
-const blog = ({ tags, posts, currentTag }) => {
+const blog = props => {
+  const { posts,tags } = props
   const [name, setName] = useState('')
   const filteredBlogPosts = posts.filter(
     (post) => post && post.tags && post.tags.includes(name)
