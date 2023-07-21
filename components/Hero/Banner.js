@@ -32,7 +32,7 @@ const Banner = props => {
         {/* 遮罩 */}
         <div id='banner-cover' className={'group '}>
        
-            <div id='leftdown' className={' yinyang opacity-50 group-hover:opacity-90 translate-x-full  group-hover:-translate-x-0 group-hover:w-1/12 group-hover:animate-spin  group-hover:left-[50%] duration-300 transition-all bg-[#4259efdd]  cursor-pointer absolute w-7/12 h-1/2 bottom-0 flex justify-start items-center rounded-r-full'}></div>
+            <div id='leftdown' className={' opacity-50 group-hover:opacity-90 translate-x-full  group-hover:-translate-x-0 group-hover:w-1/12 group-hover:animate-spin  group-hover:left-[50%] duration-300 transition-all bg-[#4259efdd]  cursor-pointer absolute w-7/12 h-1/2 bottom-0 flex justify-start items-center rounded-r-full'}></div>
 
             
             <div className='ml-12 -translate-x-32 opacity-0 group-hover:opacity-90 group-hover:translate-x-0 duration-300 transition-all ease-in absolute top-[50%]'>
