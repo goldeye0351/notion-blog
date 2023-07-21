@@ -1,28 +1,30 @@
 import Link from 'next/link'
+import { useState } from 'react'
+import { ShareIcon,PlayIcon } from '@heroicons/react/outline'
 
-const CardTags = ({ tags, currentTag,className }) => {
+const CardTags = ({ tags, className }) => {
   if (!tags) return null
+  const [CurrentTag, setCurrentTag] = useState('')
   return (
-    <div className={className}>
-      <div className='flex justify-center flex-wrap  px-6 '>
+    <div id="alltags" className={className}>
+      <div className='flex flex-row flex-grow w-full items-center justify-between space-x-2 '>
         {Object.keys(tags).map((key) => {
-          const selected = key === currentTag
+          console.log("当前标签",CurrentTag)
           return (
-            <div
-              key={key}
-              className={`m-1 rounded-lg whitespace-nowrap hover:text-gray-100 dark:text-gray-300 hover:bg-gray-400 dark:hover:bg-gray-600 ${
-                selected
-                  ? 'text-gray-100 bg-gray-400 dark:bg-gray-600'
-                  : 'text-gray-400 bg-gray-100 dark:bg-night'
-              }`}
-            >
-              <Link key={key} scroll={false}
-                href={selected ? '/search' : `/tag/${encodeURIComponent(key)}`}
-                className='px-2 py-1 block'
-              >
-                {`${key} (${tags[key]})`}
-              </Link>
-            </div>
+            <button
+            key={key}
+            onClick={() => { setCurrentTag(key) }} 
+            className={` group px-3 w-1/3 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center   ${ Object.keys(tags).indexOf(key)% 3 === 0 ? 'cai1 ' :Object.keys(tags).indexOf(key)% 3  === 1 ? 'cai2 ' : 'cai3'}
+            overflow-hidden rounded-xl   hover:scale-110 duration-500   m-1 font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600`}
+          >
+           {`${key} (${tags[key]})`}
+            <ShareIcon 
+            className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105     ${ Object.keys(tags).indexOf(key)% 2 === 1 ? 'hidden ' : ''}
+            duration-500 `}/>
+            <PlayIcon 
+            className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105      ${ Object.keys(tags).indexOf(key)% 2 === 1 ? ' ' : 'hidden'}
+            duration-500 `}/>
+          </button>
           )
         })}
       </div>
