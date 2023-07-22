@@ -35,11 +35,11 @@ const MenuItems = ({ items, depthLevel }) => {
   }, [dropdown]);
 
   const onMouseEnter = () => {
-    window.innerWidth > 960 && setDropdown(true);
+    setDropdown(true);
   };
 
   const onMouseLeave = () => {
-    window.innerWidth > 960 && setDropdown(false);
+    setDropdown(false);
   };
 
   const closeDropdown = () => {
@@ -47,7 +47,11 @@ const MenuItems = ({ items, depthLevel }) => {
   };
 
   return (
-    <li ref={ref} className={`${
+    <li 
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    onClick={closeDropdown}
+    ref={ref} className={`${
                     activeMenu === items.to ? 'bg-gray-200 dark:bg-gray-700' : ''
                   } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg py-1 px-2  relative nav`}
     >
