@@ -17,25 +17,23 @@ const timeline = ( {posts}) => {
   
   return     <Container title={BLOG.title} description={BLOG.description}>
 
-<div  className="  mx-auto  flex flex-col justify-center items-center border-y-2 border-gray-500 dark:border-gray-300 " >
-    <div className="h-full w-1  relative  border-gray-500 dark:border-gray-300 border-2 flex flex-col "  >
+<div  className="  mx-auto  flex flex-col justify-center items-center  border-gray-500 dark:border-gray-300   " >
+    <div className="h-full w-1  relative  border-gray-500 dark:border-gray-300 border-2 flex flex-col py-16 "  >
     {posts.map((post) => (<>
         <div key={post.id}              
              id="timeline"
-             className={`min-w-[35vw] w-[35vw] flex flex-row justify-center items-center my-3
-             ${ posts.indexOf(post)% 2 === 1 ? 'timeline ' : 'timeline-left'}
+             className={`min-w-[35vw] w-[35vw] flex flex-row justify-center items-center my-6
+             ${ posts.indexOf(post)% 2 === 1 ? 'timeline -rotate-45' : 'timeline-left rotate-45'}
              `}>   
                 < Mytesticon index ={posts.indexOf(post)% 6} />
                 <div 
                 id="timeline-panel"
-                className={`mx-6 border-2 border-gray-500 dark:border-gray-300 rounded-xl flex flex-col w-full p-3 bg-gray-300 dark:bg-gray-600
-             ${ posts.indexOf(post)% 2 === 1 ? 'timeline-panel ' : 'timeline-panel-left'}
+                className={`  group   mx-6 border-2 border-gray-500 dark:border-gray-300 rounded-xl  flex flex-col w-full p-3 bg-gray-300 dark:bg-gray-600
+             ${ posts.indexOf(post)% 2 === 1 ? 'timeline-panel  ' : 'timeline-panel-left  '}
              `}>  
-                    <div class="text-xl  "> {post.title}</div>
-                    <div class="text-sm opacity-80 ">
-                        <FormattedDate date={post.date} />
-                    </div>
-                    <div class=" ">{post.summary} </div>
+                    <div className="text-xl  "> {post.title}</div>
+                    <div className="text-sm opacity-80 "><FormattedDate date={post.date} /></div>
+                    <div className=" -translate-x-96 opacity-0 group-hover:translate-x-0 group-hover:opacity-100  duration-500  "> {post.summary}</div>
                 </div>        
         </div>
     </>))}
