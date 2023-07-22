@@ -1,4 +1,7 @@
-
+"use client"
+import BubbleUI from "@/components/Myswiper/Bb";
+import { Sbdata } from "@/components/Sbdata";
+import { pngdata } from "@/components/Data";
 import Image from 'next/image'
 import Link from 'next/link'
 import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
@@ -45,14 +48,38 @@ export async function getStaticProps() {
 }
 const my3d = props => {
   const  { postsToShow,blockMap,hero, posts,tags} =props
+  const options = {
+		size: 150,
+		minSize: 50,
+		gutter: 5,
+		provideProps: true,
+		numCols: 8,
+		fringeWidth: 200,
+		yRadius: 120,
+		xRadius: 260,
+		cornerRadius: 50,
+		showGuides: false,
+		compact: true,
+		gravitation: 5
+	}
+
+
   return <div className=' block flex-col justify-center items-center content-center max-w-[100VW] space-y-3'>
 
-    <Container title={BLOG.title} description={BLOG.description}>
-      
-      </Container>
+    <Container title={BLOG.title} description={BLOG.description} >
+        
+    </Container>
+    <BubbleUI options={options} className={"myBubbleUI h-[70VH]  md:h-72 "}>
+          {posts.map((data, i) => (
+            <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={i}>
+               <Image src={data.page_cover} alt={data.title} fill  
+               className=" rounded-full max-w-[120px] max-h-[120px] " /> 
+            </Link>
+          ))}
+        </BubbleUI>
 {/*  这里是swiper插件 多图的模式  小屏隐藏  中等屏幕开始出现,  */}
-  <div className='hidden md:block '>
-    <div className=' h-[70VH]  flex justify-center items-center content-center'>
+  <div className='hidden md:block  '>
+    <div className='   flex justify-center items-center content-center'>
       <swiper-container slides-per-view="3"
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
@@ -80,10 +107,11 @@ const my3d = props => {
   </div>
 
    {/*  单图 模式 中屏开始隐藏  */}
-<div className='visible md:hidden '>
+   {/* 
+<div className='visible md:hidden border-2'>
 
-  <div className='max-w-[95VW] relative flex flex-col justify-center content-center items-center mx-auto min-h-[60VH]  ' >
-    {/*<Hero blockMap={blockMap} heropost={hero}/>*/}
+  <div className='max-w-[95VW] relative flex flex-col justify-center content-center items-center mx-auto  ' >
+    
     <div className=' relative  justify-center self-center content-center items-center w-full h-full '>
       <swiper-container loop="true" autoplay="true" slides-per-view="1" autoplay-delay="1500"  navigation="true" pagination="true" scrollbar="true" grab-cursor="true" 
             parallax="true" className="overflow-visible flex  justify-center content-center items-center "
@@ -111,7 +139,7 @@ const my3d = props => {
     </div>
   </div>
 </div>
-
+*/}
 
 
 
