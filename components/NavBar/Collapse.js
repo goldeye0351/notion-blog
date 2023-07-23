@@ -6,7 +6,7 @@ import React, { useEffect, useImperativeHandle } from 'react'
  * @returns
  */
 const Collapse = props => {
-  const { collapseRef } = props
+  const { collapseRef,isOpen } = props
   const ref = React.useRef(null)
   const type = props.type || 'vertical'
 
