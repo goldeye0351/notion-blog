@@ -2,6 +2,7 @@
 ## notion + next.js
 ### https://mynotion.life
 #### 评论系统有大陆常用的twikoo 和 全球均可使用的supabase
+#### 默认使用英文， 支持中文等多国语言
 
 ### 大屏采用swiper插件
 ![几个截图](https://goldeye0351.github.io/notion-plugin/images/1home.png)
