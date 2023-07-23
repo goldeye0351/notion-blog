@@ -1,4 +1,4 @@
 NOTION BLOG
-notion + next.js + swiper
+notion + next.js
 https://mynotion.life
 
