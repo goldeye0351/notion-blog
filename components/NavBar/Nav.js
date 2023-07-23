@@ -1,7 +1,4 @@
-import { useEffect, useCallback, useState, useRef } from 'react'
-import Link from 'next/link'
-import BLOG from '@/blog.config'
-import { lang } from '@/lib/lang'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import {MenuIcon} from '@heroicons/react/outline'
 import Social from '../Common/Social.js'
@@ -10,11 +7,8 @@ import { motion } from 'framer-motion'
 import Collapse from './Collapse.js'
 import { links } from './Menudata.js'
 import ThemeSwitcher from './ThemeSwitcher.js'
-const NavBar = () => {
+const NavBar = (props) => {
   const router = useRouter()
-  const { locale } = useRouter()
-  const t = lang[locale]
-  const [showMenu, setShowMenu] = useState(false)
 
   let activeMenu = ''
   if (router.query.slug) {
@@ -30,43 +24,58 @@ const NavBar = () => {
   const collapseRef = useRef(null)
 
   return (
-    <motion.div className='flex relative'>
+    <motion.div className='relative flex flex-row justify-start'>
       {/* Desktop Menu */}  
-      <ul id="desktopmenu" className="hidden md:flex md:gap-1">
+      <ul id="desktopmenu" className="hidden md:flex ">
         {links.map((menu, index) => {
           return (
             <MenuItem items={menu} key={index}  />
           )})}        
-      </ul>         
+      </ul>
+      <div >
+         <ThemeSwitcher  />
+      </div>
+
       {/* iphone Menu */}
-      <div  id="mobilemenu" className='md:hidden  block absolute right-0 top-0 ' >
+      <div id="mobilemenu" className='md:hidden  block ' >
           <button
             type='button' aria-label='Menu'
             onClick={toggleOpen}   
-            onDoubleClick={() => setShowMenu((showMenu) => !showMenu)}
             className='hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block p-2 -mr-3 md:pb-3 '
           >
             <MenuIcon className='inline-block mb-1 h-5 w-5 right-0 ' />
           </button>
-       <div className=' aaa'>
-          <ul>
-            <Collapse collapseRef={collapseRef} isOpen={isOpen} type='vertical' className='  left-[25VW] w-[50VW]  
-             dark:bg-gray-700/60 divide-y divide-gray-200 dark:divide-gray-600 rounded-md shadow-lg outline-none fixed block'
-            >
-                <div className='rounded leading-5   block pt-8 pb-56 '>
-                {links.map((menu, index) => {
-                  return (
-                  <MenuItem items={menu} key={index}  />
-                  )})}  
+          <div id='sidebar-wrapper' className=' block md:hidden ' >
+            <div id='sidebar-drawer-background' onClick={toggleOpen}   
+              className={`${isOpen ? 'block' : 'hidden'} duration-300 
+              fixed -top-8 left-0  w-full h-screen
+              bg-black/70 `}>
+                <div id="mobilemenu" className='' >
+                  <ul>
+                    <Collapse isOpen={isOpen} {...props} collapseRef={collapseRef}  type='vertical' 
+                    className=' left-[25VW] w-[50VW]  
+                    bg-gray-400 dark:bg-gray-600 my-16
+                    rounded-md outline-none fixed block'
+                    >
+                        <div className=' rounded leading-5  block pt-8 pb-64 '>
+                        {links.map((menu, index) => {
+                          return (
+                          <MenuItem items={menu} key={index}  />
+                          )})}  
 
+                        </div>
+                      
+                    </Collapse>
+                    
+                  </ul>
+                    
                 </div>
-            </Collapse>
-          </ul>  
-        </div>
+            </div>    
+          </div>
+    
+        
       </div>
-      <div className="md:block hidden ">
-         <ThemeSwitcher  />
-      </div>
+      
     </motion.div>
   )
 }
