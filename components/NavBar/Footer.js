@@ -62,7 +62,7 @@ const Footer = ({ fullWidth }) => {
             <div className="flex items-center space-x-1">
               <span className="mr-1 ">Built with</span>
               <div className="flex space-x-1.5 hover:animate-bounce  ">
-               <Link href="https://github.com">
+               <Link href="https://github.com/goldeye0351/notion-blog">
                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' className=' fill-black dark:fill-white w-5 h-5 hover:w-8 hover:h-8 '>
                   <path d='M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22'></path>
                  </svg>  
@@ -72,12 +72,12 @@ const Footer = ({ fullWidth }) => {
             </div>
             <div>                
               <EyeIcon className='inline-block my-2 w-5 h-5 '/>
-              <span id="busuanzi_container_site_pv" className=' my-2 inline-block '><span id="busuanzi_value_site_pv"></span></span> 
+              <div id="busuanzi_container_site_pv" className=' my-2 inline-block '><span id="busuanzi_value_site_pv"></span></div> 
+
             </div>
             <div className='float-right my-2 flex space-x-2 text-sm '>
-                <div>{`Copyright © ${new Date().getFullYear()}`}</div>  
+                <div>{`© ${new Date().getFullYear()}`}</div>  
                 <HeartIcon className=' h-5 inline-block hover:animate-ping ' />
-                <span> {BLOG.author} </span> 
             </div>
         </div>
       </footer>
