@@ -103,12 +103,9 @@
     font-size:25px;
     color: rgb(255, 255, 255);
   }  
-.my3d {
-      transform-style: preserve-3d;
-    }
-.my3din {
-      transform: translateZ(50px);
-    }    
+.my3d {transform-style: preserve-3d;}
+.my3din {transform: translateZ(50px); }    
+
 .arrow::after {
       content: "";
       display: inline-block;
@@ -161,84 +158,42 @@
   left:5px;
   text-align: center;
 }
-@property --myrotate {
-  syntax: "<angle>";
-  initial-value: 132deg;
-  inherits: true;
-}
-.card {
-  width: 210px;
-  height: 380px;
-  border: 12PX;    
-  content: "";
-  border-radius: 12px;  
-}
-.card::after {
-  position: absolute;
-  border-radius: 12px;
-  content: "";  
-  z-index: -1;
-  width: 210px;
-  height: 380px;
-  margin: 0 auto;
-  transform: scale(1);
-  filter: blur(calc(var(--card-height) / 6));
-  background-image: linear-gradient(
-    var(--myrotate)
-    , #a09fa5, #a67a7afa 43%, #5dac6d);
-    opacity: 1;
-  transition: opacity .5s;
+
+.myrotatecard {
+  background-image: linear-gradient(var(--myrotate), #a09fa5, #a67a7afa 43%, #5dac6d);
   animation: myspin 5s linear infinite;
 }
-@keyframes myspin {
-  0% {
-    --myrotate: 0deg;
-  }
-  100% {
-    --myrotate: 360deg;
-  }
-}
-.cai1 {
-  background: linear-gradient(to right, #358bff, #15c6ff);
-}
-.cai2 {
-  background: linear-gradient(to right, #ff6655, #ffbf37);
-}
-.cai3 {
-  background: linear-gradient(to right, #18e7ae, #1eebeb);
-}
+@property --myrotate {  syntax: "<angle>";  initial-value: 132deg;  inherits: true;}
+@keyframes myspin {  0% {    --myrotate: 0deg;  }  100% {    --myrotate: 360deg;  }}
 
-.timeline{
-  position: relative;
-  left:-5vw;
-}
-.timeline-left{
-  position: relative;
-  flex-direction: row-reverse; 
-  left:-30vw;
-}
-.timeline-panel{
-  position: relative;
-}
-.timeline-panel-left{
-  position: relative;
-  text-align: right;
-}
+.mypingcard {position: relative; border-radius: 16px;}
 
-.myiconlunbo {
-  animation: rowup 30s linear infinite;
-}
-@keyframes rowup {
-  0% {
-      transform: translateX(0%);
+.mypingcard::after {
+      background: linear-gradient(-25deg, #29dbbc, #655adc,#1eda63,#e440bb);
+      background-size: 300%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      content: '';
+      opacity: 0.9;
+      border-radius: 16px;
+      animation: gradient 15s ease infinite;
   }
-  50% {
-    transform: translateX(-50%);
-}
-  100% {
-      transform: translateX(-100%);
-  }
-}
+  
+  @keyframes gradient {0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;}}
+
+.cai1 {  background: linear-gradient(to right, #358bff, #15c6ff);}
+.cai2 {  background: linear-gradient(to right, #ff6655, #ffbf37);}
+.cai3 {  background: linear-gradient(to right, #18e7ae, #1eebeb);}
+
+.timeline{  position: relative;  left:-5vw;}
+.timeline-left{  position: relative;  flex-direction: row-reverse;   left:-30vw;}
+.timeline-panel{  position: relative;}
+.timeline-panel-left{  position: relative;  text-align: right;}
+
+.myiconlunbo {  animation: rowup 30s linear infinite;}
+@keyframes rowup {  0% {transform: translateX(0%); } 50% { transform: translateX(-50%);}  100% {transform: translateX(-100%);  }}
+
 .yinyang {
   width: 200px;
   height: 200px;
