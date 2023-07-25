@@ -89,20 +89,6 @@
   scrollbar-width: none;
 }
 
-
-.mytext{
-    position:absolute;
-    Width:auto;
-    Bottom:1px;
-    padding:1px;
-    color: rgb(255, 255, 255);
-    font-weight:bold;
-  }
-.myh2{
-    font-weight:100;
-    font-size:25px;
-    color: rgb(255, 255, 255);
-  }  
 .my3d {transform-style: preserve-3d;}
 .my3din {transform: translateZ(50px); }    
 
@@ -117,7 +103,7 @@
     }    
 .dropdown {
       position: absolute;
-      right: 3px;
+      right: -3px;
       left: auto;
       z-index: 9999;
       list-style: none;
@@ -129,6 +115,7 @@
     }
 .myshape {
   position: relative;
+  border-radius: 8px;
   margin-top: 0;
   display: inline-block;
   stroke-width: 1px;
@@ -145,17 +132,10 @@
   stroke-dashoffset: 0;
   stroke: #06d61bfc;
 }
-.mysvgtext {
-  position: absolute;
-  top:182px;
-  margin-top: -150px;
-  margin-left: 35px;
-  text-align: center;
-}
 .mymenutext {
   position: absolute;
   top:5px;
-  left:5px;
+  left:12px;
   text-align: center;
 }
 
@@ -186,8 +166,9 @@
 .cai2 {  background: linear-gradient(to right, #ff6655, #ffbf37);}
 .cai3 {  background: linear-gradient(to right, #18e7ae, #1eebeb);}
 
-.timeline{  position: relative;  left:-5vw;}
-.timeline-left{  position: relative;  flex-direction: row-reverse;   left:-30vw;}
+.timeline{  position: relative;  }
+.timeline-left{  position: relative;  flex-direction: row-reverse;   }
+
 .timeline-panel{  position: relative;}
 .timeline-panel-left{  position: relative;  text-align: right;}
 
@@ -237,3 +218,11 @@
     transform:rotate(3600000deg);
   }
 }
+
+
+.ring{animation:x-spin 20s linear infinite}
+.ring{animation:y-spin 18s linear infinite}
+
+
+@keyframes x-spin{0%{transform:rotateX(-10deg) rotate(0deg)}25%{transform:rotateX(-11deg) rotate(-10deg)}30%{transform:rotateX(-12deg) rotate(-9deg)}50%{transform:rotateX(-13deg) rotate(0deg)}75%{transform:rotateX(-12deg) rotate(10deg)}80%{transform:rotateX(-11deg) rotate(9deg)}to{transform:rotateX(-10deg) rotate(0deg)}}
+@keyframes y-spin{0%{transform:rotateY(0deg)}  to{transform:rotateY(1turn)}}
