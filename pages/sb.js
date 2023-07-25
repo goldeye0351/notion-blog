@@ -4,13 +4,14 @@ import { Sbdata } from "@/components/Sbdata";
 import { pngdata } from "@/components/Data";
 
 export default function Iwatch(props) {
-
+	
+	const diyizu = pngdata.slice(0, 12)
 	const options = {
 		size: 180,
-		minSize: 20,
+		minSize: 50,
 		gutter: 8,
 		provideProps: true,
-		numCols: 6,
+		numCols: 8,
 		fringeWidth: 160,
 		yRadius: 130,
 		xRadius: 220,
@@ -21,16 +22,15 @@ export default function Iwatch(props) {
 	}
   
 	return (<>
-<BubbleUI 
+    <BubbleUI 
         options={options}
-        className={"myBubbleUI"}
+        className={"myBubbleUI h-[100VH]"}
       >
-        {Sbdata.map((data, i) => (
-		 <div className="bbuichild" key={i}>
-      {data}
-    </div>
-	))}
-      </BubbleUI>  </>
+	   {/*{diyizu.map((data, i) => (<div>{data.image}</div>))} */}
+	   {Sbdata.slice(0,12)}
+      </BubbleUI>  
+
+	</>
 		
 	)
 };
