@@ -18,6 +18,8 @@ import Banner from '@/components/Hero/Banner'
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyPost: true })
+  const hots = await getAllPosts({ onlyHot: true })
+
   const tags = getAllTagsFromPosts(posts)
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'index')
@@ -37,6 +39,7 @@ export async function getStaticProps() {
     props: {
       page: 1, // current page is 1
       postsToShow,
+      hots,
       showNext,
       posts,
       tags,
@@ -47,16 +50,16 @@ export async function getStaticProps() {
   }
 }
 const my3d = props => {
-  const  { postsToShow,blockMap,hero, posts,tags} =props
+  const  { postsToShow,blockMap,hero, posts,tags,hots} =props
   const options = {
 		size: 150,
 		minSize: 50,
 		gutter: 5,
 		provideProps: true,
-		numCols: 8,
+		numCols: 6,
 		fringeWidth: 200,
 		yRadius: 120,
-		xRadius: 260,
+		xRadius: 120,
 		cornerRadius: 50,
 		showGuides: false,
 		compact: true,
@@ -65,27 +68,28 @@ const my3d = props => {
 
 
   return <div className=' block flex-col justify-center items-center content-center max-w-[100VW] space-y-3'>
+    <Container title={BLOG.title} description={BLOG.description} >    </Container>
+    <div id="shoubiaoui" className="md:hidden">
+      <BubbleUI options={options} className={"myBubbleUI h-[90VH]  rounded-3xl  "}>
+            {posts.map((data, i) => (
+              <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={i}>
+                <Image src={data.page_cover} alt={data.title} fill  
+                className=" rounded-full max-w-[150px] max-h-[150px] " /> 
+              </Link>
+            ))}
+      </BubbleUI>
+    </div>
 
-    <Container title={BLOG.title} description={BLOG.description} >
-        
-    </Container>
-    <BubbleUI options={options} className={"myBubbleUI h-[70VH]  md:h-72 "}>
-          {posts.map((data, i) => (
-            <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={i}>
-               <Image src={data.page_cover} alt={data.title} fill  
-               className=" rounded-full max-w-[120px] max-h-[120px] " /> 
-            </Link>
-          ))}
-        </BubbleUI>
 {/*  这里是swiper插件 多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block  '>
-    <div className='   flex justify-center items-center content-center'>
+    <div className='   flex justify-center items-center content-center w-screen h-screen'>
       <swiper-container slides-per-view="3"
         grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
         effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
         coverflow-effect-stretch="10" coverflow-effect-modifier="1" loop-additional-slides="2"
+        parallax="true" 
         > 
-        {postsToShow.map((post) => (<>
+        {postsToShow.slice(0,9).map((post) => (<>
         <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
           <Link key={post.id} href={`${BLOG.path}/${post.slug}`} scroll={false}>
           <div key={post.id} className=' max-w-[800px] max-h-[600px] min-w-[600px] min-h-[480px] flex flex-col justify-between'>  
@@ -93,9 +97,13 @@ const my3d = props => {
               className='rounded-3xl  static w-[600px] h-[480px]
               
               '/>
-              <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
-              <div key={post.id} className=' hidden lg:block text-sm '>{post.summary}</div>
+              
+
+              <div data-swiper-parallax="0" data-swiper-parallax-scale="1.2" data-swiper-parallax-duration="500"
+                        className=" absolute top-[30%] flex justify-center left-[20%] right-[20%]  p-3 text-xl rounded-lg bg-white/80 dark:bg-black/50"   >
+                        {post.title}     
               </div>
+
 
           </div>
           </Link>
