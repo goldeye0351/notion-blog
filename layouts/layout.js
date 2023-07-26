@@ -31,6 +31,8 @@ const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = 
           frontMatter={frontMatter}
           blockMap={blockMap}
           pageTitle={showSubPageTitle ? pageTitle : null}
+          prev={prev}
+          next={next}
         />
         <Aside
           frontMatter={frontMatter}
@@ -38,7 +40,6 @@ const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = 
           pageTitle={showSubPageTitle ? pageTitle : null}
         />
       </motion.div>
-      <PostFooter />
       <ArticleAdjacent prev={prev} next={next} me={frontMatter} />
       <Comments frontMatter={frontMatter} />
     </Container>
