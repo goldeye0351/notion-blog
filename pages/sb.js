@@ -1,44 +1,29 @@
-"use client"
-import BubbleUI from "@/components/Myswiper/Bb";
-import { Sbdata } from "@/components/Sbdata";
-import { pngdata } from "@/components/Data";
-import Typed from "typed.js";
-import { useEffect } from "react";
-
+import Container from "@/components/Container"
+import TouchMeCard from "@/components/Myswiper/TouchMeCard"
 export default function Iwatch(props) {
 
   
-	return (<>
-	<div className=" flex mx-auto justify-center "> 
-		
-        <div className=' w-96  bg-slate-600  relative  overflow-scroll flex flex-row  '> 
-			< div id="m" className=" bg-gray-600 w-3/5 flex flex-col relative "> 
-				<div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div>
-				<div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div>
+	return (<Container >
+<div className="flex flex-row overflow-auto ">
 
-				<div className=" ">11111111111</div>
+       <div className="  w-3/5 h-96 rounded-3xl p-16 relative">
+			<div className=" ">1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div><div>1</div>
+	   </div>
+	   <div className=" w-2/5  rounded-3xl mx-8 space-y-3">
+	   		<div className="  w-56 h-16 rounded-xl bg-red-800  "></div>
+			<div className="  sticky top-0 w-56 h-36 rounded-xl bg-red-100  space-y-3 ">
+				<div className="  w-56 h-8 rounded-xl bg-green-500  "></div>
+				<div className="  w-56 h-8 rounded-xl bg-gray-500  "></div>
+				<TouchMeCard/>
 			</div>
 
-			< div id="s" className=" relative  bg-slate-500 w-2/5 flex  flex-wrap   flex-grow flex-col    ">
-					< div id="s1" className=" relative  bg-black w-full h-56 rounded-full my-8  ">
-						111111
-   					</div>
-					< div id="s2" className="sticky top-0 bottom-0  w-full   ">
-						
-						<div className=" h-16 p-6 my-8 rounded-xl  bg-red-300 ">
-							2222
-						</div>
+	   </div>
 
-						< div id="s3" className=" rounded-full  bg-black w-full h-56 my-8 p-6 ">
-						5555
-   					    </div>
-   					</div>
+</div>
+</Container>
 
-			</div>
-
-        </div>
-	</div>
-	</>
+        
+	
 		
 	)
 };
