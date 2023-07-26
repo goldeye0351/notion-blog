@@ -22,7 +22,7 @@ const timeline = ( {posts}) => {
         <div key={post.id}              
              id="timeline"
              className="w-96 flex flex-row justify-center items-center my-6
-             first:top-96
+             first:mt-8 md:first:mt-[1500px]
              odd:timeline md:odd:-translate-x-[100%] md:odd:rotate-12
              even:timeline-left md:even:-rotate-12 " 
              >   
