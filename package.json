@@ -1,16 +1,16 @@
 {
-  "name": "notion-swiper",
+  "name": "notion-blog",
   "version": "1.0.0",
-  "homepage": "https://535251.xyz",
+  "homepage": "https://mynotion.life",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/goldeye0351/notion-swiper.git"
+    "url": "https://github.com/goldeye0351/notion-blog.git"
   },
   "author": {
     "name": "goldeye0351",
-    "email": "admin@535251.xyz",
-    "url": "https://535251.xyz"
+    "email": "admin@mynotion.life",
+    "url": "https://mynotion.life"
   },
   "scripts": {
     "dev": "next dev",
@@ -42,6 +42,7 @@
     "react-parallax-tilt": "^1.7.145",
     "sharp": "^0.30.5",
     "swiper": "^9.3.2",
+    "typed.js": "^2.0.16",
     "use-ackee": "^3.0.0"
   },
   "devDependencies": {
