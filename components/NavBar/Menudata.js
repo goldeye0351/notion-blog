@@ -51,12 +51,6 @@ export const links = [
           name: 'Privacy',
           to: '/privacy',
           icon: <EyeOffIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 9,
-          name: 'Timeline',
-          to: '/timeline',
-          icon: <TerminalIcon className='inline-block mb-1 h-5 w-5' />,
         }
       ]
     }
