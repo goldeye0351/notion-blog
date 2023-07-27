@@ -59,24 +59,19 @@ const my3d = props => {
 
 {/*  这里是swiper插件 多图的模式  小屏隐藏  中等屏幕开始出现,  */}
   <div className='hidden md:block  '>
-    <div className='   flex justify-center items-center content-center h-screen'>
-      <swiper-container slides-per-view="3"
-        grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
-        effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
-        coverflow-effect-stretch="10" coverflow-effect-modifier="1" loop-additional-slides="2" navigation="true" parallax="true" pagination="true" scrollbar="true" 
-            className=" w-screen"
+    <div className='flex justify-center items-center content-center h-[90VH]'>
+      <swiper-container effect="coverflow" coverflow-effect-rotate="30" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" 
+        slides-per-view="3"
+        grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" loop="true" 
+        className=""
         > 
         {posts.slice(0,9).map((post) => (<>
         <swiper-slide key={post.id} post={post} index={posts.indexOf(post)} > 
           <Link key={post.id} href={`${BLOG.path}/${post.slug}`} scroll={false}>
-          <div key={post.id} className=' relative w-[800px] h-[600px] flex flex-col justify-between object-fill'>  
-              <Image key={post.id} src={post?.page_cover} alt={post.title} fill
-              className='rounded-3xl                
-              '/>             
-
-              <div data-swiper-parallax="0" data-swiper-parallax-scale="1.2" data-swiper-parallax-duration="500"
-                        className=" absolute top-[30%] flex justify-center left-[20%] right-[20%]  p-3 text-xl rounded-lg bg-white/80 dark:bg-black/50"   >
-                        {post.title}     
+          <div key={post.id} className=' relative w-[50VW] h-[65VH] max-w-[800px] max-h-[600px]  -translate-x-[5VW]'>  
+              <Image key={post.id} src={post?.page_cover} alt={post.title} fill priority className='rounded-3xl '/>             
+              <div className=" absolute bottom-[0%] flex justify-center left-[20%] right-[20%]  p-3 text-xl rounded-lg bg-white/80 dark:bg-black/50"   >
+                {post.title}     
               </div>
 
 
