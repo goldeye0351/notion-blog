@@ -1,57 +1,71 @@
-import { getAllPosts,getAllTagsFromPosts } from '@/lib/notion'
+import Image from 'next/image'
+import Link from 'next/link'
+import { getAllPosts, getAllTagsFromPosts , getPostBlocks } from '@/lib/notion'
+import BLOG from '@/blog.config'
+import { register } from 'swiper/element/bundle'
+register()
 import Container from '@/components/Container'
-import HeroLeft from '@/components/Hero/Heroleft'
-import HeroRight from '@/components/Hero/HeroRight'
-import CardTags from '@/components/Card/CardTag'
-import Banner from '@/components/Hero/Banner'
-import Script from 'next/script'
-
 
 export async function getStaticProps() {
-    const posts = await getAllPosts({ onlyPost: true })
-    const tags = getAllTagsFromPosts(posts)
-    return {
-      props: {
-        posts,tags
-      },
-      revalidate: 1
-    }
+  const posts = await getAllPosts({ onlyPost: true })
+  const tags = getAllTagsFromPosts(posts)
+  const heros = await getAllPosts({ onlyHidden: true })
+  const hero = heros.find((t) => t.slug === 'index')
+  let blockMap
+  try {
+    blockMap = await getPostBlocks(hero.id)
+  } catch (err) {
+    console.error(err)
+    // return { props: { post: null, blockMap: null } }
   }
-const test =  props  => {
-
-  return<Container >
-{/* 
-          <div className=" mx-auto w-56 h-36   overflow-scroll  ">
-            
-            <div className="relative">
-              <div className="sticky top-0 px-4 py-3 text-xl flex justify-center bg-slate-300/50 rounded-full  ">
-                AAAAAAAAAA
+  const postsToShow = posts.slice(0, BLOG.postsPerPage)
+  const totalPosts = posts.length
+  const showNext = totalPosts > BLOG.postsPerPage
+  return {
+    props: {
+      page: 1, // current page is 1
+      postsToShow,
+      showNext,
+      posts,
+      tags,
+      hero,
+      blockMap
+    },
+    revalidate: 1
+  }
+}
+const my3d = props => {
+  const  { postsToShow,blockMap,hero, posts,tags} =props
+  return <div className=' block flex-col justify-center items-center content-center max-w-[100VW] space-y-3'>
+    <Container title={BLOG.title} description={BLOG.description}>
+      </Container>
+{/*  这里是swiper插件 多图的模式  小屏隐藏  中等屏幕开始出现,  */}
+  <div className='hidden md:block '>
+    <div className=' h-[70VH]  flex justify-center items-center content-center'>
+      <swiper-container slides-per-view="3"
+        grab-cursor="true" autoplay="true" autoplay-disable-on-interaction="true" speed="100" space-between="0" 
+        effect="coverflow" coverflow-effect-rotate="10" coverflow-effect-depth="500" coverflow-effect-slide-shadows="false" loop="true"
+        coverflow-effect-stretch="10" coverflow-effect-modifier="1" loop-additional-slides="2"
+        > 
+        {postsToShow.map((post) => (<>
+        <swiper-slide key={post.id} post={post} index={postsToShow.indexOf(post)} > 
+          <Link key={post.id} href={`${BLOG.path}/${post.slug}`} scroll={false}>
+          <div key={post.id} className=' max-w-[800px] max-h-[600px] min-w-[600px] min-h-[480px] flex flex-col justify-between'>  
+              <Image key={post.id} src={post?.page_cover} alt={post.title} fill 
+              className='rounded-3xl  static w-[600px] h-[480px]
+              
+              '/>
+              <div key={post.id} className='absolute flex flex-col justify-between  p-8  text-xl '>{post.title} 
+              <div key={post.id} className=' hidden lg:block text-sm '>{post.summary}</div>
               </div>
-              <div className="divide-y dark:divide-slate-200">
-                <div className="flex p-4">A1</div>
-                <div className="flex p-4">A2</div>
-              </div>
-            </div>
-            
-            <div className="relative">
-              <div className="sticky top-0 px-4 py-3 text-xl flex justify-center bg-slate-300/50 rounded-full  ">
-                BBBBBBBBBBB
-              </div>
-              <div className="divide-y dark:divide-slate-200">
-                <div className="flex p-4">B1</div>
-                <div className="flex p-4">B2</div>
-                <div className="flex p-4">B3</div>
-              </div>
-            </div>
+          </div>
+          </Link>
+        </swiper-slide>
+        </>
+        ))}
+      </swiper-container>
+      </div>
+  </div>
 
-          </div>*/}
-
-<div className=' myrotatecard rounded-xl  w-36 h-96 min-w-[10vw] min-h-[10VH]'>
-123<script> alert(navigator.userAgent) </script>
-</div >
-<div className=' mypingcard rounded-xl  w-36 h-96 min-w-[20vw] min-h-[10VH] relative'>
-  <div className='  mymenutext '>333</div >
-</div >
-
-</Container>}
-export default test
+</div>}
+export default my3d
