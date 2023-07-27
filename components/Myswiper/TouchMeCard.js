@@ -1,7 +1,8 @@
 
 import FlipCard from './FlipCard'
 import Link from 'next/link'
-
+import { UserIcon } from '@heroicons/react/outline'
+import Logo from '../Common/Logo'
 /**
  * 交流频道
  * @returns
@@ -11,18 +12,18 @@ export default function TouchMeCard() {
         <div className={'relative h-28 text-white flex flex-col'}>
 
             <FlipCard
-                className='cursor-pointer lg:p-6 p-4 border rounded-xl bg-[#4f65f0] dark:bg-yellow-600 dark:border-gray-600'
+                className='cursor-pointer rounded-xl '
                 frontContent={
-                    <div className='h-full'>
-                        <h2 className='font-[1000] text-3xl'>交流频道</h2>
-                        <h3 className='pt-2'>加入我们的社群讨论分享</h3>
-                        <div className='absolute left-0 top-0 w-full h-full' style={{ background: 'url(https://bu.dusays.com/2023/05/16/64633c4cd36a9.png) center center no-repeat' }}></div>
-                    </div>}
-                backContent={<div className='font-[1000] text-xl h-full'>
-                    <Link href='https://docs.tangly1024.com/article/how-to-question'>
-                        点击加入社群
-                    </Link>
-                </div>}
+                     
+                     <div className=' flex mx-auto justify-center rounded-xl'>
+                     < Logo className='  ' />
+                     </div >
+                    }
+                backContent={
+                    < UserIcon className=' w-full h-full flex mx-auto my-auto bg-gray-300 dark:bg-gray-600 rounded-xl' />
+
+
+                }
             />
 
         </div>
