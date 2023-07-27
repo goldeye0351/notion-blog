@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types'
 import { getPageTableOfContents } from 'notion-utils'
-import Link from 'next/link'
-import { ChevronLeftIcon } from '@heroicons/react/outline'
-import BLOG from '@/blog.config'
 
-export default function TableOfContents ({ blockMap, frontMatter, pageTitle }) {
+export default function TableOfContents ({ blockMap,  pageTitle }) {
   let collectionId, page
   if (pageTitle) {
     collectionId = Object.keys(blockMap.block)[0]
@@ -33,25 +30,12 @@ export default function TableOfContents ({ blockMap, frontMatter, pageTitle }) {
   }
 
   return (
-    <div
-      className='hidden xl:block xl:fixed ml-4 text-sm text-gray-500 dark:text-gray-400 whitespace'
-    >
-      {pageTitle && (
-        <Link
-          passHref
-          href={`${BLOG.path}/${frontMatter.slug}`}
-          scroll={false}
-          className='block -ml-6 mb-2 p-2 hover:bg-gray-200 hover:dark:bg-gray-700 rounded-lg'
-        >
-          <ChevronLeftIcon className='inline-block mb-1 h-5 w-5' />
-          <span className='ml-1'>{frontMatter.title}</span>
-        </Link>
-      )}
+    <div      className='text-sm   toc-fade-in bg-gray-300 dark:bg-gray-600 rounded-2xl p-3 '    >
       {nodes.map(node => (
         <div key={node.id} className='px-2 hover:bg-gray-200 hover:dark:bg-gray-700 rounded-lg'>
           <a
             data-target-id={node.id}
-            className='block py-1 cursor-pointer'
+            className='block py-1 cursor-pointer italic'
             onClick={() => scrollTo(node.id)}
           >
             {node.text}
