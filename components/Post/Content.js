@@ -59,7 +59,7 @@ export default function Content (props) {
       </div>
     </article>
     <div id="sideright" className='w-56 p-3 hidden xl:block'>  
-          111111
+          
         <div className=' sticky top-16 '>
           
           < TableOfContents frontMatter={frontMatter}  blockMap={blockMap} pageTitle={pageTitle}/>
