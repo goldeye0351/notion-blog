@@ -10,24 +10,16 @@ import Container from '@/components/Container'
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyPost: true })
-  const hots = await getAllPosts({ onlyHot: true })
   const tags = getAllTagsFromPosts(posts)
-
-  const totalPosts = posts.length
-  const showNext = totalPosts > BLOG.postsPerPage
   return {
     props: {
-      page: 1, // current page is 1
-      hots,
-      showNext,
-      posts,
-      tags,
+      posts,tags
     },
     revalidate: 1
   }
 }
 const my3d = props => {
-  const  { postsToShow, posts,tags,hots} =props
+  const  { posts,tags} =props
    const options = {
 		size: 150,
 		minSize: 50,
