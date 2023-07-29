@@ -1,3 +1,4 @@
+import styles from './Bb.module.css'
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var React = require('react');
@@ -20,8 +21,6 @@ function _extends() {
 
   return _extends.apply(this, arguments);
 }
-
-var styles = {"container":"_1Lxpd","scrollable":"_2MD0k","horizontalSpacer":"_376IX","rowContainer":"_3bAl3","row":"_1iLpS","bubbleContainer":"_2gu6r","bubble":"_3cleF","guideContainer":"_2SNHQ","guide":"_2pju2"};
 
 var defaultOptions = {
   size: 200,
