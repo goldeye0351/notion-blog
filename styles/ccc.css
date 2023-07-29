@@ -2,7 +2,8 @@
 
 
 .my3d {transform-style: preserve-3d;}
-.my3din {transform: translateZ(50px); }    
+.my3din500 {transform: translateZ(500px);  }    
+.my3din {transform: translateZ(200px);  }    
 
 .arrow::after {
       content: "";
