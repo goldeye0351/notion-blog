@@ -51,9 +51,15 @@ export default function Content (props) {
           </div>
         )}
       </nav>
+      <div className=' hidden xl:block'>
+      <WavesArea />
+      </div>
   </div>
-  <WavesArea />
+         
+      
+  
   <div className=' flex flex-row'>
+ 
     <article  id='postmain'  className='flex-none md:overflow-x-visible overflow-x-scroll w-full max-w-5xl '>
       <div className="-mt-4 relative">
         <NotionRenderer
@@ -62,6 +68,22 @@ export default function Content (props) {
           {...props}
         />
       </div>
+      <div className=' fixed inset-y-[50%] right-0    xl:hidden'>
+        <div className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
+                        <ReadingProgress />
+        </div>
+        <div className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+          <button
+            onClick={() => setShowPay((showPay) => !showPay)}
+            className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
+          >
+            <ThumbUpIcon className='w-6 h-6' />
+          </button>
+        </div>
+        <div className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+                      <Jumptocomment />
+                </div>
+      </div>  
     </article>
     <div id="sideright" className='w-56 p-3 hidden xl:block'>  
           
@@ -87,22 +109,7 @@ export default function Content (props) {
           </div>
         </div>
     </div>
-    <div className=' fixed inset-y-[50%] right-0    xl:hidden'>
-      <div className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
-                      <ReadingProgress />
-      </div>
-      <div className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-        <button
-          onClick={() => setShowPay((showPay) => !showPay)}
-          className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
-        >
-          <ThumbUpIcon className='w-6 h-6' />
-        </button>
-      </div>
-      <div className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                    <Jumptocomment />
-              </div>
-    </div>  
+
   </div>
   {showPay && <WechatPay />}
 </div>
