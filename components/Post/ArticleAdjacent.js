@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import BLOG from "@/blog.config"
 const prevandnext = ( {prev, next, me } ) => {
-  console.log("上一个",typeof(prev),"下一个",typeof(next))
   return <>
 
   <div className='flex  justify-center mx-auto relative  py-5 '>
