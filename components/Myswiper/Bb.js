@@ -37,7 +37,6 @@ var defaultOptions = {
   gravitation: 0
 };
 export default function BubbleUI(props) {
-  console.log("苹果手表一样的ui")
   if (!props.children) {
     return null;
   }
