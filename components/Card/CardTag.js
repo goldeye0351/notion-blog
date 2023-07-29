@@ -9,7 +9,6 @@ const CardTags = ({ tags, className }) => {
     <div id="alltags" className={className}>
       <div className='flex flex-row flex-grow w-full items-center justify-between space-x-2 '>
         {Object.keys(tags).map((key) => {
-          console.log("当前标签",CurrentTag)
           return (
             <button
             key={key}
