@@ -73,7 +73,7 @@ const blog = props => {
 
   return (
     <Container title={BLOG.title} description={BLOG.description}>
-      <div id="allswiper" className=" mt-3 w-full min-h[50VH] a md:min-h-[60vh] max-h-[60vh]   rounded-2xl relative  overflow-clip  ">
+      <div id="allswiper" className=" mt-3 w-full min-h[40VH] md:min-h-[60vh] max-h-[60vh]   rounded-2xl relative  overflow-clip  ">
             <swiper-container loop="true" autoplay="true" slides-per-view="auto" autoplay-delay="3000" 
             navigation="true" parallax="true" pagination="true" scrollbar="true" grab-cursor="true" 
             > 
@@ -81,7 +81,7 @@ const blog = props => {
             {deftag.map((png) => (<>
                 <swiper-slide key={png.id}  >
                     <Link passHref href={`${BLOG.path}/${png.slug}`} scroll={false}  
-                    className=" h-[50vh] md:h-[60VH] md:min-h-[60vh] max-h-[60vh] flex flex-col justify-center ">
+                    className=" h-[40vh] md:h-[60VH] md:min-h-[60vh] max-h-[60vh] flex flex-col justify-center ">
                         {png?.page_cover}
                         <Image key={png.id} src={png?.page_cover} alt={png.title} fill className='rounded-3xl  static '/>
                         <div data-swiper-parallax="1000" data-swiper-parallax-scale="0.05" data-swiper-parallax-duration="600"
