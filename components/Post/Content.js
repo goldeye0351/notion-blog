@@ -34,8 +34,6 @@ export default function Content (props) {
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
       <div className=' text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-3 m-8 rounded-xl'>
-        <DesktopComputerIcon className='  inline-block h-8'/>
-        <hr/>
         <ChatIcon className=' inline-block h-6' />
         <span className='   ' id='typed' /> 
       </div>
@@ -43,6 +41,7 @@ export default function Content (props) {
         <div className='mr-2 mb-4 md:ml-0'>
           <FormattedDate date={frontMatter.date} />
         </div>
+
         {frontMatter.tags && (
           <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
             {frontMatter.tags.map((tag) => (
@@ -50,6 +49,7 @@ export default function Content (props) {
             ))}
           </div>
         )}
+
       </nav>
       <div className=' hidden xl:block'>
       <WavesArea />
