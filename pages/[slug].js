@@ -18,7 +18,6 @@ const Post = props => {
     }
     return false
   }
-  console.log( lock )
 
   if (router.isFallback) {
     return (
