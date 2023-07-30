@@ -43,7 +43,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
         </svg>
       </div>
       <div id="3tags" className='tag-container my-3'>
-        <div className=' flex flex-row  items-center justify-center space-x-2 '>
+        <div className=' flex flex-row justify-center flex-wrap space-x-1 '>
           {Object.keys(tags).map((key) => {
             return (
               <button
