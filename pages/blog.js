@@ -120,7 +120,7 @@ const blog = props => {
         </div>
       </div>
 
-    <div id="mainmotionblog" >
+    <div id="mainmotionblog" className=" overflow-hidden " >
       <AnimatePresence        initial={false}        exitBeforeEnter      >
         <motion.div   key={name}
           variants={variants}
