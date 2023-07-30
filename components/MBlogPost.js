@@ -2,12 +2,11 @@ import BLOG from '@/blog.config'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import 'aos/dist/aos.css' 
 import FormattedDate from '@/components/Common/FormattedDate'
-import React, { useEffect } from 'react'
+import React from 'react'
+
 const BlogPost = ({ index , post,className }) => {
   
-
   return (    
 <motion.div>
       <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
