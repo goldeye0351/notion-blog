@@ -51,7 +51,7 @@ const variants = {
     }
   },
 }
-export async function getStaticProps({name}) {
+export async function getStaticProps({}) {
   const posts = await getAllPosts({ onlyPost: true })
   const tags = getAllTagsFromPosts(posts)
   return {
