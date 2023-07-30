@@ -40,7 +40,7 @@ const my3d = props => {
     <Container title={BLOG.title} description={BLOG.description} >   </Container>
     <div id="shoubiaoui" className="md:hidden">
       <BubbleUI options={options} className={"myBubbleUI h-[90VH]  rounded-3xl  "}>
-            {posts.map((data, i) => (
+            {posts.slice(0,21).map((data, i) => (
               <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={i}>
                 <Image src={data.page_cover} alt={data.title} fill  
                 className=" rounded-full max-w-[150px] max-h-[150px] " /> 
