@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import BlogPost from '@/components/BlogPost'
 import Container from '@/components/Container'
-import Tags from '@/components/Common/Tags'
 import PropTypes from 'prop-types'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
@@ -10,7 +9,6 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
   const [searchValue, setSearchValue] = useState('')
   const { locale } = useRouter()
   const t = lang[locale]
-
   let filteredBlogPosts = []
   if (posts) {
     filteredBlogPosts = posts.filter((post) => {
@@ -19,18 +17,13 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
       return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     })
   }
+  
+  const deftag = searchValue === "" ? posts : filteredBlogPosts 
 
   return (
     <Container>
       <div className='relative'>
-        <input
-          type='text'
-          id="inputtext"
-          placeholder={
-            currentTag
-              ? `${t.SEARCH.ONLY_SEARCH} #${currentTag}`
-              : `${t.SEARCH.PLACEHOLDER}`
-          }
+        <input type='text' id="inputtext"
           className='w-full bg-white dark:bg-gray-600 shadow-md rounded-lg outline-none focus:shadow p-3'
           onChange={(e) => setSearchValue(e.target.value)}
         />
@@ -49,17 +42,34 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
           ></path>
         </svg>
       </div>
-      <Tags tags={tags} currentTag={currentTag} />
+      <div id="3tags" className='tag-container my-3'>
+        <div className=' flex flex-row  items-center justify-center space-x-2 '>
+          {Object.keys(tags).map((key) => {
+            return (
+              <button
+                key={key}
+                onClick={() => { setSearchValue(key) }} 
+                className="group p-3  rounded-xl   hover:scale-110 duration-500  font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600"
+              >
+               {`${key} (${tags[key]})`}
+                
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
       <div className='article-container my-8'>
-        {!filteredBlogPosts.length && (
+        {!deftag.length && (
           <p className='text-gray-500 dark:text-gray-300'>
             {t.SEARCH.NOT_FOUND}
           </p>
         )}
-        {filteredBlogPosts.slice(0, 20).map((post) => (
-          <BlogPost key={post.id} post={post} index={filteredBlogPosts.indexOf(post)} />
-        ))}
-
+        
+              {deftag.slice(0, 20).map((post) => (
+                <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} />
+              ))}
+            
       </div>
     </Container>
   )
