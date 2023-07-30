@@ -100,7 +100,6 @@ const blog = props => {
       <div id="trreetags" className='tag-container my-3'>
         <div className=' flex flex-row flex-grow  w-full items-center justify-between  space-x-2 '>
           {Object.keys(tags).map((key) => {
-            console.log("TAG",name)
             return (
               <button
                 key={key}
