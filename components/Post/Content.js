@@ -1,7 +1,6 @@
 import BLOG from '@/blog.config'
 import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
-import TagItem from '@/components/Common/TagItem'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, ChatIcon} from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
@@ -42,13 +41,11 @@ export default function Content (props) {
           <FormattedDate date={frontMatter.date} />
         </div>
 
-        {frontMatter.tags && (
+        
           <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
-            {frontMatter.tags.map((tag) => (
-              <TagItem key={tag} tag={tag} />
-            ))}
+            {frontMatter.tags}
           </div>
-        )}
+        
 
       </nav>
       <div className=' hidden xl:block'>
