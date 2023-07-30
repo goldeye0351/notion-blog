@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import React from 'react'
 
-const BlogPost = ({ index , post,className }) => {
+const BlogPost = ({  post }) => {
   
   return (    
 <motion.div>
@@ -27,25 +27,16 @@ const BlogPost = ({ index , post,className }) => {
               <h2 className='text-lg md:text-xl font-medium mb-2 text-black dark:text-gray-100'>
                  <span className="  ">{post.title}</span>
                  <span className=" hover:scale-110 duration-500    ">{post.tags}</span>
-        
-
                </h2>
-
-
-                    
-
               <span className='text-color-fix font-light flex-shrink-0 text-gray-600 dark:text-gray-400'>
                 <FormattedDate className="mytext2" date={post.date} />
               </span>
             </header>
             <p className='font-light hidden md:block leading-8 text-gray-700 dark:text-gray-300'>{post.summary}</p>
-            {/* w-4/5  */}
           </div>
         </article>
       </Link>
     </motion.div>
-
-
   )
 }
 
