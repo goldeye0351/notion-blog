@@ -9,7 +9,6 @@ import React, { useEffect } from 'react'
 
 const BlogPost = ({ index , post }) => {
 
-  useEffect(() => {    AOS.init()  }, [])
 
   return (
     <motion.div>
@@ -19,12 +18,6 @@ const BlogPost = ({ index , post }) => {
           className='group  hover:ring-2  bg-gray-300 dark:bg-gray-600  hover:scale-105 duration-500 overflow-hidden relative my-16  cursor-pointer rounded-xl p-5'
         >
          <div
-                         data-aos="fade-up"
-                         data-aos-offset="100"
-                         data-aos-duration="500"
-                         data-aos-easing="ease-in-out"
-                         data-aos-once="false"
-                         data-aos-anchor-placement="top-bottom"
                 id='blog-ID'
                 key={post.id}
                 className={`h-56 w-full md:flex justify-between  ${index % 2 === 1 ? 'flex-row-reverse ' : ''}
