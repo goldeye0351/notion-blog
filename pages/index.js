@@ -2,7 +2,7 @@
 import BubbleUI from "@/components/Myswiper/Bb";
 import Image from 'next/image'
 import Link from 'next/link'
-import { getAllPosts, getAllTagsFromPosts} from '@/lib/notion'
+import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { register } from 'swiper/element/bundle'
 register()
@@ -10,16 +10,15 @@ import Container from '@/components/Container'
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyPost: true })
-  const tags = getAllTagsFromPosts(posts)
   return {
     props: {
-      posts,tags
+      posts
     },
     revalidate: 1
   }
 }
 const my3d = props => {
-  const  { posts,tags} =props
+  const  { posts} =props
    const options = {
 		size: 150,
 		minSize: 50,
