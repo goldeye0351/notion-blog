@@ -1,6 +1,5 @@
 import Image from "next/image"
-import Logoimg from "@/public/favicon.png"
-import { getAllPosts, getAllTagsFromPosts,getPostBlocks } from '@/lib/notion'
+import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
@@ -8,8 +7,6 @@ import SupaComments from "@/components/Post/SupaComments"
 import Container from '@/components/Container'
 
 export async function getStaticProps() {
-  const posts = await getAllPosts({ onlyNewsletter: false })
-  const tags = getAllTagsFromPosts(posts)
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'about')
 
@@ -23,8 +20,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      posts,
-      tags,
       hero,
       blockMap
     },
