@@ -1,9 +1,8 @@
-import BLOG from '@/blog.config'
 import Link from 'next/link'
 import Image from 'next/image'
 import Tilt from 'react-parallax-tilt'
 
-const Friend = ({ index , post }) => {
+const Friend = ({ post }) => {
   return (
   <article
           key={post.id}
