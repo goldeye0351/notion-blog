@@ -1,10 +1,9 @@
 import { useEffect, useCallback, useState, useRef } from 'react'
 import Link from 'next/link'
 import BLOG from '@/blog.config'
-import Logo from '@/components/Common/Logo'
-import { motion } from 'framer-motion'
 import NavBar from './Nav'
-
+import Image from 'next/image'
+import logoimg from '@/public/favicon.png'
 
 const Header = ({ navBarTitle, fullWidth }) => {
   const [showTitle, setShowTitle] = useState(false)
@@ -47,9 +46,9 @@ const Header = ({ navBarTitle, fullWidth }) => {
       >
         <div className='flex items-center'>
           <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
-            <motion.div>
-              <Logo className='h-3' />
-            </motion.div>
+            <div className='relative h-8 w-8 md:h-10 md:w-10 ' >
+              <Image  src={logoimg} alt='Logo'   fill className='  animate-spin    '/>
+            </div>
           </Link>
           {navBarTitle ? (
             <p
