@@ -1,19 +1,21 @@
 import WavesArea from "@/components/Post/WavesArea"
-import BLOG from "@/blog.config";
-import React, { useEffect } from 'react';
+import BLOG from "@/blog.config"
+import React, { useEffect } from 'react'
+
+
+var umiId = BLOG.analytics.umamiConfig.websiteId
 
 function MyComponent() {
+
+
   useEffect(() => {
     function umiTongji() {
       var umiToken = BLOG.analytics.umamiConfig.token
-      var umiId = BLOG.analytics.umamiConfig.websiteId
       var umiTime = Date.parse(new Date());
-      var umiUrl = "https://umami.mynotion.life/api/websites/"+umiId+"/stats?start_at=1672848000000&end_at="+umiTime;
+      var umiUrl = "https://umami.mynotion.life/api/websites/"+umiId+"/stats?startAt=1672848000000&endAt="+umiTime;
       
       fetch(umiUrl, {
         method: 'GET',
-        mode: 'cors',
-        cache: 'default',
         headers: {
           'Authorization': 'Bearer ' + umiToken,
           'Content-Type': 'application/json'
