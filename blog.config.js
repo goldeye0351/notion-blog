@@ -42,7 +42,7 @@ const BLOG = {
   telegramChannelName: '535251', // The name of your Telegram channel
 
   analytics: {
-    provider: 'ga', // Currently we support Google Analytics, Ackee, Umami and Cloudflare Insights, please fill with 'ga' or 'ackee' or 'umami' or 'cf', leave it empty to disable it.
+    provider: 'umami', // Currently we support Google Analytics, Ackee, Umami and Cloudflare Insights, please fill with 'ga' or 'ackee' or 'umami' or 'cf', leave it empty to disable it.
     ackeeConfig: {
       tracker: '', // e.g 'https://ackee.example.com/tracker.js'
       dataAckeeServer: '', // e.g https://ackee.example.com , don't end with a slash
@@ -56,8 +56,8 @@ const BLOG = {
       measurementId: 'G-XMZET1KJPX' // e.g: G-XXXXXXXXXX
     },
     umamiConfig: {
-      scriptUrl: '', // The url of your Umami script
-      websiteId: '' // The website id of your Umami instance
+      scriptUrl: 'https://umami.mynotion.life/script.js', // The url of your Umami script
+      websiteId: '6a873ef2-259b-4e69-a63c-1306d6695bd2' // The website id of your Umami instance
     }
   },
   comment: {
