@@ -70,13 +70,6 @@ const Footer = ({ fullWidth }) => {
 
               </div>
             </div>
-            <div>                
-              <EyeIcon className='inline-block my-2 w-5 h-5 '/>
-              <div id="busuanzi_container_site_pv" className='hidden'>
-                <span id="busuanzi_value_site_pv" className='my-2 inline-block '></span>
-              </div> 
-
-            </div>
             <div className='float-right my-2 flex space-x-2 text-sm '>
                 <div>{`© ${new Date().getFullYear()}`}</div>  
                 <HeartIcon className=' h-5 inline-block hover:animate-ping ' />
