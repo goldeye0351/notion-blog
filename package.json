@@ -22,7 +22,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@vercel/analytics": "^1.0.1",
     "dayjs": "^1.11.7",
     "feed": "^4.2.2",
     "framer-motion": "6.4.3",
