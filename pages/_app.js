@@ -20,7 +20,6 @@ import Footer from '@/components/NavBar/Footer'
 const Ackee = dynamic(() => import('@/components/Common/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Common/Gtag'), { ssr: false })
 const StarrySky = dynamic(() => import('@/components/StarrySky'), { ssr: false })
-const Analytics = dynamic(() => import('@vercel/analytics/react').then(async (m) => { return m.Analytics }), { ssr: false })
 
 function MyApp({ Component, pageProps }) {
   // https://github.com/vercel/next.js/blob/canary/examples/with-loading/pages/_app.js
