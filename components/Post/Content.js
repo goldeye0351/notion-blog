@@ -88,13 +88,12 @@ export default function Content (props) {
           
           < TableOfContents frontMatter={frontMatter}  blockMap={blockMap} pageTitle={pageTitle}/>
           <div className=' flex flex-row justify-between my-3 space-x-3'> 
-
               <div id="点赞" className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <button
                       onClick={() => setShowPay((showPay) => !showPay)}
-                      className=' umami--click--dianzan hover:text-gray-400 dark:hover:text-gray-400'
+                      className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
-                      <ThumbUpIcon data-umami-event="damuzhi" className='w-6 h-6 ' />
+                      <ThumbUpIcon data-umami-event="点赞" className='w-6 h-6 ' />
                     </button>
               </div>
               <div id="进度" className='group  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
@@ -103,7 +102,6 @@ export default function Content (props) {
               <div id="我要评论" className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <Jumptocomment />
               </div>
-
           </div>
         </div>
     </div>
