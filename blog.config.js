@@ -57,7 +57,8 @@ const BLOG = {
     },
     umamiConfig: {
       scriptUrl: 'https://umami.mynotion.life/script.js', // The url of your Umami script
-      websiteId: '6a873ef2-259b-4e69-a63c-1306d6695bd2' // The website id of your Umami instance
+      websiteId: '6a873ef2-259b-4e69-a63c-1306d6695bd2', // The website id of your Umami instance
+      token:'1TyTJFBdyk4FAjIj0qRFoYRx8OjBrVEHiy8KZLytu41/mn2wGPXrLCAnZcKK/TsFqoh329PX4s2IkvMPkFIeUyYD0ATvo938i+ai6KLOcGtq3XDD/YTJBcskOs+Oc8jkCGzlEvg1P7v/ESqCtBiV/toXvK0A82VG21Ph2NOp1BbXCIvHfJrQ9PxOCecobJqP4kbEdOQQby/8Uh0xoUmvadOlxDMBgW8PXmcSxUFeYq/JrfSx+FLG7mhHcGG+uNJG/MfP7g6vs13bIGH9mluCZ/YzvrVLpde89PoDemv+BcOUz8pY7dwnsQRS8iR2MGvEDVHZQGqhr1vFeMNZXMy4aG66gMxYK7D5gw=='
     }
   },
   comment: {
