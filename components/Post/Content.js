@@ -92,7 +92,7 @@ export default function Content (props) {
               <div id="点赞" className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <button
                       onClick={() => setShowPay((showPay) => !showPay)}
-                      className=' hover:text-gray-400 dark:hover:text-gray-400'
+                      className=' umami--click--dianzan hover:text-gray-400 dark:hover:text-gray-400'
                     >
                       <ThumbUpIcon className='w-6 h-6 ' />
                     </button>
@@ -103,6 +103,7 @@ export default function Content (props) {
               <div id="我要评论" className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <Jumptocomment />
               </div>
+
           </div>
         </div>
     </div>
