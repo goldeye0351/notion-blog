@@ -11,7 +11,13 @@ const ThemeSwitcher = () => {
   }, [])
   return (
     <>
-      <motion.button drag
+      <motion.button drag 
+      dragConstraints={{
+      top: -50,
+      left: -50,
+      right: 50,
+      bottom: 50,
+    }}
         // title={`Toggle theme - current ${theme}`}
         aria-label='ThemeSwitcher'
         onClick={() =>
