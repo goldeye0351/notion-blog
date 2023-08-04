@@ -1,3 +1,4 @@
+'use clent'
 import Layout from '@/layouts/layout'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
@@ -32,7 +33,13 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next} /> }
+  { return <>  
+  <div id="busuanzi_container_page_pv" className=" ">
+    <span id="busuanzi_value_page_pv"></span>
+  </div>
+  <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next} />
+
+  </>}
 
 }
 
