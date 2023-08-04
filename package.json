@@ -22,6 +22,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.10",
     "dayjs": "^1.11.7",
     "feed": "^4.2.2",
     "framer-motion": "6.4.3",
