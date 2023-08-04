@@ -2,7 +2,7 @@ import BLOG from '@/blog.config'
 import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, ChatIcon} from '@heroicons/react/outline'
+import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, HeartIcon,ChatIcon} from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import { useEffect, useState } from "react";
@@ -26,6 +26,25 @@ export default function Content (props) {
 				loop: false,
 				loopCount: 3
 			  })})
+
+  const slug=frontMatter.id;
+  const newup=frontMatter.up++ ;
+  console.log('newup=',newup)
+  
+  const dianzan = async (e) => {
+    e.preventDefault();
+    const res = await fetch('/api/dianzan', {
+      method: 'PATCH',
+      body: JSON.stringify({ slug,newup}),
+    });
+    // Success if status code is 201
+    if (res.status === 201) {
+      alert('谢谢你的点赞.', { type: 'success' });
+
+    } else {
+      alert('出错了', { type: 'error' });
+    }
+  };
 
   return (<div>
   <div id="biaoti"  className=' flex flex-col justify-center'>
@@ -65,7 +84,7 @@ export default function Content (props) {
           {...props}
         />
       </div>
-      <div className=' fixed inset-y-[50%] right-0    xl:hidden'>
+      <div id="小屏几个" className=' fixed inset-y-[50%] right-0    xl:hidden'>
         <div className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
                         <ReadingProgress />
         </div>
@@ -82,18 +101,19 @@ export default function Content (props) {
                 </div>
       </div>  
     </article>
-    <div id="sideright" className='w-56 p-3 hidden xl:block'>  
+    <div id="sideright" className='w-56 p-3 hidden xl:block '>  
           
         <div className=' sticky top-16 '>
           
           < TableOfContents frontMatter={frontMatter}  blockMap={blockMap} pageTitle={pageTitle}/>
-          <div className=' flex flex-row justify-between my-3 space-x-3'> 
-              <div id="点赞" className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+          <div id="大屏几个" className=' flex flex-row justify-between my-3 space-x-1'> 
+              <div id="点赞" className='group  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <button
-                      onClick={() => setShowPay((showPay) => !showPay)}
+                      onClick={dianzan}
                       className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
-                      <ThumbUpIcon data-umami-event="点赞" className='w-6 h-6 ' />
+                      <ThumbUpIcon data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />
+                      {frontMatter.up}
                     </button>
               </div>
               <div id="进度" className='group  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
