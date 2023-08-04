@@ -29,7 +29,7 @@ export default function Content (props) {
 
   const slug=frontMatter.id;
   const newup=frontMatter.up++ ;
-  console.log('newup=',newup)
+
   
   const dianzan = async (e) => {
     e.preventDefault();
@@ -39,10 +39,10 @@ export default function Content (props) {
     });
     // Success if status code is 201
     if (res.status === 201) {
-      alert('谢谢你的点赞.', { type: 'success' });
+      console.log('谢谢你的点赞.', { type: 'success' });
 
     } else {
-      alert('出错了', { type: 'error' });
+      console.log('出错了', { type: 'error' });
     }
   };
 
@@ -62,7 +62,7 @@ export default function Content (props) {
 
         
           <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
-            {frontMatter.tags}
+            {frontMatter.tags} 
           </div>
         
 
@@ -113,7 +113,7 @@ export default function Content (props) {
                       className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
                       <ThumbUpIcon data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />
-                      {frontMatter.up}
+                      
                     </button>
               </div>
               <div id="进度" className='group  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
