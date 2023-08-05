@@ -5,11 +5,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Tilt from 'react-parallax-tilt'
 import Container from '@/components/Container'
-import dynamic from 'next/dynamic'
+//import dynamic from 'next/dynamic'
 import { useState } from 'react';
-import { HeartIcon } from '@heroicons/react/outline'
+import FlipCard from '@/components/Myswiper/FlipCard'
 
-const TwikooCompenent = dynamic(() => {return import('@/components/Post/Twikoo')},{ ssr: false })
+{/*const TwikooCompenent = dynamic(() => {return import('@/components/Post/Twikoo')},{ ssr: false })*/}
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyFriend: true })
@@ -67,13 +67,20 @@ const Friend = ({  posts }) => {
       ))}
 
     </div>
-
-    <div className='  flex  max-w-fit mx-auto  justify-center mypingcard ring-2 '>
+    <div className='  flex  max-w-fit mx-auto  justify-center mypingcard opacity-80 dark:opacity-100  '>
       <form onSubmit={submitForm} className=' z-50   mx-auto flex flex-col justify-center items-center content-center p-3   '>
-        <div className='group  mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
-          < div className='h-1 ' />
-          <div className='group-hover:scale-150 duration-500   '>自己加个友链吧</div>
-          < div className='h-1 ' />
+        <div className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
+          < div className='h-3 ' />
+          <FlipCard
+                className=' rounded-xl  duration-500'
+                frontContent={
+                  <div className=' flex w-full  mx-auto justify-center items-center content-center '>Try</div>
+                    }
+                backContent={
+                  <div className='group-hover:scale-y-150 duration-500 flex w-full  mx-auto justify-center items-center content-center '>自主添加友链,快来试试吧!</div>
+                }
+            />
+          < div className='h-8 ' />
         </div>
         <div className='flex flex-row justify-center space-x-3'> 
           <div>
