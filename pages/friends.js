@@ -112,8 +112,8 @@ const Friend = ({  posts }) => {
         </button>
       </form>
     </div>
-        {/*<SupaComments id="supacomments" />*/}
-        <TwikooCompenent id="twikoo" />
+       <SupaComments id="supacomments" />
+       {/* <TwikooCompenent id="twikoo" />*/}
 
     </Container>
   )
