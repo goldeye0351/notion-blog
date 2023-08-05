@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BlogPost from '@/components/BlogPost'
+import BlogPost from '@/components/NBlogPost'
 import Container from '@/components/Container'
 import PropTypes from 'prop-types'
 import { lang } from '@/lib/lang'
@@ -59,7 +59,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
         </div>
       </div>
 
-      <div className='article-container my-8'>
+      <div className='article-container my-8 flex flex-row flex-wrap justify-center  lg:justify-between    '>
         {!deftag.length && (
           <p className='text-gray-500 dark:text-gray-300'>
             {t.SEARCH.NOT_FOUND}
