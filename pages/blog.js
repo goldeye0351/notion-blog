@@ -105,7 +105,7 @@ const blog = props => {
                 key={key}
                 onClick={() => { setName(key) }} 
                 className={` group px-3 w-1/3 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center   ${ Object.keys(tags).indexOf(key)% 3 === 0 ? 'cai1 ' :Object.keys(tags).indexOf(key)% 3  === 1 ? 'cai2 ' : 'cai3'}
-                overflow-hidden rounded-xl   hover:scale-110 duration-500   m-1 font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600`}
+                overflow-hidden rounded-xl    duration-500   m-1 font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600`}
               >
                {`${key} (${tags[key]})`}
                 <ShareIcon 
