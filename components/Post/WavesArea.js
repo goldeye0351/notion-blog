@@ -1,7 +1,7 @@
 export default function WavesArea() {
   const color = '#414b57'
   return (
-        <section className="main-hero-waves-area waves-area w-full scale-150 my-3">
+        <section className="main-hero-waves-area waves-area w-screen  scale-y-[10] rotate-180  translate-y-[380%]  absolute top-0  left-0 my-3">
             <svg className="waves-svg w-full h-[60px]" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shapeRendering="auto">
                 <defs>
                     <path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path>
