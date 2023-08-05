@@ -67,9 +67,9 @@ export default function Content (props) {
         
 
       </nav>
-      <div className=' hidden xl:block'>
+
       <WavesArea />
-      </div>
+
   </div>
          
       
