@@ -31,7 +31,7 @@ const About = ({ blockMap,hero }) => {
 <Container  title="About Me. Notion Blog" description={BLOG.description} className='about' >
   <div className="relative  flex flex-col justify-center content-center items-center pb-12  space-y-16">
     
-     <Tilt className="my3d shadow-lg shadow-indigo-500 rounded-xl  max-w-[80VW] "
+     <Tilt className="my3d rounded-xl  max-w-[80VW] "
               perspective={1500}
               glareEnable={true}
               glarePosition={'all'}
@@ -40,10 +40,9 @@ const About = ({ blockMap,hero }) => {
               glareBorderRadius="12px"
               scale={1.02}
             >
-            <Image src={hero.page_cover} alt={hero.title} fill />   
+            <Image src={hero.page_cover} alt={hero.title} fill className=" rounded-3xl" />   
               <div className=" my3din500  flex mx-auto flex-col text-xl  items-center content-center justify-center p-6 absolute top-[30%] inset-x-[30%]   ">
               About
-              <Image  src={hero?.page_cover} alt={BLOG.title} width={100} height={30}  className=' rounded-3xl max-h-8  '/>
 
               </div>
               <div className="my3din flex flex-col justify-center items-center flex-wrap p-12  ">
