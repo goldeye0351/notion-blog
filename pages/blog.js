@@ -97,8 +97,8 @@ const blog = props => {
             </>))}
             </swiper-container>
       </div>  
-      <div id="trreetags" className='tag-container my-3'>
-        <div className=' flex flex-row flex-grow  w-full items-center justify-between  space-x-2 '>
+      <div id="xxtags" className='tag-container my-3 overflow-scroll   '>
+        <div className=' flex flex-row flex-grow  w-full min-w-[600px]  items-center justify-between   space-x-2 '>
           {Object.keys(tags).map((key) => {
             return (
               <button
