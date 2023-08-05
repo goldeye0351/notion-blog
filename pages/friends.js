@@ -7,6 +7,7 @@ import Tilt from 'react-parallax-tilt'
 import Container from '@/components/Container'
 import dynamic from 'next/dynamic'
 import { useState } from 'react';
+import { HeartIcon } from '@heroicons/react/outline'
 
 const TwikooCompenent = dynamic(() => {return import('@/components/Post/Twikoo')},{ ssr: false })
 
@@ -42,17 +43,12 @@ const Friend = ({  posts }) => {
   };
 
   return (<Container  title="Friend. Notion Blog" description={BLOG.description} className='friend' >
-    <div id="friend" className=' relative flex flex-wrap gap-16 mx-auto justify-center items-center cursor-pointer mb-16 '>
+    <div id="friend" className=' relative flex  flex-wrap  mx-auto justify-center   items-center cursor-pointer mb-16  '>
       {posts.map((post) => (
-        <article
-                key={post.id}
-                className='flex mx-5 my-5 max-w-min  items-center cursor-pointer  mb-10 ' 
-              >
+        <article    key={post.id}  className='flex m-5  cursor-pointer w-56 rounded-full    '    >
           <Link  href={post.title} target='new'>
             <Tilt id='blog-ID' key={post.id}
-                        className="my3d   bg-slate-200 dark:bg-slate-600 
-                        rounded-lg 
-                        w-[420px] h-[210px] flex flex-row justify-center"
+                        className="my3d   bg-slate-200 dark:bg-slate-600 rounded-lg  flex flex-row justify-center  "
                         perspective={800}
                         glareEnable={false}
                         glarePosition={'all'}
@@ -60,13 +56,11 @@ const Friend = ({  posts }) => {
                         glareBorderRadius="9999px"
                         scale={1}
                       >
-                <div className="my3din  flex flex-col justify-center items-center  self-center  ">
-
-                  <Image src={post?.page_cover}  alt={post.title} width={300} height={300}
-                  className=' rounded-lg -z-10'          />
-                  
+                <div className="my3din  flex flex-col justify-center  ">
+                  <Image src={post?.page_cover}  alt={post.title} width={100} height={100}
+                  className=' rounded-lg translate-x-[30%]  '  />
                 </div>
-                <div  className='flex flex-col justify-center  text-xl'>    {post.summary}  </div>
+                <div  className='flex flex-col justify-center h-20 max-h-20  overflow-scroll p-3  '> {post.summary}  </div>
             </Tilt>
           </Link>
         </article>
@@ -74,40 +68,50 @@ const Friend = ({  posts }) => {
 
     </div>
 
-    <div className=' flex flex-col mx-auto justify-center '>
-        <div className='mx-auto flex flex-row text-2xl italic '>自己加个友链吧</div>
-      <form onSubmit={submitForm} className='  mx-auto flex flex-col justify-center items-center content-center '>
-        <div className=' p-3 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
-          <input id="title"  name="title"
-            type="text" className=' w-96 bg-white/30 dark:bg-black/30'
-            placeholder="请在这里输入自己网站的网址,如 http://mynotion.life"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
+    <div className='  flex  max-w-fit mx-auto  justify-center mypingcard ring-2 '>
+      <form onSubmit={submitForm} className=' z-50   mx-auto flex flex-col justify-center items-center content-center p-3   '>
+        <div className='group  mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
+          < div className='h-1 ' />
+          <div className='group-hover:scale-150 duration-500   '>自己加个友链吧</div>
+          < div className='h-1 ' />
+        </div>
+        <div className='flex flex-row justify-center space-x-3'> 
+          <div>
+            <div className=' p-3 bg-slate-300/30 dark:bg-slate-600/30 rounded-xl my-3'>
+              <input id="title"  name="title"
+                type="text" className=' w-auto xl:w-96 duration-500 bg-white/30 dark:bg-black/30'
+                placeholder="Your Site:eg:https://mynotion.life"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className=' p-3 bg-slate-300/30 dark:bg-slate-600/30 rounded-xl my-3'>
+              <input id="icon"  name="icon"
+                type="text" className=' w-auto xl:w-96 duration-500 bg-white/30 dark:bg-black/30'
+                placeholder="Your Logo,eg:https://mynotion.life/favicon.ico"
+                value={icon}
+                onChange={(e) => setIcon(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          <div className=' p-3 bg-slate-300/30 dark:bg-slate-600/30 rounded-xl my-3'>
+            <textarea    name="summary"  id="summary"  rows="3"
+              className=' md:w-96 bg-white/30 dark:bg-black/30'
+              placeholder="Your Description,.请在这里输入网站的介绍."
+              value={summary}
+              onChange={(e) => setSummary(e.target.value)}
+              required
+            ></textarea>
+          </div>
+
         </div>
 
-        <div className=' p-3 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
-          <input id="icon"  name="icon"
-            type="text" className=' w-96 bg-white/30 dark:bg-black/30'
-            placeholder="请输入网站标志 logo"
-            value={icon}
-            onChange={(e) => setIcon(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className=' p-3 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
-          <textarea    name="summary"  id="summary"  rows="3"
-            className=' w-96 bg-white/30 dark:bg-black/30'
-            placeholder="请在这里输入网站的介绍."
-            value={summary}
-            onChange={(e) => setSummary(e.target.value)}
-            required
-          ></textarea>
-        </div>
         
-        <button  type="submit" className=' p-3 w-36 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
+        <button  type="submit" className=' p-3 text-2xl w-full bg-slate-300/30 dark:bg-slate-600/30 rounded-xl  '>
           Submit
         </button>
       </form>
