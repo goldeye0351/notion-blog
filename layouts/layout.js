@@ -20,6 +20,7 @@ const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = 
     <Container
       title={`${frontMatter.title}${frontMatter.title === pageTitle ? '' : ' | ' + pageTitle}`}
       description={frontMatter.summary}
+      ogimage={frontMatter.page_cover}
       // date={new Date(frontMatter.publishedAt).toISOString()}
       type='article'
       fullWidth={fullWidth}

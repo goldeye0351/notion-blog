@@ -1,9 +1,11 @@
 const BLOG = {
   title: 'Notion Blog',
+  description: 'Notion博客网站',
+  blogtitle: 'Notion Blog 首页',
+  blogdescription: 'Notion博客网站，一个有料的网站',
   author: 'CCC',
   email: 'admin@mynotion.life',
   link: 'https://mynotion.life',
-  description: 'Notion博客网站',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],

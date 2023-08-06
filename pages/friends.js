@@ -42,7 +42,7 @@ const Friend = ({  posts }) => {
     }
   };
 
-  return (<Container  title="Friend. Notion Blog" description={BLOG.description} className='friend' >
+  return (<Container  title="Friend. Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} className='friend' >
     <div id="friend" className=' relative flex  flex-wrap  mx-auto justify-center   items-center cursor-pointer mb-16  '>
       {posts.map((post) => (
         <article    key={post.id}  className='flex m-5  cursor-pointer w-56 rounded-full    '    >

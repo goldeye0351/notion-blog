@@ -36,7 +36,7 @@ const my3d = props => {
 
 
   return <div className=' block flex-col justify-center items-center content-center max-w-[100VW] space-y-3'>
-    <Container title={BLOG.title} description={BLOG.description} >   </Container>
+    <Container title={BLOG.title} description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >   </Container>
     <div id="shoubiaoui" className="md:hidden">
       <BubbleUI options={options} className={"myBubbleUI h-[90VH]  rounded-3xl  "}>
             {posts.slice(0,21).map((data, i) => (

@@ -72,7 +72,7 @@ const blog = props => {
  const deftag = name === "" ? posts : filteredBlogPosts 
 
   return (
-    <Container title={BLOG.title} description={BLOG.description}>
+    <Container title={BLOG.blogtitle} description={BLOG.blogdescription} ogimage={BLOG.link+BLOG.defaultIcon}  >
       <div id="allswiper" className=" mt-3 w-full min-h[40VH] md:min-h-[60vh] max-h-[60vh]   rounded-2xl relative  overflow-clip  ">
             <swiper-container loop="true" autoplay="true" slides-per-view="auto" autoplay-delay="3000" 
             navigation="true" parallax="true" pagination="true" scrollbar="true" grab-cursor="true" 

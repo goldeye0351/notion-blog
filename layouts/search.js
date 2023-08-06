@@ -4,6 +4,7 @@ import Container from '@/components/Container'
 import PropTypes from 'prop-types'
 import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
+import BLOG from '@/blog.config'
 
 const SearchLayout = ({ tags, posts, currentTag }) => {
   const [searchValue, setSearchValue] = useState('')
@@ -21,7 +22,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
   const deftag = searchValue === "" ? posts : filteredBlogPosts 
 
   return (
-    <Container>
+    <Container  title="Search Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >
       <div className='relative'>
         <input type='text' id="inputtext"
           className='w-full bg-white dark:bg-gray-600 shadow-md rounded-lg outline-none focus:shadow p-3'
