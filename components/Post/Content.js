@@ -90,12 +90,12 @@ export default function Content (props) {
                         <ReadingProgress />
         </div>
         <div  className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-          <button
-            onClick={dianzan}
+          <button id="xiaopindianzan"
+            onClick={dianzan} data-umami-event="小屏点赞" 
             className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
           >
             {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)} className='w-6 h-6' />*/}
-            <ThumbUpIcon data-umami-event="小屏点赞" className='w-6 h-6' />
+            <ThumbUpIcon className='w-6 h-6' />
             <span id="myupxiaopin" className=' inline-block'>{zjk}</span>
 
           </button>
@@ -112,12 +112,12 @@ export default function Content (props) {
           < TableOfContents frontMatter={frontMatter}  blockMap={blockMap} pageTitle={pageTitle}/>
           <div id="大屏几个" className=' flex flex-row justify-between my-3 space-x-1'> 
               <div id="点赞"  className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                    <button
-                      onClick={dianzan}
+                    <button id="dapindianzan"
+                      onClick={dianzan} data-umami-event="大屏点赞" 
                       className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
                       {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />*/}
-                      <ThumbUpIcon data-umami-event="大屏点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />
+                      <ThumbUpIcon className='w-6 h-6 inline-block mx-1 text-center   ' />
                       <span id="myupdapin" className=' inline-block'>{zjk}</span>
 
                     </button>
