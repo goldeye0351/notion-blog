@@ -35,7 +35,7 @@ const Footer = ({ fullWidth }) => {
       })
       .then(res => res.json())
       .then(resdata => {
-        document.querySelector('#pvStatic').innerHTML = resdata.pageviews.value;
+        document.querySelector('#pvstatic').innerHTML = resdata.pageviews.value;
       });
     }
 
@@ -91,7 +91,7 @@ const Footer = ({ fullWidth }) => {
             <div className='  flex space-x-2  h-16 justify-center flex-row content-center items-center '>
                 <div>{`© ${new Date().getFullYear()}`}</div>  
                 <HeartIcon className=' h-5 inline-block duration-500  hover:animate-ping hover:h-8 ' />
-                <span pvStatic id="pvStatic">2023</span>
+                <span id="pvstatic">2023</span>
                 <EyeIcon className=' h-5 inline-block ' />
             </div>
         </div>
