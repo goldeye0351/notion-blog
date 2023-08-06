@@ -67,7 +67,7 @@ const Friend = ({  posts }) => {
       ))}
 
     </div>
-    <div className='  flex  max-w-fit mx-auto  justify-center mypingcard opacity-80 dark:opacity-100 mb-8 '>
+    <div className='  flex  max-w-fit mx-auto  justify-center mb-8 '>
       <form onSubmit={submitForm} className=' z-50   mx-auto flex flex-col justify-center items-center content-center p-3   '>
         <div className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
           < div className='h-3 ' />
@@ -77,14 +77,14 @@ const Friend = ({  posts }) => {
                   <div className=' flex w-full  mx-auto justify-center items-center content-center '>Try</div>
                     }
                 backContent={
-                  <div className='group-hover:scale-y-150 duration-500 flex w-full  mx-auto justify-center items-center content-center '>自主添加友链,快来试试吧!</div>
+                  <div className='group-hover:scale-y-150 duration-500 flex w-full  mx-auto justify-center items-center content-center '>自主添加友链</div>
                 }
             />
           < div className='h-8 ' />
         </div>
-        <div className='flex flex-row justify-center space-x-3'> 
+        <div className='flex flex-col md:flex-row justify-center md:space-x-3'>
           <div>
-            <div className=' p-3 bg-slate-300/30 dark:bg-slate-600/30 rounded-xl my-3'>
+            <div className=' p-3 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
               <input id="title"  name="title"
                 type="text" className=' w-auto xl:w-96 duration-500 bg-white/30 dark:bg-black/30'
                 placeholder="Your Site:eg:https://mynotion.life"
@@ -94,7 +94,7 @@ const Friend = ({  posts }) => {
               />
             </div>
 
-            <div className=' p-3 bg-slate-300/30 dark:bg-slate-600/30 rounded-xl my-3'>
+            <div className=' p-3 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
               <input id="icon"  name="icon"
                 type="text" className=' w-auto xl:w-96 duration-500 bg-white/30 dark:bg-black/30'
                 placeholder="Your Logo,eg:https://mynotion.life/favicon.ico"
@@ -105,7 +105,7 @@ const Friend = ({  posts }) => {
             </div>
           </div>
 
-          <div className=' p-3 bg-slate-300/30 dark:bg-slate-600/30 rounded-xl my-3'>
+          <div className=' p-3 bg-slate-300 dark:bg-slate-600 rounded-xl my-3'>
             <textarea    name="summary"  id="summary"  rows="3"
               className=' md:w-96 bg-white/30 dark:bg-black/30'
               placeholder="Your Description,.请在这里输入网站的介绍."
@@ -118,7 +118,7 @@ const Friend = ({  posts }) => {
         </div>
 
         
-        <button  type="submit" className=' p-3 text-2xl w-full bg-slate-300/30 dark:bg-slate-600/30 rounded-xl  '>
+        <button  type="submit" className=' p-3 text-2xl w-full bg-slate-300 dark:bg-slate-600 rounded-xl  '>
           Submit
         </button>
       </form>
