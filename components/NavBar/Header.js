@@ -47,7 +47,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
         <div className='flex items-center'>
           <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
             <div className='relative h-8 w-8 md:h-10 md:w-10 ' >
-              <Image  src={logoimg} alt='Logo'   fill className='  animate-spin    '/>
+              <Image  src={logoimg} alt='Logo' priority className='  animate-spin    '/>
             </div>
           </Link>
           {navBarTitle ? (
