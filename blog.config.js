@@ -23,20 +23,21 @@ const BLOG = {
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   defaultCover: '/mycover.jpg',
+  defaultIcon: '/favicon.png',
   socialLink: {
     twitter: 'https://twitter.com/',
-    github: 'https://github.com/goldeye0351',
+    github: 'https://github.com/goldeye0351/notion-blog',
     telegram: 'https://t.me/'
   },
   seo: {
     keywords: ['notion', 'Blog','mynotion.life'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
-  notionPageId: process.env.NOTION_PAGE_ID || '3d9ebf755c044125b8237c2398021b83', // DO NOT CHANGE THIS! Edit .env file!
-  notionSpacesId: process.env.NOTION_SPACES_ID ||'3566433aa75e4eaf80684da17d0ff217' , // DO NOT CHANGE THIS! Edit .env file!
+  notionPageId: process.env.NOTION_PAGE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
+  notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
-  telegramToken: process.env.TELEGRAM_TOKEN ||'6050897201:AAF1Ofc03QWLmIXvEtrbVfjOAoTX83Binss', // The token of your Telegram bot
+  telegramToken: process.env.TELEGRAM_TOKEN ||'', // The token of your Telegram bot
   telegramChatId: '754356243', // The chat id of your Telegram bot
   telegramChannelUrl: 'https://t.me/+qhlQu1J3xONkNzYx', // The link of your Telegram channel
   telegramChannelName: '535251', // The name of your Telegram channel
