@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import React from 'react'
-import { EyeIcon } from '@heroicons/react/outline'
+import { EyeIcon, HeartIcon } from '@heroicons/react/outline'
 
 const BlogPost = ({  post }) => {
   
@@ -35,9 +35,9 @@ const BlogPost = ({  post }) => {
             </header>
             <p className='font-light hidden md:block leading-8 text-gray-700 dark:text-gray-300'>{post.summary}</p>
           </div>
-          <div className='absolute bottom-0 right-0 font-light p-5 text-gray-600 dark:text-gray-400'>
-             <EyeIcon className=' w-6 h-6 inline-block' /> {post.up}
-            </div>
+          <div className='absolute bottom-0 right-0  p-5 text-gray-600 dark:text-gray-400'>
+             <HeartIcon className=' w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
+          </div>
         </article>
       </Link>
     </motion.div>
