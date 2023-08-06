@@ -14,7 +14,7 @@ import WavesArea from './WavesArea'
 export default function Content (props) {
   const { frontMatter, blockMap, pageTitle,prev,next } = props
   const [showPay, setShowPay] = useState(false)
-
+  var zjk = frontMatter.up;
   useEffect(() => {
 		new Typed('#typed', {
 				strings: ["ai......",frontMatter.summary],
@@ -27,11 +27,10 @@ export default function Content (props) {
 				loopCount: 3
 			  })})
 
-  const slug=frontMatter.id;
-  const newup=frontMatter.up++ ;
-
-  
   const dianzan = async (e) => {
+    const slug=frontMatter.id;
+    zjk++;
+    const newup=zjk ;
     e.preventDefault();
     const res = await fetch('/api/dianzan', {
       method: 'PATCH',
@@ -39,11 +38,13 @@ export default function Content (props) {
     });
     // Success if status code is 201
     if (res.status === 201) {
-      console.log('谢谢你的点赞.', { type: 'success' });
-
+      document.querySelector('#myupxiaopin').innerHTML = newup;
+      document.querySelector('#myupdapin').innerHTML = newup;
+      console.log('谢谢你的点赞.',newup)
     } else {
       console.log('出错了', { type: 'error' });
     }
+    return newup;
   };
 
   return (<div>
@@ -93,7 +94,10 @@ export default function Content (props) {
             onClick={dianzan}
             className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
           >
-            <ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)} className='w-6 h-6' />
+            {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)} className='w-6 h-6' />*/}
+            <ThumbUpIcon data-umami-event="小屏点赞" className='w-6 h-6' />
+            <span id="myupxiaopin" className=' inline-block'>{zjk}</span>
+
           </button>
         </div>
         <div className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
@@ -112,8 +116,10 @@ export default function Content (props) {
                       onClick={dianzan}
                       className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
-                      <ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />
-                      
+                      {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />*/}
+                      <ThumbUpIcon data-umami-event="大屏点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />
+                      <span id="myupdapin" className=' inline-block'>{zjk}</span>
+
                     </button>
               </div>
               <div id="进度" className='group cursor-pointer  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
