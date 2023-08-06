@@ -68,7 +68,7 @@ const Friend = ({  posts }) => {
 
     </div>
     <div className='  flex  max-w-fit mx-auto  justify-center mb-8 '>
-      <form onSubmit={submitForm} className=' z-50   mx-auto flex flex-col justify-center items-center content-center p-3   '>
+      <form onSubmit={submitForm} className=' mx-auto flex flex-col justify-center items-center content-center p-3   '>
         <div className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
           < div className='h-3 ' />
           <FlipCard
