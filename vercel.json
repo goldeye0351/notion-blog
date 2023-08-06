@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/cover.jpg",
+      "source": "/mycover.jpg",
       "headers": [
         {
           "key": "Cache-Control",
