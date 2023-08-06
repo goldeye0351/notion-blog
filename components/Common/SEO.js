@@ -28,7 +28,7 @@ const SEO = ({ meta }) => {
       <meta property='og:title' content={meta.title} />
       <meta property='og:description' content={meta.description} />
       <meta property='og:url' content={meta.slug ? `${url}/${meta.slug}` : `${url}${router.asPath}`} />
-      <meta property='og:image' content={meta.image}  />
+      <meta property='og:image' content={meta.image || BLOG.defaultIcon}  />
       <meta property="og:site_name" content={BLOG.title} />
       <meta property='og:type' content={meta.type} />
       <meta name='twitter:card' content='summary_large_image' />
