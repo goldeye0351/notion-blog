@@ -17,8 +17,11 @@ const BlogPost = ({ index , post }) => {
          <motion.div id='blog-ID' key={post.id}  className="group  justify-between  rounded-xl   " >
             <motion.div   className=' z-10  '   >
                 <h2 className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm '>{post.title}</h2>
-                <span className='  hidden md:block text-color-fix font-light flex-shrink-0 text-gray-600 dark:text-gray-400'>
-                  <FormattedDate date={post.date} /><ThumbUpIcon className='  ml-8 mr-1 w-6 h-6 inline-block'/>{post.up}
+                <span className=' flex font-light justify-between  text-gray-600 dark:text-gray-400'>
+                  <FormattedDate date={post.date} />
+                  <div>
+                    <ThumbUpIcon className='  mr-1 w-6 h-6 inline-block'/>{post.up}
+                  </div>
                 </span>
                 <p className='   font-light leading-8 text-gray-700 dark:text-gray-100'>{post.summary}</p>
 
