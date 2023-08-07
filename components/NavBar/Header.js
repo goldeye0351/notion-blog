@@ -2,9 +2,7 @@ import { useEffect, useCallback, useState, useRef } from 'react'
 import Link from 'next/link'
 import BLOG from '@/blog.config'
 import NavBar from './Nav'
-import Image from 'next/image'
-import logoimg from '@/public/favicon.png'
-
+import Logo from '../Common/Logo'
 const Header = ({ navBarTitle, fullWidth }) => {
   const [showTitle, setShowTitle] = useState(false)
   const useSticky = !BLOG.autoCollapsedNavBar
@@ -46,9 +44,10 @@ const Header = ({ navBarTitle, fullWidth }) => {
       >
         <div className='flex items-center'>
           <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
-            <div className='relative h-8 w-8 md:h-10 md:w-10 ' >
-              <Image  src={logoimg} alt='Logo' priority className='  animate-spin    '/>
+            <div className='relative ' >
+               <Logo className='h-12 w-12 md:h-16 md:w-16    hover:text-cyan-300  hover:animate-spin fill-current ' />
             </div>
+
           </Link>
           {navBarTitle ? (
             <p
