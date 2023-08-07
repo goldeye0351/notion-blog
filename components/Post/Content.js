@@ -10,6 +10,7 @@ import TableOfContents from './TableOfContents'
 import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import WavesArea from './WavesArea'
+import { motion } from 'framer-motion'
 
 export default function Content (props) {
   const { frontMatter, blockMap, pageTitle,prev,next } = props
@@ -52,7 +53,8 @@ export default function Content (props) {
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
-      <div className=' text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-3 m-8 rounded-xl'>
+      <div 
+      className=' text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-3 m-8 rounded-xl'>
         <ChatIcon className=' inline-block h-6' />
         <span className='   ' id='typed' /> 
       </div>
@@ -105,7 +107,21 @@ export default function Content (props) {
                 </div>
       </div>  
     </article>
-    <div id="sideright" className='w-56 p-3 hidden xl:block '>  
+    <motion.div
+             initial="hidden"
+             animate="visible"
+             transition={{ delay: 0.7, duration: 1.2 }}
+             variants={{
+               hidden: {
+                 opacity: 0,
+                 y: 100,
+               },
+               visible: {
+                 opacity: 1,
+                 y: 0,
+               },
+             }}
+     id="sideright" className='w-56 p-3 hidden xl:block '>  
           
         <div className=' sticky top-16 '>
           
@@ -130,7 +146,7 @@ export default function Content (props) {
               </div>
           </div>
         </div>
-    </div>
+    </motion.div>
 
   </div>
   {showPay && <WechatPay />}
