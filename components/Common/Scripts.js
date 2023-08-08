@@ -41,6 +41,7 @@ const Scripts = () => (
       </>
     )}
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://analytics.umami.is/script.js" data-website-id="4fa58f8e-a0e1-415b-b04d-866e163b15f1"></script>
     {/*<script async src={'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${BLOG.googleadid}'} crossorigin="anonymous"> </script>*/}
   </>
 )
