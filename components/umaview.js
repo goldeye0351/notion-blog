@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BLOG from '@/blog.config';
-
 const Umatongji = ({ slug }) => {
   const [myResult, setMyResult] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -11,7 +9,6 @@ const Umatongji = ({ slug }) => {
         const umiToken = BLOG.analytics.umamiConfig.token;
         const umiTime = Date.parse(new Date());
         const umiUrl = `https://umami.mynotion.life/api/websites/${umiId}/metrics?startAt=1672848000000&endAt=${umiTime}&type=url`;
-
         const response = await fetch(umiUrl, {
           method: 'GET',
           headers: {
@@ -25,7 +22,7 @@ const Umatongji = ({ slug }) => {
         for (let value of resdata) {
           if (value.x.substr(1) === slug) {
             const result = value.y;
-            console.log(slug, "的结果是", result);
+            //console.log(slug, "的结果是", result);
             setMyResult(result);
             break;
           }
