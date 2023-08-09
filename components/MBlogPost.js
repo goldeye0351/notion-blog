@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import React from 'react'
-import { ThumbUpIcon } from '@heroicons/react/outline'
-
+import {EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
+import Umatongji from './umaview'
 const BlogPost = ({  post }) => {
   
   return (    
@@ -36,7 +36,8 @@ const BlogPost = ({  post }) => {
             <p className='font-light hidden md:block leading-8 text-gray-700 dark:text-gray-300'>{post.summary}</p>
           </div>
           <div className='absolute bottom-0 right-0  p-5 text-gray-600 dark:text-gray-400'>
-             <ThumbUpIcon className=' w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
+             <EyeIcon className='  mx-3 w-6 h-6 inline-block'/>{Umatongji({slug:post.slug} ) }
+             <ThumbUpIcon className=' m-3 w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
           </div>
         </article>
       </Link>
