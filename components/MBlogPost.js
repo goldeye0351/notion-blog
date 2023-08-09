@@ -10,7 +10,7 @@ const BlogPost = ({  post }) => {
   
   return (    
 <motion.div>
-      <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
+      <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.id}>
         <article
           key={post.id}
           className='group flex flex-col overflow-hidden relative mb-5 md:mb-8 cursor-pointer rounded-xl p-5'

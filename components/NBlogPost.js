@@ -9,7 +9,7 @@ import Umatongji from './umaview'
 const BlogPost = ({ index , post }) => {
   return (
 <div>
-  <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false}>
+  <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.id} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
                 variants={{

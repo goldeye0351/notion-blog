@@ -81,3 +81,18 @@
 
 .myiconlunbo {  animation: rowup 30s linear infinite;}
 @keyframes rowup {  0% {transform: translateX(0%); } 50% { transform: translateX(-50%);}  100% {transform: translateX(-100%);  }}
+
+.tanchukuang {
+  position: relative;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tanchukuang:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
