@@ -36,7 +36,7 @@ const BlogPost = ({ index , post,resdata }) => {
                 }}>  
       <article
           key={post.id}
-          className='  bg-gray-300 dark:bg-gray-600 duration-500 relative m-3  cursor-pointer rounded-xl p-5 w-[80vw] lg:w-[45vw] xl:w-96  overflow-hidden '
+          className='  bg-gray-200 dark:bg-gray-700 duration-500 relative m-3  cursor-pointer rounded-xl p-5 w-[80vw] lg:w-[45vw] xl:w-96  overflow-hidden '
         >
          <div 
          id='blog-ID' key={post.id}  className="group  justify-between  rounded-xl   " >

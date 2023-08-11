@@ -1,6 +1,6 @@
 import BLOG from '@/blog.config'
 import { useState } from 'react'
-import { lang } from '@/lib/lang'
+import { lang } from '@/public/lang'
 import { useRouter } from 'next/router'
 
 import WechatPay from '@/components/Post/WechatPay'

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import BlogPost from '@/components/NBlogPost'
 import Container from '@/components/Container'
 import PropTypes from 'prop-types'
-import { lang } from '@/lib/lang'
+import { lang } from '@/public/lang'
 import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 
@@ -25,6 +25,7 @@ const SearchLayout = ({ tags, posts, currentTag,resdata }) => {
     <Container  title="Search Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >
       <div className='relative'>
         <input type='text' id="inputtext"
+        placeholder={t.SEARCH.PLACEHOLDER}
           className='w-full bg-white dark:bg-gray-600 shadow-md rounded-lg outline-none focus:shadow p-3'
           onChange={(e) => setSearchValue(e.target.value)}
         />

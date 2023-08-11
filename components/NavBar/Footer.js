@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image.js'
 import BLOG from '@/blog.config'
-import { lang } from '@/lib/lang'
+import { lang } from '@/public/lang.js'
 import { useRouter } from 'next/router'
 import {  UserIcon,  UsersIcon,  MailIcon,EyeIcon, StarIcon, CursorClickIcon,StatusOnlineIcon, HeartIcon } from '@heroicons/react/outline'
 import { motion } from 'framer-motion'

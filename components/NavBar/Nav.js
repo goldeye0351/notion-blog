@@ -1,12 +1,11 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import {MenuIcon} from '@heroicons/react/outline'
-import Social from '../Common/Social.js'
 import MenuItem from './MenuItems.js'
-import { motion } from 'framer-motion'
 import Collapse from './Collapse.js'
-import { links } from './Menudata.js'
+import { links } from '../../public/Menudata.js'
 import ThemeSwitcher from './ThemeSwitcher.js'
+import LangSwitcher from './LangSwitcher.js'
 const NavBar = (props) => {
   const router = useRouter()
 
@@ -24,7 +23,7 @@ const NavBar = (props) => {
   const collapseRef = useRef(null)
 
   return (
-    <motion.div className='relative flex flex-row justify-start'>
+    <div className='relative flex flex-row flex-nowrap  justify-start'>
       {/* Desktop Menu */}  
       <ul id="desktopmenu" className="hidden md:flex ">
         {links.map((menu, index) => {
@@ -32,9 +31,10 @@ const NavBar = (props) => {
             <MenuItem items={menu} key={index}  />
           )})}        
       </ul>
-      <div >
-         <ThemeSwitcher  />
-      </div>
+
+         <ThemeSwitcher /> 
+         <LangSwitcher />
+
 
       {/* iphone Menu */}
       <div id="mobilemenu" className='md:hidden  block ' >
@@ -76,7 +76,7 @@ const NavBar = (props) => {
         
       </div>
       
-    </motion.div>
+    </div>
   )
 }
 

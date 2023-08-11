@@ -1,4 +1,4 @@
-import { lang } from '@/lib/lang'
+import { lang } from '@/public/lang'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

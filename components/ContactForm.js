@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { lang } from '@/lib/lang'
+import { lang } from '@/public/lang'
 import { useRouter } from 'next/router'
 
 function Contact() {

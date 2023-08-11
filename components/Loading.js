@@ -1,5 +1,5 @@
 import BLOG from '@/blog.config'
-import { lang } from '@/lib/lang'
+import { lang } from '@/public/lang'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { ExternalLinkIcon } from '@heroicons/react/outline'
