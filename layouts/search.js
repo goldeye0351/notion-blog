@@ -6,7 +6,7 @@ import { lang } from '@/lib/lang'
 import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 
-const SearchLayout = ({ tags, posts, currentTag }) => {
+const SearchLayout = ({ tags, posts, currentTag,resdata }) => {
   const [searchValue, setSearchValue] = useState('')
   const { locale } = useRouter()
   const t = lang[locale]
@@ -68,7 +68,7 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
         )}
         
               {deftag.slice(0, 20).map((post) => (
-                <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} />
+                <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} />
               ))}
             
       </div>

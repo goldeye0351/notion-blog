@@ -4,9 +4,27 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import React from 'react'
+import { useEffect } from 'react';
+
 import { EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
-import Umatongji from './umaview'
-const BlogPost = ({ index , post }) => {
+const BlogPost = ({ index , post,resdata }) => {
+  useEffect(() => {
+    const updateDOM = () => {
+      for (var value of resdata) {
+        const xslug= value.x.substr(1);
+        console.log('slug',xslug)
+        try{
+          if (value.x.substr(1).length > 0) {
+            var demo = document.getElementById(xslug);
+            demo.innerHTML = value.y;
+          }
+        }catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    updateDOM();
+  }, [resdata]);
   return (
 <div>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.id} >
@@ -27,7 +45,7 @@ const BlogPost = ({ index , post }) => {
                 <span className=' flex font-light justify-between  text-gray-600 dark:text-gray-400'>
                   <FormattedDate date={post.date} />
                   <div>
-                    <EyeIcon className='  mx-3 w-6 h-6 inline-block'/>{Umatongji({slug:post.slug} ) }
+                    <EyeIcon className='  mx-3 w-6 h-6 inline-block'/><span id={post.slug} ></span>
                     <ThumbUpIcon className='  mx-3 w-6 h-6 inline-block'/>{post.up}
                   </div>
                 </span>

@@ -5,9 +5,26 @@ import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import React from 'react'
 import {EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
-import Umatongji from './umaview'
-const BlogPost = ({  post }) => {
-  
+import { useEffect } from 'react';
+
+const BlogPost = ({  post,resdata }) => {
+  useEffect(() => {
+    const updateDOM = () => {
+      for (var value of resdata) {
+        const xslug= value.x.substr(1);
+        console.log('slug',xslug)
+        try{
+          if (value.x.substr(1).length > 0) {
+            var demo = document.getElementById(xslug);
+            demo.innerHTML = value.y;
+          }
+        }catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    updateDOM();
+  }, [resdata]);
   return (    
 <motion.div>
       <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.id}>
@@ -36,7 +53,7 @@ const BlogPost = ({  post }) => {
             <p className='font-light hidden md:block leading-8 text-gray-700 dark:text-gray-300'>{post.summary}</p>
           </div>
           <div className='absolute bottom-0 right-0  p-5 text-gray-600 dark:text-gray-400'>
-             <EyeIcon className='  mx-3 w-6 h-6 inline-block'/>{Umatongji({slug:post.slug} ) }
+             <EyeIcon className='  mx-3 w-6 h-6 inline-block'/><span id={post.slug} ></span>
              <ThumbUpIcon className=' m-3 w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
           </div>
         </article>
