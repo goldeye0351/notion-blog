@@ -31,7 +31,7 @@ const SEO = ({ meta }) => {
       <meta property='og:image' content={meta.ogimage ||`${url}{BLOG.defaultIcon}`}  />
       <meta property="og:site_name" content={BLOG.title} />
       <meta property='og:type' content={meta.type} />
-      <meta name='twitter:card' content={meta.ogimage || summary_large_image} />
+      <meta name='twitter:card' content="summary_large_image"  />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:title' content={meta.title} />
       <meta
