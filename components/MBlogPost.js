@@ -60,10 +60,10 @@ const BlogPost = ({  post,resdata }) => {
                 <FormattedDate className="mytext2" date={post.date} />
               </span>
             </header>
-            <div className=" duration-500   rounded-xl p-1 space-x-3 text-sm flex flex-row justify-between text-gray-700 dark:text-gray-300">
-              <div className=' italic'>
-                <div className=" duration-500 inline-block   rounded-xl p-1  ">{t.BLOG.CATEGORY}:{post.category}</div>
-                <div className=" duration-500 inline-block   rounded-xl p-1  space-x-3 ">{t.BLOG.TAGS}:.{post.tags[0]}.{post.tags[1]}.{post.tags[2]}.{post.tags[3]}.{post.tags[4]}</div>
+            <div className=" duration-500  rounded-xl  text-sm flex flex-row flex-nowrap justify-between text-gray-700 dark:text-gray-300">
+              <div className=' space-x-1        '>
+                <div className=" duration-500 inline-block font-bold   rounded-xl   ">{post.category}</div>
+                <div className=" duration-500 inline-block font-thin italic   rounded-xl   ">{t.BLOG.TAGS}:.{post.tags[0]}.{post.tags[1]}.{post.tags[2]}.{post.tags[3]}.{post.tags[4]}</div>
               </div>
               <div>
                 <EyeIcon className=' mx-1  w-6 h-6 inline-block'/><span id={post.slug} ></span>
