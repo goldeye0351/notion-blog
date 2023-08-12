@@ -1,6 +1,6 @@
 import Container from '@/components/Container'
 import BlogPost from '@/components/MBlogPost'
-import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
+import { getAllPosts, getAllCatsFromPosts } from '@/lib/notion'
 import PropTypes from 'prop-types'
 import BLOG from '@/blog.config'
 import Link from 'next/link'
@@ -53,7 +53,7 @@ const variants = {
 }
 export async function getStaticProps({}) {
   const posts = await getAllPosts({ onlyPost: true })
-  const tags = getAllTagsFromPosts(posts)
+  const cats = getAllCatsFromPosts(posts)
   const umiId = BLOG.analytics.umamiConfig.websiteId;
   const umiToken = BLOG.analytics.umamiConfig.token;
   const umiTime = Date.parse(new Date());
@@ -66,21 +66,23 @@ export async function getStaticProps({}) {
     }
   });
   const resdata = await response.json();
-
   return {
-    props: {posts,tags,resdata},
+    props: {posts,cats,resdata},
     revalidate: 1
   }
 }
 
-const blog = props => {
-  const { posts,tags,resdata } = props
-  const [name, setName] = useState('')
-  const filteredBlogPosts = posts.filter(
-    (post) => post && post.tags && post.tags.includes(name)
-  )
- const deftag = name === "" ? posts : filteredBlogPosts 
+function guolv({  posts, name   }) {
+  if (!name) return posts;
+  return posts.filter((post) =>
+    post?.category?.[0] === name
+  )    
+}
 
+const blog = props => {
+  const { posts,cats,resdata } = props
+  const [name, setName] = useState('')
+  const defposts = guolv({  posts,  name})
   return (
     <Container title={BLOG.blogtitle} description={BLOG.blogdescription} ogimage={BLOG.link+BLOG.defaultIcon}  >
       <div id="allswiper" className=" mt-3 w-full min-h[40VH] md:min-h-[60vh] max-h-[60vh]   rounded-2xl relative  overflow-clip  ">
@@ -88,7 +90,7 @@ const blog = props => {
             navigation="true" parallax="true" pagination="true" scrollbar="true" grab-cursor="true" 
             > 
             
-            {deftag.map((png) => (<>
+            {defposts.map((png) => (<>
                 <swiper-slide key={png.id}  >
                     <Link passHref href={`${BLOG.path}/${png.slug}`} scroll={false}  
                     className=" h-[40vh] md:h-[60VH] md:min-h-[60vh] max-h-[60vh] flex flex-col justify-center ">
@@ -109,20 +111,20 @@ const blog = props => {
       </div>  
       <div id="xxtags" className='tag-container my-3 overflow-scroll   '>
         <div className=' flex flex-row flex-grow  w-full min-w-[600px]  items-center justify-between   space-x-2 '>
-          {Object.keys(tags).map((key) => {
+          {Object.keys(cats).map((key) => {
             return (
               <button
                 key={key}
                 onClick={() => { setName(key) }} 
-                className={` group px-3 w-1/3 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center   ${ Object.keys(tags).indexOf(key)% 3 === 0 ? 'cai1 ' :Object.keys(tags).indexOf(key)% 3  === 1 ? 'cai2 ' : 'cai3'}
+                className={` group px-3 w-1/3 hover:w-1/2 h-16 flex flex-row justify-between content-center items-center   ${ Object.keys(cats).indexOf(key)% 3 === 0 ? 'cai1 ' :Object.keys(cats).indexOf(key)% 3  === 1 ? 'cai2 ' : 'cai3'}
                 overflow-hidden rounded-xl    duration-500   m-1 font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600`}
               >
-               {`${key} (${tags[key]})`}
+               {`${key} (${cats[key]})`}
                 <ShareIcon 
-                className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105     ${ Object.keys(tags).indexOf(key)% 2 === 1 ? 'hidden ' : ''}
+                className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105     ${ Object.keys(cats).indexOf(key)% 2 === 1 ? 'hidden ' : ''}
                 duration-500 `}/>
                 <PlayIcon 
-                className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105      ${ Object.keys(tags).indexOf(key)% 2 === 1 ? ' ' : 'hidden'}
+                className={`inline-block scale-150  h-16 w-16 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-105      ${ Object.keys(cats).indexOf(key)% 2 === 1 ? ' ' : 'hidden'}
                 duration-500 `}/>
               </button>
             )
@@ -138,7 +140,7 @@ const blog = props => {
           animate={["center", "scaleUp"]}
           exit={["scaleDown", "out"]}
         >
-      {deftag.map((post) => (
+      {defposts.map((post) => (
         <BlogPost key={post.id} post={post} resdata={resdata}/>
       ))}
         </motion.div>
@@ -150,7 +152,6 @@ const blog = props => {
 }
 blog.propTypes = {
   posts: PropTypes.array.isRequired,
-  tags: PropTypes.object.isRequired,
-  currentTag: PropTypes.string
+  cats: PropTypes.object.isRequired,
 }
 export default blog

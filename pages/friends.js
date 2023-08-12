@@ -24,7 +24,6 @@ export async function getStaticProps() {
 
 const Friend = ({  posts }) => {
   const [showResult, setShowResult] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
   const { locale } = useRouter()
   const t = lang[locale]
   // Input states
@@ -43,7 +42,6 @@ const Friend = ({  posts }) => {
     // Success if status code is 201
     if (res.status === 201) {
       //alert('已成功.请刷新查看');
-      setSubmitting(false)
       setShowResult(true)
     } else {
       //alert('出错了');

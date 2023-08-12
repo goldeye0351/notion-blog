@@ -1,5 +1,9 @@
 export const lang = {
   zh: {
+    BLOG: {
+      CATEGORY: '类别',
+      TAGS: '标签'
+    },
     PAGINATION: {
       PREV: '上一页',
       NEXT: '下一页'
@@ -46,6 +50,10 @@ export const lang = {
     }
   },
   en: {
+    BLOG: {
+      CATEGORY: 'Category',
+      TAGS: 'Tags'
+    },
     PAGINATION: {
       PREV: 'Prev',
       NEXT: 'Next'
