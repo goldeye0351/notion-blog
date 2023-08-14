@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
         />
         <TransitionEffect>
             <div
-              className={`min-h-[60VH] md:min-h-[calc(100vh-17rem)] ${
+              className={`min-h-[60VH] flex content-center justify-center items-center md:min-h-[calc(100vh-17rem)] ${
                 BLOG.font === 'serif' ? 'font-serif' : 'font-sans'
               }`}
             >
