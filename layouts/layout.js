@@ -5,8 +5,8 @@ import ArticleAdjacent from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Comments from '@/components/Post/Comments'
-
-const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = false }) => {
+import Pinglun from '@/components/Post/Pinglun'
+const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,pingluns }) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 
   const pageTitle = getPageTitle(blockMap)
@@ -26,6 +26,7 @@ const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = 
       fullWidth={fullWidth}
     >
       <motion.div className=''>
+
         <Content
           frontMatter={frontMatter}
           blockMap={blockMap}
@@ -36,6 +37,8 @@ const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = 
       </motion.div>
       <ArticleAdjacent prev={prev} next={next} me={frontMatter} />
       <Comments frontMatter={frontMatter} />
+      <Pinglun post={frontMatter}  pingluns={pingluns}  />
+
     </Container>
   )
 }

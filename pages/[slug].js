@@ -6,9 +6,13 @@ import Loading from '@/components/Loading'
 import NotFound from '@/components/NotFound'
 import { ArticleLock } from '@/components/Post/ArticleLock'
 import React from 'react'
+import { getDefComments } from "@/lib/notionapi";
+  const pinglunId = BLOG.notionPinglunPageId;
+  
+
 
 const Post = props => {
-  const { post, blockMap,prev,next  }=props 
+  const { post, blockMap,prev,next,pingluns  }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -32,7 +36,7 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next} /> }
+  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  pingluns={pingluns}/> }
 
 }
 
@@ -47,9 +51,12 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { slug } }) {
   const posts = await getAllPosts({ postAndPage:true })
   const post = posts.find((t) => t.slug === slug)
+  const postid = post.id
   const index = posts.indexOf(post)
   const prev = posts.slice(index - 1, index)[0] ?? posts.slice(-1)[0]
   const next = posts.slice(index + 1, index + 2)[0] ?? posts[0]
+
+  const  mypingluns = await getDefComments(pinglunId,postid);
   try {
     const blockMap = await getPostBlocks(post.id)
     return {
@@ -57,7 +64,8 @@ export async function getStaticProps({ params: { slug } }) {
         post,
         prev,
         next,
-        blockMap
+        blockMap,
+        pingluns: mypingluns,
       },
       revalidate: 1
     }
@@ -68,7 +76,8 @@ export async function getStaticProps({ params: { slug } }) {
         post: null,
         prev: null,
         next: null,
-        blockMap: null
+        blockMap: null,
+        pingluns:null
       }
     }
   }

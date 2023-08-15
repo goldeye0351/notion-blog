@@ -36,6 +36,7 @@ const BLOG = {
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionPageId: process.env.NOTION_PAGE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
+  notionPinglunPageId: process.env.NOTION_PINGLUN_PAGE_ID || '566ebe55ff8946af9fdf02ab39e73b0a', // DO NOT CHANGE THIS! Edit .env file! 
   notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
