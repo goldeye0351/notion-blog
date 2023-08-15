@@ -1,16 +1,20 @@
 import BLOG from "@/blog.config";
 import { useEffect } from 'react';
 import Link from "next/link";
-import Router from "next/router";
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { ChatIcon,ChatAltIcon,ChatAlt2Icon, UserCircleIcon } from '@heroicons/react/outline';
 
 import FormattedDate from "../Common/FormattedDate";
 
 function Pinglun({post,pingluns} ){
+  const router = useRouter();
+  const ForceRefresh = () => {
+    router.reload();
+  };
   const handleRefresh = () => {
     setTimeout(() => {
-      Router.reload();
+      router.reload();
       location.reload();
     }, 5000);
   };
@@ -32,6 +36,7 @@ function Pinglun({post,pingluns} ){
           setShowResult(false);
           //console.log('看不见评论栏了?')
           handleRefresh;
+          ForceRefresh;
           //console.log('强制刷新了?')
         } else {
           alert('信号不好, 出错了')    
@@ -39,7 +44,7 @@ function Pinglun({post,pingluns} ){
       };
 
 return<>
-<div className="  mx-auto  flex flex-row justify-center">
+<div onClick={ForceRefresh} className="  mx-auto  flex flex-row justify-center">
       <ol >
         {pingluns.map((post) => (
           <li key={post.id} className='  m-3 flex  w-[90vw] max-w-screen-md  
