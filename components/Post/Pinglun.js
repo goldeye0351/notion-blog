@@ -15,6 +15,7 @@ function Pinglun({post,pingluns} ){
     const [ren, setRen] = useState('');
     const [pinglun, setPinglun] = useState('');
     const [showResult, setShowResult] = useState(true);
+    const [showcom, setShowcom] = useState(false);
     const postid = post.id;
     const title = post.title
         //console.log('postid',postid)
@@ -28,6 +29,7 @@ function Pinglun({post,pingluns} ){
         if (res.status === 201) {
           //alert('已成功.请刷新查看');
           setShowResult(false);
+          setShowcom(true);
           //ForceRefresh;
           //setTimeout(() => {      router.reload(); }, 10000);
           window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
@@ -76,6 +78,7 @@ return<>
       </button>
   </form>}
     {/*  temp    */}
+    {showcom && 
     <div className="  mx-auto  flex flex-row justify-center">
       <li  className='  m-3 flex  w-[90vw] max-w-screen-md  '>
         <div className=" justify-center flex-col flex text-center duration-300 hover:text-blue-500 ">
@@ -94,7 +97,8 @@ return<>
           </div>
         </div>
       </li>
-    </div> 
+    </div> }
+
    {/*  temp    */}
 <div id="comment" className="  mx-auto  flex flex-row justify-center">
       <ol >
