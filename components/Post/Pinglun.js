@@ -29,7 +29,7 @@ function Pinglun({post,pingluns} ){
           //alert('已成功.请刷新查看');
           setShowResult(false);
           //ForceRefresh;
-          setTimeout(() => {      router.reload(); }, 10000);
+          //setTimeout(() => {      router.reload(); }, 10000);
           window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
           //console.log('强制刷新了?')
         } else {
