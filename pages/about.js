@@ -5,11 +5,16 @@ import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
 import SupaComments from "@/components/Post/SupaComments"
 import Container from '@/components/Container'
+import Pinglun from "@/components/Post/NotionComment"
+import { getDefComments } from "@/lib/notionapi";
+  
 
 export async function getStaticProps() {
+  const pinglunId = BLOG.notionCommentId;
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'about')
-
+  const postid=hero.id
+  const mypingluns = await getDefComments(pinglunId,postid);
   let blockMap
   try {
     blockMap = await getPostBlocks(hero.id)
@@ -21,12 +26,13 @@ export async function getStaticProps() {
   return {
     props: {
       hero,
-      blockMap
+      blockMap,
+      pingluns: mypingluns,
     },
     revalidate: 1
   }
 }
-const About = ({ blockMap,hero }) => {
+const About = ({ blockMap,hero,pingluns }) => {
   return (
 <Container  title="About Me. Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon}  className='about' >
   <div className="relative  flex flex-col justify-center content-center items-center pb-12  space-y-16">
@@ -54,7 +60,7 @@ const About = ({ blockMap,hero }) => {
     </Tilt>
  </div>
    <SupaComments />
-   
+   <Pinglun post={hero}  pingluns={pingluns}  />
 </Container >
 
 )}

@@ -13,33 +13,22 @@ const BLOG = {
   lightBackground: '#F6F8FA', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#212936', // use hex value, don't forget '#'
   path: '', // leave this empty unless you want to deploy Notionic in a folder
-  since: 2021, // If leave this empty, current year will be used.
   googleadid:'ca-pub-2287965691379058',
-  postsPerPage: 10,
   sortByDate: true,
-  pagesShow: {
-    contact: true,
-    friends: true
-  },
-  showWeChatPay: true,
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   defaultCover: '/mycover.jpg',
   defaultIcon: '/favicon.png',
-  socialLink: {
-    twitter: 'https://twitter.com/',
-    github: 'https://github.com/goldeye0351/notion-blog',
-    telegram: 'https://t.me/'
-  },
   seo: {
     keywords: ['notion', 'Blog','mynotion.life'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
-  notionPageId: process.env.NOTION_PAGE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
-  notionPinglunPageId: process.env.NOTION_PINGLUN_PAGE_ID || '566ebe55ff8946af9fdf02ab39e73b0a', // DO NOT CHANGE THIS! Edit .env file! 
+  notionDatabaseId: process.env.NOTION_DATABASE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
+  notionCommentId: process.env.NOTION_COMMENT_ID || '', // DO NOT CHANGE THIS! Edit .env file! 
   notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
-  notionAccessToken: process.env.NOTION_ACCESS_TOKEN, // Useful if you prefer not to make your database public
+  notionAccessToken: '', // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
+  
   telegramToken: process.env.TELEGRAM_TOKEN ||'', // The token of your Telegram bot
   telegramChatId: '754356243', // The chat id of your Telegram bot
   telegramChannelUrl: 'https://t.me/+qhlQu1J3xONkNzYx', // The link of your Telegram channel

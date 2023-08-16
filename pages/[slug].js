@@ -7,7 +7,7 @@ import NotFound from '@/components/NotFound'
 import { ArticleLock } from '@/components/Post/ArticleLock'
 import React from 'react'
 import { getDefComments } from "@/lib/notionapi";
-  const pinglunId = BLOG.notionPinglunPageId;
+  const pinglunId = BLOG.notionCommentId;
   
 
 

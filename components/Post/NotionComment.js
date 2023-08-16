@@ -63,7 +63,7 @@ return<>
 
       <div className=' col-span-2 sm:col-span-1 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
-              type="text" className='  italic px-3  mx-3 block  duration-500 bg-white/30 dark:bg-black/30'
+              type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '
               placeholder={t.LAYOUT.COMMENT_NAME}
               value={ren}
               onChange={(e) => setRen(e.target.value)}

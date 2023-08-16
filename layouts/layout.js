@@ -5,7 +5,7 @@ import ArticleAdjacent from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Comments from '@/components/Post/Comments'
-import Pinglun from '@/components/Post/Pinglun'
+import Pinglun from '@/components/Post/NotionComment'
 const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,pingluns }) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 

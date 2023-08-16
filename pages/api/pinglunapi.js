@@ -2,9 +2,9 @@ import BLOG from '@/blog.config';
 const { Client } = require('@notionhq/client');
 
 const notion = new Client({
-  auth: process.env.NOTION_PINGLUN_API_KEY,
+  auth: process.env.NOTION_API_KEY,
 });
- const pinglunId =BLOG.notionPinglunPageId
+ const pinglunId =BLOG.notionCommentId
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res
