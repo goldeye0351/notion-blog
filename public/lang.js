@@ -12,7 +12,10 @@ export const lang = {
       NOTICE_TEXT: '对于本文内容有任何疑问, 可与我联系.',
       PAY_BUTTON: '微信赞赏',
       NOTICE_BUTTON: '一键私信',
-      COMMENT_TITLE: '评论区'
+      COMMENT_TITLE: '评论区',
+      COMMENT_MAIN:'📝 ❖读而不评则罔,评而不读则殆❖ ',
+      COMMENT_NAME:'昵称',
+      COMMENT_SUBMIT:'提交'
     },
     SEARCH: {
       PLACEHOLDER: '搜索文章',
@@ -62,7 +65,10 @@ export const lang = {
       NOTICE_TEXT: 'If you have any questions, please contact me.',
       PAY_BUTTON: 'Sponsor',
       NOTICE_BUTTON: 'Contact',
-      COMMENT_TITLE: 'Comments'
+      COMMENT_TITLE: 'Comments',
+      COMMENT_MAIN:'📝 ❖Reading without commenting is useless, commenting without reading is perilous❖ ',
+      COMMENT_NAME:'nickname',
+      COMMENT_SUBMIT:'Submit'
     },
     SEARCH: {
       PLACEHOLDER: 'Search Posts',

@@ -35,10 +35,10 @@ const Layout = ({ prev,next,blockMap, frontMatter, fullWidth = false, subPage = 
           next={next}
         />
       </motion.div>
-      <ArticleAdjacent prev={prev} next={next} me={frontMatter} />
+
       {/* <Comments frontMatter={frontMatter} />  */}
       <Pinglun post={frontMatter}  pingluns={pingluns}  />
-
+      <ArticleAdjacent prev={prev} next={next} me={frontMatter} />
     </Container>
   )
 }
