@@ -59,7 +59,7 @@ const About = ({ blockMap,hero,pingluns }) => {
               
     </Tilt>
  </div>
-   <SupaComments />
+   {/*<SupaComments />*/}
    <Pinglun post={hero}  pingluns={pingluns}  />
 </Container >
 
