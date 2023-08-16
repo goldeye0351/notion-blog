@@ -35,24 +35,12 @@ export const links = [
         },
         {
           id: 6,
-          name: 'Contact',
-          to: '/contact',
-          icon: <MailIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 7,
           name: 'Friends',
           to: '/friends',
           icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
         },
         {
-          id: 8,
-          name: 'Umami',
-          to: '/umami',
-          icon: <CodeIcon className='inline-block mb-1 h-5 w-5' />,
-        },
-        {
-          id: 9,
+          id: 7,
           name: 'Privacy',
           to: '/privacy',
           icon: <EyeOffIcon className='inline-block mb-1 h-5 w-5' />,
