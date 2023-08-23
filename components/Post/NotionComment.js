@@ -18,8 +18,11 @@ function Pinglun({post,pingluns} ){
     const [ren, setRen] = useState('');
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
+    const parts = email.split('@');
+    const part0 = parts[0];
+    const part1 = parts[1];
     const emailHash = email ? md5(email.trim().toLowerCase()) : '';
-    const gravatarUrl2 = `https://www.gravatar.com/avatar/${emailHash}`;
+    const gravatarUrl2 = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
     const [showResult, setShowResult] = useState(true);
     const [showcom, setShowcom] = useState(false);
     const postid = post.id;
@@ -113,8 +116,13 @@ return<>
       <ol >
         {pingluns.map((post) => {
           const myemail = post.properties.Email.email;
+          const parts = myemail ? myemail.split('@'): '';
+          const part0 = parts[0];
+          const part1 = parts[1];
           const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
-          const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
+          const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
+
+
           return<li key={post.id} className='  m-3 flex  w-[90vw] max-w-screen-md  even:italic  '>
 
             <div className=" justify-center flex-col flex text-center duration-300 ">

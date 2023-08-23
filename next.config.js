@@ -17,6 +17,7 @@ module.exports = {
       'p1.qhimg.com',
       'webmention.io',
       'picsum.photos',
+      'q1.qlogo.cn',
       'github.io'
     ]
   },
