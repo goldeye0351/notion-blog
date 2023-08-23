@@ -12,8 +12,8 @@ const BLOG = {
   font: 'sans-serif', // ['sans-serif', 'serif']
   lightBackground: '#F6F8FA', // use hex value, don't forget '#' e.g #fffefc
   darkBackground: '#212936', // use hex value, don't forget '#'
-  path: '', // leave this empty unless you want to deploy Notionic in a folder
-  googleadid:'ca-pub-2287965691379058',
+  path: '', // leave this empty 
+  googleadid:'', // google ad id,   leave this empty 
   sortByDate: true,
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
@@ -28,7 +28,7 @@ const BLOG = {
   notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: '', // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
-  
+  //telegram . page 'contact me' use it 
   telegramToken: process.env.TELEGRAM_TOKEN ||'', // The token of your Telegram bot
   telegramChatId: '754356243', // The chat id of your Telegram bot
   telegramChannelUrl: 'https://t.me/+qhlQu1J3xONkNzYx', // The link of your Telegram channel
@@ -55,7 +55,7 @@ const BLOG = {
     }
   },
   comment: {
-    // support provider: utterances, supacomments
+    // support provider: utterances, supacomments,  notion,  default is notion
     provider: 'supacomments', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
       supabaseUrl: 'https://vsjbhkyquwndetkybqxt.supabase.co', // The url of your Supabase instance
