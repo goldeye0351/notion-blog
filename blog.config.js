@@ -56,10 +56,10 @@ const BLOG = {
   },
   comment: {
     // support provider: utterances, supacomments,  notion,  default is notion
-    provider: 'supacomments', // leave it empty if you don't need any comment plugin
+    provider: 'notion', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
-      supabaseUrl: 'https://vsjbhkyquwndetkybqxt.supabase.co', // The url of your Supabase instance
-      supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzamJoa3lxdXduZGV0a3licXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY1NjkyNDgsImV4cCI6MjAwMjE0NTI0OH0.p992Pul07lKilqIYLYmRfLB584XLf6ABCVedYfjozXU' // The anonymous key of your Supabase instance
+      supabaseUrl: '', // The url of your Supabase instance,my 'https://vsjbhkyquwndetkybqxt.supabase.co'
+      supabaseAnonKey:'',// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzamJoa3lxdXduZGV0a3licXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY1NjkyNDgsImV4cCI6MjAwMjE0NTI0OH0.p992Pul07lKilqIYLYmRfLB584XLf6ABCVedYfjozXU' // The anonymous key of your Supabase instance
     },
     utterancesConfig: {
       repo: ''

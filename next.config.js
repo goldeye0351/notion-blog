@@ -10,6 +10,8 @@ module.exports = {
      'images.unsplash.com', 
      's3.us-west-2.amazonaws.com',
      'gravatar.com',
+     'www.gravatar.com',
+     'secure.gravatar.com',
       'avatars.githubusercontent.com',
       'source.unsplash.com',
       'p1.qhimg.com',

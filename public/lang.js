@@ -15,6 +15,7 @@ export const lang = {
       COMMENT_TITLE: '评论区',
       COMMENT_MAIN:'📝 ❖读而不评则罔,评而不读则殆❖ ',
       COMMENT_NAME:'昵称',
+      COMMENT_EMAIL:'邮件',
       COMMENT_SUBMIT:'提交'
     },
     SEARCH: {
@@ -67,7 +68,8 @@ export const lang = {
       NOTICE_BUTTON: 'Contact',
       COMMENT_TITLE: 'Comments',
       COMMENT_MAIN:'📝 ❖Reading without commenting is useless, commenting without reading is perilous❖ ',
-      COMMENT_NAME:'nickname',
+      COMMENT_NAME:'Nickname',
+      COMMENT_EMAIL:'Email',
       COMMENT_SUBMIT:'Submit'
     },
     SEARCH: {

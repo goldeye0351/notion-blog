@@ -1,9 +1,12 @@
 import BLOG from "@/blog.config";
+import Image from "next/image";
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import FormattedDate from "../Common/FormattedDate";
 import { lang } from '@/public/lang'
+import md5 from 'md5'
 import { RefreshIcon } from "@heroicons/react/outline";
+
 
 function Pinglun({post,pingluns} ){
     const { locale } = useRouter()
@@ -14,6 +17,9 @@ function Pinglun({post,pingluns} ){
     };
     const [ren, setRen] = useState('');
     const [pinglun, setPinglun] = useState('');
+    const [email, setEmail] = useState('');
+    const emailHash = email ? md5(email.trim().toLowerCase()) : '';
+    const gravatarUrl2 = `https://www.gravatar.com/avatar/${emailHash}`;
     const [showResult, setShowResult] = useState(true);
     const [showcom, setShowcom] = useState(false);
     const postid = post.id;
@@ -23,7 +29,7 @@ function Pinglun({post,pingluns} ){
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {
           method: 'POST',
-          body: JSON.stringify({ postid,ren,pinglun,title }),
+          body: JSON.stringify({ postid,ren,pinglun,title,email }),
         });
         // Success if status code is 201
         if (res.status === 201) {
@@ -47,9 +53,9 @@ return<>
             </svg>
           </div>
         </div>
-  { showResult&& <form onSubmit={submitForm} className=' max-w-screen-md grid grid-cols-4  gap-3  mx-auto'>
+  { showResult&& <form onSubmit={submitForm} className=' max-w-screen-md grid grid-cols-8  gap-3  mx-auto'>
 
-      <div className='p-3 col-span-4 bg-gray-200 dark:bg-gray-700 duration-500 rounded-xl'>
+      <div className='p-3 col-span-8 bg-gray-200 dark:bg-gray-700 duration-500 rounded-xl'>
           <textarea    name="PINGLUN"  id="PINGLUN"  rows="3"
             className=' block italic p-1 w-full bg-white/30 dark:bg-black/100 duration-500 rounded-xl'
             placeholder={t.LAYOUT.COMMENT_MAIN}
@@ -58,10 +64,9 @@ return<>
             required
           ></textarea>
       </div>
-      <div className=" block  col-span-1 ">  </div>
-      <div className=" hidden sm:block  col-span-1 ">  </div>
 
-      <div className=' col-span-2 sm:col-span-1 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+      <div className=" hidden sm:block  col-span-2 ">  </div>
+      <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
               type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '
               placeholder={t.LAYOUT.COMMENT_NAME}
@@ -70,7 +75,16 @@ return<>
               required
           />
       </div>
-      <button  type="submit" className=' col-span-1 text-gray-400  p-3 text-2xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-500 rounded-xl  '>
+      <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+          <input id="EMAIL"  name="EMAIL"
+              type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '
+              placeholder={t.LAYOUT.COMMENT_EMAIL}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+          />
+      </div>
+      <button  type="submit" className=' col-span-2 text-gray-400  p-3 text-2xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-500 rounded-xl  '>
       {t.LAYOUT.COMMENT_SUBMIT}
       </button>
   </form>}
@@ -79,9 +93,7 @@ return<>
     <div className="  mx-auto  flex flex-row justify-center">
       <li  className='  m-3 flex  w-[90vw] max-w-screen-md  '>
         <div className=" justify-center flex-col flex text-center duration-300 hover:text-blue-500 ">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className=" h-12">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
+        <Image src={gravatarUrl2} alt="Gravatar" width={100}  height={100} priority  className=' rounded-full h-12 w-12 mr-3 hover:animate-pulse   '/>
         </div>
         <div id="temppl" className=' p-3 bg-gray-200  dark:bg-gray-700 rounded-2xl  text-sm w-full ring-1 ring-white/30    '>
           {pinglun}
@@ -99,29 +111,25 @@ return<>
    {/*  temp    */}
 <div id="comment" className="  mx-auto  flex flex-row justify-center">
       <ol >
-        {pingluns.map((post) => (
-          <li key={post.id} className='  m-3 flex  w-[90vw] max-w-screen-md  even:italic  '>
+        {pingluns.map((post) => {
+          const myemail = post.properties.Email.email;
+          const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
+          const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
+          return<li key={post.id} className='  m-3 flex  w-[90vw] max-w-screen-md  even:italic  '>
 
-            <div className=" justify-center flex-col flex text-center duration-300 hover:text-blue-500 ">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className=" h-12">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
+            <div className=" justify-center flex-col flex text-center duration-300 ">
+               <Image src={gravatarUrl} alt="Gravatar" width={100}  height={100} priority  className=' rounded-full h-12 w-12 mr-3 hover:animate-pulse   '/>
             </div>
-
-
             <div className=' p-3 bg-gray-200  dark:bg-gray-700 rounded-2xl  text-sm w-full ring-1 ring-white/30    '>
-
               {post.properties.Text.rich_text[0].text.content }
               <hr />
-
               <div className=" flex-row flex justify-between ">
                 <div className=" font-extrabold text-lg ">{post.properties.Ren.rich_text[0].text.content } </div>
                 <FormattedDate  date={post.created_time} />
               </div>
-
             </div>
           </li>
-        ))}
+        })}
       </ol>
 </div> 
 
