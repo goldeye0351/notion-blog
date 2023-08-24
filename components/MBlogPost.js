@@ -32,7 +32,7 @@ const BlogPost = ({  post,resdata }) => {
   const t = lang[locale]
   return (    
 <motion.div>
-      <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.id}>
+      <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title}>
       <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
                 variants={{
