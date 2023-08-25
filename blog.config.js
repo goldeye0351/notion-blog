@@ -26,7 +26,7 @@ const BLOG = {
   notionDatabaseId: process.env.NOTION_DATABASE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
   notionCommentId: process.env.NOTION_COMMENT_ID || '', // DO NOT CHANGE THIS! Edit .env file! 
   notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
-  notionAccessToken: '', // Useful if you prefer not to make your database public
+  notionAccessToken: process.env.NOTION_TOKEN || '', // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
   //telegram . page 'contact me' use it 
   telegramToken: process.env.TELEGRAM_TOKEN ||'', // The token of your Telegram bot
