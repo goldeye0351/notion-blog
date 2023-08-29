@@ -12,7 +12,7 @@ import { getDefComments } from "@/lib/notionapi";
 
 
 const Post = props => {
-  const { post, blockMap,prev,next,pingluns  }=props 
+  const { posts,post, blockMap,prev,next,pingluns  }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -36,7 +36,7 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  pingluns={pingluns}/> }
+  { return <Layout posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  pingluns={pingluns}/> }
 
 }
 
@@ -61,6 +61,7 @@ export async function getStaticProps({ params: { slug } }) {
     const blockMap = await getPostBlocks(post.id)
     return {
       props: {
+        posts,
         post,
         prev,
         next,
@@ -73,6 +74,7 @@ export async function getStaticProps({ params: { slug } }) {
     console.error(err)
     return {
       props: {
+        posts:null,
         post: null,
         prev: null,
         next: null,

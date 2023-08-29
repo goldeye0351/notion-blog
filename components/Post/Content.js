@@ -2,7 +2,7 @@ import BLOG from '@/blog.config'
 import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, HeartIcon,ChatIcon} from '@heroicons/react/outline'
+import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, HeartIcon,ChatIcon, TableIcon, FilterIcon, BeakerIcon, PuzzleIcon, FolderIcon, GiftIcon, ViewListIcon, ClipboardListIcon} from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import { useEffect, useState } from "react";
@@ -11,9 +11,9 @@ import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import WavesArea from './WavesArea'
 import { motion } from 'framer-motion'
-
+import Lastpost from '@/pages/lastpost'
 export default function Content (props) {
-  const { frontMatter, blockMap, pageTitle,prev,next } = props
+  const { posts,frontMatter, blockMap, pageTitle,prev,next } = props
   const [showPay, setShowPay] = useState(false)
   var zjk = frontMatter.up;
   useEffect(() => {
@@ -144,6 +144,11 @@ export default function Content (props) {
               <div id="我要评论" className='group cursor-pointer  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <Jumptocomment />
               </div>
+          </div>
+          <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
+            <div className='flex flex-row justify-end '><ClipboardListIcon className=' h-8 w-8 mx-2 hover:fill-cyan-400  hover:scale-110  duration-100     '/></div>
+            <hr/>
+            <Lastpost  posts={posts} />
           </div>
         </div>
     </motion.div>

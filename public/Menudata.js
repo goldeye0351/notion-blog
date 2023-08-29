@@ -39,12 +39,7 @@ export const links = [
           to: '/friends',
           icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
         },
-        {
-          id: 7,
-          name: 'Privacy',
-          to: '/privacy',
-          icon: <EyeOffIcon className='inline-block mb-1 h-5 w-5' />,
-        }
+
       ]
     }
   ]
