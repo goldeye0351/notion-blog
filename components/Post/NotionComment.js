@@ -84,10 +84,10 @@ return<>
           ></textarea>
       </div>
 
-      <div className=" hidden sm:block  col-span-2 p-3  bg-gray-200 dark:bg-gray-700 text-gray-400  rounded-xl  justify-center duration-300 ">
-        <input type="hidden" name="ip" value={visitorIp}  className=" text-gray-400 italic text-sm px-3  mx-3  "/>
-        IP: {visitorIp} 
-         {dizhi} 
+      <div className=" hidden col-span-2 p-1  bg-gray-200 dark:bg-gray-700 text-gray-400 text-sm rounded-xl sm:flex flex-col items-center justify-center duration-300 ">
+        <input type="hidden" name="ip" value={visitorIp}  className=" text-gray-400 italic text-sm mx-3  "/>
+        <div >{visitorIp}</div>
+        <div >{dizhi} </div>
         </div>
       <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
