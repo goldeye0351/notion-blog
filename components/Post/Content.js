@@ -13,6 +13,7 @@ import WavesArea from './WavesArea'
 import { motion } from 'framer-motion'
 import Lastpost from '@/components/Post/lastpost'
 import React from 'react';
+import TTT from '@/pages/tt'
 
 export async function getServerSideProps({ req }) {
   const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -184,7 +185,7 @@ export default function Content (props) {
              <div >{greeting}</div>
              <div >来自 {country} 的客人</div>
              <div >IP: {ip}</div>
-
+             <TTT />
           </div>
         </div>
     </motion.div>

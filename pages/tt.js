@@ -10,18 +10,19 @@ export async function getServerSideProps({ req }) {
   const response = await fetch(`http://api.ipstack.com/${ip}?access_key=${apiKey}`);
   const data = await response.json();
   const country = `${data.location.country_flag_emoji}, ${data.region_name}, ${data.city}`;
-
+  
   return {
     props: {
       ip,
-      country
+      country,
     }
   };
 }
-export default function MyComponent({ ip, country }) {
+export default function TTT({ ip, country }) {
   return (
     <div>
-      <h2>欢迎您, 来自 {country} 的客人，IP地址: {ip}</h2>
+             <div >来自 {country} 的客人</div>
+             <div >IP: {ip}</div>
     </div>
   );
 }
