@@ -11,7 +11,7 @@ import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import WavesArea from './WavesArea'
 import { motion } from 'framer-motion'
-import Lastpost from '@/pages/lastpost'
+import Lastpost from '@/components/Post/lastpost'
 export default function Content (props) {
   const { posts,frontMatter, blockMap, pageTitle,prev,next } = props
   const [showPay, setShowPay] = useState(false)

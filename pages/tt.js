@@ -9,7 +9,7 @@ export async function getServerSideProps({ req }) {
   const apiKey = '42f57ba8b461aaa41f1673d23d268d21';
   const response = await fetch(`http://api.ipstack.com/${ip}?access_key=${apiKey}`);
   const data = await response.json();
-  const country = `${data.country}, ${data.region_name}, ${data.city}`;
+  const country = `${data.location.country_flag_emoji}, ${data.region_name}, ${data.city}`;
 
   return {
     props: {
