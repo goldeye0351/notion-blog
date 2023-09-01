@@ -5,34 +5,16 @@ import NotionRenderer from '@/components/Post/NotionRenderer'
 import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, HeartIcon,ChatIcon, TableIcon, FilterIcon, BeakerIcon, PuzzleIcon, FolderIcon, GiftIcon, ViewListIcon, ClipboardListIcon} from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
-import { useEffect, useState } from "react";
+import  React ,{ useEffect, useState } from "react";
 import TableOfContents from './TableOfContents'
 import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import WavesArea from './WavesArea'
 import { motion } from 'framer-motion'
 import Lastpost from '@/components/Post/lastpost'
-import React from 'react';
-import TTT from '@/pages/tt'
-
-export async function getServerSideProps({ req }) {
-  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-  const apiKey = '42f57ba8b461aaa41f1673d23d268d21';
-  const response = await fetch(`http://api.ipstack.com/${ip}?access_key=${apiKey}`);
-  const data = await response.json();
-  const country = `${data.location.country_flag_emoji}, ${data.region_name}, ${data.city}`;
-    
-  return {
-    props: {
-      ip,
-      country
-    }
-  };
-}
 
 export default function Content (props) {
-  const { posts,frontMatter, blockMap, pageTitle,prev,next, ip, country } = props
+  const { posts,frontMatter, blockMap, pageTitle,prev,next, ip, location} = props
   const [showPay, setShowPay] = useState(false)
   const currentHour = (new Date()).getHours();
   let greeting;
@@ -176,17 +158,13 @@ export default function Content (props) {
               </div>
           </div>
           <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
-            <div className='flex flex-row justify-end '><ClipboardListIcon className=' h-8 w-8 mx-2 hover:fill-cyan-400  hover:scale-110  duration-100     '/></div>
+            <div className='flex flex-row justify-between '>
+            {greeting}
+            <ClipboardListIcon className=' h-8 w-8 mx-2 hover:fill-cyan-400  hover:scale-110  duration-100     '/></div>
             <hr/>
             <Lastpost  posts={posts} />
           </div>
-          <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
 
-             <div >{greeting}</div>
-             <div >来自 {country} 的客人</div>
-             <div >IP: {ip}</div>
-             <TTT />
-          </div>
         </div>
     </motion.div>
 
