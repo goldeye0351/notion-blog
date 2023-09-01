@@ -1,7 +1,7 @@
 import BLOG from "@/blog.config";
 import Image from "next/image";
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormattedDate from "../Common/FormattedDate";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
@@ -18,6 +18,22 @@ function Pinglun({post,pingluns} ){
     const [ren, setRen] = useState('');
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
+    const [visitorIp, setVisitorIp] = useState('');
+    const [dizhi, setDizhi] = useState('');
+    const apiKey = '42f57ba8b461aaa41f1673d23d268d21';
+  
+    useEffect(() => {
+      fetch('https://api.ipify.org/?format=json')
+        .then(response => response.json())
+        .then(data => setVisitorIp(data.ip))
+        .catch(error => console.log(error));
+    }, []);
+    useEffect(() => {
+      fetch(`http://api.ipstack.com/${visitorIp}?access_key=${apiKey}`)
+        .then(response => response.json())
+        .then(data => setDizhi(' ' + data.region_name + data.location.country_flag_emoji + data.city ) )
+        .catch(error => console.log(error));
+      }, []);
     const parts = email.split('@');
     const part0 = parts[0];
     const part1 = parts[1];
@@ -68,7 +84,11 @@ return<>
           ></textarea>
       </div>
 
-      <div className=" hidden sm:block  col-span-2 ">  </div>
+      <div className=" hidden sm:block  col-span-2 p-3  bg-gray-200 dark:bg-gray-700 text-gray-400  rounded-xl  justify-center duration-300 ">
+        <input type="hidden" name="ip" value={visitorIp}  className=" text-gray-400 italic text-sm px-3  mx-3  "/>
+        IP: {visitorIp} 
+         {dizhi} 
+        </div>
       <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
               type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '

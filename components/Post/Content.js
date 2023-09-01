@@ -9,7 +9,6 @@ import  React ,{ useEffect, useState } from "react";
 import TableOfContents from './TableOfContents'
 import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
-import WavesArea from './WavesArea'
 import { motion } from 'framer-motion'
 import Lastpost from '@/components/Post/lastpost'
 
@@ -62,6 +61,11 @@ export default function Content (props) {
 
   return (<div>
   <div id="biaoti"  className=' flex flex-col justify-center'>
+  <div className="solarsys z-50 w-screen  flex justify-center  opacity-30 top-0 fixed     ">
+  <div className='sun'></div>  <div className='mercury'></div>  <div className='venus'></div>  <div className='earth'></div>
+  <div className='mars'></div>    <div className='jupiter'></div>    <div className='saturn'></div>   <div className='uranus'></div>
+  <div className='neptune'></div>
+</div>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
@@ -83,7 +87,6 @@ export default function Content (props) {
 
       </nav>
 
-      <WavesArea />
 
   </div>
          
@@ -138,7 +141,7 @@ export default function Content (props) {
         <div className=' sticky top-16 '>
           
           < TableOfContents frontMatter={frontMatter}  blockMap={blockMap} pageTitle={pageTitle}/>
-          <div id="大屏几个" className=' flex flex-row justify-between my-3 space-x-1'> 
+          <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1'> 
               <div id="点赞"  className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <button id="dapindianzan"
                       onClick={dianzan} data-umami-event="大屏点赞" 

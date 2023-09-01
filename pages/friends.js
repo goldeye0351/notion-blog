@@ -1,18 +1,11 @@
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
-import SupaComments from "@/components/Post/SupaComments"
-import Link from 'next/link'
-import Image from 'next/image'
-import Tilt from 'react-parallax-tilt'
+import Friend from '@/components/Friend'
 import Container from '@/components/Container'
-//import dynamic from 'next/dynamic'
 import { useState } from 'react';
 import { useRouter } from 'next/router'
-
 import FlipCard from '@/components/Myswiper/FlipCard'
 import { lang } from '@/public/lang'
-
-{/*const TwikooCompenent = dynamic(() => {return import('@/components/Post/Twikoo')},{ ssr: false })*/}
 
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyFriend: true })
@@ -22,7 +15,7 @@ export async function getStaticProps() {
   }
 }
 
-const Friend = ({  posts }) => {
+const FriendS = ({  posts }) => {
   const [showResult, setShowResult] = useState(false)
   const { locale } = useRouter()
   const t = lang[locale]
@@ -52,26 +45,8 @@ const Friend = ({  posts }) => {
 
   return (<Container  title="Friend. Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} className='friend' >
     <div id="friend" className=' relative flex  flex-wrap  mx-auto justify-center   items-center cursor-pointer mb-16  '>
-      {posts.map((post) => (
-        <article    key={post.id}  className='flex m-5  cursor-pointer w-56 rounded-full    '    >
-          <Link  href={post.title} target='new'>
-            <Tilt id='blog-ID' key={post.id}
-                        className="my3d   bg-gray-100 dark:bg-gray-700 rounded-lg  flex flex-row justify-center  "
-                        perspective={800}
-                        glareEnable={false}
-                        glarePosition={'all'}
-                        glareMaxOpacity={1}              
-                        glareBorderRadius="9999px"
-                        scale={1}
-                      >
-                <div className="my3din  flex flex-col justify-center  ">
-                  <Image src={post?.page_cover}  alt={post.title} width={100} height={100}
-                  className=' rounded-lg translate-x-[30%]  '  />
-                </div>
-                <div  className='flex flex-col justify-center h-20 max-h-20  overflow-scroll p-3  '> {post.summary}  </div>
-            </Tilt>
-          </Link>
-        </article>
+      {posts?.map((post) => (
+        <Friend post={post} />
       ))}
 
     </div>
@@ -140,10 +115,9 @@ const Friend = ({  posts }) => {
       </form>
     </div>
       )}
-       {/* <SupaComments id="supacomments" />  */}
-       {/* <TwikooCompenent id="twikoo" />     */}
+
 
     </Container>
   )
 }
-export default Friend
+export default FriendS

@@ -85,13 +85,11 @@ const Footer = ({ fullWidth }) => {
                 <HeartIcon className=' h-5  duration-500  hover:animate-ping hover:h-8 ' />
                 
 
-                <div className="tanchukuang  h-16 flex justify-center text-center flex-row content-center items-center  ">
+                <div className="  h-16 flex justify-center text-center flex-row content-center items-center  ">
                   <StatusOnlineIcon className=' h-6 inline-block text-green-400   ' />
                   <span id="online" className='inline-block text-green-400 '></span>
                   
-                  <div className="tooltip inline-block absolute w-36 text-center  left-[50%] -translate-x-[50%] bg-gray-300/50  dark:bg-gray-600/50 rounded-xl  p-3 bottom-12 ">
-                    同时在线
-                  </div>
+
                 </div>
 
                 <EyeIcon className=' h-5  ' />
