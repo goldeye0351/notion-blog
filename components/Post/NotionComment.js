@@ -48,7 +48,7 @@ function Pinglun({post,pingluns} ){
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {
           method: 'POST',
-          body: JSON.stringify({ postid,ren,pinglun,title,email }),
+          body: JSON.stringify({ postid,ren,pinglun,title,email,visitorIp }),
         });
         // Success if status code is 201
         if (res.status === 201) {

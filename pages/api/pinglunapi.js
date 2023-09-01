@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       .json({ message: `${req.method} requests are not allowed` });
   }
   try {
-    const { postid,ren,pinglun,title,email } = JSON.parse(req.body);
+    const { postid,ren,pinglun,title,email,visitorIp } = JSON.parse(req.body);
     await notion.pages.create({
       parent: { 
         database_id: pinglunId
@@ -59,6 +59,15 @@ export default async function handler(req, res) {
         },
         "Email": {
 	        "email": email
+        },
+        "IP": {
+          "rich_text": [
+            {
+              "text": {
+                "content":visitorIp
+              }
+            }
+          ]
         },
       },
     });
