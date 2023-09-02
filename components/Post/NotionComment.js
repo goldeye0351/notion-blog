@@ -1,26 +1,18 @@
-import BLOG from "@/blog.config";
 import Image from "next/image";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import FormattedDate from "../Common/FormattedDate";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
-import { RefreshIcon } from "@heroicons/react/outline";
 
 
 function Pinglun({post,pingluns} ){
     const { locale } = useRouter()
     const t = lang[locale]
-    const router = useRouter();
-    const ForceRefresh = () => {
-      router.reload();
-    };
     const [ren, setRen] = useState('');
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
     const [visitorIp, setVisitorIp] = useState('');
-    const [dizhi, setDizhi] = useState('');
-    
   
     useEffect(() => {
       fetch('https://api.ipify.org/?format=json')
@@ -28,12 +20,14 @@ function Pinglun({post,pingluns} ){
         .then(data => setVisitorIp(data.ip))
         .catch(error => console.log(error));
     }, []);
-    useEffect(() => {
+
+ function ddd() {      
       fetch(`http://api.ipstack.com/${visitorIp}?access_key=42f57ba8b461aaa41f1673d23d268d21`)
         .then(response => response.json())
-        .then(data => setDizhi(' ' + data.region_name + data.location.country_flag_emoji + data.city ) )
-        .catch(error => console.log(error));
-      }, []);
+        .then(resdata => {
+        document.querySelector('#YOURDIZHI').innerHTML = resdata.region_name + resdata.location.country_flag_emoji + resdata.city;
+    })}   
+
     const parts = email.split('@');
     const part0 = parts[0];
     const part1 = parts[1];
@@ -43,29 +37,23 @@ function Pinglun({post,pingluns} ){
     const [showcom, setShowcom] = useState(false);
     const postid = post.id;
     const title = post.title
-        //console.log('postid',postid)
     const submitForm = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {
           method: 'POST',
           body: JSON.stringify({ postid,ren,pinglun,title,email,visitorIp }),
         });
-        // Success if status code is 201
         if (res.status === 201) {
-          //alert('已成功.请刷新查看');
           setShowResult(false);
           setShowcom(true);
-          //ForceRefresh;
-          //setTimeout(() => {      router.reload(); }, 10000);
           window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
-          //console.log('强制刷新了?')
         } else {
           alert('errer 信号不好, 出错了')    
         }
       };
 
 return<>
-        <div onClick={ForceRefresh}  className=" flex justify-center cursor-pointer  ">
+        <div  className=" flex justify-center cursor-pointer  ">
           <div className=" max-w-screen-md w-full  ">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" w-8 ">
               <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
@@ -86,8 +74,8 @@ return<>
 
       <div className=" hidden col-span-2 p-1  bg-gray-200 dark:bg-gray-700 text-gray-400 text-sm rounded-xl sm:flex flex-col items-center justify-center duration-300 ">
         <input type="hidden" name="ip" value={visitorIp}/>
-        <div className=" italic text-sm ">{visitorIp}</div>
-        <div className=" italic text-sm ">{dizhi} </div>
+        <div onClick={ddd} className=" italic text-sm ">{visitorIp}</div>
+        <div id="YOURDIZHI" className=" italic text-sm "></div>
       </div>
       <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
