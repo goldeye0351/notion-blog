@@ -13,21 +13,12 @@ function Pinglun({post,pingluns} ){
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
     const [visitorIp, setVisitorIp] = useState('');
-  
     useEffect(() => {
       fetch('https://api.ipify.org/?format=json')
         .then(response => response.json())
         .then(data => setVisitorIp(data.ip))
         .catch(error => console.log(error));
     }, []);
-
- function ddd() {      
-      fetch(`http://api.ipstack.com/${visitorIp}?access_key=42f57ba8b461aaa41f1673d23d268d21`)
-        .then(response => response.json())
-        .then(resdata => {
-        document.querySelector('#YOURDIZHI').innerHTML = resdata.region_name + resdata.location.country_flag_emoji + resdata.city;
-    })}   
-
     const parts = email.split('@');
     const part0 = parts[0];
     const part1 = parts[1];
@@ -74,8 +65,7 @@ return<>
 
       <div className=" hidden col-span-2 p-1  bg-gray-200 dark:bg-gray-700 text-gray-400 text-sm rounded-xl sm:flex flex-col items-center justify-center duration-300 ">
         <input type="hidden" name="ip" value={visitorIp}/>
-        <div onClick={ddd} className=" italic text-sm ">{visitorIp}</div>
-        <div id="YOURDIZHI" className=" italic text-sm "></div>
+        <div className=" italic text-sm ">{visitorIp}</div>
       </div>
       <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
