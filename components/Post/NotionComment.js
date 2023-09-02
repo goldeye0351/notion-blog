@@ -77,7 +77,7 @@ return<>
           />
       </div>
       <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
-          <input id="EMAIL"  name="EMAIL"
+          <input id="EMAIL"  name="EMAIL" autocomplete="email"
               type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '
               placeholder={t.LAYOUT.COMMENT_EMAIL}
               value={email}
