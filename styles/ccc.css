@@ -97,6 +97,14 @@
   opacity: 1;
 }
 
+.sticky-footer {
+  position: sticky;
+  z-index: 10;
+  bottom: 0px;
+  backdrop-filter: blur(5px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0, 1);
+  border-bottom-color: transparent;
+}
 .solarsys{
 
   margin: 0 auto;
