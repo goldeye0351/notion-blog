@@ -23,18 +23,18 @@ function _extends() {
 }
 
 var defaultOptions = {
-  size: 200,
-  minSize: 20,
-  gutter: 16,
-  provideProps: false,
+  size: 150,
+  minsize: 50,
+  gutter: 5,
+  provideProps: true,
   numCols: 6,
-  fringeWidth: 100,
-  yRadius: 200,
-  xRadius: 200,
-  cornerRadius: 100,
+  fringeWidth: 200,
+  yRadius: 120,
+  xRadius: 120,
+  cornerRadius: 50,
   showGuides: false,
-  compact: false,
-  gravitation: 0
+  compact: true,
+  gravitation: 5
 };
 export default function BubbleUI(props) {
   if (!props.children) {
@@ -45,7 +45,7 @@ export default function BubbleUI(props) {
   Object.assign(options, defaultOptions);
   Object.assign(options, props.options);
   options.numCols = Math.min(options.numCols, props.children.length);
-  var minProportion = options.minSize / options.size;
+  var minProportion = options.minsize / options.size;
   var verticalPadding = "calc(50% - " + (options.yRadius + options.size / 2 - options.cornerRadius * (1.414 - 1) / 1.414) + "px)";
   var horizontalPadding = "calc(50% - " + (options.xRadius + options.size / 2 - options.cornerRadius * (1.414 - 1) / 1.414) + "px)";
   var scrollable = React.useRef(null);
@@ -97,14 +97,14 @@ export default function BubbleUI(props) {
     return (val - actualMin) / (actualMax - actualMin) * (targetMax - targetMin) + targetMin;
   };
 
-  var getBubbleSize = function getBubbleSize(row, col) {
+  var getbubblesize = function getbubblesize(row, col) {
     var yOffset = (options.size + options.gutter) * 0.866 * row - options.size + options.cornerRadius * (1.414 - 1) / 1.414 - (options.yRadius - options.size);
     var xOffset = (options.size + options.gutter) * col + (options.numCols - rows[row].length) * (options.size + options.gutter) / 2 - options.size + options.cornerRadius * (1.414 - 1) / 1.414 - (options.xRadius - options.size);
     var dy = yOffset - scrollTop;
     var dx = xOffset - scrollLeft;
     var distance = Math.sqrt(dx * dx + dy * dy);
     var out = {
-      bubbleSize: 1,
+      bubblesize: 1,
       translateX: 0,
       translateY: 0,
       distance: distance
@@ -143,8 +143,8 @@ export default function BubbleUI(props) {
       }
     }
 
-    out.bubbleSize = interpolate(0, options.fringeWidth, Math.min(distanceFromEdge, options.fringeWidth), 1, minProportion);
-    var translationMag = options.compact ? (options.size - options.minSize) / 2 : 0;
+    out.bubblesize = interpolate(0, options.fringeWidth, Math.min(distanceFromEdge, options.fringeWidth), 1, minProportion);
+    var translationMag = options.compact ? (options.size - options.minsize) / 2 : 0;
     var interpolatedTranslationMag = interpolate(0, options.fringeWidth, distanceFromEdge, 0, translationMag);
 
     if (distanceFromEdge > 0 && distanceFromEdge <= options.fringeWidth) {
@@ -221,11 +221,11 @@ export default function BubbleUI(props) {
         marginTop: i > 0 ? options.size * -0.134 + options.gutter * 0.866 : 0
       }
     }, row.map(function (comp, j) {
-      var _getBubbleSize = getBubbleSize(i, j),
-          bubbleSize = _getBubbleSize.bubbleSize,
-          translateX = _getBubbleSize.translateX,
-          translateY = _getBubbleSize.translateY,
-          distance = _getBubbleSize.distance;
+      var _getbubblesize = getbubblesize(i, j),
+          bubblesize = _getbubblesize.bubblesize,
+          translateX = _getbubblesize.translateX,
+          translateY = _getbubblesize.translateY,
+          distance = _getbubblesize.distance;
 
       return /*#__PURE__*/React__default.createElement("div", {
         key: j,
@@ -235,13 +235,13 @@ export default function BubbleUI(props) {
           height: options.size,
           marginRight: options.gutter / 2,
           marginLeft: options.gutter / 2,
-          transform: "translateX(" + translateX + "px) translateY(" + translateY + "px) scale(" + bubbleSize + ")"
+          transform: "translateX(" + translateX + "px) translateY(" + translateY + "px) scale(" + bubblesize + ")"
         }
       }, options.provideProps ? React__default.cloneElement(comp, {
-        bubbleSize: bubbleSize * options.size,
-        distanceToCenter: distance,
-        maxSize: options.size,
-        minSize: options.minSize
+        bubblesize: bubblesize * options.size,
+        distancetocenter: distance,
+        maxsize: options.size,
+        minsize: options.minsize
       }) : comp);
     }));
   })), /*#__PURE__*/React__default.createElement("div", {
