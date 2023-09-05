@@ -38,7 +38,7 @@ const my3d = props => {
     <Container title={BLOG.title} description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >   </Container>
     <div id="shoubiaoui" className="md:hidden block w-screen">
 
-      <BubbleUI className="myBubbleUI h-[65VH]  rounded-3xl">
+      <BubbleUI className="myBubbleUI h-[75VH]  rounded-3xl">
             {posts.slice(0,21).map((data, i) => (
               <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={data.id}>
                 <Image src={data.page_cover} alt={data.title} fill  
