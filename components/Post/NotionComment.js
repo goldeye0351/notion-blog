@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import FormattedDate from "../Common/FormattedDate";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
-
+import IpComponent from "../IpComponent";
 
 function Pinglun({post,pingluns} ){
     const { locale } = useRouter()
@@ -12,13 +12,7 @@ function Pinglun({post,pingluns} ){
     const [ren, setRen] = useState('');
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
-    const [visitorIp, setVisitorIp] = useState('');
-    useEffect(() => {
-      fetch('https://api.ipify.org/?format=json')
-        .then(response => response.json())
-        .then(data => setVisitorIp(data.ip))
-        .catch(error => console.log(error));
-    }, []);
+    const visitorIp = IpComponent();    
     const parts = email.split('@');
     const part0 = parts[0];
     const part1 = parts[1];
@@ -63,9 +57,7 @@ return<>
           ></textarea>
       </div>
 
-      <div className=" hidden col-span-2 p-1  bg-gray-200 dark:bg-gray-700 text-gray-400 text-sm rounded-xl sm:flex flex-col items-center justify-center duration-300 ">
-        <input type="hidden" name="ip" value={visitorIp}/>
-        <div className=" italic text-sm ">{visitorIp}</div>
+      <div className="hidden sm:block  col-span-2 ">
       </div>
       <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"

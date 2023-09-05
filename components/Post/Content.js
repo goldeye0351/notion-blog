@@ -17,6 +17,7 @@ export default function Content (props) {
   const { posts,frontMatter, blockMap, pageTitle,prev,next, ip, location} = props
   const [showPay, setShowPay] = useState(false)
   const currentHour = (new Date()).getHours();
+  const ipAddress = IpComponent();
   let greeting;
   if (currentHour >= 0 && currentHour < 6) {
     greeting = '凌晨好🌙';
@@ -162,8 +163,8 @@ export default function Content (props) {
               </div>
           </div>
           <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
-            <div className='flex flex-row justify-between '>
-            {greeting}<IpComponent />
+            <div className='flex flex-row justify-between text-sm italic '>
+            {greeting} {ipAddress}
             </div>
             <hr/>
             <Lastpost  posts={posts} />
