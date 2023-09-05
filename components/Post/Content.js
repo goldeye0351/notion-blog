@@ -11,6 +11,7 @@ import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import { motion } from 'framer-motion'
 import Lastpost from '@/components/Post/lastpost'
+import IpComponent from '@/components/IpComponent';
 
 export default function Content (props) {
   const { posts,frontMatter, blockMap, pageTitle,prev,next, ip, location} = props
@@ -162,12 +163,12 @@ export default function Content (props) {
           </div>
           <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
             <div className='flex flex-row justify-between '>
-            {greeting}
-            <ClipboardListIcon className=' h-8 w-8 mx-2 hover:fill-cyan-400  hover:scale-110  duration-100     '/></div>
+            {greeting}<IpComponent />
+            </div>
             <hr/>
             <Lastpost  posts={posts} />
           </div>
-
+          
         </div>
     </motion.div>
 
