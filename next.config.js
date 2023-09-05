@@ -18,7 +18,8 @@ module.exports = {
       'webmention.io',
       'picsum.photos',
       'q1.qlogo.cn',
-      'github.io'
+      'github.io',
+      'prod-files-secure.s3.us-west-2.amazonaws.com',
     ]
   },
   async headers() {
