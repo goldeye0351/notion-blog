@@ -32,13 +32,13 @@ export default function Content (props) {
   useEffect(() => {
 		new Typed('#typed', {
 				strings: ["ai......",frontMatter.summary],
-				typeSpeed: 50,
+				typeSpeed: 100,
 				backSpeed: 50,
-				backDelay: 100,  
-				smartBackspace: true,
-				showCursor: true,
+				backDelay: 200,  
+				smartBackspace: false,
+				showCursor:false,
 				loop: false,
-				loopCount: 3
+				loopCount: 1
 			  })})
 
   const dianzan = async (e) => {
