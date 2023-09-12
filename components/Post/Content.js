@@ -14,7 +14,7 @@ import Lastpost from '@/components/Post/lastpost'
 import IpComponent from '@/components/IpComponent';
 
 export default function Content (props) {
-  const { posts,frontMatter, blockMap, pageTitle,prev,next, ip, location} = props
+  const { posts,frontMatter, blockMap, pageTitle} = props
   const [showPay, setShowPay] = useState(false)
   const currentHour = (new Date()).getHours();
   const ipAddress = IpComponent();
@@ -32,13 +32,13 @@ export default function Content (props) {
   useEffect(() => {
 		new Typed('#typed', {
 				strings: ["ai......",frontMatter.summary],
-				typeSpeed: 100,
-				backSpeed: 50,
-				backDelay: 200,  
+				typeSpeed: 0,
+				backSpeed: 0,
+				backDelay: 0,  
 				smartBackspace: false,
 				showCursor:false,
 				loop: false,
-				loopCount: 1
+				loopCount: 0
 			  })})
 
   const dianzan = async (e) => {
@@ -63,11 +63,6 @@ export default function Content (props) {
 
   return (<div>
   <div id="biaoti"  className=' flex flex-col justify-center'>
-  <div className="solarsys z-50 w-screen  flex justify-center  opacity-30 top-0 fixed     ">
-  <div className='sun'></div>  <div className='mercury'></div>  <div className='venus'></div>  <div className='earth'></div>
-  <div className='mars'></div>    <div className='jupiter'></div>    <div className='saturn'></div>   <div className='uranus'></div>
-  <div className='neptune'></div>
-</div>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
