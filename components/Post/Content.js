@@ -32,13 +32,10 @@ export default function Content (props) {
   useEffect(() => {
 		new Typed('#typed', {
 				strings: ["ai......",frontMatter.summary],
-				typeSpeed: 0,
+				typeSpeed: 50,
 				backSpeed: 0,
-				backDelay: 0,  
-				smartBackspace: false,
-				showCursor:false,
-				loop: false,
-				loopCount: 0
+				backDelay: 1000,  
+        showCursor:false,
 			  })})
 
   const dianzan = async (e) => {
@@ -62,28 +59,25 @@ export default function Content (props) {
   };
 
   return (<div>
-  <div id="biaoti"  className=' flex flex-col justify-center'>
+  <div id="biaoti"  className=' flex flex-col justify-center  content-center items-center '>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
         {pageTitle ? pageTitle : frontMatter.title}
-      </div>
-      <div 
-      className=' text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-3 m-8 rounded-xl'>
-        <ChatIcon className=' inline-block h-6' />
-        <span className='   ' id='typed' /> 
       </div>
       <nav className='flex mt-5 mb-10 items-start text-gray-500 dark:text-gray-400'>
         <div className='mr-2 mb-4 md:ml-0'>
           <FormattedDate date={frontMatter.date} />
-        </div>
-
-        
+        </div>        
           <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
             {frontMatter.tags} 
-          </div>
-        
-
+          </div>      
       </nav>
-
+      <div 
+      className=' text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-3 m-8 rounded-xl '>
+        
+        <ChatIcon className=' h-6 inline-block ' />ai......
+        <div className='  opacity-0   ' > {frontMatter.summary}</div> 
+        <div className='  -translate-y-[100%]   ' id='typed' /> 
+      </div>
 
   </div>
          
