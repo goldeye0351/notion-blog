@@ -58,7 +58,7 @@ export default function Content (props) {
     return newup;
   };
 
-  return (<div>
+  return (<div >
   <div id="biaoti"  className=' flex flex-col justify-center  content-center items-center '>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
         {pageTitle ? pageTitle : frontMatter.title}
@@ -139,7 +139,7 @@ export default function Content (props) {
                       className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
                       {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />*/}
-                      <ThumbUpIcon className='w-6 h-6 inline-block mx-1 text-center   ' />
+                      <ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  className='w-6 h-6 inline-block mx-1 text-center   ' />
                       <span id="myupdapin" className=' inline-block'>{zjk}</span>
 
                     </button>
