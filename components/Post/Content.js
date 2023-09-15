@@ -29,14 +29,20 @@ export default function Content (props) {
     greeting = '晚上好🌙';
   }
   var zjk = frontMatter.up;
-  useEffect(() => {
-		new Typed('#typed', {
-				strings: ["ai......",frontMatter.summary],
-				typeSpeed: 50,
-				backSpeed: 0,
-				backDelay: 1000,  
-        showCursor:false,
-			  })})
+
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ["ai......",frontMatter.summary],
+      typeSpeed: 50,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
 
   const dianzan = async (e) => {
     const slug=frontMatter.id;
@@ -71,11 +77,11 @@ export default function Content (props) {
             {frontMatter.tags} 
           </div>      
       </nav>
-
+      
       <div 
-      className=' relative text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-1  rounded-xl '>
-        <div className=' opacity-0   ' >{frontMatter.summary}</div> 
-        <div className=' absolute top-1 left-1      ' id='typed' /> 
+      className=' relative  text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-1  rounded-xl '>
+        <ChatIcon  className='w-6 h-6 inline-block' />
+        <div className='inline-block' ref={el}  /> 
       </div>
 
   </div>
@@ -101,8 +107,8 @@ export default function Content (props) {
             onClick={dianzan} data-umami-event="小屏点赞" 
             className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
           >
-            {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)} className='w-6 h-6' />*/}
-            <ThumbUpIcon className='w-6 h-6' />
+            <ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)} className='w-6 h-6' />
+            
             <span id="myupxiaopin" className=' inline-block'>{zjk}</span>
 
           </button>
