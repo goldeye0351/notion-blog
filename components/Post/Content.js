@@ -59,7 +59,7 @@ export default function Content (props) {
   };
 
   return (<div >
-  <div id="biaoti"  className=' flex flex-col justify-center  content-center items-center '>
+  <div id="biaoti"  className=' flex flex-col justify-center   '>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
@@ -71,12 +71,11 @@ export default function Content (props) {
             {frontMatter.tags} 
           </div>      
       </nav>
+
       <div 
-      className=' text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-3 m-8 rounded-xl '>
-        
-        <ChatIcon className=' h-6 inline-block ' />ai......
-        <div className='  opacity-0   ' > {frontMatter.summary}</div> 
-        <div className='  -translate-y-[100%]   ' id='typed' /> 
+      className=' relative text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-1  rounded-xl '>
+        <div className=' opacity-0   ' >{frontMatter.summary}</div> 
+        <div className=' absolute top-1 left-1      ' id='typed' /> 
       </div>
 
   </div>
