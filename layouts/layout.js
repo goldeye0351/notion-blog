@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { getPageTitle } from 'notion-utils'
 import { motion } from 'framer-motion'
-import ArticleAdjacent from '@/components/Post/ArticleAdjacent'
+import Prevandnext from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Comments from '@/components/Post/Comments'
-const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,pingluns }) => {
+const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,pingluns, tableOfContent}) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 
   const pageTitle = getPageTitle(blockMap)
@@ -15,7 +15,7 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
     }
   }, [frontMatter, pageTitle, subPage])
 
-  return (
+  return (<>
     <Container
       title={`${frontMatter.title}${frontMatter.title === pageTitle ? '' : ' | ' + pageTitle}`}
       description={frontMatter.summary}
@@ -33,13 +33,15 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
           pageTitle={showSubPageTitle ? pageTitle : null}
           prev={prev}
           next={next}
+          tableOfContent={tableOfContent}
         />
       </motion.div>
 
       <Comments frontMatter={frontMatter} post={frontMatter}  pingluns={pingluns} /> 
-      {/* <Pinglun post={frontMatter}  pingluns={pingluns}  /> */}
-      <ArticleAdjacent prev={prev} next={next} me={frontMatter} />
+      <Prevandnext prev={prev} next={next} me={frontMatter} />
     </Container>
+
+  </>
   )
 }
 

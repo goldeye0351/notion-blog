@@ -1,53 +1,78 @@
-import PropTypes from 'prop-types'
-import { getPageTableOfContents } from 'notion-utils'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion';
 
-export default function TableOfContents ({ blockMap,  pageTitle }) {
-  let collectionId, page
-  if (pageTitle) {
-    collectionId = Object.keys(blockMap.block)[0]
-    page = blockMap.block[collectionId].value
-  } else {
-    collectionId = Object.keys(blockMap.collection)[0]
-    page = Object.values(blockMap.block).find(block => block.value.parent_id === collectionId).value
-  }
-  const nodes = getPageTableOfContents(page, blockMap)
-  if (!nodes.length) return null
+const Mulu = ({ tableOfContent }) => {
+  const [activeSection, setActiveSection] = useState(null)
 
-  /**
-   * @param {string} id - The ID of target heading block (could be in UUID format)
-   */
-  function scrollTo (id) {
-    id = id.replaceAll('-', '')
-    const target = document.querySelector(`.notion-block-${id}`)
-    if (!target) return
-    // `65` is the height of expanded nav
-    // TODO: Remove the magic number
-    const top = document.documentElement.scrollTop + target.getBoundingClientRect().top - 65
-    document.documentElement.scrollTo({
-      top,
-      behavior: 'smooth'
+  useEffect(() => {
+    const actionSectionScrollSpy = (() => {
+      const sections = document.getElementsByClassName('notion-h')
+
+      let prevBBox = null
+      let currentSectionId = activeSection
+
+      for (let i = 0; i < sections.length; ++i) {
+        const section = sections[i]
+        if (!section || !(section instanceof Element)) continue
+
+        if (!currentSectionId) {
+          currentSectionId = section.getAttribute('data-id')
+        }
+
+        const bbox = section.getBoundingClientRect()
+        const prevHeight = prevBBox ? bbox.top - prevBBox.bottom : 0
+        const offset = Math.max(150, prevHeight / 4)
+
+        // GetBoundingClientRect returns values relative to the viewport
+        if (bbox.top - offset < 0) {
+          currentSectionId = section.getAttribute('data-id')
+
+          prevBBox = bbox
+          continue
+        }
+
+        break
+      }
+
+      setActiveSection(currentSectionId)
     })
-  }
+    window.addEventListener('scroll', actionSectionScrollSpy)
+
+    actionSectionScrollSpy()
+
+    return () => {
+      window.removeEventListener('scroll', actionSectionScrollSpy)
+    }
+  }, [activeSection])
 
   return (
-    <div      className='text-sm   toc-fade-in bg-gray-300 dark:bg-gray-600 rounded-2xl p-3 '    >
-      {nodes.map(node => (
-        <div key={node.id} className='px-2 hover:bg-gray-200 hover:dark:bg-gray-700 rounded-lg'>
-          <a
-            data-target-id={node.id}
-            className='block py-1 cursor-pointer italic'
-            onClick={() => scrollTo(node.id)}
-          >
-            {node.text}
-          </a>
+
+      <div
+        className='text-sm  toc-fade-in bg-gray-300 dark:bg-gray-600 rounded-2xl p-3 duration-300 '
+        id='tableOfContent'
+      >
+
+        <div className='max-h-[500px] overflow-y-auto scrollbar-thin  '>
+          {tableOfContent.map(({ id, indentLevel, text }) => (
+
+            <a
+              key={id}
+              href={`#${id}`}
+              
+            >
+                
+              <div key={id} className={`${activeSection === id ? (' text-black  dark:text-green-400  border-l-2 border-black dark:border-green-400') : ' '} p-1 cursor-pointer italic 
+              hover:bg-gray-200 hover:dark:bg-gray-700` } >
+                {text}
+              </div>
+            </a>
+
+          ))}
         </div>
-      ))}
-    </div>
+        
+      </div>
+
   )
 }
 
-TableOfContents.propTypes = {
-  blockMap: PropTypes.object.isRequired,
-  frontMatter: PropTypes.object.isRequired,
-  pageTitle: PropTypes.string
-}
+export default Mulu

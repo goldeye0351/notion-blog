@@ -36,34 +36,20 @@ const BLOG = {
 
   analytics: {
     provider: 'umami', // Currently we support Google Analytics, Ackee, Umami and Cloudflare Insights, please fill with 'ga' or 'ackee' or 'umami' or 'cf', leave it empty to disable it.
-    ackeeConfig: {
-      tracker: '', // e.g 'https://ackee.example.com/tracker.js'
-      dataAckeeServer: '', // e.g https://ackee.example.com , don't end with a slash
-      domainId: '' // e.g '0e2257a8-54d4-4847-91a1-0311ea48cc7b'
-    },
-    cfConfig: {
-      scriptUrl: 'https://static.cloudflareinsights.com/beacon.min.js', // Default
-      token: '' // Like '{"token": "xxxxxxxxxxxxxxxxxx"}'
-    },
-    gaConfig: {
-      measurementId: 'G-XMZET1KJPX' // e.g: G-XXXXXXXXXX
-    },
     umamiConfig: {
       scriptUrl: 'https://umami.mynotion.life/script.js', // The url of your Umami script
       websiteId: '6a873ef2-259b-4e69-a63c-1306d6695bd2', // The website id of your Umami instance
-      token:'1TyTJFBdyk4FAjIj0qRFoYRx8OjBrVEHiy8KZLytu41/mn2wGPXrLCAnZcKK/TsFqoh329PX4s2IkvMPkFIeUyYD0ATvo938i+ai6KLOcGtq3XDD/YTJBcskOs+Oc8jkCGzlEvg1P7v/ESqCtBiV/toXvK0A82VG21Ph2NOp1BbXCIvHfJrQ9PxOCecobJqP4kbEdOQQby/8Uh0xoUmvadOlxDMBgW8PXmcSxUFeYq/JrfSx+FLG7mhHcGG+uNJG/MfP7g6vs13bIGH9mluCZ/YzvrVLpde89PoDemv+BcOUz8pY7dwnsQRS8iR2MGvEDVHZQGqhr1vFeMNZXMy4aG66gMxYK7D5gw=='
+      token:'h7Oqq8MqtutWNDs78LX2q3Nvb6cixXGPrPrqBOTsxofyevz4FtiRSCPW2I0nCMTKLhsxyZynV\/3Wvnpk8GZb2ACCkwHETtRI5HxRwe811xSnRpUA9scEdJ5HZyRjWY5T7bo3pQLrYt18zaHtuvSrTCVlmAC03dElAQv5AioWk5M5oMLQOXpilmRbm3jP8Vk9C6VIrXsBhb5aIH39zU4\/tx+M9UZmjYM8j5+\/q4IHRT6q\/pJyDdgHgBI6IGbUPBiTa20rq\/nTi3+ubS\/ywIak0W8YbEly2kdcPHND5b7c9eef\/j+tcDEBQqCQsOUCiMARL6SN5lP0jKZfkbvtQeSVEZ7y3nqb\/Lrp2w=='
     }
   },
   comment: {
-    // support provider: utterances, supacomments,  notion,  default is notion
+    // support provider: supacomments,  notion,  default is notion
     provider: 'notion', // leave it empty if you don't need any comment plugin
     supaCommentsConfig: {
       supabaseUrl: '', // The url of your Supabase instance,my 'https://vsjbhkyquwndetkybqxt.supabase.co'
       supabaseAnonKey:'',// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzamJoa3lxdXduZGV0a3licXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY1NjkyNDgsImV4cCI6MjAwMjE0NTI0OH0.p992Pul07lKilqIYLYmRfLB584XLf6ABCVedYfjozXU' // The anonymous key of your Supabase instance
     },
-    utterancesConfig: {
-      repo: ''
-    }
+
   },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
 }

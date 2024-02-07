@@ -6,13 +6,12 @@ import Loading from '@/components/Loading'
 import NotFound from '@/components/NotFound'
 import { ArticleLock } from '@/components/Post/ArticleLock'
 import React from 'react'
+import {  getPageTableOfContents,  uuidToId} from 'notion-utils'
 import { getDefComments } from "@/lib/notionapi";
   const pinglunId = BLOG.notionCommentId;
-  
-
 
 const Post = props => {
-  const { posts,post, blockMap,prev,next,pingluns  }=props 
+  const { posts,post, blockMap,prev,next,pingluns,tableOfContent  }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -36,7 +35,7 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  pingluns={pingluns}/> }
+  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  pingluns={pingluns}/> }
 
 }
 
@@ -59,6 +58,18 @@ export async function getStaticProps({ params: { slug } }) {
   const  mypingluns = await getDefComments(pinglunId,postid);
   try {
     const blockMap = await getPostBlocks(post.id)
+    const keys = Object.keys(blockMap?.block || {})
+    const block = blockMap?.block?.[keys[0]]?.value 
+  
+    const tableOfContent =
+      getPageTableOfContents(block, blockMap)?.map(
+        ({ id, text, indentLevel }) => ({
+          id: uuidToId(id),
+          text,
+          indentLevel
+        })
+      ) || []
+
     return {
       props: {
         posts,
@@ -67,6 +78,7 @@ export async function getStaticProps({ params: { slug } }) {
         next,
         blockMap,
         pingluns: mypingluns,
+        tableOfContent
       },
       revalidate: 1
     }
@@ -79,7 +91,8 @@ export async function getStaticProps({ params: { slug } }) {
         prev: null,
         next: null,
         blockMap: null,
-        pingluns:null
+        pingluns:null,
+        tableOfContent:null
       }
     }
   }

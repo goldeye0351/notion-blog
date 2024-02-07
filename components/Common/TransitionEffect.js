@@ -29,7 +29,7 @@ const TransitionEffect = ({ children }) => {
   const { asPath } = useRouter()
 
   return (
-    <div className='effect-1'>
+    <div className='effect-1 flex-grow'>
       <AnimatePresence
         initial={false}
         exitBeforeEnter

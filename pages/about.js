@@ -3,7 +3,7 @@ import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
-import SupaComments from "@/components/Post/SupaComments"
+//import SupaComments from "@/components/Post/SupaComments"
 import Container from '@/components/Container'
 import Pinglun from "@/components/Post/NotionComment"
 import { getDefComments } from "@/lib/notionapi";

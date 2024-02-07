@@ -63,7 +63,7 @@ const Footer = ({ fullWidth }) => {
 
     umiTongji();
   }, []);
-  return (<>
+  return (<div className=' mt-auto'>
     <div className='observer-element h-0  ' ref={sentinelRef}></div>
     <motion.div ref={navRef}
       className={` sticky-footer  flex-shrink-0 m-auto w-full text-gray-600 dark:text-gray-300 transition-all  ${
@@ -103,7 +103,7 @@ const Footer = ({ fullWidth }) => {
         </div>
       </footer>
     </motion.div>
-    </>
+    </div>
   )
 }
 export default Footer

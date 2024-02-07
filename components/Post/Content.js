@@ -6,15 +6,17 @@ import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, HeartIc
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import  React ,{ useEffect, useState } from "react";
-import TableOfContents from './TableOfContents'
+import Mulu from './TableOfContents'
 import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import { motion } from 'framer-motion'
 import Lastpost from '@/components/Post/lastpost'
 import IpComponent from '@/components/IpComponent';
-
+import Image from 'next/image'
+import WordCount from '../WordCount'
+import Tagitem from './Tagitem'
 export default function Content (props) {
-  const { posts,frontMatter, blockMap, pageTitle} = props
+  const { posts,frontMatter, blockMap, pageTitle,tableOfContent} = props
   const [showPay, setShowPay] = useState(false)
   const currentHour = (new Date()).getHours();
   const visitorIp = IpComponent();
@@ -81,16 +83,23 @@ export default function Content (props) {
 
   return (<div >
   <div id="biaoti"  className=' flex flex-col justify-center   '>
-      <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto'>
+      <div className='opacity-50   h-96 w-screen overflow-hidden  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
+        <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
+      </div>
+      <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto mt-80'>
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
+
       <nav className='flex mt-5 mb-10 items-start text-gray-500 dark:text-gray-400'>
         <div className='mr-2 mb-4 md:ml-0'>
           <FormattedDate date={frontMatter.date} />
         </div>        
           <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
-            {frontMatter.tags} 
-          </div>      
+          {frontMatter.tags.map(tag => (
+            <Tagitem key={tag.id} tag={tag} />
+          ))}
+          </div> 
+          <div className='mr-2'><WordCount /></div> 
       </nav>
       
       <div 
@@ -150,8 +159,7 @@ export default function Content (props) {
      id="sideright" className='w-56 p-3 hidden xl:block '>  
           
         <div className=' sticky top-16 '>
-          
-          < TableOfContents frontMatter={frontMatter}  blockMap={blockMap} pageTitle={pageTitle}/>
+          <Mulu tableOfContent={tableOfContent} />
           <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1'> 
               <div id="点赞"  className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <button id="dapindianzan"
@@ -172,9 +180,7 @@ export default function Content (props) {
               </div>
           </div>
           <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
-            <div className='flex flex-row justify-between text-sm italic '>
-            {greeting} {visitorIp}
-            </div>
+            🆕📣
             <hr/>
             <Lastpost  posts={posts} />
           </div>

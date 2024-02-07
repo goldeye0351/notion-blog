@@ -17,17 +17,14 @@ import '@/styles/nprogress.css'
 import Header from '@/components/NavBar/Header'
 import Footer from '@/components/NavBar/Footer'
 
-const Ackee = dynamic(() => import('@/components/Common/Ackee'), { ssr: false })
-const Gtag = dynamic(() => import('@/components/Common/Gtag'), { ssr: false })
+
 const StarrySky = dynamic(() => import('@/components/StarrySky'), { ssr: false })
 
 function MyApp({ Component, pageProps }) {
-  // https://github.com/vercel/next.js/blob/canary/examples/with-loading/pages/_app.js
   const router = useRouter()
 
   useEffect(() => {
     const handleStart = (url) => {
-      // console.log(`Loading: ${url}`)
       NProgress.start()
     }
     const handleStop = () => {
@@ -46,21 +43,15 @@ function MyApp({ Component, pageProps }) {
   }, [router])
 
   return (
-    <>
+    < div className='flex flex-col min-h-screen'>
       <Scripts />
-      {BLOG.isProd && BLOG?.analytics?.provider === 'ackee' && (
-        <Ackee
-          ackeeServerUrl={BLOG.analytics.ackeeConfig.dataAckeeServer}
-          ackeeDomainId={BLOG.analytics.ackeeConfig.domainId}
-        />
-      )}
-      {BLOG.isProd && BLOG?.analytics?.provider === 'ga' && <Gtag />}
       <StarrySky />
       <ThemeProvider attribute='class' defaultTheme = 'dark' >
         <Header
           navBarTitle={pageProps.post ? pageProps.post.title : null}
           fullWidth={pageProps.post ? pageProps.post.fullWidth : false}
         />
+
         <TransitionEffect>
             <div
               className={`min-h-[60VH] flex content-center justify-center items-center md:min-h-[calc(100vh-17rem)] ${
@@ -70,9 +61,10 @@ function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </div>
         </TransitionEffect>
-        <Footer fullWidth={pageProps.post ? pageProps.post.fullWidth : false} />
+        
+        <Footer  />
       </ThemeProvider>
-    </>
+    </div>
   )
 }
 
