@@ -42,15 +42,6 @@ const BLOG = {
       token:'h7Oqq8MqtutWNDs78LX2q3Nvb6cixXGPrPrqBOTsxofyevz4FtiRSCPW2I0nCMTKLhsxyZynV\/3Wvnpk8GZb2ACCkwHETtRI5HxRwe811xSnRpUA9scEdJ5HZyRjWY5T7bo3pQLrYt18zaHtuvSrTCVlmAC03dElAQv5AioWk5M5oMLQOXpilmRbm3jP8Vk9C6VIrXsBhb5aIH39zU4\/tx+M9UZmjYM8j5+\/q4IHRT6q\/pJyDdgHgBI6IGbUPBiTa20rq\/nTi3+ubS\/ywIak0W8YbEly2kdcPHND5b7c9eef\/j+tcDEBQqCQsOUCiMARL6SN5lP0jKZfkbvtQeSVEZ7y3nqb\/Lrp2w=='
     }
   },
-  comment: {
-    // support provider: supacomments,  notion,  default is notion
-    provider: 'notion', // leave it empty if you don't need any comment plugin
-    supaCommentsConfig: {
-      supabaseUrl: '', // The url of your Supabase instance,my 'https://vsjbhkyquwndetkybqxt.supabase.co'
-      supabaseAnonKey:'',// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzamJoa3lxdXduZGV0a3licXh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY1NjkyNDgsImV4cCI6MjAwMjE0NTI0OH0.p992Pul07lKilqIYLYmRfLB584XLf6ABCVedYfjozXU' // The anonymous key of your Supabase instance
-    },
-
-  },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
 }
 // export default BLOG

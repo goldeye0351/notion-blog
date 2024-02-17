@@ -20,6 +20,7 @@ module.exports = {
       'q1.qlogo.cn',
       'github.io',
       'prod-files-secure.s3.us-west-2.amazonaws.com',
+      'goldeye0351.github.io',
     ]
   },
   async headers() {

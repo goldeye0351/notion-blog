@@ -2,12 +2,11 @@ import BLOG from '@/blog.config'
 import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {EyeIcon,ArrowUpIcon,ThumbUpIcon,PencilIcon, DesktopComputerIcon, HeartIcon,ChatIcon, TableIcon, FilterIcon, BeakerIcon, PuzzleIcon, FolderIcon, GiftIcon, ViewListIcon, ClipboardListIcon} from '@heroicons/react/outline'
+import {ThumbUpIcon,ChatIcon } from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
-import  React ,{ useEffect, useState } from "react";
+import  React from "react";
 import Mulu from './TableOfContents'
-import WechatPay from '@/components/Post/WechatPay'
 import Jumptocomment from '../JumpToComment'
 import { motion } from 'framer-motion'
 import Lastpost from '@/components/Post/lastpost'
@@ -17,19 +16,9 @@ import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
 export default function Content (props) {
   const { posts,frontMatter, blockMap, pageTitle,tableOfContent} = props
-  const [showPay, setShowPay] = useState(false)
-  const currentHour = (new Date()).getHours();
+  //const [showPay, setShowPay] = useState(false)
   const visitorIp = IpComponent();
-  let greeting;
-  if (currentHour >= 0 && currentHour < 6) {
-    greeting = '凌晨好🌙';
-  } else if (currentHour >= 6 && currentHour < 12) {
-    greeting = '早上好🌞';
-  } else if (currentHour >= 12 && currentHour < 18) {
-    greeting = '下午好🌤';
-  } else {
-    greeting = '晚上好🌙';
-  }
+
   var zjk = frontMatter.up;
 
   const el = React.useRef(null);
@@ -131,8 +120,8 @@ export default function Content (props) {
             onClick={dianzan} data-umami-event="小屏点赞" 
             className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
           >
-            <ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)} className='w-6 h-6' />
-            
+            {/* onClick={() => setShowPay((showPay) => !showPay)} */}
+            <ThumbUpIcon  className='w-6 h-6' />
             <span id="myupxiaopin" className=' inline-block'>{zjk}</span>
 
           </button>
@@ -166,8 +155,7 @@ export default function Content (props) {
                       onClick={dianzan} data-umami-event="大屏点赞" 
                       className='  hover:text-gray-400 dark:hover:text-gray-400'
                     >
-                      {/*<ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  data-umami-event="点赞" className='w-6 h-6 inline-block mx-1 text-center   ' />*/}
-                      <ThumbUpIcon onClick={() => setShowPay((showPay) => !showPay)}  className='w-6 h-6 inline-block mx-1 text-center   ' />
+                      <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center   ' />
                       <span id="myupdapin" className=' inline-block'>{zjk}</span>
 
                     </button>
@@ -189,7 +177,6 @@ export default function Content (props) {
     </motion.div>
 
   </div>
-  {showPay && <WechatPay />}
 </div>
   )
 }
