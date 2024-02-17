@@ -21,6 +21,7 @@ module.exports = {
       'github.io',
       'prod-files-secure.s3.us-west-2.amazonaws.com',
       'goldeye0351.github.io',
+      'raw.githubusercontent.com',
     ]
   },
   async headers() {
