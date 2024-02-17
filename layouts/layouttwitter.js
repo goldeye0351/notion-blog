@@ -30,17 +30,18 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
   const deftag = searchValue === "" ? posts : filteredBlogPosts 
 
   return (
-    <Container  title="Search Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >
+    <Container  title="MyNotion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >
     <div id='zuozhongyou'  className='flex '>
 
-      <div id='ltya' className=' hidden md:block w-2/12  flex-col relative '>
-        <div id="alltags" className='sticky  top-36  '>
-          <div className='flex justify-center mb-1  '>
+      <div id='ltya' className=' hidden md:block w-32  max-w-[128px] min-w-[128px] flex-col relative  '>
+        <div id="alltags" className='fixed  top-0 flex-col flex    min-h-screen   '>
+          
+          <div className='flex justify-center  mt-36 '>
             <div className=' '>
               <TagIcon className=' w-8 h-8 rotate-90  inline-block '/>
             </div>
           </div>
-          <div className=' flex flex-row justify-center flex-wrap p-1   '>
+          <div className=' flex flex-col flex-grow  p-1   '>
             {Object.keys(tags).map((key) => {
               return (
                 <button
@@ -53,11 +54,13 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
               )
             })}
           </div>
-          
+          <div className=' mt-auto mb-12 items-center flex justify-center '>
+            <Link href='/contact' ><UserIcon className=' w-12 h-12  hover:text-cyan-300  hover:animate-bounce duration-300  ' /></Link>
+          </div>
+
         </div>
-        <div className=' fixed bottom-12 left-20 content-center flex justify-center   '>
-            <Link href='/contact' ><UserIcon className=' w-12 h-12  hover:text-cyan-300  hover:animate-bounce  ' /></Link>
-        </div>
+
+
         
       </div>
 
@@ -110,10 +113,10 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
         </div>
       </div>
 
-      <div id='rtya' className=' hidden md:block  w-3/12 max-w-[240px]   '>
+      <div id='rtya' className=' hidden md:block  w-72 max-w-[288px]  min-w-[288px] ml-3 '>
         <div  className=' sticky top-20 space-y-3 '>
-          <div className=' mypingcard2 flex  w-60 h-60  bg-gray-200 dark:bg-gray-700 rounded-xl mb-3 '>
-          <BubbleUI className="myBubbleUI h-60 w-60 rounded-3xl">
+          <div className=' mypingcard2 flex   bg-gray-200 dark:bg-gray-700 rounded-xl mb-3 '>
+          <BubbleUI className="myBubbleUI h-72 w-72 rounded-3xl">
             {posts.slice(0,21).map((data, i) => (
               <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={data.id}>
                 <Image src={data.page_cover} alt={data.title} width={60} height={60}  
@@ -134,9 +137,9 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
                 </svg>
               </Link>
               <div className=' bg-gray-200 dark:bg-gray-900 rounded-xl w-1/3 h-12 dark:ring-2 dark:ring-green-400  group
-                duration-0  hover:duration-1000 ease-in-out 
-                hover:z-50
-                hover:h-[800px] hover:overflow-visible hover:right-0 hover:fixed hover: top-8  hover:w-96 overflow-hidden
+                duration-0  hover:duration-1000 ease-in-out hover:p-3 
+                hover:z-50 
+                hover:h-[800px] hover:overflow-visible hover:right-0 hover:fixed hover: top-20   overflow-hidden
                 '>
                   <ChatAltIcon className=' w-12 h-12 mx-auto ' />
                   <Pinglun  post={homeid}/>

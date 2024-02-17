@@ -26,7 +26,7 @@ const BlogPost = ({ index , post,resdata }) => {
     updateDOM();
   }, [resdata]);
   return (
-<div className=' relative '>
+<div className=' relative border border-gray-200 dark:border-gray-700 '>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
@@ -36,9 +36,9 @@ const BlogPost = ({ index , post,resdata }) => {
                 }}>  
         
       <article
-          className='  bg-gray-200 dark:bg-gray-700  relative m-3  cursor-pointer rounded-xl p-5  overflow-hidden '
+          className='   relative m-3  cursor-pointer rounded-xl p-5  overflow-hidden '
         >
-          <div className='  bg-gray-300 dark:bg-gray-600 flex rounded-xl w-max px-3 py-1 '>
+          <div className='  flex rounded-xl w-max px-3 py-1 '>
           {post?.category} 
           </div>
          <div 
