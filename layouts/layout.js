@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import Prevandnext from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
-import Comments from '@/components/Post/Comments'
+//import Comments from '@/components/Post/Comments'
+import Pinglun from '@/components/Post/NotionComment'
 const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,pingluns, tableOfContent}) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 
@@ -37,7 +38,7 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
         />
       </motion.div>
 
-      <Comments frontMatter={frontMatter} post={frontMatter}  pingluns={pingluns} /> 
+      <Pinglun  post={frontMatter}  /> 
       <Prevandnext prev={prev} next={next} me={frontMatter} />
     </Container>
 

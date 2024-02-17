@@ -5,51 +5,64 @@ import FormattedDate from "../Common/FormattedDate";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
+import { PaperAirplaneIcon } from "@heroicons/react/outline";
 
-function Pinglun({post,pingluns} ){
+function Pinglun({post} ){
+    const postid = post.id||'home'
     const { locale } = useRouter()
     const t = lang[locale]
     const [ren, setRen] = useState('');
+    const [comments, setComments] = useState([]);
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
     const visitorIp = IpComponent();    
-    const parts = email.split('@');
-    const part0 = parts[0];
-    const part1 = parts[1];
-    const emailHash = email ? md5(email.trim().toLowerCase()) : '';
-    const gravatarUrl2 = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
-    const [showResult, setShowResult] = useState(true);
-    const [showcom, setShowcom] = useState(false);
-    const postid = post.id;
-    const title = post.title
-    const submitForm = async (e) => {
+    const title = post.title||'Home'
+    const addcomment = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {
           method: 'POST',
           body: JSON.stringify({ postid,ren,pinglun,title,email,visitorIp }),
         });
         if (res.status === 201) {
-          setShowResult(false);
-          setShowcom(true);
-          window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
+          fetchComments(); // 在提交评论成功后再次获取评论数据
+          window.scrollTo({ top: document.getElementById('commentHome').offsetTop, behavior: 'smooth' })
         } else {
           alert('errer 信号不好, 出错了')    
         }
       };
 
-return<>
-        <div  className=" flex justify-center cursor-pointer  ">
-          <div className=" max-w-screen-md w-full  ">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" w-8 ">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-            </svg>
-          </div>
-        </div>
-  { showResult&& <form onSubmit={submitForm} className=' max-w-screen-md grid grid-cols-8  gap-3  mx-auto'>
+      useEffect(() => {
+        fetchComments(); // 在组件加载时获取评论数据
+      }, []);
+    
+      async function fetchComments() {
+        try {
+          const tgUrl = '/api/pinglunapiget';
+          const response = await fetch(tgUrl, {
+            method: 'POST',
+            body: JSON.stringify({ postid }),
+          });
+          if (response.ok) {
+            const data = await response.json();
+            if (data.status === 'Success') {                        
+              setComments(data.data.results); 
+            } else {
+              console.error('Failed to fetch comments');
+            }
+          } else {
+            console.error('Failed to fetch comments');
+          }
+        } catch (error) {
+          console.error('Error fetching comments:', error);
+        }
+      }
+return< div>
+        
+  <form onSubmit={addcomment} className=' w-full max-w-screen-md    mx-auto '>
 
-      <div className='p-3 col-span-8 bg-gray-200 dark:bg-gray-700 duration-500 rounded-xl'>
+      <div className='p-3 w-full bg-gray-200 dark:bg-gray-700 duration-300 rounded-xl'>
           <textarea    name="PINGLUN"  id="PINGLUN"  rows="3"
-            className=' block italic p-1 w-full bg-white/30 dark:bg-black/100 duration-500 rounded-xl'
+            className=' block italic p-1 w-full bg-white/30 dark:bg-black/100 duration-300 rounded-xl'
             placeholder={t.LAYOUT.COMMENT_MAIN}
             value={pinglun}
             onChange={(e) => setPinglun(e.target.value)}
@@ -57,80 +70,64 @@ return<>
           ></textarea>
       </div>
 
-      <div className="hidden sm:block  col-span-2 ">
-      </div>
-      <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+      <div className=" flex space-x-1 my-1">
+      <div className=' w-1/4 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="REN"  name="REN"
-              type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '
+              type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
               placeholder={t.LAYOUT.COMMENT_NAME}
               value={ren}
               onChange={(e) => setRen(e.target.value)}
               required
           />
       </div>
-      <div className=' col-span-3 sm:col-span-2 p-3  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+      <div className=' w-1/2 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
           <input id="EMAIL"  name="EMAIL" autoComplete="email"
-              type="text" className='  italic px-3  mx-3 block  duration-500 bg-transparent '
+              type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
               placeholder={t.LAYOUT.COMMENT_EMAIL}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
           />
       </div>
-      <button  type="submit" className=' col-span-2 text-gray-400  p-3 text-2xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-500 rounded-xl  '>
-      {t.LAYOUT.COMMENT_SUBMIT}
+      <button  type="submit" className=' w-1/4 text-gray-400  p-1 text-xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
+      <PaperAirplaneIcon className=" w-16 h-5 -rotate-45" />
       </button>
-  </form>}
-    {/*  temp    */}
-    {showcom && 
-    <div className="  mx-auto  flex flex-row justify-center">
-      <li  className='  m-3 flex  w-[90vw] max-w-screen-md  '>
-        <div className=" justify-center flex-col flex text-center duration-300 hover:text-blue-500 ">
-        <Image src={gravatarUrl2} alt="Gravatar" width={100}  height={100} priority  className=' rounded-full h-12 w-12 mr-3 hover:animate-pulse   '/>
-        </div>
-        <div id="temppl" className=' p-3 bg-gray-200  dark:bg-gray-700 rounded-2xl  text-sm w-full ring-1 ring-white/30    '>
-          {pinglun}
-          <hr />
-          <div className=" flex-row flex justify-between ">
-            <div id="tempname" className=" font-extrabold text-lg ">
-            {ren}
-            </div>
-            <FormattedDate   />
-          </div>
-        </div>
-      </li>
-    </div> }
-
-   {/*  temp    */}
-<div id="comment" className="  mx-auto  flex flex-row justify-center">
-      <ol >
-        {pingluns.map((post) => {
-          const myemail = post.properties.Email.email;
-          const parts = myemail ? myemail.split('@'): '';
-          const part0 = parts[0];
-          const part1 = parts[1];
-          const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
-          const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
+      </div>
+  </form>
+  <div className=" overflow-scroll h-96"> 
+    <div id="commentHome" className="  mx-auto  max-w-screen-md w-full mt-3   ">
+          <ol className=" w-full">
+            {comments.map((post) => {
+              const myemail = post.properties.Email.email;
+              const parts = myemail ? myemail.split('@'): '';
+              const part0 = parts[0];
+              const part1 = parts[1];
+              const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
+              const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
 
 
-          return<li key={post.id} className='  m-3 flex  w-[90vw] max-w-screen-md  even:italic  '>
+              return<li key={post.id} className=' flex-grow  even:italic space-y-1 my-1 '>
 
-            <div className=" justify-center flex-col flex text-center duration-300 ">
-               <Image src={gravatarUrl} alt="Gravatar" width={100}  height={100} priority  className=' rounded-full h-12 w-12 mr-3 hover:animate-pulse   '/>
-            </div>
-            <div className=' p-3 bg-gray-200  dark:bg-gray-700 rounded-2xl  text-sm w-full ring-1 ring-white/30    '>
-              {post.properties.Text.rich_text[0].text.content }
-              <hr />
-              <div className=" flex-row flex justify-between ">
-                <div className=" font-extrabold text-lg ">{post.properties.Ren.rich_text[0].text.content } </div>
-                <FormattedDate  date={post.created_time} />
-              </div>
-            </div>
-          </li>
-        })}
-      </ol>
-</div> 
+                
+                <div className=' bg-gray-200  dark:bg-gray-700 rounded-xl p-1 flex-col   '>
+                  <article className="  break-words ">
+                  {post.properties.Text.rich_text[0].text.content }
+                  </article>
+                  <hr />
+                  <div className=" flex-row flex justify-between ">
+                    <div>
+                      <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className=' inline-block  rounded-full h-5 w-5 hover:animate-pulse   '/>
+                      <div className=" font-extrabold text-lg inline-block ">{post.properties.Ren.rich_text[0].text.content } </div>
 
-</>
+                    </div>
+                    <FormattedDate  date={post.created_time} />
+                  </div>
+                </div>
+              </li>
+            })}
+          </ol>
+    </div> 
+  </div>  
+</div>
 }
 export default Pinglun

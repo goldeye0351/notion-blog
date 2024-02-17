@@ -39,7 +39,7 @@ const Tabs = ({ className, children }) => {
         <ul className='flex justify-center space-x-5 pb-4 overflow-auto'>
             {children.map((item, index) => {
               return <li key={index}
-                    className={(currentTab === index ? 'font-black border-b-2 border-red-400 ' : 'font-extralight cursor-pointer') + '  '}
+                    className={(currentTab === index ? 'font-black border-b-2 border-green-400 ' : 'font-extralight cursor-pointer') + '  '}
                     onClick={() => {
                       tabClickHandle(index)
                     }}>

@@ -23,7 +23,7 @@ const NavBar = (props) => {
   const collapseRef = useRef(null)
 
   return (
-    <div className='relative flex flex-row flex-nowrap  justify-start'>
+    <div className='relative flex  flex-nowrap  justify-start'>
       {/* Desktop Menu */}  
       <ul id="desktopmenu" className="hidden md:flex ">
         {links.map((menu, index) => {

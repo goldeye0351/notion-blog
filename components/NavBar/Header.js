@@ -1,8 +1,8 @@
 import { useEffect, useCallback, useState, useRef } from 'react'
 import Link from 'next/link'
 import BLOG from '@/blog.config'
-import NavBar from './Nav'
 import Logo from '../Common/Logo'
+import ThemeSwitcher from './ThemeSwitcher'
 const Header = ({ navBarTitle, fullWidth }) => {
   const [showTitle, setShowTitle] = useState(false)
   const useSticky = !BLOG.autoCollapsedNavBar
@@ -37,7 +37,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
       <div className='observer-element h-3 ' ref={sentinelRef}></div>
       <div
         className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-3 py-8 bg-opacity-60 ${
-          !fullWidth ? 'max-w-5xl px-4' : 'px-4 md:px-24'
+          !fullWidth ? 'max-w-6xl' : 'px-4 md:px-24'
         }`}
         id='sticky-nav'
         ref={navRef}
@@ -68,7 +68,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
             </p>
           )}
         </div>
-        <NavBar />
+        <ThemeSwitcher />
       </div>
     </>
   )

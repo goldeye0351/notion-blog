@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }) {
             </div>
         </TransitionEffect>
         
-        <Footer  />
+        {/*<Footer  />*/}
       </ThemeProvider>
     </div>
   )

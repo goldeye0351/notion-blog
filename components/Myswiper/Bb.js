@@ -23,15 +23,15 @@ function _extends() {
 }
 
 var defaultOptions = {
-  size: 150,
-  minsize: 50,
-  gutter: 5,
+  size: 70,
+  minsize: 35,
+  gutter: 3,
   provideProps: true,
   numCols: 6,
-  fringeWidth: 200,
+  fringeWidth: 10,
   yRadius: 120,
   xRadius: 120,
-  cornerRadius: 50,
+  cornerRadius: 150,
   showGuides: false,
   compact: true,
   gravitation: 5

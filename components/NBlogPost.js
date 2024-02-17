@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
 import React from 'react'
 import { useEffect } from 'react';
-
+import Tagitem from './Post/Tagitem'
 import { EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
 const BlogPost = ({ index , post,resdata }) => {
   useEffect(() => {
@@ -26,7 +26,7 @@ const BlogPost = ({ index , post,resdata }) => {
     updateDOM();
   }, [resdata]);
   return (
-<div>
+<div className=' relative '>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
@@ -34,24 +34,27 @@ const BlogPost = ({ index , post,resdata }) => {
                  hidden: { opacity: 0,y: 100,scale:0.8 },
                  visible: { opacity: 1,y: 0,scale:1 },
                 }}>  
+        
       <article
-          key={post.id}
-          className='  bg-gray-200 dark:bg-gray-700 duration-500 relative m-3  cursor-pointer rounded-xl p-5 w-[80vw] lg:w-[45vw] xl:w-96  overflow-hidden '
+          className='  bg-gray-200 dark:bg-gray-700  relative m-3  cursor-pointer rounded-xl p-5  overflow-hidden '
         >
+          <div className='  bg-gray-300 dark:bg-gray-600 flex rounded-xl w-max px-3 py-1 '>
+          {post?.category} 
+          </div>
          <div 
-         id='blog-ID' key={post.id}  className="group  justify-between  rounded-xl   " >
+           className="group  justify-between  rounded-xl   " >
             <div   className=' w-full h-full '   >
-                <h2 className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm '>{post.title}</h2>
+                <div className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm '>{post.title}</div>
+                {post.to && <Image src={post.to} alt={post.title} width={900} height={300} />}
+
                 <span className=' flex font-light justify-between  text-gray-600 dark:text-gray-400'>
                   <FormattedDate date={post.date} />
-                  <div>
-                    <EyeIcon className='  mx-3 w-6 h-6 inline-block'/><span id={post.slug} ></span>
-                    <ThumbUpIcon className='  mx-3 w-6 h-6 inline-block'/>{post.up}
+                  <div className="   rounded-xl  text-sm flex flex-row flex-nowrap justify-between text-gray-700 dark:text-gray-300">
+                      <EyeIcon className=' mx-1  w-6 h-6 inline-block'/><span id={post.slug} ></span>
+                      <ThumbUpIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
                   </div>
                 </span>
-                <p className=' font-light leading-8 text-gray-700 dark:text-gray-100'>{post.summary}</p>
-
- 
+                <div className=' font-light leading-8 text-gray-700 dark:text-gray-100'>{post.summary}</div>
                 <Image src={post?.page_cover}  alt={post.title} fill
                 className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>
  

@@ -83,10 +83,10 @@ export default function Content (props) {
 
   return (<div >
   <div id="biaoti"  className=' flex flex-col justify-center   '>
-      <div className='opacity-50   h-96 w-screen overflow-hidden  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
+      <div className='opacity-50   h-36 w-screen overflow-hidden  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
       </div>
-      <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto mt-80'>
+      <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto mt-20'>
         {pageTitle ? pageTitle : frontMatter.title}
       </div>
 

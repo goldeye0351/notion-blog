@@ -3,18 +3,14 @@ import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import Tilt from 'react-parallax-tilt'
-//import SupaComments from "@/components/Post/SupaComments"
 import Container from '@/components/Container'
 import Pinglun from "@/components/Post/NotionComment"
-import { getDefComments } from "@/lib/notionapi";
-  
-
+import Tabs from "@/components/Post/Tabs"  
+import OfficeComment from "@/components/Post/OfficeComment"
 export async function getStaticProps() {
-  const pinglunId = BLOG.notionCommentId;
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'about')
   const postid=hero.id
-  const mypingluns = await getDefComments(pinglunId,postid);
   let blockMap
   try {
     blockMap = await getPostBlocks(hero.id)
@@ -27,12 +23,12 @@ export async function getStaticProps() {
     props: {
       hero,
       blockMap,
-      pingluns: mypingluns,
+      postid,
     },
     revalidate: 1
   }
 }
-const About = ({ blockMap,hero,pingluns }) => {
+const About = ({ blockMap,hero ,postid}) => {
   return (
 <Container  title="About Me. Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon}  className='about' >
   <div className="relative  flex flex-col justify-center content-center items-center pb-12  space-y-16">
@@ -59,8 +55,10 @@ const About = ({ blockMap,hero,pingluns }) => {
               
     </Tilt>
  </div>
-   {/*<SupaComments />*/}
-   <Pinglun post={hero}  pingluns={pingluns}  />
+<Tabs>
+   <Pinglun key='Notion Database' post={hero}    />
+    <OfficeComment key='Notion Office'  postid={postid} />
+</Tabs>
 </Container >
 
 )}
