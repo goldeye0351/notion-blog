@@ -106,7 +106,7 @@ export default function Content (props) {
   
   <div className=' flex flex-row'>
  
-    <article  id='postmain'  className='flex-none md:overflow-x-visible overflow-x-scroll w-full max-w-5xl '>
+    <article  id='postmain'  className='flex-none md:overflow-x-visible overflow-x-scroll w-full max-w-7xl '>
       <div className="-mt-4 relative">
         <NotionRenderer
           blockMap={blockMap}
