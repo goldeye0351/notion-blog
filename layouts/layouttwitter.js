@@ -72,7 +72,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
 
   return (
     <Container  title="MyNotion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >
-    <div id='zuozhongyou'  className='flex overflow-hidden '>
+    <div id='zuozhongyou'  className='flex  '>
 
       <div id='ltya' className=' hidden md:block w-32  max-w-[128px] min-w-[128px] flex-col relative  '>
         <div id="alltags" className='fixed  top-0 flex-col flex    min-h-screen   '>
@@ -105,7 +105,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
         
       </div>
 
-      <div id ='midya' className='flex-grow w-full '>    
+      <div id ='midya' className='flex-grow w-full overflow-hidden'>    
         <div id="searchbox" className='relative mx-3'>
           <input type='text' id="inputtext"
           placeholder={t.SEARCH.PLACEHOLDER}
