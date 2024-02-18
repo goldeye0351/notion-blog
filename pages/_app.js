@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
   }, [router])
 
   return (
-    < div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-screen'>
       <Scripts />
       <StarrySky />
       <ThemeProvider attribute='class' defaultTheme = 'dark' >
@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }) {
 
         <TransitionEffect>
             <div
-              className={`min-h-[60VH] flex content-center justify-center items-center md:min-h-[calc(100vh-17rem)] ${
+              className={`flex  ${
                 BLOG.font === 'serif' ? 'font-serif' : 'font-sans'
               }`}
             >

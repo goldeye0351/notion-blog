@@ -1,6 +1,7 @@
 import BLOG from '@/blog.config'
 import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
+import DaysAgo from '@/components/Common/DaysAgo'
 import NotionRenderer from '@/components/Post/NotionRenderer'
 import {ThumbUpIcon,ChatIcon } from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
@@ -14,6 +15,8 @@ import IpComponent from '@/components/IpComponent';
 import Image from 'next/image'
 import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
+
+
 export default function Content (props) {
   const { posts,frontMatter, blockMap, pageTitle,tableOfContent} = props
   //const [showPay, setShowPay] = useState(false)
@@ -81,8 +84,8 @@ export default function Content (props) {
 
       <nav className='flex mt-5 mb-10 items-start text-gray-500 dark:text-gray-400'>
         <div className='mr-2 mb-4 md:ml-0'>
-          <FormattedDate date={frontMatter.date} />
-        </div>        
+          <FormattedDate date={frontMatter.date} /> &nbsp; {DaysAgo(frontMatter.date)}
+        </div> 
           <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
           {frontMatter.tags.map(tag => (
             <Tagitem key={tag.id} tag={tag} />

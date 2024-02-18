@@ -3,6 +3,7 @@ import Link from 'next/link'
 import BLOG from '@/blog.config'
 import Logo from '../Common/Logo'
 import ThemeSwitcher from './ThemeSwitcher'
+import LangSwitcher from './LangSwitcher'
 const Header = ({ navBarTitle, fullWidth }) => {
   const [showTitle, setShowTitle] = useState(false)
   const useSticky = !BLOG.autoCollapsedNavBar
@@ -34,15 +35,15 @@ const Header = ({ navBarTitle, fullWidth }) => {
   }, [handler, sentinelRef])
   return (
     <>
-      <div className='observer-element h-3 ' ref={sentinelRef}></div>
+      <div className='observer-element h-3  ' ref={sentinelRef}></div>
       <div
-        className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-3 py-8 bg-opacity-60 ${
-          !fullWidth ? 'max-w-6xl' : 'px-4 md:px-24'
+        className={`sticky-nav  m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-3 py-8 bg-opacity-60 ${
+          !fullWidth ? 'max-w-screen-2xl ' : 'px-4 md:px-24'
         }`}
         id='sticky-nav'
         ref={navRef}
       >
-        <div className='flex items-center'>
+        <div className='flex items-center '>
           <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
             <div className='relative ' >
                <Logo className='h-12 w-12 md:h-16 md:w-16    hover:text-cyan-300  hover:animate-spin fill-current ' />
@@ -68,7 +69,10 @@ const Header = ({ navBarTitle, fullWidth }) => {
             </p>
           )}
         </div>
-        <ThemeSwitcher />
+        <div>
+          <ThemeSwitcher />
+          <LangSwitcher />
+        </div>
       </div>
     </>
   )

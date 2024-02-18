@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import FormattedDate from '@/components/Common/FormattedDate'
+import DaysAgo from './Common/DaysAgo'
 import React from 'react'
 import { useEffect } from 'react';
 import Tagitem from './Post/Tagitem'
@@ -38,13 +39,15 @@ const BlogPost = ({ index , post,resdata }) => {
       <article
           className='   relative m-3  cursor-pointer rounded-xl p-5  overflow-hidden '
         >
-          <div className='  flex rounded-xl w-max px-3 py-1 '>
-          {post?.category} 
-          </div>
          <div 
            className="group  justify-between  rounded-xl   " >
             <div   className=' w-full h-full '   >
-                <div className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm '>{post.title}</div>
+                <div className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm justify-between flex  '>
+                  {post.title}
+                  <div className=' font-light text-base '>
+                  {DaysAgo(post.date)}
+                  </div>  
+                </div>
                 {post.to && <Image src={post.to} alt={post.title} width={900} height={300} />}
 
                 <span className=' flex font-light justify-between  text-gray-600 dark:text-gray-400'>

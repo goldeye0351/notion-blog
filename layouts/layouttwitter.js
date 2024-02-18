@@ -9,9 +9,10 @@ import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 import Pinglun from '@/components/Post/NotionComment'
 import UmamiData from '@/components/UmamiData'
-import { LinkIcon, TagIcon, UserIcon, ChatAltIcon } from '@heroicons/react/outline'
+import { LinkIcon, TagIcon, UserIcon, ChatAltIcon,ShareIcon,PlayIcon } from '@heroicons/react/outline'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
+
 import { motion, AnimatePresence } from 'framer-motion'
 
 const variants = {
@@ -69,43 +70,53 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
   }
   
   const deftag = searchValue === "" ? posts : filteredBlogPosts 
-
+  const tagStyles = {
+    0: 'w-1/6 hover:w-full cai',
+    1: 'w-2/6 hover:w-full cai',
+    2: 'w-3/6 hover:w-full cai',
+    3: 'w-4/6 hover:w-full cai4',
+    4: 'w-5/6 hover:w-full cai5',
+    5: 'w-full hover:w-full cai6',
+    
+  };
   return (
     <Container  title="MyNotion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} >
-    <div id='zuozhongyou'  className='flex  '>
+    <div id='zuozhongyou'  className='flex '>
 
-      <div id='ltya' className=' hidden md:block w-32  max-w-[128px] min-w-[128px] flex-col relative  '>
-        <div id="alltags" className='fixed  top-0 flex-col flex    min-h-screen   '>
+      <div id='ltya' className=' hidden md:block w-2/12   flex-col justify-center  relative border-r border-gray-200 dark:border-gray-700 min-w-[192px]   '>
+        <div id="alltags" className='fixed  top-0 flex-col flex w-48   min-h-screen p-3 '>
           
-          <div className='flex justify-center  mt-36 '>
-            <div className=' '>
-              <TagIcon className=' w-8 h-8 rotate-90  inline-block '/>
-            </div>
-          </div>
-          <div className=' flex flex-col flex-grow  p-1   '>
+          <div id='alltags' className=' flex flex-col flex-grow items-center content-center   p-1  mt-36   '>
             {Object.keys(tags).map((key) => {
+                const index = Object.keys(tags).indexOf(key);
+                const style = tagStyles[index] || 'cai'; // 默认样式
               return (
                 <button
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
-                  className="group p-2 w-full rounded-xl   hover:scale-110 duration-300  font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600"
+                  className={` group  opacity-80 px-3 m-1 h-12 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center   ${style} 
+                      duration-500 hover:h-16  font-bold  whitespace-nowrap bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600`}
                 >
                 {`${key} (${tags[key]})`}
+                <ShareIcon 
+                  className={`inline-block scale-150  h-10 w-10 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-125     ${ Object.keys(tags).indexOf(key)% 2 === 1 ? 'hidden ' : ''}
+                  duration-500 `}/>
+                  <PlayIcon 
+                  className={`inline-block scale-150  h-10 w-10 -rotate-45 opacity-50 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-125      ${ Object.keys(tags).indexOf(key)% 2 === 1 ? ' ' : 'hidden'}
+                  duration-500 `}/>
                 </button>
               )
             })}
           </div>
+
           <div className=' mt-auto mb-12 items-center flex justify-center '>
             <Link href='/contact' ><UserIcon className=' w-12 h-12  hover:text-cyan-300  hover:animate-bounce duration-300  ' /></Link>
           </div>
 
-        </div>
-
-
-        
+        </div>        
       </div>
 
-      <div id ='midya' className='flex-grow w-full overflow-hidden'>    
+      <div id ='midya' className='flex-grow w-full overflow-hidden '>    
         <div id="searchbox" className='relative mx-3'>
           <input type='text' id="inputtext"
           placeholder={t.SEARCH.PLACEHOLDER}
@@ -161,17 +172,17 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
         </div>
       </div>
 
-      <div id='rtya' className=' hidden md:block  w-72 max-w-[288px]  min-w-[288px] ml-3 '>
-        <div  className=' sticky top-20 space-y-3 '>
-          <div className=' mypingcard2 flex   bg-gray-200 dark:bg-gray-700 rounded-xl mb-3 '>
-          <BubbleUI className="myBubbleUI h-72 w-72 rounded-3xl">
-            {posts.slice(0,21).map((data, i) => (
-              <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={data.id}>
-                <Image src={data.page_cover} alt={data.title} width={60} height={60}  
-                className=" rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
-              </Link>
-            ))}
-      </BubbleUI>
+      <div id='rtya' className=' hidden md:block  w-3/12 max-w-[320px]  border-l border-gray-200 dark:border-gray-700 '>
+        <div  className=' sticky top-20 px-3 '>
+          <div className=' flex   bg-gray-200 dark:bg-gray-700 rounded-xl mb-3 '>
+            <BubbleUI className="myBubbleUI h-80 w-80 rounded-3xl ">
+              {posts.slice(0,21).map((data, i) => (
+                <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={data.id}>
+                  <Image src={data.page_cover} alt={data.title} width={60} height={60}  
+                  className=" rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
+                </Link>
+              ))}
+            </BubbleUI>
           </div>
 
           <div id='4links' className=' w-full flex-col flex gap-3 h-12 dark:text-gray-200 text-gray-700' >
@@ -200,7 +211,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
                 <UmamiData  className='bg-gray-200 dark:bg-gray-700 '/>
               </div>
           </Link>
-          <div className='  flex  w-full h-max  bg-gray-300 dark:bg-gray-600 rounded-xl p-3'>
+          <div className='  flex  w-full h-max  bg-gray-300 dark:bg-gray-600 rounded-xl mt-3 p-3'>
             <Lastpost posts={tuijian} />
           </div>
           </div>
