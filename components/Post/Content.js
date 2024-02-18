@@ -73,7 +73,7 @@ export default function Content (props) {
     return newup;
   };
 
-  return (<div >
+  return (<div  className=' max-w-screen-2xl'>
   <div id="biaoti"  className=' flex flex-col justify-center   '>
       <div className='opacity-50   h-36 w-screen overflow-hidden  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
@@ -104,9 +104,9 @@ export default function Content (props) {
          
       
   
-  <div className=' flex flex-row'>
+  <div className=' flex flex-row max-w-screen-2xl '>
  
-    <article  id='postmain'  className='flex-none md:overflow-x-visible overflow-x-scroll w-full max-w-7xl '>
+    <article  id='postmain'  className='flex flex-grow w-full  '>
       <div className="-mt-4 relative">
         <NotionRenderer
           blockMap={blockMap}
@@ -134,21 +134,9 @@ export default function Content (props) {
                 </div>
       </div>  
     </article>
-    <motion.div
-             initial="hidden"
-             animate="visible"
-             transition={{ delay: 0.7, duration: 1.2 }}
-             variants={{
-               hidden: {
-                 opacity: 0,
-                 y: 100,
-               },
-               visible: {
-                 opacity: 1,
-                 y: 0,
-               },
-             }}
-     id="sideright" className='w-56 p-3 hidden xl:block '>  
+    <motion.div  id="sideright"     className='ml-auto  w-80 min-w-[320px] p-3 hidden xl:block '
+             initial="hidden" animate="visible"   transition={{ delay: 0.7, duration: 1.2 }}
+             variants={{hidden:{opacity:0,y:100,},visible:{ opacity:1,y:0,},}}>  
           
         <div className=' sticky top-16 '>
           <Mulu tableOfContent={tableOfContent} />
