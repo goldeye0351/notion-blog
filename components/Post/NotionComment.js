@@ -8,7 +8,7 @@ import IpComponent from "../IpComponent";
 import { PaperAirplaneIcon } from "@heroicons/react/outline";
 
 function Pinglun({post} ){
-    const postid = post.id||'home'
+    const postid = post?.id||'home'
     const { locale } = useRouter()
     const t = lang[locale]
     const [ren, setRen] = useState('');
@@ -16,7 +16,7 @@ function Pinglun({post} ){
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
     const visitorIp = IpComponent();    
-    const title = post.title||'Home'
+    const title = post?.title||'Home'
     const addcomment = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {
@@ -94,7 +94,7 @@ return< div>
       </button>
       </div>
   </form>
-  <div className=" overflow-scroll max-h-96 "> 
+  <div className=" overflow-scroll max-h-96 min-h-[300px] "> 
     <div id="comment" className="  mx-auto  max-w-screen-md w-full mt-3   ">
           <ol className=" w-full">
             {comments.map((post) => {

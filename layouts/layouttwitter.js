@@ -12,9 +12,50 @@ import UmamiData from '@/components/UmamiData'
 import { LinkIcon, TagIcon, UserIcon, ChatAltIcon } from '@heroicons/react/outline'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
+import { motion, AnimatePresence } from 'framer-motion'
+
+const variants = {
+  scaleDown: {
+    scale: 0.8,
+    y: 100,
+    transition: {
+      duration: 0.4
+    }
+  },
+  out: {
+    x: "-100%",
+    transition: {
+      duration: 0.4,
+      delay: 0.5
+    }
+  },
+  in: {
+    scale: 0.8,
+    y: 100,
+    x: "100%",
+    transition: {
+      duration: 0.4
+    }
+  },
+  center: {
+    x: 0,
+    scale: 0.8,
+    transformOrigin: 'top',
+    transition: {
+      duration: 0.4
+    }
+  },
+  scaleUp: {
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      delay: 0.5
+    }
+  },
+}
 
 const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
-  const homeid='home'
   const [searchValue, setSearchValue] = useState('')
   const { locale } = useRouter()
   const t = lang[locale]
@@ -105,11 +146,18 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
               {t.SEARCH.NOT_FOUND}
             </p>
           )}
-          
-                {deftag.map((post) => (
-                  <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} />
-                ))}
-              
+                  <AnimatePresence        initial={false}        exitBeforeEnter      >
+                    <motion.div   key={searchValue}
+                      variants={variants}
+                      initial="in"
+                      animate={["center", "scaleUp"]}
+                      exit={["scaleDown", "out"]}
+                    >
+                        {deftag.map((post) => (
+                          <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} />
+                        ))}
+                    </motion.div>
+                  </AnimatePresence>
         </div>
       </div>
 
@@ -142,7 +190,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
                 hover:h-[800px] hover:overflow-visible hover:right-0 hover:fixed hover: top-20   overflow-hidden
                 '>
                   <ChatAltIcon className=' w-12 h-12 mx-auto ' />
-                  <Pinglun  post={homeid}/>
+                  <Pinglun />
               </div>
             </div>
             
