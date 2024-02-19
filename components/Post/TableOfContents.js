@@ -46,33 +46,36 @@ const Mulu = ({ tableOfContent }) => {
   }, [activeSection])
 
   return (
-
       <div
         className='text-sm  toc-fade-in bg-gray-300 dark:bg-gray-600 rounded-2xl p-3 duration-300 '
         id='tableOfContent'
       >
-
-        <div className='max-h-[500px] overflow-y-auto scrollbar-thin  '>
+        <div className='max-h-[500px] overflow-y-auto scrollbar-thin border-l-2  '>
           {tableOfContent.map(({ id, indentLevel, text }) => (
-
             <a
               key={id}
-              href={`#${id}`}
-              
-            >
-                
-              <div key={id} className={`${activeSection === id ? (' text-black  dark:text-green-400  border-l-2 border-black dark:border-green-400') : ' '} p-1 cursor-pointer italic 
-              hover:bg-gray-200 hover:dark:bg-gray-700` } >
+              href={`#${id}`}              
+            >                
+              {activeSection === id ? 
+              <motion.div key={activeSection} 
+              initial="hidden" whileInView="visible"
+                transition={{ delay: 0, duration: 0.5 }}
+                variants={{
+                 hidden: { opacity: 0,x: 100,scale:0.5 },
+                 visible: { opacity: 1,x: 0,scale:1 },
+                }}
+              className=' activeLine ml-2 p-2 cursor-pointer italic hover:bg-gray-200 hover:dark:bg-gray-700 
+               text-black  dark:text-green-400  border rounded-xl border-black dark:border-green-400
+              '>{text}</motion.div>
+              :
+              <div className=' p-1 cursor-pointer italic hover:bg-gray-200 hover:dark:bg-gray-700
+              '>
                 {text}
-              </div>
+                </div>}
             </a>
-
           ))}
-        </div>
-        
+        </div>        
       </div>
-
   )
 }
-
 export default Mulu

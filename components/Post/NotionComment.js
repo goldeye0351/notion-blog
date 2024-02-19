@@ -97,7 +97,7 @@ return< div>
         </div>
       </div>
   </form>
-  <div className=" overflow-scroll max-h-96 min-h-[300px] "> 
+  <div className=" overflow-scroll max-h-96"> 
     <div id="comment" className="  mx-auto  max-w-screen-md w-full mt-3   ">
           <ol className=" w-full">
             {comments.map((post) => {

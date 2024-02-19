@@ -17,7 +17,7 @@ import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
 
 export default function Content (props) {
-  const { posts,frontMatter, blockMap, pageTitle,lastposts,tableOfContent} = props
+  const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent} = props
   //const [showPay, setShowPay] = useState(false)
   const visitorIp = IpComponent();
   var zjk = frontMatter.up;
@@ -70,8 +70,8 @@ export default function Content (props) {
     return newup;
   };
 
-  return (<div  className=' max-w-screen-2xl'>
-  <div id="biaoti"  className=' flex flex-col justify-center   '>
+  return (<div >
+  <div id="biaoti"  className=' flex flex-col justify-center p-3 '>
       <div className='opacity-50   h-36 w-screen overflow-hidden  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
       </div>
@@ -98,13 +98,10 @@ export default function Content (props) {
       </div>
 
   </div>
-         
-      
-  
-  <div className=' flex flex-row max-w-screen-2xl '>
- 
-    <article  id='postmain'  className='flex flex-grow w-full  '>
-      <div className="-mt-4 relative">
+
+  <div className=' flex flex-row '>
+    <article  id='postmain'  className='flex-none md:flex flex-grow w-full md:overflow-x-visible overflow-x-scroll  max-w-5xl'>
+      <div className="-mt-4 relative p-3">
         <NotionRenderer
           blockMap={blockMap}
           previewImages={BLOG.previewImagesEnabled}
@@ -130,7 +127,7 @@ export default function Content (props) {
         </div>
       </div>  
     </article>
-    <motion.div  id="sideright"     className='ml-auto  w-80 min-w-[320px] p-3 hidden xl:block '
+    <motion.div  id="sideright" className='w-80 p-3 hidden xl:block'
              initial="hidden" animate="visible"   transition={{ delay: 0.7, duration: 1.2 }}
              variants={{hidden:{opacity:0,y:100,},visible:{ opacity:1,y:0,},}}>  
           
