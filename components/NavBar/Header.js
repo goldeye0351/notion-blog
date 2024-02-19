@@ -46,7 +46,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
         <div className='flex items-center '>
           <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
             <div className='relative ' >
-               <Logo className='h-12 w-12 md:h-16 md:w-16    hover:text-cyan-300  hover:animate-spin fill-current ' />
+               <Logo className='h-12 w-12 md:h-16 md:w-16    hover:text-green-400  hover:animate-spin fill-current ' />
             </div>
 
           </Link>

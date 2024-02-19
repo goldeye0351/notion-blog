@@ -4,9 +4,8 @@ import { motion } from 'framer-motion'
 import Prevandnext from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
-//import Comments from '@/components/Post/Comments'
 import Pinglun from '@/components/Post/NotionComment'
-const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,pingluns, tableOfContent}) => {
+const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,lastposts, tableOfContent}) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
 
   const pageTitle = getPageTitle(blockMap)
@@ -21,12 +20,10 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
       title={`${frontMatter.title}${frontMatter.title === pageTitle ? '' : ' | ' + pageTitle}`}
       description={frontMatter.summary}
       ogimage={frontMatter.page_cover}
-      // date={new Date(frontMatter.publishedAt).toISOString()}
       type='article'
       fullWidth={fullWidth}
     >
       <motion.div className=''>
-
         <Content
           posts={posts}
           frontMatter={frontMatter}
@@ -34,10 +31,10 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
           pageTitle={showSubPageTitle ? pageTitle : null}
           prev={prev}
           next={next}
+          lastposts={lastposts}
           tableOfContent={tableOfContent}
         />
       </motion.div>
-
       <Pinglun  post={frontMatter}  /> 
       <Prevandnext prev={prev} next={next} me={frontMatter} />
     </Container>

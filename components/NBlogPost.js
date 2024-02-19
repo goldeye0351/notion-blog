@@ -27,7 +27,7 @@ const BlogPost = ({ index , post,resdata }) => {
     updateDOM();
   }, [resdata]);
   return (
-<div className=' relative border border-gray-200 dark:border-gray-700 '>
+<div className=' relative border border-gray-200 dark:border-gray-700   '>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
@@ -37,7 +37,7 @@ const BlogPost = ({ index , post,resdata }) => {
                 }}>  
         
       <article
-          className='   relative m-3  cursor-pointer rounded-xl p-5  overflow-hidden '
+          className='   relative m-3  cursor-pointer rounded-xl p-5  overflow-hidden hover:scale-105  duration-300'
         >
          <div 
            className="group  justify-between  rounded-xl   " >
@@ -48,7 +48,7 @@ const BlogPost = ({ index , post,resdata }) => {
                   {DaysAgo(post.date)}
                   </div>  
                 </div>
-                {post.to && <Image src={post.to} alt={post.title} width={900} height={300} />}
+                {post.to && <Image src={post.to} alt={post.title} width={10000} height={300} />}
 
                 <span className=' flex font-light justify-between  text-gray-600 dark:text-gray-400'>
                   <FormattedDate date={post.date} />
@@ -58,8 +58,7 @@ const BlogPost = ({ index , post,resdata }) => {
                   </div>
                 </span>
                 <div className=' font-light leading-8 text-gray-700 dark:text-gray-100'>{post.summary}</div>
-                <Image src={post?.page_cover}  alt={post.title} fill
-                className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>
+                {/*<Image src={post?.page_cover}  alt={post.title} fill className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>*/}
  
             </div>
 

@@ -7,11 +7,9 @@ import NotFound from '@/components/NotFound'
 import { ArticleLock } from '@/components/Post/ArticleLock'
 import React from 'react'
 import {  getPageTableOfContents,  uuidToId} from 'notion-utils'
-import { getDefComments } from "@/lib/notionapi";
-  const pinglunId = BLOG.notionCommentId;
 
 const Post = props => {
-  const { posts,post, blockMap,prev,next,pingluns,tableOfContent  }=props 
+  const { posts,post, blockMap,prev,next,lastposts,tableOfContent  }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -35,7 +33,7 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  pingluns={pingluns}/> }
+  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  lastposts={lastposts} /> }
 
 }
 
@@ -49,13 +47,12 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const posts = await getAllPosts({ postAndPage:true })
+  const lastposts = await getAllPosts({ onlyPost:true })
   const post = posts.find((t) => t.slug === slug)
-  const postid = post.id
   const index = posts.indexOf(post)
   const prev = posts.slice(index - 1, index)[0] ?? posts.slice(-1)[0]
   const next = posts.slice(index + 1, index + 2)[0] ?? posts[0]
 
-  const  mypingluns = await getDefComments(pinglunId,postid);
   try {
     const blockMap = await getPostBlocks(post.id)
     const keys = Object.keys(blockMap?.block || {})
@@ -77,7 +74,7 @@ export async function getStaticProps({ params: { slug } }) {
         prev,
         next,
         blockMap,
-        pingluns: mypingluns,
+        lastposts,
         tableOfContent
       },
       revalidate: 1
@@ -91,7 +88,7 @@ export async function getStaticProps({ params: { slug } }) {
         prev: null,
         next: null,
         blockMap: null,
-        pingluns:null,
+        lastposts:null,
         tableOfContent:null
       }
     }

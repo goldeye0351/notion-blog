@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import FormattedDate from "../Common/FormattedDate";
+import DaysAgo from "../Common/DaysAgo";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
@@ -25,7 +26,7 @@ function Pinglun({post} ){
         });
         if (res.status === 201) {
           fetchComments(); // 在提交评论成功后再次获取评论数据
-          window.scrollTo({ top: document.getElementById('commentHome').offsetTop, behavior: 'smooth' })
+          window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
         } else {
           alert('errer 信号不好, 出错了')    
         }
@@ -58,9 +59,9 @@ function Pinglun({post} ){
       }
 return< div>
         
-  <form onSubmit={addcomment} className=' w-full max-w-screen-md    mx-auto '>
+  <form onSubmit={addcomment} className=' relative w-full max-w-screen-md    mx-auto '>
 
-      <div className='p-3 w-full bg-gray-200 dark:bg-gray-700 duration-300 rounded-xl'>
+      <div id='CommentBigBox' className='  p-3 w-full bg-gray-200 dark:bg-gray-700 duration-300 rounded-xl'>
           <textarea    name="PINGLUN"  id="PINGLUN"  rows="3"
             className=' block italic p-1 w-full bg-white/30 dark:bg-black/100 duration-300 rounded-xl'
             placeholder={t.LAYOUT.COMMENT_MAIN}
@@ -70,28 +71,30 @@ return< div>
           ></textarea>
       </div>
 
-      <div className=" flex space-x-1 my-1">
-      <div className=' w-1/4 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
-          <input id="REN"  name="REN"
-              type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
-              placeholder={t.LAYOUT.COMMENT_NAME}
-              value={ren}
-              onChange={(e) => setRen(e.target.value)}
-              required
-          />
-      </div>
-      <div className=' w-1/2 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
-          <input id="EMAIL"  name="EMAIL" autoComplete="email"
-              type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
-              placeholder={t.LAYOUT.COMMENT_EMAIL}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-          />
-      </div>
-      <button  type="submit" className=' w-1/4 text-gray-400  p-1 text-xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
-      <PaperAirplaneIcon className=" w-16 h-5 -rotate-45" />
-      </button>
+      <div id='3smallbox' className=" absolute bottom-5  w-full px-5  ">
+        <div className=" flex flex-row space-x-1 justify-end">
+          <div id='uname' className=' w-1/4 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+              <input id="REN"  name="REN"
+                  type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
+                  placeholder={t.LAYOUT.COMMENT_NAME}
+                  value={ren}
+                  onChange={(e) => setRen(e.target.value)}
+                  required
+              />
+          </div>
+          <div id='email' className=' w-1/2 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+              <input id="EMAIL"  name="EMAIL" autoComplete="email"
+                  type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
+                  placeholder={t.LAYOUT.COMMENT_EMAIL}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+              />
+          </div>
+          <button id='usubmit' type="submit" className=' w-1/4 text-gray-400  p-1 text-xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
+            <PaperAirplaneIcon className=" w-full h-5 -rotate-45" />
+          </button>
+        </div>
       </div>
   </form>
   <div className=" overflow-scroll max-h-96 min-h-[300px] "> 

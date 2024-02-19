@@ -16,14 +16,11 @@ import Image from 'next/image'
 import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
 
-
 export default function Content (props) {
-  const { posts,frontMatter, blockMap, pageTitle,tableOfContent} = props
+  const { posts,frontMatter, blockMap, pageTitle,lastposts,tableOfContent} = props
   //const [showPay, setShowPay] = useState(false)
   const visitorIp = IpComponent();
-
   var zjk = frontMatter.up;
-
   const el = React.useRef(null);
 
   React.useEffect(() => {
@@ -115,10 +112,10 @@ export default function Content (props) {
         />
       </div>
       <div id="小屏几个" className=' fixed inset-y-[50%] right-0    xl:hidden'>
-        <div className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
-                        <ReadingProgress />
+        <div title='百分比' className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
+            <ReadingProgress />
         </div>
-        <div  className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+        <div title='点赞' className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
           <button id="xiaopindianzan"
             onClick={dianzan} data-umami-event="小屏点赞" 
             className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
@@ -126,12 +123,11 @@ export default function Content (props) {
             {/* onClick={() => setShowPay((showPay) => !showPay)} */}
             <ThumbUpIcon  className='w-6 h-6' />
             <span id="myupxiaopin" className=' inline-block'>{zjk}</span>
-
           </button>
         </div>
-        <div className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                      <Jumptocomment />
-                </div>
+        <div title='评论' className='group  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+          <Jumptocomment />
+        </div>
       </div>  
     </article>
     <motion.div  id="sideright"     className='ml-auto  w-80 min-w-[320px] p-3 hidden xl:block '
@@ -140,28 +136,26 @@ export default function Content (props) {
           
         <div className=' sticky top-16 '>
           <Mulu tableOfContent={tableOfContent} />
-          <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1'> 
-              <div id="点赞"  className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                    <button id="dapindianzan"
-                      onClick={dianzan} data-umami-event="大屏点赞" 
-                      className='  hover:text-gray-400 dark:hover:text-gray-400'
-                    >
-                      <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center   ' />
+          <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1 '> 
+              <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
+               className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+                    <button id="dapindianzan"  className='  hover:text-gray-400 dark:hover:text-gray-400 w-full'>
+                      <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center  ' />
                       <span id="myupdapin" className=' inline-block'>{zjk}</span>
 
                     </button>
               </div>
-              <div id="进度" className='group cursor-pointer  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
+              <div title="%" id="进度" className='group cursor-pointer  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
                     <ReadingProgress />
               </div>
-              <div id="我要评论" className='group cursor-pointer  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+              <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
                     <Jumptocomment />
               </div>
           </div>
-          <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative   '>
-            🆕📣
+          <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
+            🆕&nbsp;📣
             <hr/>
-            <Lastpost  posts={posts} />
+            <Lastpost  posts={lastposts} />
           </div>
           
         </div>

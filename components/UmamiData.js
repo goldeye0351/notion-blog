@@ -41,14 +41,14 @@ const UmamiData = () => {
 
     umiTongji();
   }, []);
-  return (<div className='  flex space-x-2  h-12 justify-center flex-row content-center items-center '>
+  return (<div className='  flex space-x-1  h-12 justify-center flex-row content-center items-center '>
     <HeartIcon className=' h-8  duration-500  hover:animate-ping hover:h-10 hover:text-red-500' />       
-    <div className="  h-16 flex justify-center text-center flex-row content-center items-center  ">
+    <div className="   flex justify-center text-center flex-row content-center items-center  ">
       <StatusOnlineIcon className=' h-8 inline-block text-green-400   ' />
       <span id="online" className='inline-block text-green-400 '></span>
     </div>
     <EyeIcon className=' h-8  ' />
-    <span id="pvstatic">2023</span>
+    <span id="pvstatic">2024</span>
 </div>
   )
 }
