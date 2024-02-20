@@ -1,11 +1,12 @@
 const BLOG = {
-  title: 'Notion Blog',
-  description: 'Notion博客网站',
-  blogtitle: 'Notion Blog 首页',
-  blogdescription: 'Notion博客网站，一个有料的网站',
-  author: 'CCC',
-  email: 'admin@mynotion.life',
-  link: 'https://mynotion.life',
+  title: '51xmi',
+  description: '51xmi',
+  blogtitle: '51xmi Blog',
+  blogdescription: '51xmi',
+  author: 'Goldeye',
+  email: 'admin@51xm.com',
+  githubUrl:'https://github.com/goldeye0351/notion-blog',
+  umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/mynotion',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],
@@ -20,7 +21,7 @@ const BLOG = {
   defaultCover: '/mycover.jpg',
   defaultIcon: '/favicon.png',
   seo: {
-    keywords: ['notion', 'Blog','mynotion.life'],
+    keywords: ['51xmi', 'Blog','notion'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionDatabaseId: process.env.NOTION_DATABASE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
