@@ -9,10 +9,9 @@ import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 import Pinglun from '@/components/Post/NotionComment'
 import UmamiData from '@/components/UmamiData'
-import { LinkIcon, TagIcon, UserIcon, ChatAltIcon,ShareIcon,PlayIcon } from '@heroicons/react/outline'
+import { LinkIcon,  UserIcon, ShareIcon,PlayIcon } from '@heroicons/react/outline'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
-
 import { motion, AnimatePresence } from 'framer-motion'
 
 const variants = {
@@ -56,11 +55,8 @@ const variants = {
   },
 }
 
-const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
+const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth }) => {
   const [searchValue, setSearchValue] = useState('')
-  const [fullWidth, setFullWidth] = useState(false);
-  
-  const toggleFullWidth = () => {      setFullWidth(prevState => !prevState);    };
   const { locale } = useRouter()
   const t = lang[locale]
   let filteredBlogPosts = []
@@ -82,14 +78,15 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
     5: 'w-full hover:w-full cai3',
     
   };
-  return (
-    <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon} className={ '  '} >
-    <div id='zuozhongyou'  className='flex flex-row '>
+  return (<>
 
+
+  <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.siteog} className={ ' m-auto '} >
+    <div id='zuozhongyou'  className='flex flex-row '>
       <div id='ltya' className=' hidden md:flex w-52 min-w-[208px] flex-col justify-center  relative '>
         <div id="alltagsdiv" className='fixed top-0  flex-col flex   min-h-screen    '>
 
-          <div id='alltags' className=' flex flex-col flex-grow items-center content-center w-52  px-3  mt-56   '>
+          <div id='alltags' className=' flex flex-col flex-grow items-center content-center w-52  px-3  mt-24   '>
             {Object.keys(tags).map((key) => {
                 const index = Object.keys(tags).indexOf(key);
                 const style = tagStyles[index] || 'cai1'; // 默认样式
@@ -98,7 +95,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
                   className={` group w-full opacity-80 px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center 
-                      duration-500 hover:h-12  font-bold  whitespace-nowrap bg-gray-300 dark:bg-gray-700 hover:bg-green-400 dark:hover:bg-green-400`}
+                      duration-300 hover:h-12  font-bold  whitespace-nowrap bg-gray-300 dark:bg-gray-700 hover:bg-green-400  dark:hover:bg-green-400 `}
                 >
                   <div className='w-full flex justify-between  '>
                   <div>{`${key} `}</div >
@@ -109,24 +106,11 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
               )
             })}
           </div>
-          <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 ' >
-            <button title='fullWidth' onClick={toggleFullWidth} className='flex duration-500'>
-              {fullWidth ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=' w-12 h-12 hover:text-green-400 hover:animate-bounce  '>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
-              </svg>
-              ) :(
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 hover:text-green-400 hover:animate-bounce">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-              </svg>
-              )}
-            </button>
-            <div title='contact' className=' mt-auto mb-12 items-center flex justify-center '>
+          <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
+            <div title='contact' className='  items-center flex justify-center '>
               <Link href='/contact' ><UserIcon className=' w-12 h-12  hover:text-green-400  hover:animate-bounce duration-300  ' /></Link>
             </div>
           </div>
-
-
         </div>        
       </div>
 
@@ -186,8 +170,8 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
         </div>
       </div>
 
-      <div id='rtya' className=' hidden md:block  w-3/12 max-w-[320px]  border-l border-gray-200 dark:border-gray-700 '>
-        <div  className=' sticky top-20 px-3 space-y-3  '>
+      <div id='rtya' className=' hidden md:block  w-3/12 max-w-[320px]  '>
+        <div  className=' px-3 space-y-3 overflow-y-scroll  '>
           <div id='bbuiya1' className=' flex   bg-gray-200 dark:bg-gray-700 rounded-xl mb-3 '>
             <BubbleUI className="myBubbleUI h-64 w-80 rounded-3xl ">
               {posts.slice(0,21).map((data, i) => (
@@ -197,6 +181,11 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
                 </Link>
               ))}
             </BubbleUI>
+          </div>
+
+          <div id='Tuijian' className='  flex flex-col  w-full h-max  bg-gray-300 dark:bg-gray-600 rounded-xl mt-3 p-3'>
+            <div className=' w-full text-lg cursor-pointer  flex justify-center '>{'💬🔊'}</div>
+            <Lastpost posts={tuijian} />
           </div>
 
           <div id='4links' className=' w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-700 ' >
@@ -215,19 +204,15 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian }) => {
                   <UmamiData  className='bg-gray-200 dark:bg-gray-700 '/>
               </Link>
           </div>
-
-          <div id='Tuijian' className='  flex flex-col  w-full h-max  bg-gray-300 dark:bg-gray-600 rounded-xl mt-3 p-3'>
-            <div className=' w-full text-lg cursor-pointer  flex justify-center '>{'💬🔊'}</div>
-            <Lastpost posts={tuijian} />
-          </div>
-          <div id='plya' className=''>
+          
+        </div>
+        <div id='plya' className='sticky top-20 p-3  '>
                   <Pinglun />
               </div>
-        </div>
-          
       </div>
     </div>
-    </Container>
+  </Container> 
+     </>
   )
 }
 TwitterLayout.propTypes = {

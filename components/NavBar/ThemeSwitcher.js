@@ -25,12 +25,12 @@ const ThemeSwitcher = () => {
             theme === 'light' ? 'dark' : theme === 'system' ? 'dark' : 'light'
           )
         }
-        className=' p-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg dark:text-gray-100'
+        className=' p-2 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg  '
       >
         {hasMounted && theme === 'dark' ? (
-          <SunIcon className='w-6  rotate-0  transition-transform duration-500 dark:-rotate-90 " ' />
+          <SunIcon className='md:w-8 md:h-8 w-6 h-6  rotate-0  transition-transform duration-500 dark:-rotate-90  text-gray-200  hover:scale-125  " ' />
         ) : (
-          <MoonIcon className='w-6 rotate-90  transition-transform duration-500 dark:rotate-0 ' />
+          <MoonIcon className='md:w-8 md:h-8 w-6 h-6 rotate-90  transition-transform duration-500 dark:rotate-0 text-gray-700 hover:scale-125' />
         )}
       </motion.button>
     </>

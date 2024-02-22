@@ -17,7 +17,7 @@ import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
 
 export default function Content (props) {
-  const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent} = props
+  const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent,fullWidth} = props
   //const [showPay, setShowPay] = useState(false)
   const visitorIp = IpComponent();
   var zjk = frontMatter.up;
@@ -70,9 +70,9 @@ export default function Content (props) {
     return newup;
   };
 
-  return (<div >
+  return (<div className='   ' >
   <div id="biaoti"  className=' flex flex-col justify-center p-3 '>
-      <div className='opacity-50   h-36 w-screen overflow-hidden  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
+      <div className='opacity-50   h-36 w-screen  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
       </div>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto mt-20'>
@@ -83,7 +83,7 @@ export default function Content (props) {
         <div className='mr-2 mb-4 md:ml-0'>
           <FormattedDate date={frontMatter.date} /> &nbsp; {DaysAgo(frontMatter.date)}
         </div> 
-          <div className='flex flex-nowrap max-w-full overflow-x-auto article-tags'>
+          <div className='flex flex-nowrap max-w-full article-tags'>
           {frontMatter.tags.map(tag => (
             <Tagitem key={tag.id} tag={tag} />
           ))}
@@ -92,23 +92,58 @@ export default function Content (props) {
       </nav>
       
       <div 
-      className=' relative  text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-300/50 ring-2 p-1  rounded-xl '>
+      className='  text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-400 ring-2 p-1  rounded-xl '>
         <ChatIcon  className='w-6 h-6 inline-block' />
         <div className='inline-block' ref={el}  /> 
       </div>
 
   </div>
 
-  <div className=' flex flex-row '>
-    <article  id='postmain'  className='flex-none md:flex flex-grow w-full md:overflow-x-visible overflow-x-scroll  max-w-5xl'>
-      <div className="-mt-4 relative p-3">
-        <NotionRenderer
-          blockMap={blockMap}
-          previewImages={BLOG.previewImagesEnabled}
-          {...props}
-        />
+  <div className=' relative flex flex-row '>
+    <article  id='postmain'  className='flex-none sm:flex-grow flex-row flex w-96 mx-auto'>
+      <div className="-mt-4 p-3 ">
+          <NotionRenderer
+            blockMap={blockMap}
+            previewImages={BLOG.previewImagesEnabled}
+            {...props}
+          />
       </div>
-      <div id="小屏几个" className=' fixed inset-y-[50%] right-0    xl:hidden'>
+    </article>
+
+    <div >
+      <motion.div  id="sideright" className=' w-80 sticky top-16 ml-auto p-3 hidden lg:flex '
+              initial="hidden" animate="visible"   transition={{ delay: 0.7, duration: 1.2 }}
+              variants={{hidden:{opacity:0,y:100,},visible:{ opacity:1,y:0,},}}>  
+            
+          <div className=' sticky top-16 w-full '>
+            <Mulu tableOfContent={tableOfContent} />
+            <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1 '> 
+                <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
+                className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+                      <button id="dapindianzan"  className='  hover:text-gray-400 dark:hover:text-gray-400 w-full'>
+                        <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center  ' />
+                        <span id="myupdapin" className=' inline-block'>{zjk}</span>
+
+                      </button>
+                </div>
+                <div title="%" id="进度" className='group cursor-pointer  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
+                      <ReadingProgress />
+                </div>
+                <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+                      <Jumptocomment />
+                </div>
+            </div>
+            <div id='lastpost' className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
+              🆕&nbsp;📣
+              <hr/>
+              <Lastpost  posts={lastposts} />
+            </div>
+            
+          </div>
+      </motion.div>
+    </div>
+
+    <div id="小屏几个" className=' fixed inset-y-[50%] right-0    lg:hidden'>
         <div title='百分比' className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
             <ReadingProgress />
         </div>
@@ -125,39 +160,7 @@ export default function Content (props) {
         <div title='评论' className='group  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
           <Jumptocomment />
         </div>
-      </div>  
-    </article>
-    <motion.div  id="sideright" className='w-80 p-3 hidden xl:block'
-             initial="hidden" animate="visible"   transition={{ delay: 0.7, duration: 1.2 }}
-             variants={{hidden:{opacity:0,y:100,},visible:{ opacity:1,y:0,},}}>  
-          
-        <div className=' sticky top-16 '>
-          <Mulu tableOfContent={tableOfContent} />
-          <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1 '> 
-              <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
-               className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                    <button id="dapindianzan"  className='  hover:text-gray-400 dark:hover:text-gray-400 w-full'>
-                      <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center  ' />
-                      <span id="myupdapin" className=' inline-block'>{zjk}</span>
-
-                    </button>
-              </div>
-              <div title="%" id="进度" className='group cursor-pointer  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
-                    <ReadingProgress />
-              </div>
-              <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                    <Jumptocomment />
-              </div>
-          </div>
-          <div className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
-            🆕&nbsp;📣
-            <hr/>
-            <Lastpost  posts={lastposts} />
-          </div>
-          
-        </div>
-    </motion.div>
-
+      </div>
   </div>
 </div>
   )

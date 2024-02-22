@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import { getPageTitle } from 'notion-utils'
-import { motion } from 'framer-motion'
 import Prevandnext from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Pinglun from '@/components/Post/NotionComment'
-const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subPage = false,lastposts, tableOfContent}) => {
+import BLOG from '@/blog.config'
+const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = false,lastposts, tableOfContent}) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
-
-  const pageTitle = getPageTitle(blockMap)
+  const webtitle=BLOG.title
+  const pageTitle = webtitle+getPageTitle(blockMap)
   useEffect(() => {
     if (frontMatter.title !== pageTitle) {
       setShowSubPageTitle(true)
@@ -17,13 +17,13 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
 
   return (<>
     <Container
-      title={`${frontMatter.title}${frontMatter.title === pageTitle ? '' : ' | ' + pageTitle}`}
+      title={`${webtitle}---${frontMatter.title}`}
       description={frontMatter.summary}
       ogimage={frontMatter.page_cover}
       type='article'
       fullWidth={fullWidth}
+      className={' w-full m-auto '}
     >
-      <motion.div className=''>
         <Content
           posts={posts}
           frontMatter={frontMatter}
@@ -33,8 +33,8 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth = false, subP
           next={next}
           lastposts={lastposts}
           tableOfContent={tableOfContent}
+          fullWidth={fullWidth}
         />
-      </motion.div>
       <Pinglun  post={frontMatter}  /> 
       <Prevandnext prev={prev} next={next} me={frontMatter} />
     </Container>

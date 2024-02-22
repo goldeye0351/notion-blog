@@ -29,7 +29,6 @@ const TransitionEffect = ({ children }) => {
   const { asPath } = useRouter()
 
   return (
-    <div className=' flex-grow'>
       <AnimatePresence
         initial={false}
         exitBeforeEnter
@@ -45,7 +44,6 @@ const TransitionEffect = ({ children }) => {
           {children}
         </motion.div>
       </AnimatePresence>
-    </div>
   )
 }
 

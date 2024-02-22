@@ -1,8 +1,8 @@
 import { getAllPosts, getAllTagsFromPosts,getAllCatsFromPosts } from '@/lib/notion'
 import TwitterLayout from '@/layouts/layouttwitter'
 import BLOG from '@/blog.config'
-export default function search({ cats,tags, posts,post,resdata,tuijian }) {
-  return <TwitterLayout cats={cats} tags={tags} posts={posts} tuijian={tuijian} index={posts.indexOf(post)} resdata={resdata} />
+export default function search({ cats,tags, posts,post,resdata,tuijian,fullWidth }) {
+  return <TwitterLayout cats={cats} tags={tags} posts={posts} tuijian={tuijian} index={posts.indexOf(post)} resdata={resdata} fullWidth={fullWidth}/>
 }
 export async function getStaticProps() {
   const posts = await getAllPosts({ onlyPost: true })

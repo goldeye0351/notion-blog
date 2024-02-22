@@ -27,7 +27,7 @@ const BlogPost = ({ index , post,resdata }) => {
     updateDOM();
   }, [resdata]);
   return (
-<div className=' relative border border-gray-200 dark:border-gray-700   '>
+<div className=' relative border border-gray-200 dark:border-gray-700  '>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
@@ -42,7 +42,7 @@ const BlogPost = ({ index , post,resdata }) => {
          <div 
            className="group  justify-between  rounded-xl   " >
             <div   className=' w-full h-full '   >
-                <div className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm justify-between flex  '>
+                <div className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm justify-between flex duration-300 '>
                   {post.title}
                   <div className=' font-light text-base '>
                   {DaysAgo(post.date)}

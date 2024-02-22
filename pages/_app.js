@@ -11,7 +11,7 @@ import Scripts from '@/components/Common/Scripts'
 import { ThemeProvider } from 'next-themes'
 import TransitionEffect from '@/components/Common/TransitionEffect'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import NProgress from 'nprogress'
 import '@/styles/nprogress.css'
 import Header from '@/components/NavBar/Header'
@@ -22,6 +22,9 @@ const StarrySky = dynamic(() => import('@/components/StarrySky'), { ssr: false }
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
+  const [fullWidth, setFullWidth] = useState(false);
+  const toggleFullWidth = () => {      setFullWidth(prevState => !prevState);    };
+
 
   useEffect(() => {
     const handleStart = (url) => {
@@ -48,8 +51,9 @@ function MyApp({ Component, pageProps }) {
       <StarrySky />
       <ThemeProvider attribute='class' defaultTheme = 'dark' >
         <Header
+          toggleFullWidth={toggleFullWidth}
           navBarTitle={pageProps.post ? pageProps.post.title : null}
-          fullWidth={pageProps.post ? pageProps.post.fullWidth : false}
+          fullWidth={fullWidth}
         />
 
         <TransitionEffect>
@@ -58,11 +62,9 @@ function MyApp({ Component, pageProps }) {
                 BLOG.font === 'serif' ? 'font-serif' : 'font-sans'
               }`}
             >
-              <Component {...pageProps} />
+              <Component {...pageProps}       fullWidth={fullWidth}/>
             </div>
         </TransitionEffect>
-        
-        {/*<Footer  />*/}
       </ThemeProvider>
     </div>
   )

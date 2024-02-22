@@ -71,7 +71,7 @@ return< div>
           ></textarea>
       </div>
 
-      <div id='3smallbox' className=" absolute bottom-5  w-full px-5  ">
+      <div id='3smallbox' className=" absolute bottom-5 right-0 w-full max-w-xs px-5  ">
         <div className=" flex flex-row space-x-1 justify-end">
           <div id='uname' className=' w-1/4 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="REN"  name="REN"

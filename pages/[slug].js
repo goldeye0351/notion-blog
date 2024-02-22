@@ -9,7 +9,7 @@ import React from 'react'
 import {  getPageTableOfContents,  uuidToId} from 'notion-utils'
 
 const Post = props => {
-  const { posts,post, blockMap,prev,next,lastposts,tableOfContent  }=props 
+  const { posts,post, blockMap,prev,next,lastposts,tableOfContent,fullWidth  }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -33,7 +33,7 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={post.fullWidth} prev={prev} next={next}  lastposts={lastposts} /> }
+  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={fullWidth} prev={prev} next={next}  lastposts={lastposts} /> }
 
 }
 

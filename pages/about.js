@@ -30,7 +30,7 @@ export async function getStaticProps() {
 }
 const About = ({ blockMap,hero ,postid}) => {
   return (
-<Container  title="About Me. Notion Blog" description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon}  className='about' >
+<Container  title={`${BLOG.title}---About Me`} description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon}  className='about m-auto min-h-screen ' >
   <div className="relative  flex flex-col justify-center content-center items-center pb-12  space-y-16">
     
      <Tilt className="my3d rounded-xl  max-w-[80VW] "
