@@ -100,7 +100,7 @@ export default function Content (props) {
   </div>
 
   <div className=' relative flex flex-row '>
-    <article  id='postmain'  className='flex-none sm:flex-grow flex-row flex w-full sm:w-1 mx-auto'>
+    <article  id='postmain'  className='flex-none sm:flex-grow flex-row flex w-80 sm:w-1 mx-auto'>
       <div className="-mt-4 p-3 ">
           <NotionRenderer
             blockMap={blockMap}
