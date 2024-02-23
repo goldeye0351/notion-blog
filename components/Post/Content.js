@@ -76,7 +76,7 @@ export default function Content (props) {
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
       </div>
       <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto mt-20'>
-        {pageTitle ? pageTitle : frontMatter.title}
+        {frontMatter.title}
       </div>
 
       <nav className='flex mt-5 mb-10 items-start text-gray-500 dark:text-gray-400'>
