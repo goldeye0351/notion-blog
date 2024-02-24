@@ -99,8 +99,8 @@ export default function Content (props) {
 
   </div>
 
-  <div className=' relative flex flex-row '>
-    <article  id='postmain'  className='flex-none sm:flex-grow flex-row flex w-80 sm:w-1 mx-auto'>
+  <div id= 'mainleft'className=' relative flex flex-row '>
+    <article  id='postmain'  className='flex-none md:overflow-x-visible overflow-x-scroll lg:w-9/12 w-full ' >
       <div className="-mt-4 p-3 ">
           <NotionRenderer
             blockMap={blockMap}
@@ -110,8 +110,8 @@ export default function Content (props) {
       </div>
     </article>
 
-    <div >
-      <motion.div  id="sideright" className=' w-80 sticky top-16 ml-auto p-3 hidden lg:flex '
+    <div id='stickyright' className=' hidden lg:w-3/12 lg:flex p-3 ml-auto'>
+      <motion.div  id="sideright" className='  sticky w-full top-16  '
               initial="hidden" animate="visible"   transition={{ delay: 0.7, duration: 1.2 }}
               variants={{hidden:{opacity:0,y:100,},visible:{ opacity:1,y:0,},}}>  
             
@@ -143,7 +143,9 @@ export default function Content (props) {
       </motion.div>
     </div>
 
-    <div id="小屏几个" className=' fixed inset-y-[50%] right-0    lg:hidden'>
+
+  </div>
+  <div id="小屏几个" className=' fixed inset-y-[50%] right-0    lg:hidden'>
         <div title='百分比' className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
             <ReadingProgress />
         </div>
@@ -160,8 +162,9 @@ export default function Content (props) {
         <div title='评论' className='group  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
           <Jumptocomment />
         </div>
-      </div>
   </div>
+
+
 </div>
   )
 }

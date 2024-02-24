@@ -6,12 +6,14 @@ import React from 'react'
 var umiId = BLOG.analytics.umamiConfig.websiteId
 
 const UmamiData = () => {
+  
   useEffect(() => {
     function umiTongji() {
+      const apiU=BLOG.analytics.umamiConfig.apiUrl
       var umiToken = BLOG.analytics.umamiConfig.token
       var umiTime = Date.parse(new Date());
-      var umiUrl = "https://umami.mynotion.life/api/websites/"+umiId+"/stats?startAt=1672848000000&endAt="+umiTime;
-      var umiUrl2 = "https://umami.mynotion.life/api/websites/"+umiId+"/active";
+      var umiUrl = apiU+umiId+"/stats?startAt=1672848000000&endAt="+umiTime;
+      var umiUrl2 = apiU+umiId+"/active";
 
       fetch(umiUrl, {
         method: 'GET',
