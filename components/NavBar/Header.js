@@ -43,7 +43,7 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
         id='sticky-nav'
         ref={navRef}
       >
-        <div id='51xMI' className='flex items-center '>
+        <div id='51xMI' className='flex items-center text-gray-200 dark:text-gray-200 '>
           <Link passHref href='/' scroll={false} aria-label={BLOG.title}>
             <div className='relative  flex-row flex justify-center items-center content-center ' >
               <Logo className='h-12 w-12 md:h-16 md:w-16    hover:text-green-400  hover:animate-spin fill-current ' />

@@ -7,10 +7,10 @@ import Tilt from 'react-parallax-tilt'
 
 const Friend = ({ post }) => {
   return (
-    <article    key={post.id}  className='flex m-5  cursor-pointer w-56 rounded-full    '    >
+    <article    key={post.id}  className='flex m-5  cursor-pointer w-56 rounded-full text-gray-200   '    >
     <Link  href={post.title} target='new'>
       <Tilt id='blog-ID' key={post.id}
-                  className="my3d   bg-gray-100 dark:bg-gray-700 rounded-lg  flex flex-row justify-center  "
+                  className="my3d   bg-gray-700 dark:bg-gray-800 rounded-lg  flex flex-row justify-center  "
                   perspective={800}
                   glareEnable={false}
                   glarePosition={'all'}

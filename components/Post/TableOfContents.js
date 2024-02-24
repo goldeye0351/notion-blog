@@ -47,10 +47,10 @@ const Mulu = ({ tableOfContent }) => {
 
   return (
       <div
-        className='text-sm  toc-fade-in bg-gray-300 dark:bg-gray-600 rounded-2xl p-3 duration-300 '
+        className='text-sm text-gray-200 dark:text-gray-200 toc-fade-in bg-gray-700 dark:bg-gray-800 rounded-2xl p-3 duration-300 '
         id='tableOfContent'
       >
-        <div className='max-h-[500px] overflow-y-auto scrollbar-thin border-l-2  '>
+        <div className='max-h-[500px] overflow-y-auto scrollbar-thin border-l-2   '>
           {tableOfContent.map(({ id, indentLevel, text }) => (
             <a
               key={id}
@@ -64,11 +64,11 @@ const Mulu = ({ tableOfContent }) => {
                  hidden: { opacity: 0,x: 100,scale:0.5 },
                  visible: { opacity: 1,x: 0,scale:1 },
                 }}
-              className=' activeLine ml-2 p-2 cursor-pointer italic hover:bg-gray-200 hover:dark:bg-gray-700 
-               text-black  dark:text-green-400  border rounded-xl border-black dark:border-green-400
+              className=' activeLine ml-2 p-2 cursor-pointer italic hover:ring-2 hover:p-3 duration-300
+               text-green-400  dark:text-green-400  border rounded-xl border-green-400 dark:border-green-400
               '>{text}</motion.div>
               :
-              <div className=' p-1 cursor-pointer italic hover:bg-gray-200 hover:dark:bg-gray-700
+              <div className=' p-1 cursor-pointer italic rounded-xl hover:bg-gray-600 hover:dark:bg-gray-700 hover:p-3 duration-300
               '>
                 {text}
                 </div>}

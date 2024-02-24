@@ -61,7 +61,7 @@ const FriendS = ({  posts }) => {
         <div id='自主提交' className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
           < div className='h-3 ' />
           <FlipCard
-                className=' rounded-xl  duration-500 text-gray-400 '
+                className=' rounded-xl  duration-500 text-gray-200 '
                 frontContent={
                   <div className=' flex w-full  mx-auto justify-center items-center content-center '>{t.FRIENDS.TITLEA}</div>
                     }
@@ -75,9 +75,9 @@ const FriendS = ({  posts }) => {
 
         
 
-            <div className='  p-3 w-96 bg-gray-100 dark:bg-gray-700 rounded-xl '>
+            <div className='  p-3 w-96 bg-gray-700 dark:bg-gray-800 rounded-xl '>
               <input id="title"  name="title"
-                type="text" className=' block w-full duration-500 bg-white/30 dark:bg-black/30'
+                type="text" className=' block w-full duration-500 bg-black/30 dark:bg-black/30'
                 placeholder={t.FRIENDS.FORM_SITE}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -85,9 +85,9 @@ const FriendS = ({  posts }) => {
               />
             </div>
 
-            <div className='  p-3  bg-gray-100 dark:bg-gray-700 rounded-xl '>
+            <div className='  p-3  bg-gray-700 dark:bg-gray-800 rounded-xl '>
               <input id="icon"  name="icon"
-                type="text" className=' block w-full duration-500 bg-white/30 dark:bg-black/30'
+                type="text" className=' block w-full duration-500 bg-black/30 dark:bg-black/30'
                 placeholder={t.FRIENDS.FORM_ICON}
                 value={icon}
                 onChange={(e) => setIcon(e.target.value)}
@@ -96,9 +96,9 @@ const FriendS = ({  posts }) => {
             </div>
 
 
-          <div className='p-3 sm:col-span-2 bg-gray-100 dark:bg-gray-700 duration-500 rounded-xl'>
+          <div className='p-3 sm:col-span-2 bg-gray-700 dark:bg-gray-800 duration-500 rounded-xl'>
             <textarea    name="summary"  id="summary"  rows="3"
-              className=' block w-full bg-white/30 dark:bg-black/100 duration-500 rounded-xl'
+              className=' block w-full bg-black/30 dark:bg-black/100 duration-500 rounded-xl'
               placeholder={t.FRIENDS.FORM_CONTENT}
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
@@ -109,7 +109,7 @@ const FriendS = ({  posts }) => {
         
 
         
-        <button  type="submit" className='sm:col-span-2  p-3 text-2xl   bg-gray-100 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-500 rounded-xl  '>
+        <button  type="submit" className='sm:col-span-2  p-3 text-2xl   bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-500 rounded-xl  '>
         <p className='text-gray-400 '>{t.FRIENDS.SUBMIT}</p>
         </button>
       </form>

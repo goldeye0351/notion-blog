@@ -43,8 +43,9 @@ const UmamiData = () => {
 
     umiTongji();
   }, []);
-  return (<div className='  flex space-x-1  h-12 justify-center flex-row content-center items-center '>
-    <HeartIcon className=' h-8  duration-500  hover:animate-ping hover:h-10 hover:text-red-500' />       
+  return (<div className=' p-3 mb-3 flex space-x-1 w-full bg-gray-700 dark:bg-gray-800 rounded-xl h-full justify-center flex-row content-center items-center hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+  hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
+    <HeartIcon className=' h-8   duration-500  hover:animate-ping hover:h-10 hover:text-red-500' />       
     <div className="   flex justify-center text-center flex-row content-center items-center  ">
       <StatusOnlineIcon className=' h-8 inline-block text-green-400   ' />
       <span id="online" className='inline-block text-green-400 '></span>

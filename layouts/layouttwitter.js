@@ -81,10 +81,10 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
   return (<>
 
 
-  <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.siteog} className={ ' m-auto '} >
+  <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.siteog} className={ ' m-auto text-gray-200 dark:text-gray-200'} >
     <div id='zuozhongyou'  className='flex flex-row '>
       <div id='ltya' className=' hidden md:flex w-52 min-w-[208px] flex-col justify-center  relative '>
-        <div id="alltagsdiv" className='fixed top-0  flex-col flex   min-h-screen    '>
+        <div id="tagsAndMe" className='fixed top-0  flex-col flex   min-h-screen    '>
 
           <div id='alltags' className=' flex flex-col flex-grow items-center content-center w-52  px-3  mt-24   '>
             {Object.keys(tags).map((key) => {
@@ -94,8 +94,10 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                 <button
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
-                  className={` group w-full opacity-80 px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center 
-                      duration-300 hover:h-12  font-bold  whitespace-nowrap bg-gray-300 dark:bg-gray-700 hover:bg-green-400  dark:hover:bg-green-400 `}
+                  className={` group w-full px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center 
+                       hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 
+                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 `}
                 >
                   <div className='w-full flex justify-between  '>
                   <div>{`${key} `}</div >
@@ -108,7 +110,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
           </div>
           <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
             <div title='contact' className='  items-center flex justify-center '>
-              <Link href='/contact' ><UserIcon className=' w-12 h-12  hover:text-green-400  hover:animate-bounce duration-300  ' /></Link>
+              <Link href='/contact' ><UserIcon className=' w-12 h-12  hover:text-green-400    duration-300  ' /></Link>
             </div>
           </div>
         </div>        
@@ -118,11 +120,11 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
         <div id="searchbox" className='relative mx-3'>
           <input type='text' id="inputtext"
           placeholder={t.SEARCH.PLACEHOLDER}
-            className='w-full bg-white dark:bg-gray-600 shadow-md rounded-lg outline-none focus:shadow p-3'
+            className='w-full bg-gray-700 dark:bg-gray-800 shadow-md rounded-lg outline-none focus:shadow p-3'
             onChange={(e) => setSearchValue(e.target.value)}
           />
           <svg
-            className='absolute right-3 top-3 h-5 w-5 text-gray-400'
+            className='absolute right-3 top-3 h-5 w-5 '
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
@@ -142,7 +144,9 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                 <button
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
-                  className="group p-2 rounded-xl   hover:scale-110 duration-300  font-medium  whitespace-nowrap  hover:bg-gray-400 dark:hover:bg-gray-600"
+                  className="group p-2 rounded-xl   hover:scale-110   font-medium  whitespace-nowrap 
+                  hover:shadow-[0_0_30px_1px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                  "
                 >
                 {`${key} (${tags[key]})`}
                 </button>
@@ -151,7 +155,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
           </div>
         <div id="midmain" className=' my-5 md:my-8    '>
           {!deftag.length && (
-            <p className='text-gray-500 dark:text-gray-300'>
+            <p className=''>
               {t.SEARCH.NOT_FOUND}
             </p>
           )}
@@ -171,8 +175,8 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
       </div>
 
       <div id='rtya' className=' hidden md:block  w-3/12 max-w-[320px]  '>
-        <div  className=' px-3 space-y-3 overflow-y-scroll  '>
-          <div id='bbuiya1' className=' flex   bg-gray-200 dark:bg-gray-700 rounded-xl mb-3 '>
+        <div  className=' px-3 space-y-3  '>
+          <div id='bbuiya1' className=' flex   bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
             <BubbleUI className="myBubbleUI h-64 w-80 rounded-3xl ">
               {posts.slice(0,21).map((data, i) => (
                 <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={data.id}>
@@ -183,25 +187,29 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
             </BubbleUI>
           </div>
 
-          <div id='Tuijian' className='  flex flex-col  w-full h-max  bg-gray-300 dark:bg-gray-600 rounded-xl mt-3 p-3'>
+          <div id='Tuijian' className='  flex flex-col  w-full h-max  bg-gray-700 dark:bg-gray-800 rounded-xl mt-3 p-3'>
             <div className=' w-full text-lg cursor-pointer  flex justify-center '>{'💬🔊'}</div>
             <Lastpost posts={tuijian} />
           </div>
 
-          <div id='4links' className=' w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-700 ' >
+          <div id='4links' className=' w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
               <div className=' flex h-10 flex-row w-full justify-between space-x-3'>
-                <Link title='Friends' href='/friends' className='w-full  bg-gray-200 dark:bg-gray-700 rounded-xl group   justify-center flex items-center hover:bg-green-400 dark:hover:bg-green-400 duration-300'>
-                  <LinkIcon className=' w-8 h-8  inline-block   group-hover:animate-pulse  ' />
+                <Link title='Friends' href='/friends' className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
+                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
+                  <LinkIcon className=' w-8 h-8  inline-block     ' />
                 </Link>
-                <Link title='Github' href={BLOG.githubUrl} className='w-full bg-gray-200 dark:bg-gray-700 rounded-xl  group   justify-center  flex items-center hover:bg-green-400 dark:hover:bg-green-400 duration-300 '>
-                  <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block   group-hover:animate-pulse '>
+                <Link title='Github' href={BLOG.githubUrl} className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                  hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                  hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
+                  <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
                     <path fill="currentColor" d="M213.5 0q88.5 0 151 62.5T427 213q0 70-41 125.5T281 416q-14 2-14-11v-58q0-27-15-40q44-5 70.5-27t26.5-77q0-34-22-58q11-26-2-57q-18-5-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 88h-6q-12 31-2 57q-22 24-22 58q0 55 27 77t70 27q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5t-5 3.5t8.5 9q14 7 23 31q1 2 2 4.5t6.5 9.5t13 10.5T130 371t30-2v36q0 13-14 11q-64-22-105-77.5T0 213q0-88 62.5-150.5T213.5 0"></path>
                   </svg>
                 </Link>
               </div>
               <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl}
-                    className='w-full h-10 bg-gray-200 dark:bg-gray-700 rounded-xl group justify-center flex items-center ' >
-                  <UmamiData  className='bg-gray-200 dark:bg-gray-700 '/>
+                    >
+                  <UmamiData />
               </Link>
           </div>
           

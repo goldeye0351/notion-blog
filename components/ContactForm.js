@@ -59,7 +59,7 @@ function Contact() {
               type='text'
               required
               placeholder={t.CONTACT.FORM_USERNAME}
-              className='block w-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-600'
+              className='block w-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600'
             />
           </div>
           <div>
@@ -69,7 +69,7 @@ function Contact() {
               type='text'
               required
               placeholder={t.CONTACT.FORM_EMAIL}
-              className='block w-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-600'
+              className='block w-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600'
             />
           </div>
 
@@ -80,7 +80,7 @@ function Contact() {
               type='text'
               required
               placeholder={t.CONTACT.FORM_CONTENT}
-              className='h-64 block w-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-white dark:focus:bg-gray-600'
+              className='h-64 block w-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600'
             ></textarea>
           </div>
 
@@ -91,7 +91,7 @@ function Contact() {
                 className='cursor-not-allowed inline-block bg-gray-300 dark:bg-gray-600 text-center rounded-lg outline-none transition duration-100 px-8 py-3'
               >
                 <svg
-                  className='animate-spin h-5 w-5 text-gray-600 dark:text-day'
+                  className='animate-spin h-5 w-5 text-gray-200 dark:text-gray-200'
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
@@ -114,12 +114,12 @@ function Contact() {
             ) : (
               <button
                 type='submit'
-                className='inline-block bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-center rounded-lg outline-none transition duration-100 px-8 py-3'
+                className='inline-block bg-gray-700 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 text-center rounded-lg outline-none transition duration-100 px-8 py-3'
               >
-                <p className='text-gray-400 h-5'>{t.CONTACT.SEND_BUTTON}</p>
+                <p className='text-gray-200 h-5'>{t.CONTACT.SEND_BUTTON}</p>
               </button>
             )}
-            <p className='mb-2 text-gray-400 text-xs'>
+            <p className='mb-2 text-gray-200 text-xs'>
               {t.CONTACT.FORM_EMAIL_REQUIRED}
             </p>
           </div>

@@ -124,7 +124,7 @@ function dark() {
       u()
     })(),
     (function t() {
-      document.getElementsByTagName('html')[0].className == 'dark' && u(),
+      document.getElementsByTagName('html')[0] && u(),
         window.requestAnimationFrame(t)
     })()
 }

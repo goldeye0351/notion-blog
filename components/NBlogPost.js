@@ -27,7 +27,7 @@ const BlogPost = ({ index , post,resdata }) => {
     updateDOM();
   }, [resdata]);
   return (
-<div className=' relative border border-gray-200 dark:border-gray-700  '>
+<div className=' relative border border-gray-700 dark:border-gray-800 text-gray-200 dark:text-gray-200 '>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
@@ -42,7 +42,7 @@ const BlogPost = ({ index , post,resdata }) => {
          <div 
            className="group  justify-between  rounded-xl   " >
             <div   className=' w-full h-full '   >
-                <div className='   text-lg md:text-xl font-medium mb-2 text-gray-600  dark:text-gray-200 backdrop-blur-sm justify-between flex duration-300 '>
+                <div className='   text-lg md:text-xl font-medium mb-2  backdrop-blur-sm justify-between flex duration-300 '>
                   {post.title}
                   <div className=' font-light text-base '>
                   {DaysAgo(post.date)}
@@ -50,14 +50,14 @@ const BlogPost = ({ index , post,resdata }) => {
                 </div>
                 {post.to && <Image src={post.to} alt={post.title} width={10000} height={300} />}
 
-                <span className=' flex font-light justify-between  text-gray-600 dark:text-gray-400'>
+                <span className=' flex font-light justify-between  '>
                   <FormattedDate date={post.date} />
-                  <div className="   rounded-xl  text-sm flex flex-row flex-nowrap justify-between text-gray-700 dark:text-gray-300">
+                  <div className="   rounded-xl  text-sm flex flex-row flex-nowrap justify-between ">
                       <EyeIcon className=' mx-1  w-6 h-6 inline-block'/><span id={post.slug} ></span>
                       <ThumbUpIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
                   </div>
                 </span>
-                <div className=' font-light leading-8 text-gray-700 dark:text-gray-100'>{post.summary}</div>
+                <div className=' font-light leading-8 '>{post.summary}</div>
                 {/*<Image src={post?.page_cover}  alt={post.title} fill className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>*/}
  
             </div>

@@ -70,16 +70,16 @@ export default function Content (props) {
     return newup;
   };
 
-  return (<div className='   ' >
+  return (<div className='  text-gray-200 dark:text-200 ' >
   <div id="biaoti"  className=' flex flex-col justify-center p-3 '>
       <div className='opacity-50   h-36 w-screen  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
       </div>
-      <div className='font-bold text-3xl text-black dark:text-white flex justify-center mx-auto mt-20'>
+      <div className='font-bold text-3xl flex justify-center mx-auto mt-20'>
         {frontMatter.title}
       </div>
 
-      <nav className='flex mt-5 mb-10 items-start text-gray-500 dark:text-gray-400'>
+      <nav className='flex mt-5 mb-10 items-start '>
         <div className='mr-2 mb-4 md:ml-0'>
           <FormattedDate date={frontMatter.date} /> &nbsp; {DaysAgo(frontMatter.date)}
         </div> 
@@ -92,7 +92,7 @@ export default function Content (props) {
       </nav>
       
       <div 
-      className='  text-black dark:text-white bg-gray-300  dark:bg-gray-600/50  ring-green-400 ring-2 p-1  rounded-xl '>
+      className='   bg-gray-700  dark:bg-gray-800  ring-green-400 ring-2 p-1  rounded-xl '>
         <ChatIcon  className='w-6 h-6 inline-block' />
         <div className='inline-block' ref={el}  /> 
       </div>
@@ -101,7 +101,7 @@ export default function Content (props) {
 
   <div id= 'mainleft'className=' relative flex flex-row '>
     <article  id='postmain'  className='flex-none md:overflow-x-visible overflow-x-scroll lg:w-9/12 w-full ' >
-      <div className="-mt-4 p-3 ">
+      <div className="-mt-4 p-3 text-white  dark:text-gray-200 ">
           <NotionRenderer
             blockMap={blockMap}
             previewImages={BLOG.previewImagesEnabled}
@@ -119,21 +119,21 @@ export default function Content (props) {
             <Mulu tableOfContent={tableOfContent} />
             <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1 '> 
                 <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
-                className='group cursor-pointer  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
-                      <button id="dapindianzan"  className='  hover:text-gray-400 dark:hover:text-gray-400 w-full'>
-                        <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center  ' />
-                        <span id="myupdapin" className=' inline-block'>{zjk}</span>
+                className='group cursor-pointer  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
+                      <button id="dapindianzan"  className='  hover:text-gray-200 dark:hover:text-gray-200 w-full'>
+                        <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center group-hover:scale-150 duration-200 ' />
+                        <span id="myupdapin" className=' inline-block group-hover:scale-125 duration-200'>{zjk}</span>
 
                       </button>
                 </div>
-                <div title="%" id="进度" className='group cursor-pointer  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
+                <div title="%" id="进度" className='group cursor-pointer  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
                       <ReadingProgress />
                 </div>
-                <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+                <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
                       <Jumptocomment />
                 </div>
             </div>
-            <div id='lastpost' className=' w-full   bg-gray-300 dark:bg-gray-600 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
+            <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
               🆕&nbsp;📣
               <hr/>
               <Lastpost  posts={lastposts} />
@@ -146,20 +146,20 @@ export default function Content (props) {
 
   </div>
   <div id="小屏几个" className=' fixed inset-y-[50%] right-0    lg:hidden'>
-        <div title='百分比' className='group   bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center '>
+        <div title='百分比' className='group   bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
             <ReadingProgress />
         </div>
-        <div title='点赞' className='group  w-full p-3  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+        <div title='点赞' className='group  w-full p-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
           <button id="xiaopindianzan"
             onClick={dianzan} data-umami-event="小屏点赞" 
-            className='text-gray-600 dark:text-day hover:text-gray-400 dark:hover:text-gray-400'
+            className='text-gray-200 dark:text-gray-200 '
           >
             {/* onClick={() => setShowPay((showPay) => !showPay)} */}
-            <ThumbUpIcon  className='w-6 h-6' />
-            <span id="myupxiaopin" className=' inline-block'>{zjk}</span>
+            <ThumbUpIcon  className='w-6 h-6 group-hover:scale-150 duration-200' />
+            <span id="myupxiaopin" className=' inline-block group-hover:scale-125 duration-200'>{zjk}</span>
           </button>
         </div>
-        <div title='评论' className='group  w-full p-1  bg-gray-300 dark:bg-gray-600 rounded-2xl flex justify-center mx-auto '>
+        <div title='评论' className='group  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
           <Jumptocomment />
         </div>
   </div>

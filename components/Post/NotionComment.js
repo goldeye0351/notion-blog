@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import FormattedDate from "../Common/FormattedDate";
-import DaysAgo from "../Common/DaysAgo";
+//import DaysAgo from "../Common/DaysAgo";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
@@ -61,9 +61,9 @@ return< div>
         
   <form onSubmit={addcomment} className=' relative w-full max-w-screen-md    mx-auto '>
 
-      <div id='CommentBigBox' className='  p-3 w-full bg-gray-200 dark:bg-gray-700 duration-300 rounded-xl'>
+      <div id='CommentBigBox' className='  p-3 w-full bg-gray-700 dark:bg-gray-800  rounded-xl'>
           <textarea    name="PINGLUN"  id="PINGLUN"  rows="3"
-            className=' block italic p-1 w-full bg-white/30 dark:bg-black/100 duration-300 rounded-xl'
+            className=' block italic p-1 w-full bg-gray-800 dark:bg-gray-900 rounded-xl'
             placeholder={t.LAYOUT.COMMENT_MAIN}
             value={pinglun}
             onChange={(e) => setPinglun(e.target.value)}
@@ -73,7 +73,7 @@ return< div>
 
       <div id='3smallbox' className=" absolute bottom-5 right-0 w-full max-w-xs px-5  ">
         <div className=" flex flex-row space-x-1 justify-end">
-          <div id='uname' className=' w-1/4 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div id='uname' className=' w-1/4 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="REN"  name="REN"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_NAME}
@@ -82,7 +82,7 @@ return< div>
                   required
               />
           </div>
-          <div id='email' className=' w-1/2 p-1  bg-gray-200 dark:bg-gray-700 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div id='email' className=' w-1/2 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="EMAIL"  name="EMAIL" autoComplete="email"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_EMAIL}
@@ -91,7 +91,7 @@ return< div>
                   required
               />
           </div>
-          <button id='usubmit' type="submit" className=' w-1/4 text-gray-400  p-1 text-xl  bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
+          <button id='usubmit' type="submit" className=' w-1/4 text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
             <PaperAirplaneIcon className=" w-full h-5 -rotate-45" />
           </button>
         </div>
@@ -112,7 +112,7 @@ return< div>
               return<li key={post.id} className=' flex-grow  even:italic space-y-1 my-1 '>
 
                 
-                <div className=' bg-gray-200  dark:bg-gray-700 rounded-xl p-1 flex-col   '>
+                <div className=' bg-gray-700  dark:bg-gray-800 rounded-xl p-1 flex-col text-gray-200 dark:text-gray-200  '>
                   <article className="  break-words ">
                   {post.properties.Text.rich_text[0].text.content }
                   </article>
