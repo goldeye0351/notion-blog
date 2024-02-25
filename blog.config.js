@@ -7,6 +7,7 @@ const BLOG = {
   author: 'Goldeye',
   email: 'admin@51xm.com',
   siteog:'https://51xmi.com/logo2.svg',
+  pyqog:'https://51xmi.com/pyqlogo.png',
   ogimage:'https://51xmi.com/favicon.svg',
   githubUrl:'https://github.com/goldeye0351/notion-blog',
   umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/mynotion',
