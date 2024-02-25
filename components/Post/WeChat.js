@@ -80,7 +80,7 @@ return< div className=" flex  lg:flex-row flex-col justify-center items-center c
                 <div id='左边头像' className="  ">
                       <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
                 </div>
-                <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-96 ">
+                <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-80 ">
                   <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
                     {post.properties.Ren.rich_text[0].text.content }
                   </div>
