@@ -15,7 +15,7 @@ const Saysay = () => {
   const toggleXie = () => {      setXie(prevState => !prevState);    };
   
   return (<>
-<Container  title={`${BLOG.title}${BLOG.saysay}`} description={BLOG.description} ogimage={BLOG.link+BLOG.defaultIcon}  className=' m-auto min-h-screen flex flex-col  ' >
+<Container  title={`${BLOG.title}${BLOG.saysay}`} description={BLOG.description}  ogimage={BLOG.siteog} className=' m-auto min-h-screen flex flex-col  ' >
     <Image src={bjIMG} alt='朋友圈' className=" absolute top-0 left-0 right-0    mx-auto w-screen   h-64 max-h-64  opacity-80  rounded-3xl  "/>
         <div className=" relative ">
             <div className=" sticky top-28 flex flex-row text-white  justify-end     ">
