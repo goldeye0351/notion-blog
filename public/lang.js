@@ -4,6 +4,12 @@ export const lang = {
       CATEGORY: '类别',
       TAGS: '标签'
     },
+    TIME: {
+      YEAR: '年前',
+      MONTH:'月前',
+      DAY:'天前',
+      TODAY: '今天'
+    },
     PAGINATION: {
       PREV: '上一页',
       NEXT: '下一页'
@@ -16,7 +22,8 @@ export const lang = {
       COMMENT_MAIN:'📝 ❖读而不评则罔,评而不读则殆❖ ',
       COMMENT_NAME:'昵称',
       COMMENT_EMAIL:'邮件',
-      COMMENT_SUBMIT:'提交'
+      COMMENT_SUBMIT:'提交',
+      COMMENT_TO:'图片或视频链接',
     },
     SEARCH: {
       PLACEHOLDER: '搜索文章',
@@ -58,6 +65,12 @@ export const lang = {
       CATEGORY: 'Category',
       TAGS: 'Tags'
     },
+    TIME: {
+      Y: 'Y ago',
+      M:'M ago',
+      D:'D ago',
+      TODAY: 'Today'
+    },
     PAGINATION: {
       PREV: 'Prev',
       NEXT: 'Next'
@@ -70,7 +83,8 @@ export const lang = {
       COMMENT_MAIN:'📝 ❖Reading without commenting is useless, commenting without reading is perilous❖ ',
       COMMENT_NAME:'Nickname',
       COMMENT_EMAIL:'Email',
-      COMMENT_SUBMIT:'Submit'
+      COMMENT_SUBMIT:'Submit',
+      COMMENT_TO:'Pic url',
     },
     SEARCH: {
       PLACEHOLDER: 'Search Posts',

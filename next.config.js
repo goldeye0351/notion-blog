@@ -23,6 +23,7 @@ module.exports = {
       'goldeye0351.github.io',
       'raw.githubusercontent.com',
       'pichub.51xmi.com',
+      'pbs.twimg.com',
       'tool.oschina.net',
     ]
   },

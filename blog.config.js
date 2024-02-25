@@ -3,6 +3,7 @@ const BLOG = {
   description: '我要x秘',
   blogtitle: '51XMI Blog',
   blogdescription: '51XMI 我要xMI',
+  saysay:'随便说说',
   author: 'Goldeye',
   email: 'admin@51xm.com',
   siteog:'https://51xmi.com/logo2.svg',

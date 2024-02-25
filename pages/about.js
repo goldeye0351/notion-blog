@@ -6,7 +6,7 @@ import Tilt from 'react-parallax-tilt'
 import Container from '@/components/Container'
 import Pinglun from "@/components/Post/NotionComment"
 //import Tabs from "@/components/Post/Tabs"  
-import OfficeComment from "@/components/Post/OfficeComment"
+//import OfficeComment from "@/components/Post/OfficeComment"
 export async function getStaticProps() {
   const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'about')

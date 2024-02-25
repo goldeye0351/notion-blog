@@ -6,7 +6,7 @@ import FormattedDate from '@/components/Common/FormattedDate'
 import DaysAgo from './Common/DaysAgo'
 import React from 'react'
 import { useEffect } from 'react';
-import Tagitem from './Post/Tagitem'
+import OnlyPinglun from './Post/OnlyComments';
 import { EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
 const BlogPost = ({ index , post,resdata }) => {
   useEffect(() => {
@@ -64,7 +64,8 @@ const BlogPost = ({ index , post,resdata }) => {
 
         </div>
       </article>
-    </motion.div> 
+    </motion.div>
+    <OnlyPinglun post={post} /> 
   </Link>
 </div>
   )
