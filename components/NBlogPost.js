@@ -61,11 +61,11 @@ const BlogPost = ({ index , post,resdata }) => {
                 {/*<Image src={post?.page_cover}  alt={post.title} fill className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>*/}
  
             </div>
-
+            <OnlyPinglun post={post} /> 
         </div>
       </article>
     </motion.div>
-    <OnlyPinglun post={post} /> 
+
   </Link>
 </div>
   )

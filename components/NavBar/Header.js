@@ -5,6 +5,8 @@ import Logo from '../Common/Logo'
 import ThemeSwitcher from './ThemeSwitcher'
 import LangSwitcher from './LangSwitcher'
 import FullWidth from './FullWidth'
+import Image from 'next/image'
+import logoimg from '@/public/pyqlogo.png'
 const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
   const [showTitle, setShowTitle] = useState(false)
   const useSticky = !BLOG.autoCollapsedNavBar
@@ -76,6 +78,9 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
           )}
         </div>
         <div>
+          <Link href='/tt' >
+                <Image  src={logoimg} alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6 -mt-4 md:-mt-5 mx-2 inline-block md:hidden duration-500  hover:scale-125 ' />
+          </Link>
           <ThemeSwitcher />
           <LangSwitcher />
           <FullWidth fullWidth={fullWidth} toggleFullWidth={toggleFullWidth} />

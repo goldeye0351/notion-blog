@@ -208,7 +208,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                        hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
                   <LinkIcon className=' w-8 h-8  inline-block     ' />
                 </Link>
-                <Link title='Github' href={BLOG.githubUrl} className='w-1/3 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                <Link title='Github' href={BLOG.githubUrl} target='new'  className='w-1/3 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
                   <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
@@ -216,7 +216,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                   </svg>
                 </Link>
               </div>
-              <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl}
+              <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='new' 
                     >
                   <UmamiData />
               </Link>
