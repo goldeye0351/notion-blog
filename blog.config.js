@@ -6,9 +6,8 @@ const BLOG = {
   saysay:'随便说说',
   author: 'Goldeye',
   email: 'admin@51xm.com',
-  siteog:'https://51xmi.com/logo2.svg',
+  ogimg:'https://51xmi.com/51xmi.png',
   pyqog:'https://51xmi.com/pyqlogo.png',
-  ogimage:'https://51xmi.com/favicon.svg',
   githubUrl:'https://github.com/goldeye0351/notion-blog',
   umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/mynotion',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']

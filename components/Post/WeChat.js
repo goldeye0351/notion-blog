@@ -63,54 +63,8 @@ function WeChat({post,xie} ){
         }
       }
 return< div className=" flex  lg:flex-row flex-col justify-center items-center content-center" >
- 
-  <div id='展示框' key='dispbox' className=" mx-auto  "> 
-    <div id="comment5" className="  mx-auto  mt-3   ">
-          <ol className=" ">
-            {comments.map((post) => {
-              const myemail = post.properties.Email.email;
-              const tolink= post.properties.LinkTo.rich_text[0]?.text.content;
-              const parts = myemail ? myemail.split('@'): '';
-              const part0 = parts[0];
-              const part1 = parts[1];
-              const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
-              const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
-
-              return<li key={post.id} className='   my-3 flex-row flex space-x-3'>
-                <div id='左边头像' className="  ">
-                      <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
-                </div>
-                <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-80 ">
-                  <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
-                    {post.properties.Ren.rich_text[0].text.content }
-                  </div>
-                  <article id='主体文字' className="  break-words italic  ">
-                    {post.properties.Text.rich_text[0].text.content }
-                  </article>
-                  <div id='图' >
-                  {tolink && tolink.slice(-3) === 'mp4' &&
-                    <video controls>
-                      <source src={tolink} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  }
-                  {tolink && tolink.slice(-3) !== 'mp4' &&
-                    <Image src={tolink} alt={tolink} width={384} height={384} className="rounded-sm" />
-                  }
-                  </div>
-                  <div className=" flex flex-grow w-full justify-between ">                   
-                    <div>{DaysAgo(Date.parse(post.created_time)) }</div>
-                    <div><FormattedDate date={post.created_time} /></div>
-                  </div>
-                  
-                </div>
-              </li>
-            })}
-          </ol>
-    </div> 
-  </div>  
-  {xie && <div id='输入框' key='subbox' className=" lg:fixed lg:right-0 lg:bottom-0 w-80 text-gray-200">
-      <form onSubmit={addcomment} className=' relative w-full max-w-screen-md    mx-auto '>
+   {xie && <div id='输入框' key='subbox' className=" lg:fixed lg:right-3 lg:bottom-0 lg:flex flex-row lg:justify-end justify-center   w-full  text-gray-200">
+      <form onSubmit={addcomment} className=' relative w-full max-w-md  mx-auto p-3 lg:p-0 lg:mx-0 '>
 
           <div id='CommentBigBox' className='  p-3 w-full bg-gray-700 dark:bg-gray-800  rounded-xl'>
               <textarea    name="PINGLUN"  id="PINGLUN"  rows="9"
@@ -162,6 +116,52 @@ return< div className=" flex  lg:flex-row flex-col justify-center items-center c
           </div>
       </form>
   </div>}
+  <div id='展示框' key='dispbox' className=" mx-auto  "> 
+    <div id="comment5" className="  mx-auto  mt-3   ">
+          <ol className=" ">
+            {comments.map((post) => {
+              const myemail = post.properties.Email.email;
+              const tolink= post.properties.LinkTo.rich_text[0]?.text.content;
+              const parts = myemail ? myemail.split('@'): '';
+              const part0 = parts[0];
+              const part1 = parts[1];
+              const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
+              const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
+
+              return<li key={post.id} className='   my-3 flex-row flex space-x-3'>
+                <div id='左边头像' className="  ">
+                      <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
+                </div>
+                <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-80 ">
+                  <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
+                    {post.properties.Ren.rich_text[0].text.content }
+                  </div>
+                  <article id='主体文字' className="  break-words italic  ">
+                    {post.properties.Text.rich_text[0].text.content }
+                  </article>
+                  <div id='图' >
+                  {tolink && tolink.slice(-3) === 'mp4' &&
+                    <video controls>
+                      <source src={tolink} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  }
+                  {tolink && tolink.slice(-3) !== 'mp4' &&
+                    <Image src={tolink} alt={tolink} width={384} height={384} className="rounded-sm" />
+                  }
+                  </div>
+                  <div className=" flex flex-grow w-full justify-between ">                   
+                    <div>{DaysAgo(Date.parse(post.created_time)) }</div>
+                    <div><FormattedDate date={post.created_time} /></div>
+                  </div>
+                  
+                </div>
+              </li>
+            })}
+          </ol>
+    </div> 
+  </div>  
+
 </div>
 }
 export default WeChat

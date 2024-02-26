@@ -82,7 +82,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
   return (<>
 
 
-  <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.siteog} className={ ' m-auto text-gray-200 dark:text-gray-200 min-h-screen '} >
+  <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.ogimg} className={ ' m-auto text-gray-200 dark:text-gray-200 min-h-screen '} >
     <div id='zuozhongyou'  className='flex flex-row '>
       <div id='ltya' className=' hidden md:flex w-52 min-w-[208px] flex-col justify-center  relative '>
         <div id="tagsAndMe" className='fixed top-0  flex-col flex   min-h-screen    '>

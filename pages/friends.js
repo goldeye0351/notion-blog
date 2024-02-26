@@ -43,7 +43,7 @@ const FriendS = ({  posts }) => {
     }
   };
 
-  return (<Container  title={`${BLOG.title}---Friends`} description={BLOG.description} ogimage={BLOG.ogimage} className='friend m-auto flex-grow min-h-screen ' >
+  return (<Container  title={`${BLOG.title}---Friends`} description={BLOG.description} ogimage={BLOG.ogimg} className='friend m-auto flex-grow min-h-screen ' >
     <div id="friend" className=' relative flex  flex-wrap  mx-auto justify-center   items-center cursor-pointer mb-16  '>
       {posts?.map((post) => (
         <Friend post={post} />
