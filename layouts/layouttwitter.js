@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import logoimg from '@/public/pyqlogo.png'
 import { useState } from 'react'
 import Link from 'next/link'
 import BlogPost from '@/components/NBlogPost'
@@ -10,7 +9,7 @@ import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 import Pinglun from '@/components/Post/NotionComment'
 import UmamiData from '@/components/UmamiData'
-import { LinkIcon,  UserIcon, ShareIcon,PlayIcon } from '@heroicons/react/outline'
+import { LinkIcon,  UserIcon } from '@heroicons/react/outline'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
 import { motion, AnimatePresence } from 'framer-motion'
@@ -57,6 +56,10 @@ const variants = {
 }
 
 const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth }) => {
+  const post = {
+    id: 'Home',
+    title: 'Home'
+  };
   const [searchValue, setSearchValue] = useState('')
   const { locale } = useRouter()
   const t = lang[locale]
@@ -84,7 +87,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
 
   <Container fullWidth={fullWidth} title={BLOG.title} description={BLOG.description} ogimage={BLOG.ogimg} className={ ' m-auto text-gray-200 dark:text-gray-200 min-h-screen '} >
     <div id='zuozhongyou'  className='flex flex-row '>
-      <div id='ltya' className=' hidden md:flex w-52 min-w-[208px] flex-col justify-center  relative '>
+      <div id='ltya' className=' hidden lg:flex w-52 min-w-[208px] flex-col justify-center  relative '>
         <div id="tagsAndMe" className='fixed top-0  flex-col flex   min-h-screen    '>
 
           <div id='alltags' className=' flex flex-col flex-grow items-center content-center w-52  px-3  mt-24   '>
@@ -110,9 +113,8 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
             })}
           </div>
           <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
-                <Link title='contact me' href='/contact' className='p-6  rounded-full group   justify-center flex items-center 
-'>
-                  <UserIcon className=' w-16 h-16  inline-block     ' />
+                <Link title='contact me' href='/contact' className='p-6  rounded-full group   justify-center flex items-center '>
+                  <UserIcon className=' w-16 h-16  inline-block rounded-full duration-300   hover:scale-110 ' />
                 </Link>
           </div>
         </div>        
@@ -140,7 +142,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
             ></path>
           </svg>
         </div>
-        <div className=' md:hidden flex flex-row justify-center flex-wrap p-1 '>
+        <div className=' lg:hidden flex flex-row justify-center flex-wrap p-1 '>
             {Object.keys(tags).map((key) => {
               return (
                 <button
@@ -155,7 +157,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
               )
             })}
           </div>
-        <div id="midmain" className=' my-5 md:my-8    '>
+        <div id="midmain" className=' my-5 lg:my-8    '>
           {!deftag.length && (
             <p className=''>
               {t.SEARCH.NOT_FOUND}
@@ -176,7 +178,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
         </div>
       </div>
 
-      <div id='rtya' className=' hidden md:block  w-3/12 max-w-[320px]  '>
+      <div id='rtya' className=' hidden lg:block  w-3/12 max-w-[320px]  '>
         <div  className=' px-3 space-y-3  '>
           <div id='bbuiya1' className=' flex   bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
             <BubbleUI className="myBubbleUI h-64 w-80 rounded-3xl ">
@@ -217,7 +219,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
           
         </div>
         <div id='plya' className='sticky top-20 p-3  '>
-                  <Pinglun />
+                  <Pinglun post={post} />
               </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 const FullWidth =({fullWidth,toggleFullWidth})=>{
 
-    return <button title='fullWidth' onClick={toggleFullWidth} className=' hidden  p-2 lg:inline-block hover:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer rounded-lg '>
+    return <button title='fullWidth' onClick={toggleFullWidth} className=' hidden  p-2 xl:inline-block hover:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer rounded-lg '>
         {fullWidth ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" 
             className=' md:w-8 md:h-8 w-6 h-6 text-gray-200  dark:text-gray-200 duration-500 hover:scale-125 '>

@@ -1,5 +1,5 @@
 const BLOG = {
-  title: '51xMI 我要x秘 ',
+  title: '51xMI',
   description: '我要x秘',
   blogtitle: '51XMI Blog',
   blogdescription: '51XMI 我要xMI',

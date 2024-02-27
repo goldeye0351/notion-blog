@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 function OnlyPinglun({post} ){
-    const postid = post?.id||'home'
+    const postid = post?.id
     const [comments, setComments] = useState([]);
 
       useEffect(() => {
