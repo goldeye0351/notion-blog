@@ -7,7 +7,7 @@ import DaysAgo from './Common/DaysAgo'
 import React from 'react'
 import { useEffect } from 'react';
 import OnlyPinglun from './Post/OnlyComments';
-import { EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
+import { ChatIcon, EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
 const BlogPost = ({ index , post,resdata }) => {
   useEffect(() => {
     const updateDOM = () => {
@@ -55,13 +55,12 @@ const BlogPost = ({ index , post,resdata }) => {
                   <div className="   rounded-xl  text-sm flex flex-row flex-nowrap justify-between ">
                       <EyeIcon className=' mx-1  w-6 h-6 inline-block'/><span id={post.slug} ></span>
                       <ThumbUpIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
-                  </div>
+                      <ChatIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '> <OnlyPinglun post={post} /> </div>
+                   </div>
                 </span>
                 <div className=' font-light leading-8 '>{post.summary}</div>
                 {/*<Image src={post?.page_cover}  alt={post.title} fill className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>*/}
- 
-            </div>
-            <OnlyPinglun post={post} /> 
+             </div>
         </div>
       </article>
     </motion.div>
