@@ -1,4 +1,5 @@
 import Image from "next/image"
+import svglogo from '@/public/51xmi.svg'
 import bjIMG from '@/public/pyq.png'
 import logoimg from '@/public/pyqlogo.png'
 import { getAllPosts } from '@/lib/notion'
@@ -9,7 +10,7 @@ import DaysAgo from "@/components/Common/DaysAgo"
 import md5 from 'md5'
 import Pinglun from "@/components/Post/NotionComment"
 export async function getStaticProps() {
-  const posts = await getAllPosts({isPL:true ,onlyPL:true})
+  const posts = await getAllPosts({onlyMonment:true})
   return {
     props: {
     posts,
@@ -47,24 +48,19 @@ const Saysay = ({posts}) => {
         <div className="  mx-auto  mt-3   ">
               <ol >
                 {posts.map((post) => {
-                  const myemail = post.Email;
-                  const tolink= post.LinkTo;
-                  const parts = myemail ? myemail.split('@'): '';
-                  const part0 = parts[0];
-                  const part1 = parts[1];
-                  const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
-                  const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
+                  const tolink= post.Link;
+
 
                   return<li key={post.id} className='   my-3 flex-row flex space-x-3'>
                     <div id='左边头像' className="  ">
-                          <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
+                          <Image src={svglogo} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
                     </div>
                     <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-80 ">
                       <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
-                        {post.Ren }
+                        {`51xMI` }
                       </div>
                       <article id='主体文字' className="  break-words italic  ">
-                        {post.Text }
+                        {post.summary }
                       </article>
                       <div id='图' >
                       {tolink && tolink.slice(-3) === 'mp4' &&
@@ -79,7 +75,7 @@ const Saysay = ({posts}) => {
                       </div>
                       <div className=" flex flex-grow w-full justify-between ">                   
                         <div>{DaysAgo(post.date) }</div>
-                        <div><FormattedDate date={post.created_time} /></div>
+                        <div><FormattedDate date={post.date} /></div>
                       </div>
                       
                     </div>
@@ -90,7 +86,7 @@ const Saysay = ({posts}) => {
       </div>  
 
     </div>
-    <Pinglun post={post}/>
+   {/* <Pinglun post={post}/> */}
 </Container >
 </>
 )}

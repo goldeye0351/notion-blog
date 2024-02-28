@@ -48,7 +48,7 @@ const BlogPost = ({ index , post,resdata }) => {
                   {DaysAgo(post.date)}
                   </div>  
                 </div>
-                {post.to && <Image src={post.to} alt={post.title} width={10000} height={300} />}
+                {post.Link && <Image src={post.Link} alt={post.title} width={10000} height={300} />}
 
                 <span className=' flex font-light justify-between  '>
                   <FormattedDate date={post.date} />

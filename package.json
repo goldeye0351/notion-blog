@@ -1,7 +1,7 @@
 {
   "name": "notion-blog",
   "version": "1.0.0",
-  "homepage": "https://mynotion.life",
+  "homepage": "https://51xmi.com",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -9,8 +9,8 @@
   },
   "author": {
     "name": "goldeye0351",
-    "email": "admin@mynotion.life",
-    "url": "https://mynotion.life"
+    "email": "admin@51xmi.com",
+    "url": "https://51xmi.com"
   },
   "scripts": {
     "dev": "next dev",
@@ -59,7 +59,7 @@
     "typescript": "^5.0.3"
   },
   "bugs": {
-    "url": "https://mynotion.life",
-    "email": "admin@mynotion.life"
+    "url": "https://51xmi.com",
+    "email": "admin@51xmi.com"
   }
 }

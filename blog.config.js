@@ -1,8 +1,7 @@
 const BLOG = {
-  title: '51xMI 我要x秘 ',
+  title: '51xMI',
   description: '我要x秘',
-  blogtitle: '51XMI Blog',
-  blogdescription: '51XMI 我要xMI',
+  link:'https://51xmi.com',
   saysay:'随便说说',
   author: 'Goldeye',
   email: 'admin@51xm.com',
@@ -24,7 +23,7 @@ const BLOG = {
   defaultCover: '/mycover.jpg',
   defaultIcon: '/favicon.png',
   seo: {
-    keywords: ['51xmi', 'Blog','notion'],
+    keywords: ['51xmi', 'log','notion'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
   },
   notionDatabaseId: process.env.NOTION_DATABASE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
