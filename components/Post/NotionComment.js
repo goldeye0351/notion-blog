@@ -9,8 +9,7 @@ import IpComponent from "../IpComponent";
 import { PaperAirplaneIcon } from "@heroicons/react/outline";
 
 function Pinglun({post} ){
-    const postid = post?.id
-    const title = post?.title
+    const postid = post?.id||'home'
     const { locale } = useRouter()
     const t = lang[locale]
     const [ren, setRen] = useState('');
@@ -19,6 +18,7 @@ function Pinglun({post} ){
     const [email, setEmail] = useState('');
     const [linkTo, setLinkTo] = useState('');
     const visitorIp = IpComponent();    
+    const title = post?.title||'Home'
     const addcomment = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {
@@ -60,7 +60,7 @@ function Pinglun({post} ){
       }
 return< div>
         
-  <form onSubmit={addcomment} className=' relative w-full max-w-screen-md  p-3 md:p-0  mx-auto text-gray-200 '>
+  <form onSubmit={addcomment} className=' relative w-full max-w-screen-md    mx-auto text-gray-200 '>
 
       <div id='CommentBigBox' className='  p-3 w-full bg-gray-700 dark:bg-gray-800  rounded-xl'>
           <textarea    name="PINGLUN"  id="PINGLUN"  rows="9"
@@ -72,9 +72,9 @@ return< div>
           ></textarea>
       </div>
 
-      <div id='3smallbox' className=" absolute bottom-8 md:bottom-5  right-1 md:right-0 w-full max-w-xs px-5  ">
+      <div id='3smallbox' className=" absolute bottom-5 right-0 w-full max-w-xs px-5  ">
         <div className=" flex flex-row space-x-1 justify-end">
-          <div title='name' id='uname' className=' w-1/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div id='uname' className=' w-1/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="REN"  name="REN"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_NAME}
@@ -83,7 +83,7 @@ return< div>
                   required
               />
           </div>
-          <div title='email' id='email' className=' w-2/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div id='email' className=' w-2/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="EMAIL"  name="EMAIL" autoComplete="email"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_EMAIL}
@@ -92,21 +92,21 @@ return< div>
                   required
               />
           </div>
-          {post.title !== 'Home' && <div title='piclink' id='piclink' className=' w-3/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div id='piclink' className=' w-2/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
                   <input id="linkTo"  name="tolink" 
                       type="text" className='  italic p-1 block  duration-300 bg-transparent '
                       placeholder={t.LAYOUT.COMMENT_TO}
                       value={linkTo}
                       onChange={(e) => setLinkTo(e.target.value)}
                   />
-          </div>}
+          </div>
           <button id='usubmit' type="submit" className=' w-1/6 text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
-            <PaperAirplaneIcon className=" w-8 h-5 -rotate-45" />
+            <PaperAirplaneIcon className=" w-full h-5 -rotate-45" />
           </button>
         </div>
       </div>
   </form>
-  <div className=" overflow-scroll max-h-96 p-3 md:p-0 "> 
+  <div className=" overflow-scroll max-h-96"> 
     <div id="comment" className="  mx-auto  max-w-screen-md w-full mt-3   ">
           <ol className=" w-full">
             {comments.map((post) => {
@@ -123,7 +123,7 @@ return< div>
               <div id='左边头像' className="  ">
                     <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-12 w-12 min-w-[48px]   '/>                    
               </div>
-              <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-full ">
+              <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-80 ">
                 <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
                   {post.properties.Ren.rich_text[0].text.content }
                 </div>

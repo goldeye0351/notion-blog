@@ -1,3 +1,5 @@
+'use client'
+
 import 'react-notion-x/src/styles.css'
 import 'katex/dist/katex.min.css'
 import '@/styles/globals.css'
@@ -13,11 +15,16 @@ import { useEffect,useState } from 'react'
 import NProgress from 'nprogress'
 import '@/styles/nprogress.css'
 import Header from '@/components/NavBar/Header'
+import Footer from '@/components/NavBar/Footer'
+
+
 const StarrySky = dynamic(() => import('@/components/StarrySky'), { ssr: false })
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const [fullWidth, setFullWidth] = useState(false);
   const toggleFullWidth = () => {      setFullWidth(prevState => !prevState);    };
+
 
   useEffect(() => {
     const handleStart = (url) => {

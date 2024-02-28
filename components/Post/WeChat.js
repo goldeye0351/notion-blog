@@ -6,19 +6,23 @@ import DaysAgo from "../Common/DaysAgo";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
+import Tabs from "./Tabs";
 import { PaperAirplaneIcon } from "@heroicons/react/outline";
 
 function WeChat({post,xie} ){
-    const postid = post?.id
-    const title = post?.title
+    const postid = post?.id||'saysay'
     const { locale } = useRouter()
     const t = lang[locale]
+    
+
     const [ren, setRen] = useState('');
     const [comments, setComments] = useState([]);
     const [pinglun, setPinglun] = useState('');
     const [email, setEmail] = useState('');
     const [linkTo, setLinkTo] = useState('');
+
     const visitorIp = IpComponent();    
+    const title = post?.title||'Home'
     const addcomment = async (e) => {
         e.preventDefault();
         const res = await fetch('/api/pinglunapi', {

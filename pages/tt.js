@@ -2,20 +2,20 @@ import Image from "next/image"
 import bjIMG from '@/public/pyq.png'
 import logoimg from '@/public/pyqlogo.png'
 import { useState } from "react"
+//import Logo from "@/components/Common/Logo"
+//import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
+//import NotionRenderer from '@/components/Post/NotionRenderer'
 import Container from '@/components/Container'
 import WeChat from "@/components/Post/WeChat"
-
+//import Tabs from "@/components/Post/Tabs"  
 const Saysay = () => {
   const saysaytext=BLOG.saysay
   const [xie,setXie]=useState(false);
   const toggleXie = () => {      setXie(prevState => !prevState);    };
-  const post = {
-    id: BLOG.saysay,
-    title: BLOG.saysay,
-  };
+  
   return (<>
-<Container  title={`${BLOG.title}${BLOG.saysay}`}  description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-screen flex flex-col  ' >
+<Container  title={`${BLOG.title}${BLOG.saysay}`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-screen flex flex-col  ' >
     <Image src={bjIMG} alt='朋友圈' className=" absolute top-0 left-0 right-0    mx-auto w-screen   h-64 max-h-64  opacity-80  rounded-3xl  "/>
         <div className=" relative ">
             <div className=" sticky top-28 flex flex-row text-white  justify-end     ">
@@ -25,9 +25,11 @@ const Saysay = () => {
                   {saysaytext} 
                 </span>
               </div>
-            </div>      
-        </div>        
-    < WeChat key='Notion Database' post={post} xie={xie}   />
+            </div>
+      
+        </div>
+        
+    < WeChat key='Notion Database'  xie={xie}   />
 </Container >
 </>
 )}
