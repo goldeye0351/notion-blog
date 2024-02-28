@@ -74,7 +74,7 @@ return< div>
 
       <div id='3smallbox' className=" absolute bottom-8 md:bottom-5  right-1 md:right-0 w-full max-w-xs px-5  ">
         <div className=" flex flex-row space-x-1 justify-end">
-          <div title='name' id='uname' className=' w-16 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div title='name' id='uname' className=' w-1/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="REN"  name="REN"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_NAME}
@@ -83,7 +83,7 @@ return< div>
                   required
               />
           </div>
-          <div title='email' id='email' className=' w-20 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
+          <div title='email' id='email' className=' w-2/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
               <input id="EMAIL"  name="EMAIL" autoComplete="email"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_EMAIL}
@@ -92,7 +92,7 @@ return< div>
                   required
               />
           </div>
-          {post.title !== 'Home' && <div title='piclink' id='piclink' className='hidden  w-56 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl lg:flex flex-col justify-center duration-300 ' >
+          {post.title !== 'Home' && <div title='piclink' id='piclink' className=' w-3/6 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
                   <input id="linkTo"  name="tolink" 
                       type="text" className='  italic p-1 block  duration-300 bg-transparent '
                       placeholder={t.LAYOUT.COMMENT_TO}
@@ -100,7 +100,7 @@ return< div>
                       onChange={(e) => setLinkTo(e.target.value)}
                   />
           </div>}
-          <button id='usubmit' type="submit" className='  text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
+          <button id='usubmit' type="submit" className=' w-1/6 text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
             <PaperAirplaneIcon className=" w-8 h-5 -rotate-45" />
           </button>
         </div>
