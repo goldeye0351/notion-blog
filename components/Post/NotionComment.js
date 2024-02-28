@@ -63,7 +63,7 @@ return< div>
   <form onSubmit={addcomment} className=' relative w-full max-w-screen-md    mx-auto text-gray-200 '>
 
       <div id='CommentBigBox' className='  p-3 w-full bg-gray-700 dark:bg-gray-800  rounded-xl'>
-          <textarea    name="PINGLUN"  id="PINGLUN"  rows="9"
+          <textarea    name="PINGLUN"  id="PINGLUN"  rows="3"
             className=' block italic p-1 w-full bg-gray-800 dark:bg-gray-900 rounded-xl'
             placeholder={t.LAYOUT.COMMENT_MAIN}
             value={pinglun}

@@ -110,10 +110,12 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
             })}
           </div>
           <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
-                <Link title='contact me' href='/contact' className='p-6  rounded-full group   justify-center flex items-center 
-'>
-                  <UserIcon className=' w-16 h-16  inline-block     ' />
-                </Link>
+            <div title={BLOG.saysay} className='  items-center flex justify-center '>
+              <Link href='/tt' >
+                <Image  src={logoimg} alt='朋友圈' className='h-20 w-20 mx-auto    hover:animate-spin  ' />
+              </Link>
+
+            </div>
           </div>
         </div>        
       </div>
@@ -196,12 +198,17 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
 
           <div id='4links' className=' w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
               <div className=' flex h-10 flex-row w-full justify-between space-x-3'>
-                <Link title='Friends' href='/friends' className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
+                <Link title='contact me' href='/contact' className='w-1/3 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
+                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
+                  <UserIcon className=' w-8 h-8  inline-block     ' />
+                </Link>
+                <Link title='Friends' href='/friends' className='w-1/3 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
                        hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                        hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
                   <LinkIcon className=' w-8 h-8  inline-block     ' />
                 </Link>
-                <Link title='Github' href={BLOG.githubUrl} target='new'  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                <Link title='Github' href={BLOG.githubUrl} target='new'  className='w-1/3 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
                   <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
