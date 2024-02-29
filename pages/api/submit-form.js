@@ -55,6 +55,26 @@ export default async function handler(req, res) {
             "name": "Friend"
           }
         },
+        "category": {
+          "select": {
+            "name": "Friends"
+          }
+        },
+        "tags": {
+          "multi_select": [
+            {
+              "name": "AI"
+            },
+          ]
+        },
+        "date": {
+          "date": {
+            "start": new Date(),
+          }
+        },
+        "up": {
+          "number": 1
+        },
         "status": {
           "select": {
             "name": "Published"

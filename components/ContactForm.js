@@ -11,10 +11,6 @@ function Contact() {
   const sentMessage = async (event) => {
     event.preventDefault()
     setSubmitting(true)
-    // setTimeout(() => {
-    //   setSubmitting(false)
-    //   setShowResult(true)
-    // }, 3000)
 
     const tgUrl = '/api/sendtotg'
     const res = await fetch(tgUrl, {
@@ -43,13 +39,13 @@ function Contact() {
     <>
       {showResult ? (
         <div>
-          <p className='max-w-screen-md font-bold md:text-lg text-center mx-auto'>
+          <p className='max-w-screen-md font-bold md:text-lg text-center mx-auto text-gray-200'>
             {t.CONTACT.SUCCESS_MESSAGE}
           </p>
         </div>
       ) : (
         <form
-          className='max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto'
+          className='max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto text-gray-200'
           onSubmit={sentMessage}
         >
           <div>
@@ -80,7 +76,7 @@ function Contact() {
               type='text'
               required
               placeholder={t.CONTACT.FORM_CONTENT}
-              className='h-64 block w-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600'
+              className='h-36 block w-full bg-gray-700 dark:bg-gray-800 text-gray-200 dark:text-gray-200 rounded-lg py-3 px-4 leading-tight focus:outline-none focus:bg-gray-500 dark:focus:bg-gray-600'
             ></textarea>
           </div>
 

@@ -32,7 +32,7 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
     <>
       <div className='observer-element h-3  ' ref={sentinelRef}></div>
       <div
-        className={`sticky-nav duration-1000 m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-3 py-8 bg-opacity-60 cursor-pointer text-gray-200 dark:text-gray-200
+        className={`sticky-nav duration-1000 mx-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-3 py-8 bg-opacity-60 cursor-pointer text-gray-200 dark:text-gray-200
         ${fullWidth ? 'max-w-[100VW] px-3 ' : '  w-full max-w-7xl' }`}
         id='sticky-nav'
         ref={navRef}

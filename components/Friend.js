@@ -19,7 +19,7 @@ const Friend = ({ post }) => {
                   scale={1}
                 >
           <div className="my3din  flex flex-col justify-center  ">
-            <Image src={post?.page_cover}  alt={post.title} width={100} height={100}
+            <img src={post?.page_cover}  alt={post.title} width={100} height={100}
             className=' rounded-lg translate-x-[30%]  '  />
           </div>
           <div  className='flex flex-col justify-center h-20 max-h-20  overflow-scroll p-3  '> {post.summary}  </div>

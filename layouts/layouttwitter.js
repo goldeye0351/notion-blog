@@ -62,6 +62,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
   };
   const [searchValue, setSearchValue] = useState('')
   const { locale } = useRouter()
+  const { [searchValue]: tagValue } = BLOG.tag;
   const t = lang[locale]
   let filteredBlogPosts = []
   if (posts) {
@@ -111,7 +112,11 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                 </button>
               )
             })}
+          {/*<div className='w-full flex justify-center overflow-auto rounded-xl  bg-gray-700 dark:bg-gray-800'>
+                {searchValue && BLOG.tag[searchValue]}
+          </div>*/}
           </div>
+
           <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
                 <Link title='contact me' href='/contact' className='p-6  rounded-full group   justify-center flex items-center '>
                   <UserIcon className=' w-16 h-16  inline-block rounded-full duration-300   hover:scale-110 ' />
@@ -158,23 +163,19 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
             })}
           </div>
         <div id="midmain" className=' my-5 lg:my-8    '>
-          {!deftag.length && (
-            <p className=''>
-              {t.SEARCH.NOT_FOUND}
-            </p>
-          )}
-                  <AnimatePresence        initial={false}        exitBeforeEnter      >
-                    <motion.div   key={searchValue}
-                      variants={variants}
-                      initial="in"
-                      animate={["center", "scaleUp"]}
-                      exit={["scaleDown", "out"]}
-                    >
-                        {deftag.map((post) => (
-                          <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} />
-                        ))}
-                    </motion.div>
-                  </AnimatePresence>
+           {!deftag.length && (  <span>  {t.SEARCH.NOT_FOUND}  </span> )}
+              <AnimatePresence        initial={false}        exitBeforeEnter      >
+                <motion.div   key={searchValue}
+                  variants={variants}
+                  initial="in"
+                  animate={["center", "scaleUp"]}
+                  exit={["scaleDown", "out"]}
+                >
+                    {deftag.map((post) => (
+                      <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} />
+                    ))}
+                </motion.div>
+              </AnimatePresence>
         </div>
       </div>
 

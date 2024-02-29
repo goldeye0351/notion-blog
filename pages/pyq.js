@@ -10,7 +10,7 @@ import DaysAgo from "@/components/Common/DaysAgo"
 import md5 from 'md5'
 import Pinglun from "@/components/Post/NotionComment"
 export async function getStaticProps() {
-  const posts = await getAllPosts({onlyMonment:true})
+  const posts = await getAllPosts({onlyMoment:true})
   return {
     props: {
     posts,

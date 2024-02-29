@@ -3,8 +3,8 @@ import { generateRss } from '@/lib/rss'
 // import { generateRss } from '@/lib/rssContent'
 export async function getServerSideProps({ res }) {
   res.setHeader('Content-Type', 'text/xml')
-  const posts = await getAllPosts({ onlyNewsletter: false })
-  const latestPosts = posts.slice(0, 10)
+  const posts = await getAllPosts({ postAndPage:true  })
+  const latestPosts = posts.slice(0, 20)
   const xmlFeed = await generateRss(latestPosts)
   res.write(xmlFeed)
   res.end()
