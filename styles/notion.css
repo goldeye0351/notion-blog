@@ -155,3 +155,6 @@ svg + .notion-page-title-text {
 .notion-collection-row {
   @apply hidden;
 }
+.notion-external {
+  @apply  bg-white/80 ;
+}

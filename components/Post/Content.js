@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import DaysAgo from '@/components/Common/DaysAgo'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {ThumbUpIcon,ChatIcon } from '@heroicons/react/outline'
+import {ThumbUpIcon,ChatIcon, KeyIcon } from '@heroicons/react/outline'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import  React from "react";
@@ -15,14 +15,40 @@ import IpComponent from '@/components/IpComponent';
 import Image from 'next/image'
 import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
+import { useState,useEffect } from 'react'
+import { Lock } from './Lock'
 
 export default function Content (props) {
   const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent,fullWidth} = props
-  //const [showPay, setShowPay] = useState(false)
+  const [showPay, setShowPay] = useState(false)
+  const [showlock, setShowlock] = useState()
   const visitorIp = IpComponent();
   var zjk = frontMatter.up;
   const el = React.useRef(null);
+  const [isBlurred, setIsBlurred] = useState(true);
+  useEffect(() => {
+    const element = document.querySelector('.notion-callout');
+    if (element) {
+      setShowlock(true);
+      if (isBlurred) {
+        element.classList.add('hidden');
+      } else {
+        element.classList.remove('hidden');
+      }
+    }
+  }, [isBlurred]);
 
+  const toggleVisibility = () => {
+    setIsBlurred(prevIsBlurred => !prevIsBlurred);
+  };
+  const validPassword = passInput => {
+    if (passInput  === zjk) {
+      toggleVisibility()
+      setShowPay((showPay) => !showPay)
+     return true
+    }
+    return false
+  }
   React.useEffect(() => {
     const typed = new Typed(el.current, {
       strings: ["ai......",frontMatter.summary],
@@ -64,7 +90,7 @@ export default function Content (props) {
     if (res2.status === 201) {
       console.log('谢谢你的点赞')
     } else {
-      alert('errer 信号不好, 出错了')    
+      console.log('errer 信号不好, 出错了')    
     }
 
     return newup;
@@ -117,6 +143,9 @@ export default function Content (props) {
             
           <div className=' sticky top-16 w-full '>
             <Mulu tableOfContent={tableOfContent} />
+            {showlock && <div title='收钱' onClick={() => setShowPay((showPay) => !showPay)} className='group  w-full p-3 my-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
+                  <KeyIcon  className='w-6 h-6 group-hover:scale-150 duration-200 inline-block' /><span className=' ml-3 inline-block  '>Unlock</span>
+                </div>}
             <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1 '> 
                 <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
                 className='group cursor-pointer  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
@@ -149,6 +178,9 @@ export default function Content (props) {
         <div title='百分比' className='group   bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
             <ReadingProgress />
         </div>
+        {showlock && <div title='收钱' onClick={() => setShowPay((showPay) => !showPay)} className='group  w-full p-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
+            <KeyIcon  className='w-6 h-6 group-hover:scale-150 duration-200' />
+        </div>}
         <div title='点赞' className='group  w-full p-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
           <button id="xiaopindianzan"
             onClick={dianzan} data-umami-event="小屏点赞" 
@@ -162,8 +194,9 @@ export default function Content (props) {
         <div title='评论' className='group  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
           <Jumptocomment />
         </div>
-  </div>
 
+  </div>
+    {showPay && <Lock validPassword={validPassword}/>}
 
 </div>
   )
