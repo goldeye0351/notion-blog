@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/wechat-pay.png",
+      "source": "/mypay.png",
       "headers": [
         {
           "key": "Cache-Control",
