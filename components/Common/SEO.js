@@ -13,6 +13,8 @@ const SEO = ({ meta }) => {
       <meta name='robots' content='follow, index' />
       <meta name="baidu-site-verification" content="codeva-NbJTIfMImr" />
       <meta name="baidu-site-verification" content="codeva-rIJI3e52aI" />
+      <meta name="baidu-site-verification" content="codeva-tbxG93Kll7" />
+      <meta name="baidu-site-verification" content="codeva-eafWaGeWk7" />
       <meta charSet='UTF-8' />
       {BLOG.seo.googleSiteVerification && (
         <meta
