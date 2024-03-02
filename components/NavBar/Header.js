@@ -38,7 +38,7 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
         ref={navRef}
       >
 
-          <Link id='51xMI'  passHref href='/' scroll={false} aria-label={BLOG.title}>
+          <Link id='51xMI'  passHref href='/' scroll={false} aria-label={BLOG.title} data-umami-event="主页"> 
             <Image src={xmisvglogo}  alt='' className=' w-20 h-20 md:w-24 md:h-24  duration-300 md:ml-3 min-w-[80px]' />
           </Link>
 
@@ -56,7 +56,7 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
             </div>
           )}
         <div className=' min-w-[120px]'>
-          <Link href='/pyq' >
+          <Link href='/pyq' data-umami-event="朋友圈" >
                 <Image  src={logoimg} alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6 -mt-4 md:-mt-5 mx-2 inline-block  duration-500  hover:scale-125 ' />
           </Link>
           <ThemeSwitcher />

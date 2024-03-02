@@ -19,7 +19,7 @@ const ThemeSwitcher = () => {
       bottom: 50,
     }}
         // title={`Toggle theme - current ${theme}`}
-        aria-label='ThemeSwitcher'
+        aria-label='ThemeSwitcher' data-umami-event="切换主题"
         onClick={() =>
           setTheme(
             theme === 'light' ? 'dark' : theme === 'system' ? 'dark' : 'light'

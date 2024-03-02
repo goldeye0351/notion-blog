@@ -99,6 +99,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                 <button
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
+                  data-umami-event='切换TAGS'
                   className={` group w-full px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center 
                        hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 
                        hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
@@ -118,7 +119,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
           </div>
 
           <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
-                <Link title='contact me' href='/contact' className='p-6  rounded-full group   justify-center flex items-center '>
+                <Link title='contact me' href='/contact' data-umami-event='联系我' className='p-6  rounded-full group   justify-center flex items-center '>
                   <UserIcon className=' w-16 h-16  inline-block rounded-full duration-300   hover:scale-110 ' />
                 </Link>
           </div>
@@ -127,7 +128,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
 
       <div id ='midya' className='flex-grow w-full overflow-hidden '>    
         <div id="searchbox" className='relative mx-3'>
-          <input type='text' id="inputtext"
+          <input type='text' id="inputtext" data-umami-event="search"
           placeholder={t.SEARCH.PLACEHOLDER}
             className='w-full bg-gray-700 dark:bg-gray-800 shadow-md rounded-lg outline-none focus:shadow p-3'
             onChange={(e) => setSearchValue(e.target.value)}
@@ -153,6 +154,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                 <button
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
+                  data-umami-event='search'
                   className="group p-2 rounded-xl   hover:scale-110   font-medium  whitespace-nowrap 
                   hover:shadow-[0_0_30px_1px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   "
@@ -184,7 +186,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
           <div id='bbuiya1' className=' flex   bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
             <BubbleUI className="myBubbleUI h-64 w-80 rounded-3xl ">
               {posts.slice(0,21).map((data, i) => (
-                <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false}   key={data.id}>
+                <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
                   <Image src={data.page_cover} alt={data.title} width={60} height={60}  
                   className=" rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
                 </Link>
@@ -199,12 +201,12 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
 
           <div id='4links' className=' w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
               <div className=' flex h-10 flex-row w-full justify-between space-x-3'>
-                <Link title='Friends' href='/friends' className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
+                <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
                        hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                        hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
                   <LinkIcon className=' w-8 h-8  inline-block     ' />
                 </Link>
-                <Link title='Github' href={BLOG.githubUrl} target='new'  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
                   <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
@@ -212,7 +214,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                   </svg>
                 </Link>
               </div>
-              <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='new' 
+              <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='_blank' data-umami-event='统计系统'
                     >
                   <UmamiData />
               </Link>

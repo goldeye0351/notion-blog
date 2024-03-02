@@ -9,7 +9,7 @@ const LangSwitcher = () => {
     <>
       <Link passHref href={asPath} locale={locale === 'en' ? 'zh' : 'en'} scroll={false}>
         <button
-          aria-label='LangSwitcher'
+          aria-label='LangSwitcher' data-umami-event="切换语言"
           className='p-2 hover:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer rounded-lg '
         >
           <TranslateIcon className='md:w-8 md:h-8 w-6 h-6 text-gray-200  dark:text-gray-200 duration-500 hover:scale-125' />

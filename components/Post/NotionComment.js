@@ -75,7 +75,7 @@ return< div>
       <div id='3smallbox' className=" absolute bottom-8 md:bottom-5  right-1 md:right-0 w-full max-w-xs px-5  ">
         <div className=" flex flex-row space-x-1 justify-end">
           <div title='name' id='uname' className=' w-16 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
-              <input id="REN"  name="REN"
+              <input id="REN"  name="REN" data-umami-event="评论"
                   type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
                   placeholder={t.LAYOUT.COMMENT_NAME}
                   value={ren}
@@ -100,7 +100,7 @@ return< div>
                       onChange={(e) => setLinkTo(e.target.value)}
                   />
           </div>}
-          <button id='usubmit' type="submit" className='  text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
+          <button id='usubmit' type="submit" data-umami-event='点击评论' className='  text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
             <PaperAirplaneIcon className=" w-8 h-5 -rotate-45" />
           </button>
         </div>
