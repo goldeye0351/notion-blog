@@ -36,7 +36,7 @@ const Tabs = ({ className, children }) => {
   }
 
   return <div className={'mb-5 duration-200 ' + className}>
-        <ul className='flex justify-center space-x-5 pb-4 overflow-auto'>
+        <ul className='flex justify-center space-x-3 py-3  bg-gray-700 rounded-xl overflow-auto mb-3'>
             {children.map((item, index) => {
               return <li key={index}
                     className={(currentTab === index ? 'font-black border-b-2 border-green-400 ' : 'font-extralight cursor-pointer') + '  '}

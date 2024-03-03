@@ -2,7 +2,7 @@
 
 
 .my3d {transform-style: preserve-3d;}
-.my3din500 {transform: translateZ(500px);  }    
+.my3din500 {transform: translateZ(300px);  }    
 .my3din {transform: translateZ(200px);  }    
 
 .arrow::after {
@@ -117,4 +117,8 @@
   border-width: 6px;
   border-style: solid;
   border-color: transparent #02ff5f transparent transparent;
+}
+
+::-webkit-scrollbar {
+  width: 0px; /* 设置滚动条宽度 */
 }

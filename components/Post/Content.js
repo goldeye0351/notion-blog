@@ -165,7 +165,7 @@ export default function Content (props) {
             <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
               🆕&nbsp;📣
               <hr/>
-              <Lastpost  posts={lastposts} />
+              <Lastpost  posts={lastposts} className='text-sm '/>
             </div>
             
           </div>

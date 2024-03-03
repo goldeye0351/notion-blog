@@ -7,13 +7,14 @@ import PropTypes from 'prop-types'
 import { lang } from '@/public/lang'
 import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
-import Pinglun from '@/components/Post/NotionComment'
+import LastPinglun from '@/components/Post/LastComments'
 import UmamiData from '@/components/UmamiData'
 import { LinkIcon,  UserIcon } from '@heroicons/react/outline'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
 import { motion, AnimatePresence } from 'framer-motion'
-
+import Tabs from '@/components/Post/Tabs'
+import Tilt from 'react-parallax-tilt' 
 const variants = {
   scaleDown: {
     scale: 0.8,
@@ -55,7 +56,7 @@ const variants = {
   },
 }
 
-const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth }) => {
+const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,fullWidth }) => {
   const post = {
     id: 'Home',
     title: 'Home'
@@ -118,9 +119,23 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
           </div>*/}
           </div>
 
-          <div id='twobutton'  className=' flex mx-auto w-full justify-center space-x-8 mt-auto  ' >
-                <Link title='contact me' href='/contact' data-umami-event='联系我' className='p-6  rounded-full group   justify-center flex items-center '>
-                  <UserIcon className=' w-16 h-16  inline-block rounded-full duration-300   hover:scale-110 ' />
+          <div id='twobutton'  className=' flex mx-auto w-full justify-center mt-auto mb-6 ' >
+                <Link title='contact me' href='/contact' data-umami-event='联系我' className='group  rounded-2xl h-12 w-full p-3   justify-center flex items-center '>
+                    <Tilt className="my3d rounded-2xl w-full h-12 hover:ring-2 ring-green-400 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  "
+                          perspective={1500}
+                          glareEnable={true}
+                          glarePosition={'all'}
+                          glareMaxOpacity={0.5}
+                          glareColor="#000000"
+                          glareBorderRadius="12px"
+                          scale={1.05}
+                        >
+                      <div className=' my3din w-full h-12 flex justify-center items-center content-center rounded-full '>
+                        <UserIcon className=' group-hover:text-green-400  w-12 h-12  my3din500 '/>
+                      </div>
+                  </Tilt>
+                    
+
                 </Link>
           </div>
         </div>        
@@ -181,26 +196,32 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
         </div>
       </div>
 
-      <div id='rtya' className=' hidden lg:block  w-3/12 max-w-[320px]  '>
-        <div  className=' px-3 space-y-3  '>
-          <div id='bbuiya1' className=' flex   bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
-            <BubbleUI className="myBubbleUI h-64 w-80 rounded-3xl ">
-              {posts.slice(0,21).map((data, i) => (
-                <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
-                  <Image src={data.page_cover} alt={data.title} width={60} height={60}  
-                  className=" rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
-                </Link>
-              ))}
-            </BubbleUI>
-          </div>
-
-          <div id='Tuijian' className='  flex flex-col  w-full h-max  bg-gray-700 dark:bg-gray-800 rounded-xl mt-3 p-3'>
-            <div className=' w-full text-lg cursor-pointer  flex justify-center '>{'💬🔊'}</div>
-            <Lastpost posts={tuijian} />
-          </div>
-
-          <div id='4links' className=' w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
-              <div className=' flex h-10 flex-row w-full justify-between space-x-3'>
+      <div id='rtya' className=' hidden lg:block  w-3/12 max-w-[320px]   '>
+        <div  className=' px-3  sticky top-24 '>
+              <Tabs className='max-w-[320px] ' >
+                <div key='最近文章' id='bbuiya1' className=' flex   bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
+                  <BubbleUI className="myBubbleUI h-72 w-80 overflow-y-scroll rounded-3xl ">
+                    {posts.slice(0,21).map((data, i) => (
+                      <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
+                        <Image src={data.page_cover} alt={data.title} width={60} height={60}  
+                        className=" rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
+                      </Link>
+                    ))}
+                  </BubbleUI>
+                </div>
+                <div key='推荐文章' id='Tuijian' className=' h-80 overflow-x-hidden bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
+                  <Lastpost posts={tuijian} className='w-72 pr-6 '  />
+                </div>
+                <div key='最近评论' className='w-full h-96 overflow-x-hidden  bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
+                        <div id='plya' className=' w-80  overflow-y-scroll   '>
+                        {allpls.slice(0,9).map((post) => (
+                              <LastPinglun post={post} />
+                        ))}  
+                        </div>
+                </div>
+              </Tabs>
+          <div id='4links' className='w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
+              <div className=' flex h-12 flex-row w-full justify-between space-x-3'>
                 <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
                        hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                        hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
@@ -219,11 +240,7 @@ const TwitterLayout = ({ tags,cats, posts, currentTag,resdata,tuijian,fullWidth 
                   <UmamiData />
               </Link>
           </div>
-          
         </div>
-        <div id='plya' className='sticky top-20 p-3  '>
-                  <Pinglun post={post} />
-              </div>
       </div>
     </div>
   </Container> 
