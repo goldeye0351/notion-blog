@@ -20,6 +20,7 @@ import { Lock } from './Lock'
 
 export default function Content (props) {
   const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent,fullWidth} = props
+  const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
   const [showlock, setShowlock] = useState()
   const visitorIp = IpComponent();
@@ -118,9 +119,12 @@ export default function Content (props) {
       </nav>
       
       <div 
-      className='   bg-gray-700  dark:bg-gray-800  ring-green-400 ring-2 p-1  rounded-xl '>
+      className=' tanchukuang   bg-gray-700  dark:bg-gray-800  ring-green-400 ring-2 p-1  rounded-xl '>
         <ChatIcon  className='w-6 h-6 inline-block' />
         <div className='inline-block' ref={el}  /> 
+        <div className="tooltip absolute w-28  -top-28 right-0 ">
+          <Image src={erweima} alt={frontMatter.title} width={100} height={100} className='rounded-xl ' />
+        </div>
       </div>
 
   </div>

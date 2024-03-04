@@ -8,7 +8,7 @@ const BLOG = {
   ogimg:'https://51xmi.com/51.png',
   pyqog:'https://51xmi.com/pyqlogo.png',
   githubUrl:'https://github.com/goldeye0351/notion-blog',
-  umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/mynotion',
+  umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/51xmi',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],

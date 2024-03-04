@@ -31,6 +31,7 @@ const Saysay = ({posts}) => {
   return (<>
 <Container  title={`${BLOG.title}${BLOG.saysay}`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-screen flex flex-col  ' >
     <Image src={bjIMG} alt='朋友圈' className=" absolute top-0 left-0 right-0    mx-auto w-screen   h-64 max-h-64  opacity-80  rounded-3xl  "/>
+    <div className=' mx-auto'><img alt="今日诗词" src="https://v2.jinrishici.com/one.svg?font-size=20&color=white"/></div>
     <div className=" relative ">
         <div className=" sticky top-28 flex flex-row text-white  justify-end     ">
           <div  className="  flex-row flex   mt-28  p-2   text-white justify-center content-center items-center ">

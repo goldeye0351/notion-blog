@@ -83,7 +83,7 @@ const FriendS = ({  }) => {
             />
           < div className='h-8 my-3' />
         </div>
-      <form onSubmit={submitForm} className=' max-w-screen-md grid sm:grid-cols-2 gap-3  mx-auto'>
+      <form onSubmit={submitForm} className=' max-w-screen-md grid sm:grid-cols-2 gap-3  mx-auto text-gray-200'>
 
         
 
@@ -110,7 +110,7 @@ const FriendS = ({  }) => {
 
           <div className='p-3 sm:col-span-2 bg-gray-700 dark:bg-gray-800 duration-500 rounded-xl'>
             <textarea    name="summary"  id="summary"  rows="3"
-              className=' block w-full bg-black/30 dark:bg-black/100 duration-500 rounded-xl'
+              className=' block w-full bg-black/30 dark:bg-black/30 duration-500 rounded-xl'
               placeholder={t.FRIENDS.FORM_CONTENT}
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
