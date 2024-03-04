@@ -15,6 +15,8 @@ import BubbleUI from "@/components/Myswiper/Bb";
 import { motion, AnimatePresence } from 'framer-motion'
 import Tabs from '@/components/Post/Tabs'
 import Tilt from 'react-parallax-tilt' 
+import Typed from 'typed.js'
+import { useRef, useEffect } from 'react';
 const variants = {
   scaleDown: {
     scale: 0.8,
@@ -82,8 +84,21 @@ const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,ful
     3: 'w-4/6 hover:w-full cai1',
     4: 'w-5/6 hover:w-full cai2',
     5: 'w-full hover:w-full cai3',
-    
   };
+  const el = useRef(null); // 创建一个引用
+  useEffect(() => {
+    if (searchValue.length > 0 && BLOG.tag[searchValue]) {
+      const typed = new Typed(el.current, {
+        strings: [BLOG.tag[searchValue]],
+        typeSpeed: 50,
+      });
+  
+      return () => {
+        // Destroy Typed instance during cleanup to stop animation
+        typed.destroy();
+      };
+    }
+  }, [searchValue.length]);
   return (<>
 
 
@@ -220,26 +235,28 @@ const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,ful
                         </div>
                 </div>
               </Tabs>
-          <div id='4links' className='w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
-              <div className=' flex h-12 flex-row w-full justify-between space-x-3'>
-                <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
-                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
-                  <LinkIcon className=' w-8 h-8  inline-block     ' />
-                </Link>
-                <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
-                  hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                  hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
-                  <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
-                    <path fill="currentColor" d="M213.5 0q88.5 0 151 62.5T427 213q0 70-41 125.5T281 416q-14 2-14-11v-58q0-27-15-40q44-5 70.5-27t26.5-77q0-34-22-58q11-26-2-57q-18-5-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 88h-6q-12 31-2 57q-22 24-22 58q0 55 27 77t70 27q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5t-5 3.5t8.5 9q14 7 23 31q1 2 2 4.5t6.5 9.5t13 10.5T130 371t30-2v36q0 13-14 11q-64-22-105-77.5T0 213q0-88 62.5-150.5T213.5 0"></path>
-                  </svg>
-                </Link>
+               <div ref={el}   className={(!BLOG.tag[searchValue]? 'hidden' :'w-full flex p-3 my-3 whitespace-wrap shadow-[0_0_30px_1px_rgba(0,255,0,0.5)]  bg-day dark:bg-night ring-1 ring-green-400  dark:ring-green-400justify-center overflow-auto rounded-xl ')}  />
+              <div id='4links' className='w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
+                  <div className=' flex h-12 flex-row w-full justify-between space-x-3'>
+                    <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
+                          hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                          hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
+                      <LinkIcon className=' w-8 h-8  inline-block     ' />
+                    </Link>
+                    <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                      hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                      hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
+                      <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
+                        <path fill="currentColor" d="M213.5 0q88.5 0 151 62.5T427 213q0 70-41 125.5T281 416q-14 2-14-11v-58q0-27-15-40q44-5 70.5-27t26.5-77q0-34-22-58q11-26-2-57q-18-5-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 88h-6q-12 31-2 57q-22 24-22 58q0 55 27 77t70 27q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5t-5 3.5t8.5 9q14 7 23 31q1 2 2 4.5t6.5 9.5t13 10.5T130 371t30-2v36q0 13-14 11q-64-22-105-77.5T0 213q0-88 62.5-150.5T213.5 0"></path>
+                      </svg>
+                    </Link>
+                  </div>
+                  <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='_blank' data-umami-event='统计系统'
+                        >
+                      <UmamiData />
+                  </Link>
               </div>
-              <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='_blank' data-umami-event='统计系统'
-                    >
-                  <UmamiData />
-              </Link>
-          </div>
+
         </div>
       </div>
     </div>

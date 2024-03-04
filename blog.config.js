@@ -5,7 +5,7 @@ const BLOG = {
   saysay:'随便说说',
   author: 'Goldeye',
   email: 'admin@51xm.com',
-  ogimg:'https://51xmi.com/51xmi.png',
+  ogimg:'https://51xmi.com/51.png',
   pyqog:'https://51xmi.com/pyqlogo.png',
   githubUrl:'https://github.com/goldeye0351/notion-blog',
   umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/mynotion',
@@ -21,7 +21,7 @@ const BLOG = {
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   defaultCover: '/mycover.jpg',
-  defaultIcon: '/favicon.png',
+  defaultIcon: '/favicon.ico',
   seo: {
     keywords: ['51xmi', 'log','notion'],
     googleSiteVerification: '' // Remove the value or replace it with your own google site verification code
@@ -47,9 +47,11 @@ const BLOG = {
     }
   },
   tag:{
-    AI:'ai ai',
-    Code:'Code ya',
-    Apple:'🍎苹果🍎',
+    AI:'如何用一句话证明你不是AI？',
+    Code:'我们从不生产BUG，我们只是BUG的搬运工',
+    Apple:'下个热门 App，也可能出自你手',
+    Social:'遇见更好的自己，你是什么人，终将遇见什么样的人',
+    数字移民:'肉体和心灵, 总有一个在路上',    
   },
   isProd: process.env.VERCEL_ENV === 'production' // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
 }
