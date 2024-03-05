@@ -1,7 +1,7 @@
 name: auto-redeploy
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '43 * * * *'
 jobs:
   build:
     name: daysredeploy
