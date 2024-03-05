@@ -1,0 +1,11 @@
+name: auto-redeploy
+on:
+  schedule:
+    - cron: '0 9 * * *'
+jobs:
+  build:
+    name: daysredeploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Vercel Hook
+        run: curl -X POST "https://api.vercel.com/v1/integrations/deploy/prj_74yOoiZheCoEscRqA7iGtipIW1XF/pFA8F1xmXA?buildCache=false"
