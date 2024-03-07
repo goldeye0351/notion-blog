@@ -17,7 +17,7 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = fa
 
   return (<>
     <Container
-      title={`${webtitle}---${frontMatter.title}`}
+      title={`${frontMatter.title}`}
       description={frontMatter.summary}
       ogimage={frontMatter.page_cover}
       type='article'

@@ -6,9 +6,9 @@ import DaysAgo from "../Common/DaysAgo";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
-import { PaperAirplaneIcon } from "@heroicons/react/outline";
+import { TgIcon } from "@/Icon/Icon";
 
-function WeChat({post,xie} ){
+function WeChat({post,xie,email} ){
     const postid = post?.id
     const title = post?.title
     const { locale } = useRouter()
@@ -16,7 +16,6 @@ function WeChat({post,xie} ){
     const [ren, setRen] = useState('');
     const [comments, setComments] = useState([]);
     const [pinglun, setPinglun] = useState('');
-    const [email, setEmail] = useState('');
     const [linkTo, setLinkTo] = useState('');
     const visitorIp = IpComponent();    
     const addcomment = async (e) => {
@@ -28,6 +27,8 @@ function WeChat({post,xie} ){
         if (res.status === 201) {
           fetchComments(); // 在提交评论成功后再次获取评论数据
           window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
+          //清空输入框中的内容
+          setRen('');          setPinglun('');          setLinkTo('');
         } else {
           alert('errer 信号不好, 出错了')    
         }
@@ -72,7 +73,7 @@ return< div className=" flex  lg:flex-row flex-col justify-center items-center c
               ></textarea>
           </div>
 
-          <div id='3smallbox' className=" absolute bottom-5 right-0 w-full max-w-xs px-5  ">
+          <div id='3smallbox' className=" p-3 absolute bottom-5 right-3 w-full max-w-xs px-5  ">
             <div className=" flex flex-row space-x-3 justify-end">
               <div className=" flex flex-col w-3/4 space-y-1 "> 
                   <div id='uname' className=' w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
@@ -81,15 +82,6 @@ return< div className=" flex  lg:flex-row flex-col justify-center items-center c
                           placeholder={t.LAYOUT.COMMENT_NAME}
                           value={ren}
                           onChange={(e) => setRen(e.target.value)}
-                          required
-                      />
-                  </div>
-                  <div id='email' className=' w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
-                      <input id="EMAIL"  name="EMAIL" autoComplete="email"
-                          type="text" className='  italic p-1 block  duration-300 bg-transparent '
-                          placeholder={t.LAYOUT.COMMENT_EMAIL}
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
                           required
                       />
                   </div>
@@ -104,7 +96,7 @@ return< div className=" flex  lg:flex-row flex-col justify-center items-center c
               </div>
 
               <button id='usubmit' type="submit" className=' w-1/4 text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
-                <PaperAirplaneIcon className=" w-full h-5 -rotate-45" />
+                <TgIcon className=" w-full h-5 rotate-[222deg]  " />
               </button>
             </div>
             
@@ -113,7 +105,7 @@ return< div className=" flex  lg:flex-row flex-col justify-center items-center c
       </form>
   </div>}
   <div id='展示框' key='dispbox' className=" mx-auto  "> 
-    <div id="comment5" className="  mx-auto  mt-3   ">
+    <div id="comment" className="  mx-auto  mt-3   ">
           <ol className=" ">
             {comments.map((post) => {
               const myemail = post.properties.Email.email;

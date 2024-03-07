@@ -4,7 +4,7 @@ import BLOG from "@/blog.config"
 const Prevandnext = ( {prev, next, me } ) => {
   return <>
 
-  <div className=' justify-center mx-auto  py-5 relative flex  h-36  opacity-70  '>
+  <div className=' justify-center mx-auto  py-5 relative md:flex  h-36  opacity-70 hidden '>
   <div className=" absolute -bottom-16  w-screen rounded-t-full flex flex-grow overflow-hidden text-gray-200 dark:text-gray-200">
         
       <div className="md:w-2/5 md:h-36 w-3/5 h-36 scale-110 duration-500 overflow-hidden hover:w-4/5 relative" >

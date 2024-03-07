@@ -1,14 +1,13 @@
 import Image from "next/image"
 import svglogo from '@/public/51xmi.svg'
 import bjIMG from '@/public/pyq.png'
-import logoimg from '@/public/pyqlogo.png'
+import { PYQ } from "@/Icon/Icon"
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import Container from '@/components/Container'
 import FormattedDate from "@/components/Common/FormattedDate"
 import DaysAgo from "@/components/Common/DaysAgo"
-import md5 from 'md5'
-import Pinglun from "@/components/Post/NotionComment"
+
 export async function getStaticProps() {
   const posts = await getAllPosts({onlyMoment:true})
   return {
@@ -21,12 +20,6 @@ export async function getStaticProps() {
 
 const Saysay = ({posts}) => {
   const saysaytext=BLOG.saysay
-  const post = {
-    id: BLOG.saysay+'评论',
-    title: BLOG.saysay+'评论'
-  };
-
-
 
   return (<>
 <Container  title={`${BLOG.title}${BLOG.saysay}`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-screen flex flex-col  ' >
@@ -35,7 +28,7 @@ const Saysay = ({posts}) => {
     <div className=" relative ">
         <div className=" sticky top-28 flex flex-row text-white  justify-end     ">
           <div  className="  flex-row flex   mt-28  p-2   text-white justify-center content-center items-center ">
-            <Image src={logoimg} alt='朋友圈' className='h-24 w-24 mx-auto   ' />
+            <PYQ className='h-24 w-24 mx-auto   ' />
             <span className=" inline-block  text-3xl italic ">
               {saysaytext} 
             </span>
@@ -50,8 +43,6 @@ const Saysay = ({posts}) => {
               <ol >
                 {posts.map((post) => {
                   const tolink= post.Link;
-
-
                   return<li key={post.id} className='   my-3 flex-row flex space-x-3'>
                     <div id='左边头像' className="  ">
                           <Image src={svglogo} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
@@ -85,9 +76,7 @@ const Saysay = ({posts}) => {
               </ol>
         </div> 
       </div>  
-
     </div>
-   {/* <Pinglun post={post}/> */}
 </Container >
 </>
 )}

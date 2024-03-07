@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
-import {MenuIcon} from '@heroicons/react/outline'
+import {MenuIcon} from '@/Icon/Icon.js'
 import MenuItem from './MenuItems.js'
 import Collapse from './Collapse.js'
 import { links } from '../../public/Menudata.js'

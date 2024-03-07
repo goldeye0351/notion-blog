@@ -23,9 +23,10 @@ return<div className="  px-3 py-1   ">
               <div id='左边头像' className="  ">
                     <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-12 w-12 min-w-[48px]   '/>                    
               </div>
-              <div id='右边主体'  className="  text-gray-200 flex flex-col ">
-                <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
-                  {post.Ren }<span>{DaysAgo(post.date) }</span>
+              <div id='右边主体'  className="  text-gray-200 flex flex-col  w-full">
+                <div id='姓名' className=" font-extrabold text-lg text-blue-300 flex flex-row   w-full justify-between  ">
+                  <div>{post.Ren }</div>
+                  <div>{DaysAgo(post.date) }</div>
                 </div>
                 <article id='主体文字' className="  break-words italic max-w-[180px] ">
                   {post.Text }

@@ -1,4 +1,4 @@
-import { ArrowSmUpIcon } from '@heroicons/react/outline'
+import { RightArrow } from '@/Icon/Icon'
 import { useEffect, useState } from 'react'
 
 /**
@@ -32,10 +32,10 @@ export default function ReadingProgress() {
         <div title={'%'} data-umami-event="回到顶部" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className={`${scrollPercentage > 0 ? ' w-6 h-6 m-3 ' : 'w-0 h-0 opacity-0'} 
-                         cursor-pointer  group-hover:scale-150  rounded-lg flex justify-center items-center duration-200 transition-all `} >
-            <ArrowSmUpIcon  className={'w-8 h-8 hidden group-hover:block'} />
+                         cursor-pointer  group-hover:scale-125  rounded-lg flex justify-center items-center duration-200 transition-all `} >
+            <RightArrow  className={'w-6 h-6 hidden group-hover:block -rotate-90'} />
             <div className=' group-hover:hidden  flex justify-center items-center rounded-lg   '>
-                {scrollPercentage < 100 ? scrollPercentage   : <ArrowSmUpIcon className={'w-8 h-8 '} />}
+                {scrollPercentage < 100 ? scrollPercentage   : <RightArrow className={'w-7 h-7 -rotate-90  '} />}
             </div>
         </div>
 

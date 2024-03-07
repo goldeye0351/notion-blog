@@ -13,6 +13,8 @@ import { useEffect,useState } from 'react'
 import NProgress from 'nprogress'
 import '@/styles/nprogress.css'
 import Header from '@/components/NavBar/Header'
+import {  ClerkProvider} from "@clerk/nextjs";
+import { dark } from '@clerk/themes';
 const StarrySky = dynamic(() => import('@/components/StarrySky'), { ssr: false })
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -38,7 +40,15 @@ function MyApp({ Component, pageProps }) {
     }
   }, [router])
 
-  return (
+  return (<ClerkProvider
+    appearance={{
+      baseTheme: [dark], 
+      variables: { colorPrimary: 'red' },
+      elements: {
+        card:"bg-gray-700 hover:bg-gyay-200",  
+      }   
+    }}
+  >
     <div className='flex flex-col min-h-screen'>
       <Scripts />
       <StarrySky />
@@ -59,7 +69,7 @@ function MyApp({ Component, pageProps }) {
             </div>
         </TransitionEffect>
       </ThemeProvider>
-    </div>
+    </div>    </ClerkProvider>
   )
 }
 

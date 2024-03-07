@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import FlipCard from '@/components/Myswiper/FlipCard'
 import { lang } from '@/public/lang'
-import Hello from '@/components/Common/Hello';
-import logoimg from '@/public/51xmi.svg'
+
 const FriendS = ({  }) => {
   const { locale } = useRouter()
   const t = lang[locale]

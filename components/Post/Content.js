@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import DaysAgo from '@/components/Common/DaysAgo'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {ThumbUpIcon,ChatIcon, KeyIcon } from '@heroicons/react/outline'
+import {ThumbUpIcon,ChatIcon, KeyIcon } from '@/Icon/Icon'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import  React from "react";
@@ -154,7 +154,7 @@ export default function Content (props) {
                 <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
                 className='group cursor-pointer  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
                       <button id="dapindianzan"  className='  hover:text-gray-200 dark:hover:text-gray-200 w-full'>
-                        <ThumbUpIcon  className='w-6 h-6 inline-block mx-1 text-center group-hover:scale-150 duration-200 ' />
+                        <ThumbUpIcon  className='w-7 h-7 inline-block mx-1 text-center group-hover:scale-150 duration-200 font-bold text-xl ' />
                         <span id="myupdapin" className=' inline-block group-hover:scale-125 duration-200'>{zjk}</span>
 
                       </button>

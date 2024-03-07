@@ -6,7 +6,7 @@ import DaysAgo from "../Common/DaysAgo";
 import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
-import { PaperAirplaneIcon } from "@heroicons/react/outline";
+import { TgIcon } from "@/Icon/Icon";
 
 function Pinglun({post} ){
     const postid = post?.id
@@ -101,7 +101,7 @@ return< div>
                   />
           </div>}
           <button id='usubmit' type="submit" data-umami-event='点击评论' className='  text-gray-200  p-1 text-xl  bg-gray-700 dark:bg-gray-800  hover:bg-gray-500 dark:hover:bg-gray-600 duration-300 rounded-xl  '>
-            <PaperAirplaneIcon className=" w-8 h-5 -rotate-45" />
+            <TgIcon className=" w-8 h-5 rotate-[222deg]  " />
           </button>
         </div>
       </div>

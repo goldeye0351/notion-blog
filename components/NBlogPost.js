@@ -7,7 +7,7 @@ import DaysAgo from './Common/DaysAgo'
 import React from 'react'
 import { useEffect } from 'react';
 import OnlyPinglun from './Post/OnlyComments';
-import { ChatIcon, EyeIcon, ThumbUpIcon } from '@heroicons/react/outline'
+import { ChatIcon, EyeIcon, ThumbUpIcon } from '@/Icon/Icon'
 const BlogPost = ({ index , post,resdata }) => {
   useEffect(() => {
     const updateDOM = () => {

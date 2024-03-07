@@ -5,9 +5,9 @@ export const lang = {
       TAGS: '标签'
     },
     TIME: {
-      YEAR: '年前',
-      MONTH:'月前',
-      DAY:'天前',
+      Y: '年前',
+      M:'月前',
+      D:'天前',
       TODAY: '今天'
     },
     PAGINATION: {
@@ -45,8 +45,8 @@ export const lang = {
       TITLEA:'自主填加友链,快来试试吧!',
       TITLEB:'SELF SUBMIT,LET ME TRY!',
       SUCCESS_MESSAGE: '已成功.请刷新查看.',
-      FORM_SITE: '你的网站:比如 https://mynotion.life ,注意要有http',
-      FORM_ICON: '你的LOGO:比如 https://mynotion.life/favicon.ico',
+      FORM_SITE: '你的网站:比如 https://51xmi.com ,注意要有http',
+      FORM_ICON: '你的LOGO:比如 https://51xmi.com/favicon.ico',
       FORM_CONTENT: '网站介绍',
       SUBMIT: '发送',
       FAILED_MESSAGE: '抱歉, 发送失败, 请重试.'
@@ -106,8 +106,8 @@ export const lang = {
       TITLEA:'SELF SUBMIT,LET ME TRY!',
       TITLEB:'自主填加友链,快来试试吧!',
       SUCCESS_MESSAGE: 'OK,Please refresh.',
-      FORM_SITE: 'Your Site:eg:https://mynotion.life',
-      FORM_ICON: 'Your Logo,eg:https://mynotion.life/favicon.ico',
+      FORM_SITE: 'Your Site:eg:https://51xmi.com',
+      FORM_ICON: 'Your Logo,eg:https://51xmi.com/favicon.ico',
       FORM_CONTENT: 'Your Description,',
       SUBMIT: 'Submit',
       FAILED_MESSAGE: 'Sorry, sending failed '

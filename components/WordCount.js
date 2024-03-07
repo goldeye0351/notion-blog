@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import {TimeIcon,WordIcon } from '@/Icon/Icon'
 
 export default function WordCount() {
   useEffect(() => {
@@ -8,12 +9,12 @@ export default function WordCount() {
   return <span id='wordCountWrapper' className='flex gap-3 font-light'>
         <span className='flex whitespace-nowrap items-center'>
             <i className='pl-1 pr-2 fas fa-file-word' />
-            <span id='wordCount'>0</span>&nbsp;🖍️
+            <span id='wordCount'>0</span>&nbsp;< WordIcon className='w-5 h-5' />
         </span>
         <span className='flex whitespace-nowrap items-center'>
             <i className='mr-1 fas fa-clock' />
             <span></span>
-            <span id='readTime'>0</span>&nbsp;🕰️
+            <span id='readTime'>0</span>&nbsp;< TimeIcon className='w-5 h-5' />
         </span>
     </span>
 }

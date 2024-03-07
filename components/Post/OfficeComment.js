@@ -5,7 +5,7 @@ import FormattedDate from '@/components/Common/FormattedDate';
 import Image from 'next/image';
 import adminimg from '@/public/favicon.svg'
 import guestimg from '@/public/comment.jpg'
-import { PaperAirplaneIcon } from '@heroicons/react/outline';
+import { TgIcon } from '@/Icon/Icon';
 export default function OfficeComment({ postid}) {
   const { locale } = useRouter()
   const t = lang[locale]
@@ -95,7 +95,7 @@ export default function OfficeComment({ postid}) {
               ></textarea>
           
             <button  type="submit" className=' absolute right-4 bottom-4 w-16 justify-center flex  text-gray-400 bg-gray-200 dark:bg-gray-700  hover:bg-gray-200 dark:hover:bg-gray-600 duration-500 rounded-xl  '>
-              <PaperAirplaneIcon className=' rotate-45 h-12 w-12 p-2 '/>
+              <TgIcon className=' rotate-[222deg] h-12 w-12 p-2 '/>
             </button>
           </div>
         </form>

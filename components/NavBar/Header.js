@@ -5,9 +5,9 @@ import ThemeSwitcher from './ThemeSwitcher'
 import LangSwitcher from './LangSwitcher'
 import FullWidth from './FullWidth'
 import Image from 'next/image'
-import logoimg from '@/public/pyqlogo.png'
 import xmisvglogo from '@/public/51xmi.svg'
-
+import { PYQ } from '@/Icon/Icon'
+//import { UserButton } from "@clerk/nextjs";
 const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
   const useSticky = !BLOG.autoCollapsedNavBar
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined)
@@ -55,14 +55,13 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
               <span className='font-normal text-base'>{BLOG.description}</span>
             </div>
           )}
-        <div className=' min-w-[120px]'>
-          <Link href='/pyq' data-umami-event="朋友圈" >
-                <Image  src={logoimg} alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6 -mt-4 md:-mt-5 mx-2 inline-block  duration-500  hover:scale-125 ' />
+        <div className=' min-w-[120px] flex flex-row items-center  '>
+          <Link href='/pyq' data-umami-event="朋友圈" className=' ' >
+                <PYQ   alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 ' />
           </Link>
           <ThemeSwitcher />
           <LangSwitcher />
           <FullWidth fullWidth={fullWidth} toggleFullWidth={toggleFullWidth} />
-
         </div>
       </div>
     </>

@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 import LastPinglun from '@/components/Post/LastComments'
 import UmamiData from '@/components/UmamiData'
-import { LinkIcon,  UserIcon } from '@heroicons/react/outline'
+import { UserIcon, LinkIcon,KeyIcon, LoginIcon } from '@/Icon/Icon'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
 import { motion, AnimatePresence } from 'framer-motion'
@@ -58,7 +58,7 @@ const variants = {
   },
 }
 
-const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,fullWidth }) => {
+const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
   const post = {
     id: 'Home',
     title: 'Home'
@@ -135,7 +135,7 @@ const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,ful
           </div>
 
           <div id='twobutton'  className=' flex mx-auto w-full justify-center mt-auto mb-6 ' >
-                <Link title='contact me' href='/contact' data-umami-event='联系我' className='group  rounded-2xl h-12 w-full p-3   justify-center flex items-center '>
+                <Link title='login' href='/tt' data-umami-event='登录' className='group  rounded-2xl h-12 w-full p-3   justify-center flex items-center '>
                     <Tilt className="my3d rounded-2xl w-full h-12 hover:ring-2 ring-green-400 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  "
                           perspective={1500}
                           glareEnable={true}
@@ -143,10 +143,10 @@ const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,ful
                           glareMaxOpacity={0.5}
                           glareColor="#000000"
                           glareBorderRadius="12px"
-                          scale={1.05}
+                          scale={1.01}
                         >
                       <div className=' my3din w-full h-12 flex justify-center items-center content-center rounded-full '>
-                        <UserIcon className=' group-hover:text-green-400  w-12 h-12  my3din500 '/>
+                        <LoginIcon className=' group-hover:text-green-400  w-12 h-12   '/>
                       </div>
                   </Tilt>
                     
@@ -210,7 +210,9 @@ const TwitterLayout = ({allpls, tags,cats, posts, currentTag,resdata,tuijian,ful
               </AnimatePresence>
         </div>
       </div>
-
+      <Link title='login' href='/tt' data-umami-event='手机登录'  >
+        <LoginIcon className='lg:hidden hover:text-green-400  hover:scale-125 duration-300  w-8 h-8 fixed bottom-3  right-3    '/>
+      </Link>
       <div id='rtya' className=' hidden lg:block  w-3/12 max-w-[320px]   '>
         <div  className=' px-3  sticky top-24 '>
               <Tabs className='max-w-[320px] ' >

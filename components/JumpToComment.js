@@ -1,4 +1,4 @@
-import { ChatIcon} from '@heroicons/react/outline'
+import { ChatIcon} from '@/Icon/Icon'
 
 /**
  * 到底部评论区
