@@ -23,7 +23,7 @@ export async function getStaticProps() {
     props: {
       blockMap,
     },
-    revalidate: 1
+    revalidate: 10
   }
 }
 const FriendS = ({ blockMap }) => {

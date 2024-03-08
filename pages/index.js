@@ -25,6 +25,6 @@ export async function getStaticProps() {
 
   return {
     props: {    allpls,tags,posts, tuijian ,resdata  },
-    revalidate: 1
+    revalidate: 10
   }
 }

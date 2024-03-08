@@ -25,7 +25,7 @@ export async function getStaticProps() {
       blockMap,
       postid,
     },
-    revalidate: 1
+    revalidate: 15
   }
 }
 const About = ({ blockMap,hero ,postid}) => {
