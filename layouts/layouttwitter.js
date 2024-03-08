@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 import LastPinglun from '@/components/Post/LastComments'
 import UmamiData from '@/components/UmamiData'
-import { UserIcon, LinkIcon,KeyIcon, LoginIcon } from '@/Icon/Icon'
+import { LinkIcon, LoginIcon ,FriendsIcon, Github} from '@/Icon/Icon'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
 import { motion, AnimatePresence } from 'framer-motion'
@@ -243,14 +243,13 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                     <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
                           hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                           hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
-                      <LinkIcon className=' w-8 h-8  inline-block     ' />
+                      <FriendsIcon className=' w-9 h-9  inline-block  mr-1   ' />{'Friends'}
+
                     </Link>
                     <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
-                      <svg width="1.04em" height="1em" viewBox="0 0 432 416" xmlns="http://www.w3.org/2000/svg" className=' w-8 h-8  inline-block  '>
-                        <path fill="currentColor" d="M213.5 0q88.5 0 151 62.5T427 213q0 70-41 125.5T281 416q-14 2-14-11v-58q0-27-15-40q44-5 70.5-27t26.5-77q0-34-22-58q11-26-2-57q-18-5-58 22q-26-7-54-7t-53 7q-18-12-32.5-17.5T107 88h-6q-12 31-2 57q-22 24-22 58q0 55 27 77t70 27q-11 10-13 29q-42 18-62-18q-12-20-33-22q-2 0-4.5.5t-5 3.5t8.5 9q14 7 23 31q1 2 2 4.5t6.5 9.5t13 10.5T130 371t30-2v36q0 13-14 11q-64-22-105-77.5T0 213q0-88 62.5-150.5T213.5 0"></path>
-                      </svg>
+                        <Github className=' w-8 h-8  inline-block    mr-1   ' />{'Github'}
                     </Link>
                   </div>
                   <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='_blank' data-umami-event='统计系统'

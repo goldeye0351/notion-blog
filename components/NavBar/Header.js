@@ -52,7 +52,7 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
           ) : (
             <div className='ml-2 max-h-8 overflow-hidden font-medium text-xl' >
               {BLOG.title}{' '}
-              <span className='font-normal text-base'>{BLOG.description}</span>
+              <span className='font-normal text-base italic'>{BLOG.description}</span>
             </div>
           )}
         <div className=' min-w-[120px] flex flex-row items-center  '>

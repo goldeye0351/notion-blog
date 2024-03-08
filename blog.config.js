@@ -1,10 +1,11 @@
 const BLOG = {
   title: '51xMI',
-  description: '我要x秘',
+  description: '51xMI',
   link:'https://51xmi.com',
   saysay:'随便说说',
   author: 'Goldeye',
   email: 'admin@51xm.com',
+  viptitle:'VIP中心',
   ogimg:'https://51xmi.com/51.png',
   pyqog:'https://51xmi.com/pyqlogo.png',
   githubUrl:'https://github.com/goldeye0351/notion-blog',

@@ -5,13 +5,35 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import FlipCard from '@/components/Myswiper/FlipCard'
 import { lang } from '@/public/lang'
+import { getAllPosts, getPostBlocks } from '@/lib/notion'
+import NotionRenderer from '@/components/Post/NotionRenderer'
+import { FriendsIcon } from '@/Icon/Icon';
 
-const FriendS = ({  }) => {
+export async function getStaticProps() {
+  const heros = await getAllPosts({ onlyHidden: true })
+  const hero = heros.find((t) => t.slug === 'friends')
+  let blockMap
+  try {
+    blockMap = await getPostBlocks(hero.id)
+  } catch (err) {
+    console.error(err)
+  }
+
+  return {
+    props: {
+      blockMap,
+    },
+    revalidate: 1
+  }
+}
+const FriendS = ({ blockMap }) => {
   const { locale } = useRouter()
   const t = lang[locale]
   const [title, setTitle] = useState('');
   const [icon, setIcon] = useState('');
   const [summary, setSummary] = useState('');
+  const [xie,setXie]=useState(false);
+  const toggleXie = () => {      setXie(prevState => !prevState);    };
   const time1 = new Date();
   const fslug = 'f'+ time1.getTime() ;    
   const [posts, setPosts] = useState([]);
@@ -31,7 +53,7 @@ const FriendS = ({  }) => {
   };
 
   useEffect(() => {
-    fetchFriends(); // 在组件加载时获取评论数据
+    fetchFriends(); // 在组件加载时获取朋友数据
   }, []);
 
   async function fetchFriends() {
@@ -68,7 +90,8 @@ const FriendS = ({  }) => {
         return<Friend post={post} />
       })}
     </div>
-    <div className='  flex flex-col mx-auto  justify-center mb-8 '>
+    <button onClick={toggleXie} className=' fixed  bottom-16  lg:right-36  md:right-16 right-6 text-green-400 dark:text-green-500'><FriendsIcon className={' w-12 h-12 ' }/></button>
+    {xie && <div className='  flex flex-col mx-auto  justify-center mb-8 '>
         <div id='自主提交' className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
           < div className='h-3 ' />
           <FlipCard
@@ -124,10 +147,11 @@ const FriendS = ({  }) => {
         <p className='text-gray-400 '>{t.FRIENDS.SUBMIT}</p>
         </button>
       </form>
+    </div>}
+
+    <div className=' flex flex-col mx-auto justify-center  items-center content-center '>
+      <NotionRenderer blockMap={blockMap} className='flex flex-col mx-auto justify-center  items-center content-center' />
     </div>
-
-
-
     </Container>
   )
 }

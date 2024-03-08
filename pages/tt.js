@@ -2,11 +2,11 @@ import {useUser,SignInButton,SignOutButton,UserButton, SignedIn,  SignedOut,User
 import CopyButton from "@/components/CopyButton";
 import Tabs from "@/components/Post/Tabs";
 import Image from "next/image"
-import bjIMG from '@/public/pyq.png'
 import logoimg from '@/public/pyqlogo.png'
 import { useState } from "react"
 import BLOG from '@/blog.config'
 import WeChat from "@/components/Post/WeChat"
+import Container from '@/components/Container'
 
 export default function Home() {
   const saysaytext=BLOG.saysay
@@ -18,7 +18,8 @@ export default function Home() {
   };
   const { user } = useUser();
   const email = user?.primaryEmailAddress.emailAddress
-  return (< div className=" w-screen  " >
+  return (<Container title={BLOG.viptitle} description={BLOG.viptitle} ogimage={BLOG.ogimg} className={ ' text-gray-200min-h-screen '} >
+  < div className=" w-screen  " >
 
         <SignedIn>
             <Tabs className='  sticky top-36 h-16   justify-center mx-auto w-96 text-gray-200  '>
@@ -123,6 +124,6 @@ export default function Home() {
               </div>
             </div>            
         </SignedOut>
-      </div >
+      </div ></Container>
   )
 }
