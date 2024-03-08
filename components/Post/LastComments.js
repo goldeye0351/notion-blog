@@ -1,13 +1,9 @@
 import Image from "next/image";
-import { useRouter } from 'next/router';
 import DaysAgo from "../Common/DaysAgo";
-import { lang } from '@/public/lang'
 import md5 from 'md5'
 
 
 function LastPinglun({post} ){
-    const { locale } = useRouter()
-    const t = lang[locale]
     const myemail = post.Email;
     const parts = myemail ? myemail.split('@'): '';
     const part0 = parts[0];
