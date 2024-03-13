@@ -27,7 +27,12 @@ export default async function handler(req, res) {
     if (response.ok) {
       const data = await response.json();
       res.json({ status: 'Success', data }); // 返回获取的评论数据
-    } else {
+    } else if (response.status === 429) {
+      const retryAfter = parseInt(response.headers.get('Retry-After'), 10) || 10; // Default to 10 seconds
+      console.log(`Rate limited. Retrying after ${retryAfter} seconds.`);
+      await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+    } 
+    else {
       res.status(response.status).json({ status: 'Failed' });
     }
   } catch (error) {
