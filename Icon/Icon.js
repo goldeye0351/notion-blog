@@ -307,3 +307,11 @@ export const FriendsIcon= ({ className }) => {return (
           <path fill="currentColor" d="M9.75 3h.516a3.741 3.741 0 0 1 3.731 3.598a5.46 5.46 0 0 0-1.6-.525a2.239 2.239 0 0 0-1.978-1.568l-.153-.005H9.75a.75.75 0 0 1-.102-1.493L9.75 3Zm-3.66 7.505a5.46 5.46 0 0 1 .473-1.432a.747.747 0 0 0-.313-.068h-.498l-.154-.006A2.252 2.252 0 0 1 5.752 4.5h.498l.102-.007A.75.75 0 0 0 6.25 3h-.498l-.199.005a3.752 3.752 0 0 0 .2 7.5h.337ZM7.725 7.5a5.484 5.484 0 0 1 2.855-1.423a.746.746 0 0 0-.33-.077h-4.5l-.102.007A.75.75 0 0 0 5.75 7.5h1.975Zm8.275 4a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-4-2a.5.5 0 0 0-1 0V11H9.5a.5.5 0 0 0 0 1H11v1.5a.5.5 0 0 0 1 0V12h1.5a.5.5 0 0 0 0-1H12V9.5Z"/>
       </svg>
       )}
+export const PicIcon= ({ className }) => {return (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 48" stroke-width="0.1" stroke="currentColor" className={className}>
+      <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4">
+        <path stroke-linecap="round" d="M5 10a2 2 0 0 1 2-2h34a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V10Z" clip-rule="evenodd"/>
+        <path stroke-linecap="round" d="M14.5 18a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Z" clip-rule="evenodd"/>
+        <path d="m15 24l5 4l6-7l17 13v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4l10-10Z"/>
+    </g>
+</svg>)}

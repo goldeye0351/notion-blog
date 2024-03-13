@@ -23,11 +23,12 @@ export default function CopyButton(props) {
       </button>
 
       <div
-  className={`absolute z-10 bg-gray-900 text-white rounded p-2 text-xs transition-all ease-in-out translate-x-60 shadow-sm shadow-gray-500 ${
+  className={`absolute z-10 bg-gray-900 text-white  flex flex-col justify-center items-center  mx-auto rounded p-2 text-xs transition-all ease-in-out translate-x-60 shadow-sm shadow-gray-500 ${
     tooltipShown ? "translate-y-6" : "translate-y-10 opacity-0"
   }`}
 >
-        Copied!
+      <div className=" text-green-400">Copied!/文字已拷贝!</div>      
+      <div className="border-t ">{props.text}</div>
       </div>
     </>
   );

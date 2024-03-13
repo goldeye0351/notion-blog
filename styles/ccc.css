@@ -122,3 +122,18 @@
 ::-webkit-scrollbar {
   width: 0px; /* 设置滚动条宽度 */
 }
+
+#upload {
+  position: relative;
+  overflow: hidden;
+}
+
+#upload input[type="file"] {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  height: 100%;
+}
