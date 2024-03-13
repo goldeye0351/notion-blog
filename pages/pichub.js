@@ -57,14 +57,14 @@ export default function Pichub() {
       <div className='bg-gray-700 dark:bg-gray-800 p-2 rounded-2xl flex justify-center  w-full overflow-hidden' >
       <button id="upload" className=" mx-auto w-full " type="button" title="Supported formats: Images, videos, GIFs">
         {!file &&<span className=" text-green-400 text-2xl flex flex-col justify-center items-center  "><PicIcon className={' w-12  '} />Drag & Drop or <u><i>Browse</i></u></span>    }   
-        {uploadedUrl &&  <img src={uploadedUrl} alt="Uploaded Image" className=' rounded-xl border-2 border-green-400' />}
+        <input id="fileInput" onChange={handleFileChange} type="file" className=' cursor-pointer  ' name="file" accept="image/*, video/*" />
+      </button>   
+      </div>
+      {uploadedUrl &&  <img src={uploadedUrl} alt="Uploaded Image" className=' rounded-xl border-2 border-green-400' />}
         {uploadedUrl && <span >🥳</span> }
         {uploadedUrl && <CopyButton text={uploadedUrl}  />      }
         {uploading && <div>Uploading...</div>}
         {uploadError && <div>{uploadError}</div>}
-        <input id="fileInput" onChange={handleFileChange} type="file" className=' cursor-pointer  ' name="file" accept="image/*, video/*" />
-      </button>        
-      </div>
     </div>
   </Container>
   );
