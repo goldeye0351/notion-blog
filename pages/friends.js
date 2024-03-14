@@ -1,7 +1,7 @@
 import BLOG from '@/blog.config'
 import Friend from '@/components/Friend'
 import Container from '@/components/Container'
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { useRouter } from 'next/router'
 import FlipCard from '@/components/Myswiper/FlipCard'
 import { lang } from '@/public/lang'
@@ -10,8 +10,8 @@ import NotionRenderer from '@/components/Post/NotionRenderer'
 import { FriendsIcon } from '@/Icon/Icon';
 
 export async function getStaticProps() {
-  const heros = await getAllPosts({ onlyHidden: true })
   const posts = await getAllPosts({ onlyFriend: true })
+  const heros = await getAllPosts({ onlyHidden: true })
   const hero = heros.find((t) => t.slug === 'friends')
   let blockMap
   try {
@@ -59,8 +59,8 @@ const FriendS = ({ blockMap,posts }) => {
         return<Friend post={post} />
       })}
     </div>
-    <button onClick={toggleXie} className=' fixed  top-96  lg:right-36 animate-bounce z-50   border    md:right-16 right-6 text-green-400 dark:text-green-500'><FriendsIcon className={' w-12 h-12 ' }/></button>
-    <div className={`${xie ? 'w-full h-full ' : 'w-0 h-0 '} flex duration-500   overflow-hidden flex-col mx-auto justify-center mb-8`}>
+    <button onClick={toggleXie} className=' fixed  top-96  lg:right-36 animate-bounce z-50 md:right-16 right-6 text-green-400 dark:text-green-500'><FriendsIcon className={' w-12 h-12 ' }/></button>
+    <div className={`${xie ? 'w-full h-full' : 'w-0 h-0 '} flex duration-1000 overflow-hidden flex-col mx-auto justify-center mb-8`}>
 
         <div id='自主提交' className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
           < div className='h-3 ' />
