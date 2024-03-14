@@ -11,6 +11,7 @@ import { FriendsIcon } from '@/Icon/Icon';
 
 export async function getStaticProps() {
   const heros = await getAllPosts({ onlyHidden: true })
+  const posts = await getAllPosts({ onlyFriend: true })
   const hero = heros.find((t) => t.slug === 'friends')
   let blockMap
   try {
@@ -21,12 +22,12 @@ export async function getStaticProps() {
 
   return {
     props: {
-      blockMap,
+      posts,blockMap,
     },
-    revalidate: 10
+    revalidate: 1
   }
 }
-const FriendS = ({ blockMap }) => {
+const FriendS = ({ blockMap,posts }) => {
   const { locale } = useRouter()
   const t = lang[locale]
   const [title, setTitle] = useState('');
@@ -36,7 +37,6 @@ const FriendS = ({ blockMap }) => {
   const toggleXie = () => {      setXie(prevState => !prevState);    };
   const time1 = new Date();
   const fslug = 'f'+ time1.getTime() ;    
-  const [posts, setPosts] = useState([]);
   const submitForm = async (e) => {
     e.preventDefault();
     const res = await fetch('/api/submit-form', {
@@ -44,45 +44,14 @@ const FriendS = ({ blockMap }) => {
       body: JSON.stringify({ title,icon, summary ,fslug}),
     });
     if (res.status === 201) {
-      fetchFriends()
       window.scrollTo({ top: document.getElementById('friend').offsetTop, behavior: 'smooth' })
-
+      setTimeout(() => {
+        location.reload(); // 刷新页面
+      }, 2000); // 等待2秒后刷新
     } else {
       alert(t.FRIENDS.FAILED_MESSAGE)
     }
   };
-
-  useEffect(() => {
-    fetchFriends(); // 在组件加载时获取朋友数据
-  }, []);
-
-  async function fetchFriends() {
-    try {
-      const tgUrl = '/api/getAllFriends';
-      const response = await fetch(tgUrl, {
-        method: 'POST',
-        body: JSON.stringify({ }),
-      });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.status === 'Success') {  
-          const formattedPosts = data.data.results.map(post => ({
-            id: post.id,
-            title:post.properties.title.title[0].plain_text,
-            summary:post.properties.summary.rich_text[0].plain_text,
-            page_cover:post.cover.external?.url || post.cover.file?.url
-          }));
-          setPosts(formattedPosts); 
-        } else {
-          console.error('Failed to fetch comments');
-        }
-      } else {
-        console.error('Failed to fetch comments');
-      }
-    } catch (error) {
-      console.error('Error fetching comments:', error);
-    }
-  }
 
   return (<Container  title={`${BLOG.title}---Friends`} description={BLOG.description} ogimage={BLOG.ogimg} className='friend m-auto flex-grow min-h-screen ' >
     <div id="friend" className=' relative flex  flex-wrap  mx-auto justify-center   items-center cursor-pointer mb-16  '>
@@ -90,8 +59,9 @@ const FriendS = ({ blockMap }) => {
         return<Friend post={post} />
       })}
     </div>
-    <button onClick={toggleXie} className=' fixed  bottom-16  lg:right-36  md:right-16 right-6 text-green-400 dark:text-green-500'><FriendsIcon className={' w-12 h-12 ' }/></button>
-    {xie && <div className='  flex flex-col mx-auto  justify-center mb-8 '>
+    <button onClick={toggleXie} className=' fixed  top-96  lg:right-36 animate-bounce z-50   border    md:right-16 right-6 text-green-400 dark:text-green-500'><FriendsIcon className={' w-12 h-12 ' }/></button>
+    <div className={`${xie ? 'w-full h-full ' : 'w-0 h-0 '} flex duration-500   overflow-hidden flex-col mx-auto justify-center mb-8`}>
+
         <div id='自主提交' className='group w-full mx-auto flex flex-col content-center items-center text-2xl  justify-center rounded-xl    '>
           < div className='h-3 ' />
           <FlipCard
@@ -147,7 +117,7 @@ const FriendS = ({ blockMap }) => {
         <p className='text-gray-400 '>{t.FRIENDS.SUBMIT}</p>
         </button>
       </form>
-    </div>}
+    </div>
 
     <div className=' flex flex-col mx-auto justify-center  items-center content-center '>
       <NotionRenderer blockMap={blockMap} className='flex flex-col mx-auto justify-center  items-center content-center' />

@@ -29,6 +29,7 @@ const BLOG = {
   },
   notionDatabaseId: process.env.NOTION_DATABASE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
   notionCommentId: process.env.NOTION_COMMENT_ID || '', // DO NOT CHANGE THIS! Edit .env file! 
+  notionPicId: process.env.NOTION_PIC_ID || '', // DO NOT CHANGE THIS! Edit .env file! 
   notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_TOKEN || '', // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',
