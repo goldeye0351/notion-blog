@@ -19,6 +19,8 @@ export async function getStaticProps() {
 
 export default function Pichub({pics}) {
   const [file, setFile] = useState(null);
+  const [pass, setPass] = useState('');
+  const [showPic, setShowPic] = useState();
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const [uploadedUrl, setUploadedUrl] = useState(null);
@@ -87,6 +89,18 @@ export default function Pichub({pics}) {
       handleUpload(file);
     }
   }, [file]);
+  
+  const handleChange = (event) => {
+    setPass(event.target.value);
+  };
+
+  const handleButtonClick = () => {
+    if (pass === `${pics.length}`  ) {
+      setShowPic(true);
+    } else {
+      setShowPic(false);
+    }
+  };
 
   return (<Container  title={`${BLOG.title} 免费图床`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-[50vh]  flex flex-col justify-center   ' >
     <div className=' text-gray-200 flex mx-auto flex-col  justify-center items-center content-center space-y-2 w- '>
@@ -105,9 +119,14 @@ export default function Pichub({pics}) {
         }
         {uploading && <div>Uploading...</div>}
         {uploadError && <div>{uploadError}</div>}
+    </div>    
+    <div className=' flex mx-auto my-3'>AllPics: {pics.length}</div>
+    < div className=' flex mx-auto my-3 rounded-2xl space-x-2 text-gray-200  '>
+      <input type="password" id="pwd" name="pwd" value={pass} onChange={handleChange} className=' w-16 p-2  rounded-2xl text-gray-200  bg-gray-700 dark:bg-gray-800 '  />
+      <button onClick={handleButtonClick}>PASSWORD</button>
     </div>
     <>
-    <div id='展示框' key='dispbox' className=" mt-3 mx-auto flex "> 
+    { showPic && <div id='展示框' key='dispbox' className=" mt-3 mx-auto flex text-gray-200 "> 
               <ol className='flex flex-wrap mx-auto justify-center  items-center  p-2    ' >
                 {pics.map((post) => {
                   const tolink= post.URL;
@@ -118,7 +137,7 @@ export default function Pichub({pics}) {
                   </li>
                 })}
               </ol>
-      </div>  
+      </div>  }
     </>
   </Container>
   );
