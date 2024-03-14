@@ -13,11 +13,13 @@ const BlogPost = ({ index , post,resdata }) => {
     const updateDOM = () => {
       for (var value of resdata) {
         const xslug= value.x.substr(1);
-        console.log('slug',xslug)
+        //console.log('slug',xslug)
         try{
           if (value.x.substr(1).length > 0) {
             var demo = document.getElementById(xslug);
-            demo.innerHTML = value.y;
+            if (demo) {
+              demo.innerHTML = value.y;
+            }
           }
         }catch (error) {
           console.log(error);
