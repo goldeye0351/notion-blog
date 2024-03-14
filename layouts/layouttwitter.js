@@ -232,7 +232,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                 <div key='最近评论' className='w-full h-96 overflow-x-hidden  bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
                         <div id='plya' className=' w-80  overflow-y-scroll   '>
                         {allpls.slice(0,9).map((post) => (
-                              <LastPinglun post={post} />
+                              <LastPinglun post={post} key={post.id} />
                         ))}  
                         </div>
                 </div>
