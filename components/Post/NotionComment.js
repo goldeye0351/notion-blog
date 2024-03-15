@@ -26,7 +26,6 @@ function Pinglun({post} ){
       const selectedFile = event.target.files[0];
       setFile(selectedFile);
     };
-  
     const handleUpload = () => {
       setUploading(true);
       setUploadError(null);
@@ -34,7 +33,7 @@ function Pinglun({post} ){
       const formData = new FormData();
       formData.append('file', file);
   
-      fetch('https://fandai.51xmi.com', {
+      fetch('https://pichub.51xmi.com/upload ', {
         method: 'POST',
         body: formData,
       })
@@ -148,13 +147,13 @@ return< div>
           <div title='piclink' id='piclink' className=' bg-gray-700 dark:bg-gray-800 rounded-xl lg:flex flex-col justify-center duration-300 ' >
             <div className=' text-gray-200 flex mx-auto flex-col  justify-center items-center content-center space-y-2 w-full '>
               <div className='bg-gray-700 dark:bg-gray-800 p-2 rounded-2xl flex justify-center  w-full overflow-hidden' >
-              <button id="upload" className=" mx-auto w-full flex justify-center items-center content-center" type="button" title="Supported formats: Images, videos, GIFs">
+              <button id="upload" className=" mx-auto w-full flex justify-center items-center content-center" type="button" title={uploadedUrl}>
                 {!file && <span><PicIcon className={' h-6 '} /></span>}
                 {uploadedUrl && <span ><PicIcon className={' h-6 inline-block '} />🥳</span> }
                 {uploading && <div>Uploading...</div>}
                 {uploadError && <div>{uploadError}</div>}
                 <input id="fileInput" onChange={handleFileChange} type="file" className=' cursor-pointer  ' name="file" accept="image/*, video/*" />
-              </button>        
+              </button>
               </div>
             </div>
           </div>
