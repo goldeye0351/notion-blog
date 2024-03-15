@@ -41,7 +41,7 @@ export default function Pichub({pics}) {
     const formData = new FormData();
     formData.append('file', file);
 
-    fetch('https://fandai.51xmi.com', {
+    fetch('https://pichub.51xmi.com/upload', {
       method: 'POST',
       body: formData,
     })
