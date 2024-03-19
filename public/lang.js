@@ -2,7 +2,11 @@ export const lang = {
   zh: {
     BLOG: {
       CATEGORY: '类别',
-      TAGS: '标签'
+      TAGS: '标签',
+      POSTS:'文章',
+      COMMENTS:'评论',
+      TUIJIAN:'推荐文章',
+      LASTCOMMENTS:'最近评论'
     },
     TIME: {
       Y: '年前',
@@ -63,7 +67,11 @@ export const lang = {
   en: {
     BLOG: {
       CATEGORY: 'Category',
-      TAGS: 'Tags'
+      TAGS: 'Tags',
+      POSTS:'📋',
+      COMMENTS:'🔖',
+      TUIJIAN:'Recommend',
+      LASTCOMMENTS:'Recent Comments'
     },
     TIME: {
       Y: 'Y ago',

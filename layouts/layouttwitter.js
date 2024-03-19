@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import BLOG from '@/blog.config'
 import LastPinglun from '@/components/Post/LastComments'
 import UmamiData from '@/components/UmamiData'
-import { LinkIcon, LoginIcon ,FriendsIcon, Github} from '@/Icon/Icon'
+import { LinkIcon, LoginIcon ,FriendsIcon, Github, Pic1Icon} from '@/Icon/Icon'
 import Lastpost from '@/components/Post/lastpost'
 import BubbleUI from "@/components/Myswiper/Bb";
 import { motion, AnimatePresence } from 'framer-motion'
@@ -108,6 +108,13 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
         <div id="tagsAndMe" className='fixed top-0  flex-col flex   min-h-screen    '>
 
           <div id='alltags' className=' flex flex-col flex-grow items-center content-center w-52  px-3  mt-24   '>
+            <div className='w-full px-3 m-1 h-12 overflow-hidden rounded-xl flex flex-row justify-between   content-center items-center 
+                       hover:h-14   font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 
+                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400'>
+              <div>{t.BLOG.POSTS}({posts.length})</div>
+              <div>{t.BLOG.COMMENTS}({allpls.length})</div>
+            </div>
             {Object.keys(tags).map((key) => {
                 const index = Object.keys(tags).indexOf(key);
                 const style = tagStyles[index] || 'cai1'; // 默认样式
@@ -213,52 +220,67 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
       <Link title='login' href='/tt' data-umami-event='手机登录'  >
         <LoginIcon className='lg:hidden hover:text-green-400  hover:scale-125 duration-300  w-8 h-8 fixed bottom-3  right-3    '/>
       </Link>
-      <div id='rtya' className=' hidden lg:block  w-3/12 max-w-[320px]   '>
-        <div  className=' px-3  sticky top-24 '>
-              <Tabs className='max-w-[320px] ' >
-                <div key='最近文章' id='bbuiya1' className=' flex   bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
-                  <BubbleUI className="myBubbleUI h-72 w-80 overflow-y-scroll rounded-3xl ">
-                    {posts.slice(0,21).map((data, i) => (
-                      <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
-                        <Image src={data.page_cover} alt={data.title} width={60} height={60}  
-                        className=" rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
-                      </Link>
-                    ))}
-                  </BubbleUI>
-                </div>
-                <div key='推荐文章' id='Tuijian' className=' h-80 overflow-x-hidden bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
-                  <Lastpost posts={tuijian} className='w-72 pr-6 '  />
-                </div>
-                <div key='最近评论' className='w-full h-96 overflow-x-hidden  bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
-                        <div id='plya' className=' w-80  overflow-y-scroll   '>
-                        {allpls.slice(0,9).map((post) => (
-                              <LastPinglun post={post} key={post.id} />
-                        ))}  
-                        </div>
-                </div>
-              </Tabs>
-               <div ref={el}   className={(!BLOG.tag[searchValue]? 'hidden' :'w-full flex p-3 my-3 whitespace-wrap shadow-[0_0_30px_1px_rgba(0,255,0,0.5)]  bg-day dark:bg-night ring-1 ring-green-400  dark:ring-green-400justify-center overflow-auto rounded-xl ')}  />
-              <div id='4links' className='w-full space-y-3 flex-col justify-center flex  dark:text-gray-200 text-gray-200 ' >
-                  <div className=' flex h-12 flex-row w-full justify-between space-x-3'>
-                    <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
-                          hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                          hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
-                      <FriendsIcon className=' w-9 h-9  inline-block  mr-1   ' />{'Friends'}
+      <div id='rtya' className=' hidden lg:block  w-3/12 max-w-[320px] ml-3  '>
+        <div  className=' px-3  sticky top-[10vh] '>
+          <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='_blank' data-umami-event='统计系统'>
+              <UmamiData />
+          </Link>
 
-                    </Link>
-                    <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
-                      hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                      hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
-                        <Github className=' w-8 h-8  inline-block    mr-1   ' />{'Github'}
-                    </Link>
-                  </div>
-                  <Link title='umami统计系统' id='umamirtya' href={BLOG.umamiUrl} target='_blank' data-umami-event='统计系统'
+          <div key='最近文章' id='bbuiya1' className='flex bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
+          
+            <BubbleUI className="myBubbleUI h-72 w-80 overflow-y-scroll rounded-3xl ">
+              {posts.slice(0,21).map((data, i) => (
+                <Tilt className="my3d "
+                          perspective={1500}
+                          glareEnable={true}
+                          glarePosition={'all'}
+                          glareMaxOpacity={0}
+                          scale={1.25}
                         >
-                      <UmamiData />
-                  </Link>
+                <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
+                  <Image src={data.page_cover} alt={data.title} width={60} height={60}  
+                  className="my3din rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
+                </Link>
+                </Tilt>
+              ))}
+            </BubbleUI>
+            
+          </div>
+          <div ref={el}   className={(!BLOG.tag[searchValue]? 'hidden' :'w-full flex p-3 -mb-3 whitespace-wrap shadow-[0_0_30px_1px_rgba(0,255,0,0.5)]  bg-day dark:bg-night ring-1 ring-green-400  dark:ring-green-400justify-center overflow-auto rounded-xl ')}  />
+          <Tabs>
+            <div key={t.BLOG.TUIJIAN} id='Tuijian' className=' overflow-x-hidden bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
+              <Lastpost posts={tuijian} className='w-72 pr-6 '  />
+            </div>
+            <div key={t.BLOG.LASTCOMMENTS} className=' w-full overflow-x-hidden  bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
+                          <div id='plya' className=' w-80  overflow-y-scroll   '>
+                          {allpls.slice(0,9).map((post) => (
+                                <LastPinglun post={post} key={post.id} />
+                          ))}  
+                          </div>
+            </div>
+            </Tabs>
+            <div id='4links' className=' w-full space-y-3 flex-col justify-center flex text-gray-200 ' >
+              <div className=' flex h-12 flex-row w-full justify-between space-x-3'>
+                <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
+                      hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                      hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
+                  <FriendsIcon className=' w-9 h-9  inline-block  mr-1   ' />
+                </Link>
+                <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                  hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                  hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
+                    <Github className=' w-8 h-8  inline-block    mr-1   ' />
+                </Link>
+                <Link title='Pichub' href='/pichub' target='_blank' data-umami-event="点Pichub"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                  hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                  hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
+                    <Pic1Icon className=' w-8 h-8  inline-block    mr-1   ' />
+                </Link>
               </div>
-
+            </div>
         </div>
+
+
       </div>
     </div>
   </Container> 

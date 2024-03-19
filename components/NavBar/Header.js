@@ -7,6 +7,7 @@ import FullWidth from './FullWidth'
 import Image from 'next/image'
 import xmisvglogo from '@/public/51xmi.svg'
 import { PYQ } from '@/Icon/Icon'
+import NavBar from './Nav'
 //import { UserButton } from "@clerk/nextjs";
 const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
   const useSticky = !BLOG.autoCollapsedNavBar
@@ -56,7 +57,8 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
             </div>
           )}
         <div className=' min-w-[120px] flex flex-row items-center  '>
-          <Link href='/pyq' data-umami-event="朋友圈" className=' ' >
+          {BLOG.showMenu && <NavBar />}
+          <Link title='朋友圈' href='/pyq' data-umami-event="朋友圈" className=' mr-2 ' >
                 <PYQ   alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 ' />
           </Link>
           <ThemeSwitcher />

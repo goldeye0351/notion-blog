@@ -102,7 +102,7 @@ export default function Pichub({pics}) {
     }
   };
 
-  return (<Container  title={`${BLOG.title} 免费图床`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-[50vh]  flex flex-col justify-center   ' >
+  return (<Container  title={`${BLOG.title} 免费图床`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-[50vh]  flex flex-col justify-center text-gray-200  ' >
     <div className=' text-gray-200 flex mx-auto flex-col  justify-center items-center content-center space-y-2 w- '>
       <div className='bg-gray-700 dark:bg-gray-800 p-2 rounded-2xl flex justify-center  w-full overflow-hidden' >
       <button id="upload" className=" mx-auto w-full " type="button" title="Supported formats: Images, videos, GIFs">

@@ -52,8 +52,13 @@ const MenuItems = ({ items, depthLevel }) => {
     onMouseLeave={onMouseLeave}
     onClick={closeDropdown}
     ref={ref} className={`${
-                    activeMenu === items.to ? 'bg-gray-200 dark:bg-gray-700' : ''
-                  } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg py-1 px-2  relative nav`}
+                    activeMenu === items.to ? 'bg-gray-700 dark:bg-gray-800 shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] ' 
+                    :
+                     ''
+                  } hover:bg-gray-600 dark:hover:bg-gray-700 cursor-pointer rounded-lg px-1 flex items-center   w-24 h-10 relative nav
+                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300
+                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400
+                  `}
     >
       {items.submenu ? (
         <>
@@ -62,8 +67,8 @@ const MenuItems = ({ items, depthLevel }) => {
             aria-expanded={dropdown ? 'true' : 'false'}
             onClick={() => setDropdown((prev) => !prev)}
           >
-                <svg height="40" width="112" xmlns="http://www.w3.org/2000/svg" className="myshape" > <rect  className=' w-28 h-10 ' /> </svg>
-                <span className='inline-block m-1 mymenutext'>{items.icon}{items.name}{' '} <span className="arrow" /></span>
+                {/*<svg height="40" width="112" xmlns="http://www.w3.org/2000/svg" className="myshape" > <rect  className='w- 28  h-10  ' /> </svg>*/}
+                <div className=' '>{items.icon}{items.name}{' '} <span className="arrow" /></div>
                 
           </div>
           <Dropdown className=""
@@ -74,13 +79,9 @@ const MenuItems = ({ items, depthLevel }) => {
         </>
       ) : (<>
         <Link passHref href={items.to} key={items.id} scroll={false} >
-          <svg height="40" width="112" xmlns="http://www.w3.org/2000/svg" className="myshape" > <rect  className=' w-28 h-10 ' /> </svg>
-          <span className='inline-block m-1 mymenutext '>{items.icon}{items.name}</span>
+          <div className='   '>{items.icon}{items.name}</div>
         </Link></>
       )}
-
-
-
     </li>
   );
 };

@@ -4,18 +4,19 @@
 @import './prism.css';
 
 html {
-  --scrollbarBG: #ffffff00;
+  --scrollbarBG: #000000;
   --thumbBG: #b8b8b8;
   overflow-y: scroll;
   overflow-x: auto;
 }
 html::-webkit-scrollbar {
-  width: 5px;
+  width: none;
 }
 html {
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
+
 html::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
 }
@@ -45,7 +46,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .sticky-nav-full .nav {
-  @apply text-gray-600 dark:text-gray-300;
+  @apply text-gray-200 ;
 }
 
 nav {
@@ -86,7 +87,7 @@ nav {
   }
   .sticky-nav-full .header-name {
     opacity: 1;
-    @apply dark:text-gray-300 text-gray-600;
+    @apply dark:text-gray-200 ;
   }
 }
 

@@ -1,10 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Tilt from 'react-parallax-tilt'
-
-
-
-
 const Friend = ({ post }) => {
   return (
     <article    key={post.id}  className='flex m-5  cursor-pointer w-56 rounded-full text-gray-200   '    >
@@ -18,9 +13,9 @@ const Friend = ({ post }) => {
                   glareBorderRadius="9999px"
                   scale={1}
                 >
-          <div className="my3din  flex flex-col justify-center  ">
+          <div className="flex flex-col justify-center">
             <img src={post?.page_cover}  alt={post.title} width={100} height={100}
-            className=' rounded-lg translate-x-[30%]  '  />
+            className=' rounded-lg '  />
           </div>
           <div  className='flex flex-col justify-center h-20 max-h-20  overflow-scroll p-3  '> {post.summary}  </div>
       </Tilt>

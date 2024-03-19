@@ -24,7 +24,10 @@ const UmamiData = () => {
       })
       .then(res => res.json())
       .then(resdata => {
-        document.querySelector('#pvstatic').innerHTML = resdata.pageviews.value;
+        var demo = document.getElementById('pvstatic');
+        if (demo) {
+          demo.innerHTML = resdata.pageviews.value;
+        }
       });
 
       fetch(umiUrl2, {
@@ -36,7 +39,11 @@ const UmamiData = () => {
       })
       .then(res => res.json())
       .then(resdata => {
-        document.querySelector('#online').innerHTML = resdata[0].x;
+        console.log('在线人数',resdata)
+        var demo = document.getElementById('online');
+        if (demo) {
+          demo.innerHTML = resdata.x+1;
+        }
       });
 
     }
@@ -47,10 +54,10 @@ const UmamiData = () => {
   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
     <div className="   flex justify-center text-center flex-row content-center items-center  ">
       <WifiIcon className=' h-8 inline-block text-green-400   ' />
-      <span id="online" className='inline-block text-green-400 '></span>
+      <span id="online" className='online inline-block text-green-400 '></span>
     </div>
     <EyeIcon className=' h-8  ' />
-    <span id="pvstatic">2024</span>
+    <span id="pvstatic"></span>
 </div>
   )
 }

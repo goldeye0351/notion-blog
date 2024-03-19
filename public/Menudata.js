@@ -1,43 +1,41 @@
 import BLOG from '@/blog.config'
-import { AcademicCapIcon, HomeIcon,CodeIcon, SearchIcon, GlobeIcon,  TerminalIcon, GlobeAltIconicon, CloudIcon,CloudDownloadIcon ,CloudUploadIcon,FingerPrintIcon,EyeOffIcon,EyeIcon, MenuIcon,  UserIcon,  UsersIcon,  MailIcon,  ClipboardListIcon} from '@heroicons/react/outline'
-   //https://heroicons.com/ find icon  从这里查找喜欢的图标
+import { UserIcon,LinkIcon,RssIcon,PicIcon,HomeIcon,Pic1Icon,Pic2Icon,Pic3Icon,PYQ,MenuIcon } from '@/Icon/Icon'
 export const links = [
     {
-      id: 0,
       name: 'HOME',                 // rename, 直接修改名字就可以,注意单引号
       to: BLOG.path || '/',         //  href.  要跳转的地址
-      icon: <HomeIcon className='inline-block mb-1 h-5 w-5' />,  //change 从上面找你想要的图标.
+      icon: <HomeIcon className='inline-block mb-1 h-5 w-5' />,  
     },
     {
-      id: 1,
-      name: 'Blog',
-      to: '/blog',
-      icon: <ClipboardListIcon className='inline-block mb-1 h-5 w-5' />,
-    },
-    {
-      id: 3,
-      name: 'Search',
-      to: '/search',
-      icon: <SearchIcon className='inline-block mb-1 h-5 w-5' />,
-    },
-    {
-      id: 4,
       name: 'About',
       to: '',
-      icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
+      icon: <MenuIcon className='inline-block mb-1 h-5 w-5' />,
       submenu:
-      [
+      [    
         {
-          id: 5,
+        name: 'Pichub',
+        to: '/pichub',
+        icon: <PicIcon className='inline-block mb-1 h-5 w-5' />,
+        }, 
+        {
+          name: 'Pic',
+          to: 'http://pic.51xmi.com',
+          icon: <Pic3Icon className='inline-block mb-1 h-5 w-5' />,
+          }, 
+        {
+          name: '朋友圈',
+          to: '/pyq',
+          icon: <PYQ className='inline-block mb-1 h-5 w-5' />,
+        },
+        {
           name: 'Me',
           to: '/about',
           icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
         },
         {
-          id: 6,
           name: 'Friends',
           to: '/friends',
-          icon: <UsersIcon className='inline-block mb-1 h-5 w-5' />,
+          icon: <LinkIcon className='inline-block mb-1 h-5 w-5' />,
         },
 
       ]

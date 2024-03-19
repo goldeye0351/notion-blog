@@ -315,3 +315,28 @@ export const PicIcon= ({ className }) => {return (
         <path d="m15 24l5 4l6-7l17 13v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-4l10-10Z"/>
     </g>
 </svg>)}
+
+export const HomeIcon= ({ className }) => {return (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" className={className}>
+  <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+</svg>
+)}
+export const Pic2Icon= ({ className }) => {return (
+<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 56 56" fill="none" stroke-width="1" stroke="currentColor" className={className}>
+    <path fill="currentColor" d="M6.65 42.3h3.94v3.642c0 4.364 2.203 6.566 6.65 6.566h32.11c4.405 0 6.65-2.203 6.65-6.566V23.428c0-4.342-2.245-6.545-6.65-6.545h-3.94v-3.43c0-4.364-2.224-6.566-6.63-6.566H6.65C2.225 6.887 0 9.089 0 13.452v22.303c0 4.363 2.224 6.544 6.65 6.544m.064-3.41c-2.118 0-3.304-1.123-3.304-3.326v-21.92c0-2.203 1.186-3.347 3.304-3.347h32.003c2.097 0 3.283 1.144 3.283 3.347v3.24H17.24c-4.447 0-6.65 2.182-6.65 6.545V38.89ZM14 23.618c0-2.203 1.165-3.326 3.283-3.326h32.003c2.097 0 3.304 1.123 3.304 3.326v17.685l-7.773-7.328a4.555 4.555 0 0 0-3.177-1.292c-1.186 0-2.203.402-3.198 1.27l-9.51 8.43l-3.791-3.431c-.89-.784-1.864-1.207-2.88-1.207c-.933 0-1.801.381-2.712 1.186L14 43.76Zm11.48 10.886c2.732 0 4.977-2.245 4.977-5.02c0-2.71-2.245-4.998-4.977-4.998c-2.754 0-4.999 2.288-4.999 4.999c0 2.774 2.245 5.02 4.999 5.02"/>
+</svg>)}
+
+export const Pic3Icon= ({ className }) => {return (
+  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 56 56" fill="none" stroke-width="1" stroke="currentColor" className={className}>
+    <path fill="currentColor" d="M7.715 49.574h40.57c4.899 0 7.36-2.437 7.36-7.265V13.69c0-4.828-2.461-7.265-7.36-7.265H7.715C2.84 6.426.355 8.84.355 13.69v28.62c0 4.851 2.485 7.265 7.36 7.265m10.218-21c-3.187 0-5.789-2.601-5.789-5.789c0-3.164 2.602-5.789 5.79-5.789c3.164 0 5.765 2.625 5.765 5.79c0 3.187-2.601 5.788-5.766 5.788M7.762 45.801c-2.25 0-3.633-1.36-3.633-3.657v-1.43l7.195-6.28c1.031-.914 2.156-1.383 3.211-1.383c1.125 0 2.32.469 3.352 1.43l4.5 4.03l11.18-9.937c1.171-1.031 2.46-1.5 3.773-1.5c1.289 0 2.625.492 3.75 1.524l10.78 9.984v3.61c0 2.25-1.405 3.609-3.632 3.609Z"/>
+</svg>)}
+
+
+export const Pic1Icon= ({ className }) => {return (
+  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke-width="1" stroke="currentColor" className={className}>
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+        <path d="M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6z"/>
+        <path d="m3 16l5-5c.928-.893 2.072-.893 3 0l5 5"/>
+        <path d="m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/>
+    </g>
+</svg>)}

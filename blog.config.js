@@ -2,7 +2,7 @@ const BLOG = {
   title: '51xMI',
   description: '51xMI',
   link:'https://51xmi.com',
-  saysay:'随便说说',
+  saysay:'随便说说',//朋友圈的文字
   author: 'Goldeye',
   email: 'admin@51xm.com',
   viptitle:'VIP中心',
@@ -19,6 +19,7 @@ const BLOG = {
   path: '', // leave this empty 
   googleadid:'', // google ad id,   leave this empty 
   sortByDate: true,
+  showMenu:true,// 显示菜单,public/Menudta.js中修改
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   defaultCover: '/mycover.jpg',

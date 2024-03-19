@@ -4,7 +4,7 @@ const Dropdown = ({ submenus, dropdown}) => {
   return (
     <ul
       className={` dropdown ${dropdownClass} ${dropdown ? 'show' : ''}
-      bg-gray-300 dark:bg-gray-600  p-1 
+      bg-gray-700 dark:bg-gray-800  absolute top-10 translate-x-6 md:translate-x-0
       `}
     >
       {submenus.map((submenu, index) => (

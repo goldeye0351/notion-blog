@@ -163,8 +163,8 @@ return< div>
         </div>
       </div>
   </form>
-  <div className=" overflow-scroll max-h-96 p-3 md:p-0 "> 
-    <div id="comment" className="  mx-auto  max-w-screen-md w-full mt-3   ">
+  <div className=" overflow-scroll  p-3 md:p-0  " > 
+    <div id="comment" className="  mx-auto  max-w-screen-md w-full mt-3 ">
           <ol className=" w-full">
             {comments.map((post) => {
               const myemail = post.properties.Email.email;
