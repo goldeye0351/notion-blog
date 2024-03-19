@@ -19,7 +19,7 @@ export const links = [
         }, 
         {
           name: 'Pic',
-          to: 'http://pic.51xmi.com',
+          to: 'https://pic.51xmi.com',
           icon: <Pic3Icon className='inline-block mb-1 h-5 w-5' />,
           }, 
         {
