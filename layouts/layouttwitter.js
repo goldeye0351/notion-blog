@@ -230,18 +230,10 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
           
             <BubbleUI className="myBubbleUI h-72 w-80 overflow-y-scroll rounded-3xl ">
               {posts.slice(0,21).map((data, i) => (
-                <Tilt className="my3d "
-                          perspective={1500}
-                          glareEnable={true}
-                          glarePosition={'all'}
-                          glareMaxOpacity={0}
-                          scale={1.25}
-                        >
                 <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
                   <Image src={data.page_cover} alt={data.title} width={60} height={60}  
-                  className="my3din rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
+                  className="hover:scale-125 duration-300  rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
                 </Link>
-                </Tilt>
               ))}
             </BubbleUI>
             
@@ -254,7 +246,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
             <div key={t.BLOG.LASTCOMMENTS} className=' w-full overflow-x-hidden  bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
                           <div id='plya' className=' w-80  overflow-y-scroll   '>
                           {allpls.slice(0,9).map((post) => (
-                                <LastPinglun post={post} key={post.id} />
+                                <LastPinglun post={post} key={post.id} className='w-64 flex space-x-1 even:italic' />
                           ))}  
                           </div>
             </div>
@@ -269,7 +261,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                 <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
-                    <Github className=' w-8 h-8  inline-block    mr-1   ' />
+                    <Github className=' w-8 h-8  inline-block    mr-1 githubCorner  ' />
                 </Link>
                 <Link title='Pichub' href='/pichub' target='_blank' data-umami-event="点Pichub"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night

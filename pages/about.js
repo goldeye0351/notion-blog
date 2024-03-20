@@ -43,7 +43,7 @@ const About = ({ blockMap,hero ,postid}) => {
               scale={1.02}
             >
             <Image src={hero.page_cover} alt={hero.title} fill className=" rounded-3xl" />   
-              <div className=" my3din500  flex mx-auto flex-col text-xl  items-center content-center justify-center p-6 absolute top-[30%] inset-x-[30%]   ">
+              <div className=" my3din80  flex mx-auto flex-col text-3xl  items-center content-center justify-center p-6 absolute top-[30%] inset-x-[30%] text-gray-200   ">
               About
 
               </div>

@@ -131,8 +131,16 @@ export default function Pichub({pics}) {
                 {pics.map((post) => {
                   const tolink= post.URL;
                   return<li key={post.id} className=' w-56 flex-col flex justify-center items-center    '>
-                        <Image src={tolink}  alt='51xmi免费图床'  width={1000}  height={1000} className=' p-2 rounded-2xl  '/>
-                        <div>{post.Name}</div>
+                        {tolink && tolink.slice(-3) === 'mp4' &&
+                        <video controls>
+                          <source src={tolink} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      }
+                      {tolink && tolink.slice(-3) !== 'mp4' &&
+                        <Image src={tolink} alt='51xmi免费图床' width={1000} height={1000} className="p-2 rounded-2xl " />
+                      }
+                        <div className='   '>{post.Name}</div>
                         <div>{DaysAgo(post.date)}</div>
                   </li>
                 })}

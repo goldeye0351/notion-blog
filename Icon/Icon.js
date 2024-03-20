@@ -273,7 +273,7 @@
     )  }
   
   export const Github= ({ className }) => {    return (
-      <svg        viewBox="0 0 18 18"        fill="none"        xmlns="http://www.w3.org/2000/svg"  className={className}      >
+      <svg  viewBox="0 0 18 18"  fill="none"  xmlns="http://www.w3.org/2000/svg"  className={className}      >
         <path
           d="M9 0.25C4.16562 0.25 0.25 4.16562 0.25 9C0.25 12.8719 2.75469 16.1422 6.23281 17.3016C6.67031 17.3781 6.83437 17.1156 6.83437 16.8859C6.83437 16.6781 6.82344 15.9891 6.82344 15.2563C4.625 15.6609 4.05625 14.7203 3.88125 14.2281C3.78281 13.9766 3.35625 13.2 2.98438 12.9922C2.67812 12.8281 2.24063 12.4234 2.97344 12.4125C3.6625 12.4016 4.15469 13.0469 4.31875 13.3094C5.10625 14.6328 6.36406 14.2609 6.86719 14.0312C6.94375 13.4625 7.17344 13.0797 7.425 12.8609C5.47813 12.6422 3.44375 11.8875 3.44375 8.54062C3.44375 7.58906 3.78281 6.80156 4.34062 6.18906C4.25313 5.97031 3.94687 5.07344 4.42812 3.87031C4.42812 3.87031 5.16094 3.64063 6.83437 4.76719C7.53438 4.57031 8.27813 4.47187 9.02188 4.47187C9.76563 4.47187 10.5094 4.57031 11.2094 4.76719C12.8828 3.62969 13.6156 3.87031 13.6156 3.87031C14.0969 5.07344 13.7906 5.97031 13.7031 6.18906C14.2609 6.80156 14.6 7.57812 14.6 8.54062C14.6 11.8984 12.5547 12.6422 10.6078 12.8609C10.925 13.1344 11.1984 13.6594 11.1984 14.4797C11.1984 15.65 11.1875 16.5906 11.1875 16.8859C11.1875 17.1156 11.3516 17.3891 11.7891 17.3016C13.5261 16.7152 15.0355 15.5988 16.1048 14.1096C17.1741 12.6204 17.7495 10.8333 17.75 9C17.75 4.16562 13.8344 0.25 9 0.25Z"
           fill="currentcolor"
@@ -298,7 +298,7 @@
   </svg>
   )}
   export const LoginIcon= ({ className }) => {return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" stroke-width="1" stroke="currentColor" className={className}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" stroke-width="1.2" stroke="currentColor" className={className}>
     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5v2a1 1 0 0 1-1 1h-2m0-13h2a1 1 0 0 1 1 1v2m-13 0v-2a1 1 0 0 1 1-1h2m0 13h-2a1 1 0 0 1-1-1v-2m6.5-4a2 2 0 1 0 0-4a2 2 0 0 0 0 4m3.803 4.5a3.994 3.994 0 0 0-7.606 0z"/>
 </svg>
 )}
@@ -317,7 +317,7 @@ export const PicIcon= ({ className }) => {return (
 </svg>)}
 
 export const HomeIcon= ({ className }) => {return (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" className={className}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" className={className}>
   <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
 </svg>
 )}
@@ -340,3 +340,37 @@ export const Pic1Icon= ({ className }) => {return (
         <path d="m14 14l1-1c.928-.893 2.072-.893 3 0l3 3"/>
     </g>
 </svg>)}
+
+export const VipIcon= ({ className }) => {return (
+  <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke-width="0.5" stroke="currentColor" className={className}>
+    <path fill="currentColor" d="M11.5 4a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7ZM6 7.5a5.5 5.5 0 1 1 11 0a5.5 5.5 0 0 1-11 0Zm8.382 6h7.236l2.081 4.162L18 23.995l-5.7-6.333l2.082-4.162Zm1.236 2l-.919 1.838L18 21.005l3.3-3.667l-.918-1.838h-4.764ZM8 16a4 4 0 0 0-4 4h7.05v2H2v-2a6 6 0 0 1 6-6h3v2H8Z"/>
+</svg>)}
+export const GithubIcon= () => {return (
+      <svg  width='80'        height='80'        viewBox='0 0 250 250' className='githubCorner'
+        style={{
+          fill: '#005500',
+          color: '#ffffffbb',
+          position: 'absolute',
+          zIndex: 1001,
+          top: 0,
+          right: 0,
+          border: 0,
+          transform: 'scale(1, 1)'
+        }}
+        aria-hidden='true'
+      >
+        <path d='M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z' />
+        <path
+          d='M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2'
+          fill='currentColor'
+          style={{
+            transformOrigin: '130px 106px'
+          }}
+          className= 'octoArm' 
+        />
+
+        <path
+          d='M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z'
+          fill='currentColor'          
+        />
+      </svg>)}

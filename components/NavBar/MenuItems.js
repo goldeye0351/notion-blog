@@ -78,7 +78,7 @@ const MenuItems = ({ items, depthLevel }) => {
           />
         </>
       ) : (<>
-        <Link passHref href={items.to} key={items.id} scroll={false} >
+        <Link passHref href={items.to} key={items.id} scroll={false} data-umami-event={`Menu:${items.name}`}  >
           <div className='   '>{items.icon}{items.name}</div>
         </Link></>
       )}
