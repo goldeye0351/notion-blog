@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion';
-
 const Mulu = ({ tableOfContent }) => {
   const [activeSection, setActiveSection] = useState(null)
 
@@ -57,19 +55,13 @@ const Mulu = ({ tableOfContent }) => {
               href={`#${id}`}              
             >                
               {activeSection === id ? 
-              <motion.div key={activeSection} 
-              initial="hidden" whileInView="visible"
-                transition={{ delay: 0, duration: 0.5 }}
-                variants={{
-                 hidden: { opacity: 0,x: 100,scale:0.5 },
-                 visible: { opacity: 1,x: 0,scale:1 },
-                }}
-              className=' activeLine ml-2 p-2 cursor-pointer italic hover:ring-2 hover:p-3 duration-300
+              <div className=' activeLine ml-2 p-2 cursor-pointer hover:ring-2 hover:p-3 duration-300
                text-green-400  dark:text-green-400  border rounded-xl border-green-400 dark:border-green-400
-              '>{text}</motion.div>
-              :
-              <div className=' p-1 cursor-pointer italic rounded-xl hover:bg-gray-600 hover:dark:bg-gray-700 hover:p-3 duration-300
               '>
+                {text}
+              </div>
+              :
+              <div className=' p-1 cursor-pointer italic blur-[1px] hover:blur-0 rounded-xl hover:bg-gray-600 hover:dark:bg-gray-700 hover:p-3 duration-300' >
                 {text}
                 </div>}
             </a>
