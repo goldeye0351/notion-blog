@@ -22,7 +22,7 @@ const BLOG = {
   showMenu:true,// 显示菜单,public/Menudta.js中修改
   previewImagesEnabled: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
-  defaultCover: '/mycover.jpg',
+  defaultCover: '/51.png',
   defaultIcon: '/favicon.ico',
   seo: {
     keywords: ['51xmi', 'log','notion'],
