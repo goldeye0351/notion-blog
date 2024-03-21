@@ -96,6 +96,14 @@ export default function Content (props) {
 
     return newup;
   };
+  useEffect(() => {
+    const images = document.getElementsByClassName('lazy-image-real');
+    const instance = new simpleParallax(images);
+    // 在组件卸载时执行清理操作
+    return () => {
+      instance.destroy();
+    };
+  }, []); // 空数组表示仅在初次渲染时执行
 
   return (<div className='  text-gray-200 dark:text-200 ' >
   <div id="biaoti"  className=' flex flex-col justify-center p-3 '>
