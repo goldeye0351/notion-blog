@@ -10,6 +10,7 @@ const BLOG = {
   pyqog:'https://51xmi.com/pyqlogo.png',
   githubUrl:'https://github.com/goldeye0351/notion-blog',
   umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/51xmi',
+  paytext:'꧁帮我买个鸡蛋灌饼赞助一下吧,由工商银行提供支持꧂',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],
@@ -30,7 +31,6 @@ const BLOG = {
   },
   notionDatabaseId: process.env.NOTION_DATABASE_ID || '', // DO NOT CHANGE THIS! Edit .env file!
   notionCommentId: process.env.NOTION_COMMENT_ID || '', // DO NOT CHANGE THIS! Edit .env file! 
-  notionPicId: process.env.NOTION_PIC_ID || '', // DO NOT CHANGE THIS! Edit .env file! 
   notionSpacesId: process.env.NOTION_SPACES_ID ||'' , // DO NOT CHANGE THIS! Edit .env file!
   notionAccessToken: process.env.NOTION_TOKEN || '', // Useful if you prefer not to make your database public
   notionDomain: 'www.notion.site',

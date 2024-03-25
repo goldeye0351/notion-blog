@@ -17,6 +17,7 @@ import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
 import { useState,useEffect } from 'react'
 import { Lock } from './Lock'
+import MyPay from './Mypay'
 
 export default function Content (props) {
   const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent,fullWidth} = props
@@ -107,10 +108,10 @@ export default function Content (props) {
 
   return (<div className='  text-gray-200 dark:text-200 ' >
   <div id="biaoti"  className=' flex flex-col justify-center p-3 '>
-      <div className='opacity-50   h-36 w-screen  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
-        <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill  className='  rounded-b-full  '/>  
+      <div className=' opacity-50   h-96 w-screen  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
+        <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill className='  rounded-b-full  object-cover blur-md  '/>  
       </div>
-      <div className='font-bold text-3xl flex justify-center mx-auto mt-20'>
+      <div className='font-bold text-3xl flex justify-center mx-auto mt-20 text-gray-200  blur-0         '>
         {frontMatter.title}
       </div>
 
@@ -146,6 +147,7 @@ export default function Content (props) {
             {...props}
           />
       </div>
+      <MyPay />
     </article>
 
     <div id='stickyright' className=' hidden lg:w-3/12 lg:flex p-3 ml-auto'>

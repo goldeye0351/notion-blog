@@ -11,11 +11,6 @@ export const links = [
       to: '/tt',         //  href.  要跳转的地址
       icon: <LoginIcon className='inline-block mb-1 mr-1 h-5 w-5' />,  
     },
-    {
-      name: 'Pichub',
-      to: '/pichub',
-      icon: <Pic1Icon className='inline-block mb-1 mr-1 h-5 w-5' />,
-      }, 
       {
         name: 'Friends',
         to: '/friends',

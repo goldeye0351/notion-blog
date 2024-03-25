@@ -263,7 +263,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
                     <Github className=' w-8 h-8  inline-block    mr-1 githubCorner  ' />
                 </Link>
-                <Link title='Pichub' href='/pichub' target='_blank' data-umami-event="点Pichub"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
+                <Link title='Pichub' href='https://pichub.51xmi.com' target='_blank' data-umami-event="点Pichub"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>
                     <Pic1Icon className=' w-8 h-8  inline-block    mr-1   ' />
