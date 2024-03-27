@@ -6,7 +6,8 @@ export const lang = {
       POSTS:'文章',
       COMMENTS:'评论',
       TUIJIAN:'推荐文章',
-      LASTCOMMENTS:'最近评论'
+      LASTCOMMENTS:'最近评论',
+      LOGIN2COM:'您需要登录后才可以发表评论',
     },
     TIME: {
       Y: '年前',
@@ -71,7 +72,8 @@ export const lang = {
       POSTS:'📋',
       COMMENTS:'🔖',
       TUIJIAN:'Recommend',
-      LASTCOMMENTS:'Recent Comments'
+      LASTCOMMENTS:'Recent Comments',
+      LOGIN2COM:'You must be logged in to leave a comment.',
     },
     TIME: {
       Y: 'Y ago',

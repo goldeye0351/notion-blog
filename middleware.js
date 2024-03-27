@@ -2,8 +2,10 @@ import { authMiddleware,redirectToSignIn } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export default authMiddleware({
-  //publicRoutes: (req) => !req.url.includes("/dashboard"),
-  ignoredRoutes: (req) => !req.url.includes("/tt"),
+  //publicRoutes: (req) => !req.url.includes("/","/tt"),
+  publicRoutes: ["/"],
+
+  //ignoredRoutes: (req) => !req.url.includes("/tt"),
   afterAuth(auth, req, evt) {
     if (!auth.userId && !auth.isIgnoredRoute) {
       return NextResponse.next();

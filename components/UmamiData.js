@@ -7,7 +7,7 @@ var umiId = BLOG.analytics.umamiConfig.websiteId
 
 const UmamiData = () => {
   const [number, setNumber] = useState(1);
-  const [pv, setPv] = useState(10000);
+  const [pv, setPv] = useState(9999999999);
   
     useEffect(() => {
     function umiTongji() {
@@ -52,11 +52,11 @@ const UmamiData = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (number < pv) {
-        setNumber((prevNumber) => prevNumber + 9);
+        setNumber((prevNumber) => prevNumber + 1);
       } else {
         clearInterval(interval);
       }
-    }, 5); // 设置每次数字增加的时间间隔
+    }, 1); // 设置每次数字增加的时间间隔
 
     return () => clearInterval(interval); // 在组件卸载时清除定时器
   }, [number]);

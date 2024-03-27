@@ -161,3 +161,7 @@ svg + .notion-page-title-text {
 .notion-external {
   @apply  bg-white/80 ;
 }
+
+.cl-userButtonPopoverFooter
+{@apply hidden;
+}

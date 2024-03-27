@@ -17,6 +17,7 @@ import Tabs from '@/components/Post/Tabs'
 import Tilt from 'react-parallax-tilt' 
 import Typed from 'typed.js'
 import { useRef, useEffect } from 'react';
+import { useUser } from '@clerk/nextjs'
 const variants = {
   scaleDown: {
     scale: 0.8,
@@ -59,6 +60,7 @@ const variants = {
 }
 
 const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
+  const {user} = useUser()
   const post = {
     id: 'Home',
     title: 'Home'
@@ -153,7 +155,8 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                           scale={1.01}
                         >
                       <div className=' my3din w-full h-12 flex justify-center items-center content-center rounded-full '>
-                        <LoginIcon className=' group-hover:text-green-400  w-12 h-12   '/>
+                        {!user &&<LoginIcon className=' group-hover:text-green-400  w-12 h-12   '/>}
+                        {user &&  <img   src={user.imageUrl}    className="group-hover:text-green-400  w-12 h-12   "                        />}
                       </div>
                   </Tilt>
                     
@@ -211,7 +214,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                   exit={["scaleDown", "out"]}
                 >
                     {deftag.map((post) => (
-                      <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} />
+                      <BlogPost key={post.id} post={post} index={deftag.indexOf(post)} resdata={resdata} allpls={allpls}/>
                     ))}
                 </motion.div>
               </AnimatePresence>

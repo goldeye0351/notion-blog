@@ -26,7 +26,7 @@ export default function Home() {
               <div key='用户信息' className="flex min-h-screen space-y-6 text-3xl font-semibold flex-col justify-center items-center content-center m-auto text-gray-200  " >
                 
                 <div className=" scale-150  mb-16 ">
-                  <UserButton afterSignOutUrl="/dashboard " />
+                  <UserButton />
                 </div>
 
                 {user && (

@@ -5,7 +5,7 @@ import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Pinglun from '@/components/Post/NotionComment'
 import BLOG from '@/blog.config'
-const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = false,lastposts, tableOfContent}) => {
+const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = false,lastposts, tableOfContent,mypls}) => {
   const [showSubPageTitle, setShowSubPageTitle] = useState(false)
   const webtitle=BLOG.title
   const pageTitle = webtitle+getPageTitle(blockMap)
@@ -35,7 +35,7 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = fa
           tableOfContent={tableOfContent}
           fullWidth={fullWidth}
         />
-      <Pinglun  post={frontMatter}  /> 
+      <Pinglun  post={frontMatter}  mypls={mypls}/> 
       <Prevandnext prev={prev} next={next} me={frontMatter} />
     </Container>
 

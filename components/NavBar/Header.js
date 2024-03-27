@@ -6,10 +6,11 @@ import LangSwitcher from './LangSwitcher'
 import FullWidth from './FullWidth'
 import Image from 'next/image'
 import xmisvglogo from '@/public/51xmi.svg'
-import { PYQ } from '@/Icon/Icon'
+import { LoginIcon, PYQ } from '@/Icon/Icon'
 import NavBar from './Nav'
-//import { UserButton } from "@clerk/nextjs";
+import { SignInButton,useUser,UserButton } from "@clerk/nextjs";
 const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
+  const { user } = useUser();
   const useSticky = !BLOG.autoCollapsedNavBar
   const navRef = useRef(/** @type {HTMLDivElement} */ undefined)
   const sentinelRef = useRef(/** @type {HTMLDivElement} */ undefined)
@@ -64,6 +65,12 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
           <ThemeSwitcher />
           <LangSwitcher />
           <FullWidth fullWidth={fullWidth} toggleFullWidth={toggleFullWidth} />
+          {!user && <SignInButton>
+            <div title='SignIn' className=' p-2 hover:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer rounded-lg  '>
+              <LoginIcon  className="md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 " />
+            </div>
+            </SignInButton>}
+          <UserButton />
         </div>
       </div>
     </>

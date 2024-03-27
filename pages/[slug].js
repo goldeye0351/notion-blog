@@ -1,5 +1,5 @@
 import Layout from '@/layouts/layout'
-import { getAllPosts, getPostBlocks } from '@/lib/notion'
+import { getAllPosts, getPostBlocks,getAllComments } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { useRouter } from 'next/router'
 import Loading from '@/components/Loading'
@@ -9,7 +9,7 @@ import React from 'react'
 import {  getPageTableOfContents,  uuidToId} from 'notion-utils'
 
 const Post = props => {
-  const { posts,post, blockMap,prev,next,lastposts,tableOfContent,fullWidth  }=props 
+  const { posts,post, blockMap,prev,next,lastposts,tableOfContent,fullWidth ,mypls }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -33,7 +33,7 @@ const Post = props => {
   {  return (<ArticleLock validPassword={validPassword} />)} 
 
   if (!lock)
-  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={fullWidth} prev={prev} next={next}  lastposts={lastposts} /> }
+  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={fullWidth} prev={prev} next={next}  lastposts={lastposts} mypls={mypls} /> }
 
 }
 
@@ -49,6 +49,8 @@ export async function getStaticProps({ params: { slug } }) {
   const posts = await getAllPosts({ postAndPage:true })
   const lastposts = await getAllPosts({ onlyPost:true })
   const post = posts.find((t) => t.slug === slug)
+  const allpl= await getAllComments()
+  const mypls= allpl.filter(pl => pl.Name === post.id)
   const index = posts.indexOf(post)
   const prev = posts.slice(index - 1, index)[0] ?? posts.slice(-1)[0]
   const next = posts.slice(index + 1, index + 2)[0] ?? posts[0]
@@ -75,7 +77,8 @@ export async function getStaticProps({ params: { slug } }) {
         next,
         blockMap,
         lastposts,
-        tableOfContent
+        tableOfContent,
+        mypls
       },
       revalidate: 1
     }
@@ -89,7 +92,8 @@ export async function getStaticProps({ params: { slug } }) {
         next: null,
         blockMap: null,
         lastposts:null,
-        tableOfContent:null
+        tableOfContent:null,
+        mypls:null
       }
     }
   }

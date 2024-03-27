@@ -7,15 +7,17 @@ import { lang } from '@/public/lang'
 import md5 from 'md5'
 import IpComponent from "../IpComponent";
 import { TgIcon,PicIcon } from "@/Icon/Icon";
-function Pinglun({post} ){
+import { useUser,SignInButton } from "@clerk/nextjs";
+function Pinglun({post,mypls} ){
+  const {user} =useUser()
     const postid = post?.id
     const title = post?.title
     const { locale } = useRouter()
     const t = lang[locale]
     const [ren, setRen] = useState('');
-    const [comments, setComments] = useState([]);
+    const [comments, setComments] = useState(mypls);
     const [pinglun, setPinglun] = useState('');
-    const [email, setEmail] = useState('');
+    const email = user?.primaryEmailAddress.emailAddress;
     const [linkTo, setLinkTo] = useState('');
     const visitorIp = IpComponent();    
     const [file, setFile] = useState(null);
@@ -74,14 +76,14 @@ function Pinglun({post} ){
         if (res.status === 201) {
           fetchComments(); // 在提交评论成功后再次获取评论数据
           window.scrollTo({ top: document.getElementById('comment').offsetTop, behavior: 'smooth' })
+                    //清空输入框中的内容
+          setRen('');          setPinglun('');          setLinkTo('');
         } else {
           alert('errer 信号不好, 出错了')    
         }
       };
 
-      useEffect(() => {
-        fetchComments(); // 在组件加载时获取评论数据
-      }, []);
+      //useEffect(() => {        fetchComments();       }, []);
     
       async function fetchComments() {
         try {
@@ -111,7 +113,10 @@ function Pinglun({post} ){
         }
       }
 return< div>
-        
+  {!user && <div className=" flex mx-auto justify-center italic text-2xl text-green-500 p-3 ">
+    <SignInButton>{`😇${t.BLOG.LOGIN2COM}`}</SignInButton>
+    </div>}
+  {user && 
   <form onSubmit={addcomment} className=' relative w-full max-w-screen-md  p-3 md:p-0  mx-auto text-gray-200 '>
 
       <div id='CommentBigBox' className='  p-3 w-full bg-gray-700 dark:bg-gray-800  rounded-xl'>
@@ -135,15 +140,6 @@ return< div>
                   required
               />
           </div>
-          <div title='email' id='email' className=' w-20 p-1  bg-gray-700 dark:bg-gray-800 rounded-xl flex flex-col justify-center duration-300 ' >
-              <input id="EMAIL"  name="EMAIL" autoComplete="email"
-                  type="text" className='  italic px-1  mx-1 block  duration-300 bg-transparent '
-                  placeholder={t.LAYOUT.COMMENT_EMAIL}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-              />
-          </div>
           <div title='piclink' id='piclink' className=' bg-gray-700 dark:bg-gray-800 rounded-xl lg:flex flex-col justify-center duration-300 ' >
             <div className=' text-gray-200 flex mx-auto flex-col  justify-center items-center content-center space-y-2 w-full '>
               <div className='bg-gray-700 dark:bg-gray-800 p-2 rounded-2xl flex justify-center  w-full overflow-hidden' >
@@ -163,48 +159,49 @@ return< div>
         </div>
       </div>
   </form>
-  <div className=" overflow-scroll  p-3 md:p-0  " > 
+  }
+     <div className=" overflow-scroll  p-3 md:p-0  " > 
     <div id="comment" className="  mx-auto  max-w-screen-md w-full mt-3 ">
           <ol className=" w-full">
             {comments.map((post) => {
-              const myemail = post.properties.Email.email;
-              const tolink= post.properties.LinkTo.rich_text[0]?.text.content;
-              const parts = myemail ? myemail.split('@'): '';
-              const part0 = parts[0];
-              const part1 = parts[1];
-              const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
-              const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
-
-
-              return<li key={post.id} className='   my-3 flex-row flex space-x-3'>
-              <div id='左边头像' className="  ">
-                    <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-12 w-12 min-w-[48px]   '/>                    
-              </div>
-              <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-full ">
-                <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
-                  {post.properties.Ren.rich_text[0].text.content }
+                const myemail = post.properties?.Email.email || post.Email;
+                const tolink= post.properties?.LinkTo.rich_text[0]?.text.content || post.LinkTo ;
+                const parts = myemail ? myemail.split('@'): '';
+                const part0 = parts[0];
+                const part1 = parts[1];
+                const emailHash = myemail ? md5(myemail.trim().toLowerCase()) : '';
+                const gravatarUrl = part1 === 'qq.com' ? `http://q1.qlogo.cn/g?b=qq&nk=${part0}&s=100`:`https://www.gravatar.com/avatar/${emailHash}` ;
+  
+  
+                return<li key={post.id} className='   my-3 flex-row flex space-x-3'>
+                <div id='左边头像' className="  ">
+                      <Image src={gravatarUrl} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-12 w-12 min-w-[48px]   '/>                    
                 </div>
-                <article id='主体文字' className="  break-words italic  ">
-                  {post.properties.Text.rich_text[0].text.content }
-                </article>
-                <div id='图' >
-                {tolink && tolink.slice(-3) === 'mp4' &&
-                  <video controls>
-                    <source src={tolink} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                }
-                {tolink && tolink.slice(-3) !== 'mp4' &&
-                  <Image src={tolink} alt={tolink} width={384} height={384} className="rounded-sm" />
-                }
+                <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-full ">
+                  <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
+                    {post.properties?.Ren.rich_text[0].text.content  || post.Ren  }
+                  </div>
+                  <article id='主体文字' className="  break-words italic  ">
+                    {post.properties?.Text.rich_text[0].text.content || post.Text }
+                  </article>
+                  <div id='图' >
+                  {tolink && tolink.slice(-3) === 'mp4' &&
+                    <video controls>
+                      <source src={tolink} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  }
+                  {tolink && tolink.slice(-3) !== 'mp4' &&
+                    <Image src={tolink} alt={tolink} width={384} height={384} className="rounded-sm" />
+                  }
+                  </div>
+                  <div className=" flex flex-grow w-full justify-between ">                   
+                    <div>{DaysAgo(Date.parse(post.created_time) || post.date) }</div>
+                    <div><FormattedDate date={post.created_time} /></div>
+                  </div>
+                  
                 </div>
-                <div className=" flex flex-grow w-full justify-between ">                   
-                  <div>{DaysAgo(Date.parse(post.created_time)) }</div>
-                  <div><FormattedDate date={post.created_time} /></div>
-                </div>
-                
-              </div>
-            </li>
+              </li>
             })}
           </ol>
     </div> 

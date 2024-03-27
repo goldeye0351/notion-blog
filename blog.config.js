@@ -10,7 +10,7 @@ const BLOG = {
   pyqog:'https://51xmi.com/pyqlogo.png',
   githubUrl:'https://github.com/goldeye0351/notion-blog',
   umamiUrl:'https://umami.51xmi.com/share/1up60SkH1etMJIqX/51xmi',
-  paytext:'꧁帮我买个鸡蛋灌饼赞助一下吧,由工商银行提供支持꧂',
+  paytext:'꧁不要咖啡,来个鸡蛋灌饼吧꧂',
   lang: 'en-US', // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   timezone: 'Asia/Shanghai', // See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for all options.
   appearance: 'dark', // ['light', 'dark', 'auto'],
