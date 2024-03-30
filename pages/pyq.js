@@ -1,7 +1,7 @@
 import Image from "next/image"
 import svglogo from '@/public/51xmi.svg'
 import bjIMG from '@/public/pyq.png'
-import { PYQ } from "@/Icon/Icon"
+import { HeartIcon, PYQ } from "@/Icon/Icon"
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import Container from '@/components/Container'
@@ -23,11 +23,10 @@ const Saysay = ({posts}) => {
 
   return (<>
 <Container  title={`${BLOG.title}${BLOG.saysay}`} description={BLOG.description}  ogimage={BLOG.pyqog} className=' m-auto min-h-screen flex flex-col  ' >
-    <Image src={bjIMG} alt='朋友圈' className=" absolute top-0 left-0 right-0    mx-auto w-screen   h-64 max-h-64  opacity-80  rounded-3xl  "/>
-    <div className=' mx-auto'><img alt="今日诗词" src="https://v2.jinrishici.com/one.svg?font-size=20&color=white"/></div>
+    {/* <div className=' mx-auto opacity-50 '><img alt="今日诗词" src="https://v2.jinrishici.com/one.svg?font-size=20&color=white"/></div> */}
     <div className=" relative ">
-        <div className=" sticky top-28 flex flex-row text-white  justify-end     ">
-          <div  className="  flex-row flex   mt-28  p-2   text-white justify-center content-center items-center ">
+        <div className=" flex flex-row text-white  justify-end     ">
+          <div  className="  flex-row flex   p-2   text-white justify-center content-center items-center ">
             <PYQ className='h-24 w-24 mx-auto   ' />
             <span className=" inline-block  text-3xl italic ">
               {saysaytext} 
@@ -66,8 +65,12 @@ const Saysay = ({posts}) => {
                       }
                       </div>
                       <div className=" flex flex-grow w-full justify-between ">                   
-                        <div>{DaysAgo(post.date) }</div>
-                        <div><FormattedDate date={post.date} /></div>
+                        <div><HeartIcon className='w-5 h-5 inline-block' />{post.up}</div>
+                        <div className=" flex ">
+                          <div >{DaysAgo(post.date) }</div>
+                          <div className=" ml-3"><FormattedDate date={post.date} /></div>
+
+                        </div>
                       </div>
                       
                     </div>

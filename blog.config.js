@@ -2,7 +2,7 @@ const BLOG = {
   title: '51xMI',
   description: '51xMI',
   link:'https://51xmi.com',
-  saysay:'随便说说',//朋友圈的文字
+  saysay:'Moment',//朋友圈的文字
   author: 'Goldeye',
   email: 'admin@51xm.com',
   viptitle:'VIP中心',

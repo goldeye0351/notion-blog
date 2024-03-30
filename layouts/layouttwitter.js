@@ -206,7 +206,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
           </div>
         <div id="midmain" className=' my-5 lg:my-8    '>
            {!deftag.length && (  <span>  {t.SEARCH.NOT_FOUND}  </span> )}
-              <AnimatePresence        initial={false}        exitBeforeEnter      >
+              <AnimatePresence        initial={false}  mode="wait" >
                 <motion.div   key={searchValue}
                   variants={variants}
                   initial="in"

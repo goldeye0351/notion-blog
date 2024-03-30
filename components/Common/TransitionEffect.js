@@ -7,7 +7,7 @@ const variants = {
     scale: 1,
     y: 0,
     transition: {
-      duration: 0.25,
+      duration: 1.25,
       delay: 0.25
     }
   },
@@ -29,10 +29,9 @@ const TransitionEffect = ({ children }) => {
   const { asPath } = useRouter()
 
   return (
-      <AnimatePresence
-        initial={false}
-        exitBeforeEnter
-        onExitComplete={() => window.scrollTo(0, 0)}
+      <AnimatePresence     
+      mode={'wait'}       
+      onExitComplete={() => window.scrollTo(0, 0)}
       >
         <motion.div
           key={asPath}

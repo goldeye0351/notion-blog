@@ -156,3 +156,7 @@
     transform: rotate(10deg);
   }
 }
+
+.scalecard{
+  transform-origin: top;
+}
