@@ -65,12 +65,14 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
           <ThemeSwitcher />
           <LangSwitcher />
           <FullWidth fullWidth={fullWidth} toggleFullWidth={toggleFullWidth} />
-          {!user && <SignInButton>
-            <div title='SignIn' className=' p-2 hover:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer rounded-lg  '>
-              <LoginIcon  className="md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 " />
-            </div>
-            </SignInButton>}
-          <UserButton />
+          <div className='w-8 mr-2'>
+            {!user && <SignInButton>
+              <div title='SignIn' className=' p-2 hover:bg-gray-700 dark:hover:bg-gray-800 cursor-pointer rounded-lg  '>
+                <LoginIcon  className="md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 " />
+              </div>
+              </SignInButton>}
+            <UserButton />
+          </div>
         </div>
       </div>
     </>

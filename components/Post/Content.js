@@ -18,8 +18,9 @@ import Tagitem from './Tagitem'
 import { useState,useEffect } from 'react'
 import { Lock } from './Lock'
 import MyPay from './Mypay'
-
+import { useUser } from '@clerk/nextjs'
 export default function Content (props) {
+  const user=useUser()
   const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent,fullWidth} = props
   const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
@@ -107,11 +108,11 @@ export default function Content (props) {
   }, []); // 空数组表示仅在初次渲染时执行
 
   return (<div className='  text-gray-200 dark:text-200 ' >
-  <div id="biaoti"  className=' flex flex-col justify-center p-3 '>
-      <div className=' opacity-50   h-96 w-screen  absolute top-0 left-0 right-0 bg-gradient-to-b    to-transparent  '>
+  <div id="biaoti"  className=' flex flex-col justify-start  p-3 '>
+      <div className=' absolute -translate-y-28 left-0  w-screen h-96 opacity-50  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill className='  rounded-b-full  object-cover blur-md  '/>  
       </div>
-      <div className='font-bold text-3xl flex justify-center mx-auto mt-20 text-gray-200  blur-0         '>
+      <div className='font-bold text-3xl flex justify-center mx-auto md:mt-20 text-gray-200  blur-0         '>
         {frontMatter.title}
       </div>
 
@@ -148,6 +149,8 @@ export default function Content (props) {
           />
       </div>
       <MyPay />
+      {user.isSignedIn && <div>{frontMatter.password}</div>}
+
     </article>
 
     <div id='stickyright' className=' hidden lg:w-3/12 lg:flex p-3 ml-auto'>
