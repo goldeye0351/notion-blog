@@ -59,9 +59,9 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
           )}
         <div className='  flex flex-row items-center  '>
           {BLOG.showMenu && <NavBar />}
-          <Link title='朋友圈' href='/pyq' data-umami-event="朋友圈" className=' mr-2 ' >
+          {/*<Link title='朋友圈' href='/pyq' data-umami-event="朋友圈" className=' mr-2 ' >
                 <PYQ   alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 ' />
-          </Link>
+          </Link>*/}
           <ThemeSwitcher />
           <LangSwitcher />
           <FullWidth fullWidth={fullWidth} toggleFullWidth={toggleFullWidth} />

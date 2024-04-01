@@ -12,7 +12,7 @@ const Card = ({i, progress, range, targetScale,children}) => {
     <div ref={container} className='sticky top-36 flex  justify-center  '>
       <motion.div 
         style={{ backgroundColor: `#${randomR}${randomG}${randomB}` ,scale, top:`calc(-5vh + ${i * 5}px) `}} 
-        className= ' scalecard flex relative  rounded-3xl p-2 bg-opacity-30 ' 
+        className= ' scalecard flex relative  rounded-xl p-[1px] bg-opacity-10  my-3  ' 
       >
         
       {children}
