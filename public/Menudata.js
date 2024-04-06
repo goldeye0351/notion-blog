@@ -16,7 +16,11 @@ export const links = [
         to: '/friends',
         icon: <FriendsIcon className='inline-block mb-1 mr-1 h-5 w-5' />,
       },
-
+      {
+        name: '朋友圈',
+        to: '/pyq',
+        icon: <PYQ className='inline-block mb-1 mr-1 h-5 w-5' />,
+      },
   ]
 
     {/*{
