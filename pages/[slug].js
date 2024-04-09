@@ -38,9 +38,9 @@ const Post = props => {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ postAndPage:true })
+  //const posts = await getAllPosts({ postAndPage:true })
   return {
-    paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
+    paths: [],
     fallback: true
   }
 }
