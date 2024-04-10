@@ -10,7 +10,6 @@ import  React from "react";
 import Mulu from './TableOfContents'
 import Jumptocomment from '../JumpToComment'
 import { motion } from 'framer-motion'
-import Lastpost from '@/components/Post/lastpost'
 import IpComponent from '@/components/IpComponent';
 import Image from 'next/image'
 import WordCount from '../WordCount'
@@ -21,7 +20,7 @@ import MyPay from './Mypay'
 import { useUser } from '@clerk/nextjs'
 export default function Content (props) {
   const user=useUser()
-  const { frontMatter, blockMap, pageTitle,lastposts,tableOfContent,fullWidth} = props
+  const { frontMatter, blockMap,tableOfContent} = props
   const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
   const [showlock, setShowlock] = useState()
@@ -178,13 +177,7 @@ export default function Content (props) {
                 <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
                       <Jumptocomment />
                 </div>
-            </div>
-            <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
-              🆕&nbsp;📣
-              <hr/>
-              <Lastpost  posts={lastposts} className='text-sm '/>
-            </div>
-            
+            </div>           
           </div>
       </motion.div>
     </div>

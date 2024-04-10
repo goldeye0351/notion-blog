@@ -110,7 +110,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
         <div id="tagsAndMe" className='  sticky top-24 flex-col flex   min-h-screen    '>
 
           <div id='alltags' className=' flex flex-col flex-grow items-center content-center w-52  px-3     '>
-            <div className='w-full px-3 m-1 h-12 overflow-hidden rounded-xl flex flex-row justify-between   content-center items-center 
+            <div onClick={() => { setSearchValue('')}}  className='w-full px-3 m-1 h-12 overflow-hidden rounded-xl flex flex-row justify-between   content-center items-center 
                        hover:h-14   font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 
                        hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                        hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400'>
@@ -125,16 +125,16 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
                   data-umami-event='切换TAGS'
-                  className={` group w-full px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center 
-                       hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 
-                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 `}
+                  className={searchValue===key 
+                  ?
+                  'group w-full px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night ring-1 ring-green-400 ' 
+                  : 
+                  'group w-full px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400' }
                 >
-                  <div className='w-full flex justify-between  '>
-                  <div>{`${key} `}</div >
-                  <div>{`(${tags[key]})`}</div> 
+                 <div className='w-full flex justify-between  '>
+                    <div>{`${key} `}</div >
+                    <div>{`(${tags[key]})`}</div>
                   </div>
-
                 </button>
               )
             })}
@@ -189,17 +189,27 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
           </svg>
         </div>
         <div className=' lg:hidden flex flex-row justify-center flex-wrap p-1 '>
+            <div onClick={() => { setSearchValue('')}}  className='px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between   content-center items-center 
+                       hover:h-14   font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 
+                       hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
+                       hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400'>
+              <div>{t.BLOG.POSTS}({posts.length})</div>
+            </div>
             {Object.keys(tags).map((key) => {
               return (
                 <button
                   key={key}
                   onClick={() => { setSearchValue(key) }} 
-                  data-umami-event='search'
-                  className="group p-2 rounded-xl   hover:scale-110   font-medium  whitespace-nowrap 
-                  hover:shadow-[0_0_30px_1px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                  "
+                  data-umami-event='切换TAGS'
+                  className={searchValue===key 
+                  ?
+                  'group px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night ring-1 ring-green-400 ' 
+                  : 
+                  'group px-3 m-1 h-10 overflow-hidden rounded-xl flex flex-row justify-between content-center items-center hover:h-12  font-bold  whitespace-nowrap bg-gray-700  dark:bg-gray-800 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400' }
                 >
-                {`${key} (${tags[key]})`}
+                 <div className='  '>
+                    <div>{`${key} `}{`(${tags[key]})`}</div>
+                  </div>
                 </button>
               )
             })}
@@ -256,11 +266,6 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
             </Tabs>
             <div id='4links' className=' w-full space-y-3 flex-col justify-center flex text-gray-200 ' >
               <div className=' flex h-12 flex-row w-full justify-between space-x-3'>
-                <Link title='Friends' href='/friends' data-umami-event="点友链" className='w-1/2 hover:w-full  bg-gray-700 dark:bg-gray-800 rounded-xl group   justify-center flex items-center 
-                      hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
-                      hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
-                  <FriendsIcon className=' w-9 h-9  inline-block  mr-1   ' />
-                </Link>
                 <Link title='Github' href={BLOG.githubUrl} target='_blank' data-umami-event="点github"  className='w-1/2 hover:w-full bg-gray-700 dark:bg-gray-800 rounded-xl  group   justify-center  flex items-center
                   hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
                   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400  '>

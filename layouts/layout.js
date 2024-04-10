@@ -1,19 +1,8 @@
-import { useEffect, useState } from 'react'
-import { getPageTitle } from 'notion-utils'
 import Prevandnext from '@/components/Post/ArticleAdjacent'
 import Container from '@/components/Container'
 import Content from '@/components/Post/Content'
 import Pinglun from '@/components/Post/NotionComment'
-import BLOG from '@/blog.config'
-const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = false,lastposts, tableOfContent,mypls}) => {
-  const [showSubPageTitle, setShowSubPageTitle] = useState(false)
-  const webtitle=BLOG.title
-  const pageTitle = webtitle+getPageTitle(blockMap)
-  useEffect(() => {
-    if (frontMatter.title !== pageTitle) {
-      setShowSubPageTitle(true)
-    }
-  }, [frontMatter, pageTitle, subPage])
+const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, tableOfContent,mypls}) => {
 
   return (<>
     <Container
@@ -28,12 +17,9 @@ const Layout = ({ posts,prev,next,blockMap, frontMatter, fullWidth, subPage = fa
           posts={posts}
           frontMatter={frontMatter}
           blockMap={blockMap}
-          pageTitle={showSubPageTitle ? pageTitle : null}
           prev={prev}
           next={next}
-          lastposts={lastposts}
           tableOfContent={tableOfContent}
-          fullWidth={fullWidth}
         />
       <Pinglun  post={frontMatter}  mypls={mypls}/> 
       <Prevandnext prev={prev} next={next} me={frontMatter} />

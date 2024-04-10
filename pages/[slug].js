@@ -47,7 +47,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const posts = await getAllPosts({ postAndPage:true })
-  const lastposts = await getAllPosts({ onlyPost:true })
   const post = posts.find((t) => t.slug === slug)
   const allpl= await getAllComments()
   const mypls= allpl.filter(pl => pl.Name === post.id)
@@ -76,7 +75,6 @@ export async function getStaticProps({ params: { slug } }) {
         prev,
         next,
         blockMap,
-        lastposts,
         tableOfContent,
         mypls
       },
@@ -91,7 +89,6 @@ export async function getStaticProps({ params: { slug } }) {
         prev: null,
         next: null,
         blockMap: null,
-        lastposts:null,
         tableOfContent:null,
         mypls:null
       }
