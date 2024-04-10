@@ -51,14 +51,8 @@ const BlogPost = ({ index , post,resdata,allpls }) => {
                   </div>  
                 </div>
                 {post.Link && <Image src={post.Link} alt={post.title} width={10000} height={300} />}
-
                 <span className=' flex font-light justify-between  '>
                   <FormattedDate date={post.date} />
-                  <div className="   rounded-xl  text-sm flex flex-row flex-nowrap justify-between ">
-                      <EyeIcon className=' mx-1  w-6 h-6 inline-block'/><span id={post.slug} ></span>
-                      <HeartIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '>{post.up}</div>
-                      <ChatIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '> {mypls.length} </div>
-                   </div>
                 </span>
                 <div className=' font-light leading-8 '>{post.summary}</div>
                 {/*<Image src={post?.page_cover}  alt={post.title} fill className=' absolute top-0 left-0  rounded-xl opacity-100 group-hover:opacity-10  translate-x-[100%] duration-500  group-hover:translate-x-0'/>*/}
@@ -66,8 +60,14 @@ const BlogPost = ({ index , post,resdata,allpls }) => {
         </div>
       </article>
     </motion.div>
-
   </Link>
+
+  <div className='   flex justify-end m-2 '>
+    <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={post.title}  ></emoji-reaction>  
+    <EyeIcon className=' mx-1  w-6 h-6 inline-block'/><span id={post.slug} ></span>
+    <ChatIcon className=' mx-1 w-6 h-6 inline-block' /> <div className=' inline-block   '> {mypls.length} </div>
+  </div>
+
 </div>
   )
 }

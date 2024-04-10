@@ -12,7 +12,7 @@ const Scripts = () => (
       />
     )}
      <script src="/simpleParallax.min.js"></script>
-
+     <script type="module"  src="/up.js"></script>
     {/*<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>*/}
     {/*<script async src={'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${BLOG.googleadid}'} crossorigin="anonymous"> </script>*/}
   </>

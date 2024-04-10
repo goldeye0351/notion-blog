@@ -147,9 +147,12 @@ export default function Content (props) {
             {...props}
           />
       </div>
+      <div className=' lg:hidden  flex justify-center '>
+                  <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={frontMatter.title}  ></emoji-reaction>  
+      </div>
       <MyPay />
       {user.isSignedIn && <div>{frontMatter.password}</div>}
-
+      
     </article>
 
     <div id='stickyright' className=' hidden lg:w-3/12 lg:flex p-3 ml-auto'>
@@ -162,22 +165,20 @@ export default function Content (props) {
             {showlock && <button title='🔒' onClick={() => setShowPay((showPay) => !showPay)} data-umami-event="解锁" className=' group fixed inset-y-[50%] left-1  w-12 h-12 p-3 text-green-400 animate-bounce   bg-gray-700 dark:bg-gray-800 rounded-2xl justify-center mx-auto '>
                 <KeyIcon  className='w-6 h-6 group-hover:scale-150 duration-200 ' />
             </button>}
-            <div id="大屏几个" className=' flex flex-row justify-between my-8 space-x-1 '> 
-                <div title='UP' id="点赞" onClick={dianzan} data-umami-event="大屏点赞" 
-                className='group cursor-pointer  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
-                      <button id="dapindianzan"  className='  hover:text-gray-200 dark:hover:text-gray-200 w-full'>
-                        <ThumbUpIcon  className='w-7 h-7 inline-block mx-1 text-center group-hover:scale-150 duration-200 font-bold text-xl ' />
-                        <span id="myupdapin" className=' inline-block group-hover:scale-125 duration-200'>{zjk}</span>
-
-                      </button>
+            <div id="大屏几个" className=' mt-16 flex flex-row justify-between my-8 space-x-1 '> 
+                 <div className='  w-full cursor-pointer py-2 bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
+                  <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={frontMatter.title}  ></emoji-reaction>  
                 </div>
-                <div title="%" id="进度" className='group cursor-pointer  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
+                <div title="%" id="进度" className='group  cursor-pointer  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
                       <ReadingProgress />
                 </div>
-                <div title="Comment" id="我要评论" className='group cursor-pointer  w-full  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
+
+                <div title="Comment" id="我要评论" className='group cursor-pointer   bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto px-[2px] '>
                       <Jumptocomment />
                 </div>
-            </div>           
+            </div>
+
+                     
           </div>
       </motion.div>
     </div>
@@ -191,23 +192,12 @@ export default function Content (props) {
         {showlock && <button title='🔒' onClick={() => setShowPay((showPay) => !showPay)} data-umami-event="解锁" className='group  w-full p-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
             <KeyIcon  className='w-6 h-6 group-hover:scale-150 group-hover:text-green-400 duration-200' />
         </button>}
-        <div title='点赞' className='group  w-full p-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
-          <button id="xiaopindianzan"
-            onClick={dianzan} data-umami-event="小屏点赞" 
-            className='text-gray-200 dark:text-gray-200 '
-          >
-            {/* onClick={() => setShowPay((showPay) => !showPay)} */}
-            <ThumbUpIcon  className='w-6 h-6 group-hover:scale-150 duration-200' />
-            <span id="myupxiaopin" className=' inline-block group-hover:scale-125 duration-200'>{zjk}</span>
-          </button>
-        </div>
         <div title='评论' className='group  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
           <Jumptocomment />
         </div>
 
   </div>
     {showPay && <Lock validPassword={validPassword}/>}
-
 </div>
   )
 }
