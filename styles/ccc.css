@@ -160,3 +160,8 @@
 .scalecard{
   transform-origin: top;
 }
+
+textarea:focus {
+  border: 1px solid rgb(97, 216, 19);
+  outline: none;
+}

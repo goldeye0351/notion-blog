@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import DaysAgo from '@/components/Common/DaysAgo'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {ThumbUpIcon,ChatIcon, KeyIcon } from '@/Icon/Icon'
+import {ChatIcon, KeyIcon } from '@/Icon/Icon'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import  React from "react";
 import Mulu from './TableOfContents'
 import Jumptocomment from '../JumpToComment'
 import { motion } from 'framer-motion'
-import IpComponent from '@/components/IpComponent';
+import Lastpost from '@/components/Post/lastpost'
 import Image from 'next/image'
 import WordCount from '../WordCount'
 import Tagitem from './Tagitem'
@@ -20,11 +20,10 @@ import MyPay from './Mypay'
 import { useUser } from '@clerk/nextjs'
 export default function Content (props) {
   const user=useUser()
-  const { frontMatter, blockMap,tableOfContent} = props
+  const { frontMatter, blockMap,tableOfContent,posts} = props
   const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
   const [showlock, setShowlock] = useState()
-  const visitorIp = IpComponent();
   var zjk = frontMatter.up;
   const el = React.useRef(null);
   const [isBlurred, setIsBlurred] = useState(true);
@@ -63,40 +62,6 @@ export default function Content (props) {
     };
   }, []);
 
-  const dianzan = async (e) => {
-    const slug=frontMatter.id;
-    zjk++;
-    const newup=zjk ;
-    e.preventDefault();
-    const res = await fetch('/api/dianzan', {
-      method: 'PATCH',
-      body: JSON.stringify({ slug,newup}),
-    });
-    // Success if status code is 201
-    if (res.status === 201) {
-      document.querySelector('#myupxiaopin').innerHTML = newup;
-      document.querySelector('#myupdapin').innerHTML = newup;
-      console.log('谢谢你的点赞.',newup)
-    } else {
-      console.log('出错了', { type: 'error' });
-    }
-    const postid=frontMatter.id;
-    const ren=visitorIp;
-    const pinglun='点了一个up';
-    const title=frontMatter.title;
-    const email=visitorIp;
-    const res2 = await fetch('/api/pinglunapi', {
-      method: 'POST',
-      body: JSON.stringify({ postid,ren,pinglun,title,email,visitorIp }),
-    });
-    if (res2.status === 201) {
-      console.log('谢谢你的点赞')
-    } else {
-      console.log('errer 信号不好, 出错了')    
-    }
-
-    return newup;
-  };
   useEffect(() => {
     const images = document.getElementsByClassName('lazy-image-real');
     const instance = new simpleParallax(images);
@@ -177,7 +142,11 @@ export default function Content (props) {
                       <Jumptocomment />
                 </div>
             </div>
-
+            <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
+              <div className=' '>🆕  📣</div>
+              <hr/>
+              <Lastpost  posts={posts} className='text-sm '/>
+            </div>
                      
           </div>
       </motion.div>

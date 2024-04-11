@@ -31,7 +31,7 @@ export default function ReadingProgress() {
   return (<>
         <div title={'%'} data-umami-event="回到顶部" 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className={`${scrollPercentage > 0 ? ' w-6 h-6 m-3 ' : 'w-0 h-0 opacity-0'} 
+            className={`${scrollPercentage > 0 ? ' w-6 h-6 m-2 ' : 'w-0 h-0 opacity-0'} 
                          cursor-pointer  group-hover:scale-125  rounded-lg flex justify-center items-center duration-200 transition-all `} >
             <RightArrow  className={'w-6 h-6 hidden group-hover:block -rotate-90'} />
             <div className=' group-hover:hidden  flex justify-center items-center rounded-lg   '>

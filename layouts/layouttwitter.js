@@ -93,6 +93,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
       const typed = new Typed(el.current, {
         strings: [BLOG.tag[searchValue]],
         typeSpeed: 50,
+        showCursor: false,
       });
   
       return () => {
@@ -251,7 +252,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
             </BubbleUI>
             
           </div>
-          <div ref={el}   className={(!BLOG.tag[searchValue]? 'hidden' :'w-full flex p-3 -mb-3 whitespace-wrap shadow-[0_0_30px_1px_rgba(0,255,0,0.5)]  bg-day dark:bg-night ring-1 ring-green-400  dark:ring-green-400justify-center overflow-auto rounded-xl ')}  />
+          <div ref={el}   className={(!BLOG.tag[searchValue]? 'hidden' :'w-full italic text-sm  flex p-3 mb-6 whitespace-wrap shadow-[0_0_30px_1px_rgba(0,255,0,0.5)]  bg-day dark:bg-night ring-1 ring-green-400  dark:ring-green-400justify-center overflow-auto rounded-xl ')}  />
           <Tabs>
             <div key={t.BLOG.TUIJIAN} id='Tuijian' className=' overflow-x-hidden bg-gray-700 dark:bg-gray-800 rounded-xl  p-3'>
               <Lastpost posts={tuijian} className='w-72 pr-6 '  />

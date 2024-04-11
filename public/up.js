@@ -45,8 +45,8 @@ class EmojiReaction extends s {
 
       --reaction-got-not-reacted-bg-color-default: #00000000;
       --reaction-got-not-reacted-bg-color-hover-default: #21262d;
-      --reaction-got-not-reacted-border-color-default: #30363d;
-      --reaction-got-not-reacted-text-color-default: #7d8590;
+      --reaction-got-not-reacted-border-color-default: #FFFF0055;
+      --reaction-got-not-reacted-text-color-default: #FFFFFF;
 
       --reaction-got-reacted-bg-color-default: #388bfd1a;
       --reaction-got-reacted-bg-color-hover-default: #4ADE8066;
@@ -65,7 +65,7 @@ class EmojiReaction extends s {
 
     .anim-scale-in {
       animation-name: scale-in;
-      animation-duration: .15s;
+      animation-duration: .5s;
       animation-timing-function: cubic-bezier(0.2, 0, 0.13, 1.5);
     }
 
@@ -90,22 +90,28 @@ class EmojiReaction extends s {
       }
       .reaction-got-not-reacted {
         background-color: var(--reaction-got-not-reacted-bg-color, var(--reaction-got-not-reacted-bg-color-default));
-        border-width: 1px;
-        border-style: solid;
+        border-width: 0px;
+        border-style: dashed;
+        border-color: var(--reaction-got-not-reacted-border-color, var(--reaction-got-not-reacted-border-color-default));
+        color: var(--reaction-got-not-reacted-text-color, var(--reaction-got-not-reacted-text-color-default));
       }
       .reaction-got-not-reacted:hover {
         background-color: var(--reaction-got-not-reacted-bg-color-hover, var(--reaction-got-not-reacted-bg-color-hover-default));
+        border-width: 1px;
       }
       .reaction-got-reacted {
+        background-color: var(--reaction-got-reacted-bg-color, var(--reaction-got-reacted-bg-color-default));
         border-width: 1px;
         border-style: solid;
         border-color: var(--reaction-got-reacted-border-color, var(--reaction-got-reacted-border-color-default));
+        color: var(--reaction-got-reacted-text-color, var(--reaction-got-reacted-text-color-default));
       }
       .reaction-got-reacted:hover {
         background-color: var(--reaction-got-reacted-bg-color-hover, var(--reaction-got-reacted-bg-color-hover-default));
       }
+
       .reaction-available-popup {
-        background-color: var(--reaction-available-popup-bg-color, var(--reaction-available-popup-bg-color-default));
+
         border-width: 1px;
         border-style: solid;
         border-color: var(--reaction-available-popup-border-color, var(--reaction-available-popup-border-color-default));
@@ -120,6 +126,7 @@ class EmojiReaction extends s {
       .reaction-available-emoji-reacted {
         background-color: var(--reaction-available-emoji-reacted-bg-color, var(--reaction-available-emoji-reacted-bg-color-default));
       }
+
       .reaction-available-popup::before {
         position: fixed;
         top: 0;

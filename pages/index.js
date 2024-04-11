@@ -5,9 +5,9 @@ export default function search({ allpls,tags, posts,post,resdata,tuijian,fullWid
   return <TwitterLayout allpls={allpls}  tags={tags} posts={posts} tuijian={tuijian} index={posts.indexOf(post)} resdata={resdata} fullWidth={fullWidth}/>
 }
 export async function getStaticProps() {
-  const posts = await getAllPosts({ onlyPost: true })
+  const posts = await getAllPosts({ postAndPage: true })
   const allpls= await getAllComments()
-  const tuijian  = await getAllPosts({ onlyPage:true })
+  const tuijian  = posts.filter(post => parseInt(post.up) === 999);
   const tags = getAllTagsFromPosts(posts)
   //const cats = getAllCatsFromPosts(posts)
   const umiId = BLOG.analytics.umamiConfig.websiteId;
