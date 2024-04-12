@@ -64,7 +64,7 @@ svg + .notion-page-title-text {
 }
 
 .notion-hr {
-  @apply border-b-2 border-b-gray-200 dark:border-b-gray-600
+  @apply border-b-2 border-b-gray-200 dark:border-b-gray-200
 }
 
 .notion-link {
@@ -159,9 +159,15 @@ svg + .notion-page-title-text {
   @apply hidden;
 }
 .notion-external {
-  @apply  bg-white/80 ;
+  @apply  bg-white/80 rounded-3xl ;
 }
-
+.notion-external:hover {
+  @apply  bg-amber-300;
+}
 .cl-userButtonPopoverFooter
 {@apply hidden;
+}
+.notion-callout {
+  @apply border border-green-400 rounded-3xl p-5 ;
+  
 }

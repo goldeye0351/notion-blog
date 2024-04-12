@@ -7,9 +7,10 @@ import NotFound from '@/components/NotFound'
 import { ArticleLock } from '@/components/Post/ArticleLock'
 import React from 'react'
 import {  getPageTableOfContents,  uuidToId} from 'notion-utils'
+import Prevandnext from '@/components/Post/ArticleAdjacent'
 
 const Post = props => {
-  const { posts,post, blockMap,prev,next,lastposts,tableOfContent,fullWidth ,mypls }=props 
+  const { posts,post, blockMap,prev,next,tableOfContent,fullWidth ,mypls }=props 
   const router = useRouter()
   const [lock, setLock] = React.useState(post?.password && post?.password !== '')
     const validPassword = passInput => {
@@ -30,10 +31,17 @@ const Post = props => {
   }
   
   if (lock) 
-  {  return (<ArticleLock validPassword={validPassword} />)} 
+  {  return (<div className=' flex flex-col    items-center content-center w-screen h-[83vh] md:h-[84VH]'>
+    <ArticleLock validPassword={validPassword} />
+  <div className='flex   '>
+  </div>
+  <div className=' mt-auto w-full '>
+      <Prevandnext prev={prev} next={next} me={post} />
+  </div>
+  </div>)} 
 
   if (!lock)
-  { return <Layout tableOfContent={tableOfContent} posts={posts} blockMap={blockMap} frontMatter={post} fullWidth={fullWidth} prev={prev} next={next}  lastposts={lastposts} mypls={mypls} /> }
+  { return <Layout tableOfContent={tableOfContent} posts={posts.slice(0,5)} blockMap={blockMap} frontMatter={post} fullWidth={fullWidth} prev={prev} next={next}  mypls={mypls} /> }
 
 }
 
@@ -47,6 +55,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params: { slug } }) {
   const posts = await getAllPosts({ postAndPage:true })
+
   const post = posts.find((t) => t.slug === slug)
   const allpl= await getAllComments()
   const mypls= allpl.filter(pl => pl.Name === post.id)

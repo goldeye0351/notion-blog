@@ -9,17 +9,17 @@ export const Lock = props => {
       const tips = document.getElementById('tips')
       if (tips) {
         tips.innerHTML = ``
-        tips.innerHTML = `<div class='text-red-500 bg-gray-500 dark:bg-gray-600 rounded-xl w-20 p-1 my-1'>${"Check  !"}</div>`
+        tips.innerHTML = `<div class='text-red-500 bg-gray-500 dark:bg-gray-600 rounded-xl w-20 p-1 my-1'>${"密码: 51xmi"}</div>`
       }
     }
   }
 {/* shadow-[0_0_30px_30px_rgba(255,255,80,0.8)]    <Image src={payimg} alt='pay' className=" rounded-r-full w-56 " />
 */}
-  return     <div className='fixed inline-flex w-56 bg-gray-700 dark:bg-gray-800  duration-300 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden'>
-    <div src={payimg} alt='pay' className=" rounded-r-full w-56 h-56" />
-    <div id='container' className=' w-0  -translate-x-28  flex flex-col justify-center items-center '>
+  return     <div className='fixed inline-flex  bg-gray-700 dark:bg-gray-800  duration-300  p-5 rounded-3xl  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden'>
+    <div src={payimg} alt='pay' className="  " />
+    <div id='container' className='  flex flex-col justify-center items-center '>
       <div className='flex flex-col space-y-3 '>
-        <input id="password" type='password' placeholder="password"
+        <input id="password" type='password' placeholder="51xmi" 
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 submitPassword()
@@ -30,7 +30,7 @@ export const Lock = props => {
         <div onClick={submitPassword} 
         className="cursor-pointer flex p-1 my-1 items-center 
         justify-center  text-white bg-gray-500 dark:bg-gray-600 rounded-xl " >
-          {"OK"}
+          {"OK" }
         </div>
       </div>
       <div id='tips'>      </div>

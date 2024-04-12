@@ -24,7 +24,6 @@ export default function Content (props) {
   const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
   const [showlock, setShowlock] = useState()
-  var zjk = frontMatter.up;
   const el = React.useRef(null);
   const [isBlurred, setIsBlurred] = useState(true);
   useEffect(() => {
@@ -32,9 +31,9 @@ export default function Content (props) {
     if (element) {
       setShowlock(true);
       if (isBlurred) {
-        element.classList.add('hidden');
+        element.classList.add('blur-md');
       } else {
-        element.classList.remove('hidden');
+        element.classList.remove('blur-md');
       }
     }
   }, [isBlurred]);
@@ -43,7 +42,7 @@ export default function Content (props) {
     setIsBlurred(prevIsBlurred => !prevIsBlurred);
   };
   const validPassword = passInput => {
-    if (passInput  === zjk) {
+    if (passInput  === '51xmi') {
       toggleVisibility()
       setShowPay((showPay) => !showPay)
      return true
@@ -112,11 +111,33 @@ export default function Content (props) {
             {...props}
           />
       </div>
-      <div className=' lg:hidden  flex justify-center '>
+
+
+      
+      
+      {frontMatter.vip && 
+        <div className='  relative  p-3 w-fit mx-auto  '>
+        <div className='   p-3 italic text-amber-500  rounded-full   '>以下需要登录可见</div>
+        <div className='  horse_run rounded-xl p-8 w-fit ring-1  ring-amber-500 min-w-[320px] hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  duration-300  '>
+            
+            {/*  会员登录后  */}
+            {user.isSignedIn && <div className=' p-3 '>{frontMatter.vip}</div>} 
+
+            {/*  会员没有登录时  */}
+            { !user.isSignedIn &&         
+              <div className=' flex justify-center p-3'>
+                <span className=' rounded-xl text-xl  myrotatecard blur-[2px] '>有加密内容</span>
+                <span>需要登录可见 </span>            
+              </div>
+            }
+        </div>
+      </div>}      
+      
+      <div className=' lg:hidden  flex justify-center mt-8'>
                   <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={frontMatter.title}  ></emoji-reaction>  
       </div>
       <MyPay />
-      {user.isSignedIn && <div>{frontMatter.password}</div>}
+
       
     </article>
 
@@ -130,6 +151,11 @@ export default function Content (props) {
             {showlock && <button title='🔒' onClick={() => setShowPay((showPay) => !showPay)} data-umami-event="解锁" className=' group fixed inset-y-[50%] left-1  w-12 h-12 p-3 text-green-400 animate-bounce   bg-gray-700 dark:bg-gray-800 rounded-2xl justify-center mx-auto '>
                 <KeyIcon  className='w-6 h-6 group-hover:scale-150 duration-200 ' />
             </button>}
+            <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
+              <div className=' '>🆕  📣</div>
+              <hr/>
+              <Lastpost  posts={posts} className='text-sm '/>
+            </div>
             <div id="大屏几个" className=' mt-16 flex flex-row justify-between my-8 space-x-1 '> 
                  <div className='  w-full cursor-pointer py-2 bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
                   <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={frontMatter.title}  ></emoji-reaction>  
@@ -142,11 +168,7 @@ export default function Content (props) {
                       <Jumptocomment />
                 </div>
             </div>
-            <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
-              <div className=' '>🆕  📣</div>
-              <hr/>
-              <Lastpost  posts={posts} className='text-sm '/>
-            </div>
+
                      
           </div>
       </motion.div>
