@@ -23,20 +23,31 @@ export default function Content (props) {
   const { frontMatter, blockMap,tableOfContent,posts} = props
   const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
-  const [showlock, setShowlock] = useState()
   const el = React.useRef(null);
   const [isBlurred, setIsBlurred] = useState(true);
   useEffect(() => {
     const element = document.querySelector('.notion-callout');
     if (element) {
-      setShowlock(true);
+      //setShowlock(true);
+      element.addEventListener('click', () => {
+        setShowPay((showPay) => !showPay) 
+      });
       if (isBlurred) {
         element.classList.add('blur-md');
       } else {
         element.classList.remove('blur-md');
       }
     }
+  
+    return () => {
+      if (element) {
+        element.removeEventListener('click', () => {
+          setShowPay((showPay) => !showPay) 
+        });
+      }
+    };
   }, [isBlurred]);
+  
 
   const toggleVisibility = () => {
     setIsBlurred(prevIsBlurred => !prevIsBlurred);
@@ -148,9 +159,6 @@ export default function Content (props) {
             
           <div className=' sticky top-16 w-full '>
             <Mulu tableOfContent={tableOfContent} />
-            {showlock && <button title='🔒' onClick={() => setShowPay((showPay) => !showPay)} data-umami-event="解锁" className=' group fixed inset-y-[50%] left-1  w-12 h-12 p-3 text-green-400 animate-bounce   bg-gray-700 dark:bg-gray-800 rounded-2xl justify-center mx-auto '>
-                <KeyIcon  className='w-6 h-6 group-hover:scale-150 duration-200 ' />
-            </button>}
             <div id='lastpost' className=' w-full   bg-gray-700 dark:bg-gray-800 rounded-2xl px-3 py-2 my-8 relative text-2xl   '>
               <div className=' '>🆕  📣</div>
               <hr/>
@@ -180,9 +188,6 @@ export default function Content (props) {
         <div title='百分比' className='group   bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
             <ReadingProgress />
         </div>
-        {showlock && <button title='🔒' onClick={() => setShowPay((showPay) => !showPay)} data-umami-event="解锁" className='group  w-full p-3  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
-            <KeyIcon  className='w-6 h-6 group-hover:scale-150 group-hover:text-green-400 duration-200' />
-        </button>}
         <div title='评论' className='group  w-full p-1  bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center mx-auto '>
           <Jumptocomment />
         </div>

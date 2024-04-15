@@ -9,7 +9,7 @@ export const Lock = props => {
       const tips = document.getElementById('tips')
       if (tips) {
         tips.innerHTML = ``
-        tips.innerHTML = `<div class='text-red-500 bg-gray-500 dark:bg-gray-600 rounded-xl w-20 p-1 my-1'>${"密码: 51xmi"}</div>`
+        tips.innerHTML = `<div class='text-red-500 bg-gray-500 dark:bg-gray-600 rounded-xl  p-1 h-8 my-1'>${"密码:51xmi"}</div>`
       }
     }
   }
@@ -18,22 +18,23 @@ export const Lock = props => {
   return     <div className='fixed inline-flex  bg-gray-700 dark:bg-gray-800  duration-300  p-5 rounded-3xl  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden'>
     <div src={payimg} alt='pay' className="  " />
     <div id='container' className='  flex flex-col justify-center items-center '>
-      <div className='flex flex-col space-y-3 '>
+      <div className='flex flex-row space-x-3'>
         <input id="password" type='password' placeholder="51xmi" 
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 submitPassword()
               }
             }}
-            className=' w-20 rounded-xl text-gray-200 ring-1 ring-green-400  p-1 bg-whte bg-black'>
+            className=' w-20 h-8 rounded-xl text-gray-200 ring-1 ring-green-400  p-1 bg-whte bg-black'>
         </input>
         <div onClick={submitPassword} 
-        className="cursor-pointer flex p-1 my-1 items-center 
+        className="cursor-pointer flex p-1 m-1 items-center h-8
         justify-center  text-white bg-gray-500 dark:bg-gray-600 rounded-xl " >
           {"OK" }
         </div>
+        <div id='tips'>      </div>
       </div>
-      <div id='tips'>      </div>
+     
 
   </div></div>
 }
