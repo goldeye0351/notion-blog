@@ -1,8 +1,8 @@
 .button {
-  transform: perspective(200px) rotateX(15deg);
-  border: none;
-  border-radius: 1px;
-  background: linear-gradient(0deg, rgba(63,94,251,1) 0%, rgba(70,135,252,1) 100%);
+  transform: perspective(200px) rotateX(30deg);
+
+  border-radius: 10px;
+  background: linear-gradient(0deg, rgba(9, 9, 9, 0.44) 0%, rgb(6, 6, 6) 100%);
   box-shadow: rgba(63,94,251,0.2) 0px 40px 29px 0px;
   will-change: transform;
   transition: all 0.3s;
@@ -10,12 +10,9 @@
  }
  
  .button:hover {
-  transform: perspective(180px) rotateX(30deg) translateY(2px);
- }
- 
- .button:active {
-  transform: perspective(170px) rotateX(36deg) translateY(5px);
- }
+  transform: perspective(180px) rotateX(45deg) translateY(5px);
+ } 
+
  /* 苹果 */
  .macbtn {
   border: none;

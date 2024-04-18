@@ -14,7 +14,7 @@ const Codes =({}) =>{
     const [mydisp,setMydisp ]=useState(Cod)
 return<>
 <Container title={BLOG.title} description={BLOG.description} ogimage={BLOG.ogimg} className={ ' m-auto text-gray-200 dark:text-gray-200 min-h-screen h-screen  flex flex-col  items-center '} >
-        <div className="flex  mb-16 space-x-3 ">
+        <div className="flex flex-wrap items-center justify-center  mb-16 gap-3 ">
             <div onClick={() => setMydisp(Rings)}><KZButton text="Rings" /> </div>
             <div onClick={() => setMydisp(Tilts)}><Button3D text="Tilts" /> </div>
             <div onClick={() => setMydisp(Dloading)}><JBButton text="3Dloading" /> </div>
