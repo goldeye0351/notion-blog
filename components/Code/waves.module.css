@@ -1,0 +1,115 @@
+
+
+.aniroot{
+    --index: calc(1vw + 1vh);
+    --transition: cubic-bezier(.1, .7, 0, 1);
+  }
+  
+  
+  .aniwrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  
+  .aniitems{
+    display: flex;
+    gap: 0.4rem;
+    perspective: calc(var(--index) * 35);
+  }
+  
+  .aniitem{
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 12);
+    cursor: pointer;
+    filter: grayscale(1) brightness(.5);
+    transition: transform 1.25s var(--transition), filter 3s var(--transition), width 1.25s var(--transition);
+    will-change: transform, filter, rotateY, width;
+  }
+  
+  .aniitem::before, .aniitem::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 20px;
+    right: calc(var(--index) * -1);
+  }
+  
+  .aniitem::after{
+    left: calc(var(--index) * -1);
+  }
+  
+  .aniitems .aniitem:hover{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 10));
+  }
+  
+  /*Right*/
+  
+  .aniitems .aniitem:hover + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
+    z-index: -1;
+  }
+  
+  .aniitems .aniitem:hover + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
+    z-index: -2;
+  }
+  
+  .aniitems .aniitem:hover + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(30deg);
+    z-index: -3;
+  }
+  
+  .aniitems .aniitem:hover + * + * + * + *{
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(15deg);
+    z-index: -4;
+  }
+  
+  
+  /*Left*/
+  
+  .aniitems .aniitem:has( + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+  }
+  
+  .aniitems .aniitem:has( + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+  }
+  
+  .aniitems .aniitem:has( + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * 2.5)) rotateY(-30deg);
+  }
+  
+  .aniitems .aniitem:has( + * + * + * + :hover){
+    filter: inherit;
+    transform: translateZ(calc(var(--index) * .6)) rotateY(-15deg);
+  }
+  
+  .aniitems .aniitem:active, .aniitems .aniitem:focus {
+  width: 28vw;
+  filter: inherit;
+  z-index: 100;
+  transform: translateZ(calc(var(--index) * 10));
+    margin: 0 .45vw;
+  }
+
+  .maoboli{
+    background-color: rgba(89, 89, 89, 0.4);
+    backdrop-filter: blur(21.5px);
+    -webkit-backdrop-filter: blur(21.5px);
+    border: 0px solid rgba(255, 255, 255, 0.18);
+    box-shadow: rgba(14, 14, 14, 0.19) 0px 6px 15px 0px;
+    -webkit-box-shadow: rgba(14, 14, 14, 0.19) 0px 6px 15px 0px;
+    border-radius: 19px;
+    -webkit-border-radius: 19px;
+    color: rgb(128, 128, 128);
+  }

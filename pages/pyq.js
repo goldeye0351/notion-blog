@@ -47,43 +47,49 @@ const PyqPage = ({posts,fullWidth}) => {
         posts.map( (post, i) => {
           const targetScale = 1 - ( (posts.length - i) * 0.05);
           return <Card key={`p_${i}`} i={i}  progress={scrollYProgress} range={[i * .01, 1]} targetScale={targetScale} >
-                  <div key={post.id} className={` bg-day dark:bg-night bg-opacity-100 flex-row flex space-x-3 rounded-xl p-3 duration-300 mx-auto ${fullWidth ? 'w-[90VW]  ' : 'w-96 '}  `}>
-                    <div id='左边头像' className="  ">
-                          <Image src={svglogo} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
-                    </div>
-                    <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col  w-full ">
-                      <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
-                        {`51xMI` }
-                      </div>
-                      <article id='主体文字' className="  break-words italic w-full ">
-                        {post.summary }
-                      </article>
-                      <div id='图' className=" flex justify-center" >
-                      {post.Link && post.Link.slice(-3) === 'mp4' &&
-                        <video controls width={384} height={384} >
-                          <source src={post.Link} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      }
-                      {post.Link && post.Link.slice(-3) !== 'mp4' &&
-                        <div className=" overflow-hidden ">
-                        <motion.div
-                        initial={{ scale: 2 }}
-                        whileInView={{ scale: 1 }}
-                        transition={{ duration: 2,  ease: 'easeOut' }}
-                            className="  rounded-2xl "
-                          >
-                            <Image src={post.Link} alt={post.Link} width={384} height={384} className="rounded-3xl   " />
-                        </motion.div>
+                    <div key={post.id} className={` bg-day dark:bg-night bg-opacity-100 flex-col flex space-x-3 rounded-xl p-3 duration-300 mx-auto ${fullWidth ? 'w-[90VW]  ' : 'w-96 '}  `}>
+                      <div className=" flex flex-row">
+                        <div id='左边头像' className="  ">
+                              <Image src={svglogo} alt="Gravatar" width={50}  height={50} priority  className='   rounded-lg h-16 w-16 min-w-[64px]   '/>                    
                         </div>
-                      }
+                        <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col  w-full ">
+                          <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
+                            {`51xMI` }
+                          </div>
+                          <article id='主体文字' className="  break-words italic w-full ">
+                            {post.summary }
+                          </article>
+                          <div id='图' className=" flex justify-center" >
+                          {post.Link && post.Link.slice(-3) === 'mp4' &&
+                            <video controls width={384} height={384} >
+                              <source src={post.Link} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                          }
+                          {post.Link && post.Link.slice(-3) !== 'mp4' &&
+                            <div className=" overflow-hidden ">
+                            <motion.div
+                            initial={{ scale: 2 }}
+                            whileInView={{ scale: 1 }}
+                            transition={{ duration: 2,  ease: 'easeOut' }}
+                                className="  rounded-2xl "
+                              >
+                                <Image src={post.Link} alt={post.Link} width={384} height={384} className="rounded-3xl   " />
+                            </motion.div>
+                            </div>
+                          }
+                          </div>
+                          <div className=" flex flex-grow w-full justify-between ">                   
+                            <div>{DaysAgo(post.date) }</div>
+                            <div><FormattedDate date={post.date} /></div>
+                          </div>     
+                        </div>
                       </div>
-                      <div className=" flex flex-grow w-full justify-between ">                   
-                        <div>{DaysAgo(post.date) }</div>
-                        <div><FormattedDate date={post.date} /></div>
-                      </div>            
+                        <div className='   cursor-pointer pt-8 flex justify-center bg-transparent'>
+                          <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={post.slug}  ></emoji-reaction>  
+                        </div>
                     </div>
-                  </div>
+
             </Card>
         })
       }

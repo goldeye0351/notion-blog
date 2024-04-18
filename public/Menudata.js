@@ -1,5 +1,5 @@
 import BLOG from '@/blog.config'
-import { UserIcon,LinkIcon,RssIcon,PicIcon,HomeIcon,Pic1Icon,Pic2Icon,Pic3Icon,PYQ,MenuIcon,VipIcon, LoginIcon, FriendsIcon } from '@/Icon/Icon'
+import { UserIcon,LinkIcon,RssIcon,PicIcon,HomeIcon,Pic1Icon,Pic2Icon,Pic3Icon,PYQ,MenuIcon,VipIcon, LoginIcon, FriendsIcon, AppleIcon, CodeIcon } from '@/Icon/Icon'
 export const links = [
     {
       name: 'HOME',                 // rename, 直接修改名字就可以,注意单引号
@@ -20,6 +20,11 @@ export const links = [
         name: '朋友圈',
         to: '/pyq',
         icon: <PYQ className='inline-block mb-1 mr-1 h-5 w-5' />,
+      },
+      {
+        name: 'Code',
+        to: '/code',
+        icon: <CodeIcon className='inline-block mb-1 h-5 w-5' />,
       },
   ]
 

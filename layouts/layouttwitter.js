@@ -145,7 +145,11 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
           </div>
 
           <div id='twobutton'  className=' flex mx-auto w-full justify-center mt-auto mb-36 ' >
-                <Link title='login' href='/tt' data-umami-event='登录' className='group  rounded-2xl h-12 w-full p-3   justify-center flex items-center '>
+          <div className="rings ">
+            <i style={{ '--clr': '#00ff0a' }}></i>
+            <i style={{ '--clr': '#ff0057' }}></i>
+            <i style={{ '--clr': '#fffd44' }}></i>
+            <Link title='login' href='/tt' data-umami-event='登录' className='group  rounded-2xl  p-8  justify-center flex items-center '>
                     <Tilt className="my3d rounded-2xl w-full h-12 hover:ring-2 ring-green-400 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  "
                           perspective={1500}
                           glareEnable={true}
@@ -163,7 +167,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
                     
 
                 </Link>
-          </div>
+          </div></div>
         </div>        
       </div>
 

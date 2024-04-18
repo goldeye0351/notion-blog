@@ -1,0 +1,238 @@
+.button {
+  transform: perspective(200px) rotateX(15deg);
+  border: none;
+  border-radius: 1px;
+  background: linear-gradient(0deg, rgba(63,94,251,1) 0%, rgba(70,135,252,1) 100%);
+  box-shadow: rgba(63,94,251,0.2) 0px 40px 29px 0px;
+  will-change: transform;
+  transition: all 0.3s;
+  border-bottom: 2px solid rgba(70,135,252,1);
+ }
+ 
+ .button:hover {
+  transform: perspective(180px) rotateX(30deg) translateY(2px);
+ }
+ 
+ .button:active {
+  transform: perspective(170px) rotateX(36deg) translateY(5px);
+ }
+ /* 苹果 */
+ .macbtn {
+  border: none;
+  border-radius: 7px;
+  background: linear-gradient(#4faefc,#006bff);
+  color: #fff;
+  font-size: 17px;
+  font-family: sans-serif;
+ }
+ 
+ .macbtn:focus {
+  background: linear-gradient(#44aefc,#026bff);
+  outline: 3px solid #4faefc;
+ }
+
+ /* 渐变 */
+.jbbtn {
+  --color: #0bdf3d;
+  --color2: #212121;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1.5px solid var(--color);
+  transition: .5s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+ }
+ 
+ .jbbtn::before {
+  content: '';
+  display: block;
+  height: 110%;
+  width: 310%;
+  transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  left: -5%;
+  z-index: -1;
+  transition: .7s;
+  background: -moz-linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+  background: -webkit-linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+  background: linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+ }
+ 
+ .jbbtn:hover::before {
+  left: -200%;
+ }
+ 
+ .jbbtn:hover {
+  color: var(--color2);
+ }
+ 
+ .jbbtn:active {
+  transform: scale(.98);
+  filter: brightness(.8);
+ }
+/* 画框 */
+ .drawborder {
+  box-shadow: inset 0 0 0 4px #58afd1;
+  color: #58afd1;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+ }
+ 
+ .drawborder::before, .drawborder::after {
+  border: 0 solid transparent;
+  box-sizing: border-box;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: 0;
+ }
+ 
+ .drawborder::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+ }
+ 
+ .drawborder::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+ }
+ 
+ .drawborder:hover {
+  color: #ffe593;
+ }
+ 
+ .drawborder:hover::before, .drawborder:hover::after {
+  border-color: #ffe593;
+  transition: border-color 0s, width 0.25s, height 0.25s;
+  width: 100%;
+  height: 100%;
+ }
+ 
+ .drawborder:hover::before {
+  transition-delay: 0s, 0s, 0.25s;
+ }
+ 
+ .drawborder:hover::after {
+  transition-delay: 0s, 0.25s, 0s;
+ }
+
+ /* From www.lingdaima.com */
+ /* From www.lingdaima.com */
+.lqbutton {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  border-radius: 40px;
+  border: none;
+ }
+ 
+.lqspan {
+  position: relative;
+  color: #fff;
+  font-family: Arial;
+  letter-spacing: 8px;
+  z-index: 1;
+ }
+ 
+.liquid {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: #4973ff;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+  transition: .5s;
+ }
+ 
+.liquid::after,
+.liquid::before {
+  content: '';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background: #fff;
+ }
+ 
+.liquid::before {
+  border-radius: 45%;
+  background: rgba(20, 20, 20, 1);
+  animation: animate 5s linear infinite;
+ }
+ 
+.liquid::after {
+  border-radius: 40%;
+  background: rgba(20, 20, 20, .5);
+  animation: animate 10s linear infinite;
+ }
+ 
+
+ 
+ @keyframes animate {
+  0% {
+   transform: translate(-50%, -75%) rotate(0deg);
+  }
+ 
+  100% {
+   transform: translate(-50%, -75%) rotate(360deg);
+  }
+ }
+
+ /* From www.lingdaima.com */
+.kzbutton {
+  --color: #13e266;
+  font-family: inherit;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color .5s;
+  border-radius: 6px;
+  color: var(--color);
+ }
+ 
+ .kzbutton:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+ }
+ 
+ .kzbutton:hover {
+  color: #fff;
+ }
+ 
+ .kzbutton:before {
+  top: 100%;
+  left: 100%;
+  transition: all .7s;
+ }
+ 
+ .kzbutton:hover:before {
+  top: -30px;
+  left: -30px;
+ }
+ 
+ .kzbutton:active:before {
+  background: #3a0ca3;
+  transition: background 0s;
+ }
