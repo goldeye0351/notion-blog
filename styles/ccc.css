@@ -27,51 +27,51 @@
 .dropdown.show {
       display: block;
     }
+    
 .myshape {
   position: relative;
-  border-radius: 8px;
-  margin-top: 0;
+  border-radius: 12px;
   display: inline-block;
-  stroke-width: 1px;
   fill: transparent;
-  stroke: #535251;
-  stroke-dasharray: 20 385;
-  stroke-dashoffset: 35;
-  transition: 1s all ease;
-  z-index: 5000000000;
-}
-.myshape:hover {
-  stroke-dasharray: 50 0;
+  stroke-dasharray: 1 500;
   stroke-width: 8px;
   stroke-dashoffset: 0;
+  transition: 1s all ease;
+  z-index:1;
+}
+.myshape:hover {
+  stroke-dasharray: 10 0;
+  stroke-width: 8px;
+  stroke-dashoffset: 50;
   stroke: #06d61bfc;
 }
-.mymenutext {
-  position: absolute;
-  top:5px;
-  left:12px;
-  text-align: center;
-}
+
 
 .myrotatecard {
-  background-image: linear-gradient(var(--myrotate), #a09fa5, #a67a7afa 43%, #5dac6d);
+  --color: #0bdf3d;
+  --color2: #212121;
+  background-image: linear-gradient(var(--myrotate), var(--color2) 25%, var(--color) 50%, var(--color2) 75% );
   animation: myspin 5s linear infinite;
 }
-@property --myrotate {  syntax: "<angle>";  initial-value: 132deg;  inherits: true;}
+@property --myrotate {  syntax: "<angle>";  initial-value: 45deg;  inherits: true;}
 @keyframes myspin {  0% {    --myrotate: 0deg;  }  100% {    --myrotate: 360deg;  }}
 
-.mypingcard {position: relative; border-radius: 16px;}
+.mypingcard {
+  position: relative; 
+  overflow: hidden;
+}
 
 .mypingcard::after {
       background: linear-gradient(-25deg, #29dbbc, #655adc,#1eda63,#e440bb);
       background-size: 300%;
       position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
       content: '';
-
-      border-radius: 16px;
-      animation: gradient 15s ease infinite;
+      animation: gradient 5s ease infinite;
+      z-index: -10;
   }
   
   @keyframes gradient {0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;}}

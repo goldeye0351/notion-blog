@@ -1,25 +1,25 @@
 import styles from  './Button.module.css'
-const Button3D =({text}) =>{
+const D3Button =({text}) =>{//3D按钮
     return<>
-<div className={`${styles.button} px-8 py-3 `  }>{text}</div>
+<div className={`${styles.d3button} px-8 py-3 `  }>{text}</div>
 
   </>
 }
-export default Button3D
+export default D3Button
 
-export function MacButton ({text}) {
+export function MacButton ({text}) {//苹果按钮
   return<>
 <div className={`${styles.macbtn} px-8 py-3 `  }>{text}</div>
 </>
 }
 
-export function JBButton ({text}) {
+export function JBButton ({text}) {//渐变按钮
   return<>
-<div className={`${styles.jbbtn} px-8 py-3 `  }>{text}</div>
+<div className={`${styles.jbbtn} mypingcard px-8 py-3 `  }>{text}</div>
 </>
 }
 
-export function LQButton ({text}) {
+export function LQButton ({text}) {//液态按钮
   return<>
 <div className={`${styles.lqbutton} group  relative  px-8 py-3 `  }>
   <div className={`${styles.lqspan} w-full h-full ` }>{text}</div>
@@ -29,8 +29,21 @@ export function LQButton ({text}) {
 </>
 }
 
-export function KZButton ({text}) {
+export function OLDButton ({text}) {//老按钮
   return<>
-<div className={`${styles.kzbutton} px-8 py-3 `  }>{text}</div>
+  <div className=" relative  rounded-xl w-24 h-12  ">
+      <svg className="myshape rounded-xl hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 w-full h-full" >
+          <rect  className=' w-full h-full  ' />
+      </svg>
+      <div className='absolute inset-x-0 inset-y-0 bg-gray-700 rounded-xl  justify-center items-center flex '>
+        {text} 
+      </div>
+  </div>
+  </>
+}
+
+export function KZButton ({text}) {//渐变按钮
+  return<>
+<div className={`${styles.drawborder} px-8 py-3 `  }>{text}</div>
 </>
 }

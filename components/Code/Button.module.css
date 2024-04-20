@@ -1,16 +1,16 @@
-.button {
-  transform: perspective(200px) rotateX(30deg);
-
+ /* 3D按钮 */
+.d3button {
+  transform: perspective(180px) rotateX(15deg);
   border-radius: 10px;
-  background: linear-gradient(0deg, rgba(9, 9, 9, 0.44) 0%, rgb(6, 6, 6) 100%);
-  box-shadow: rgba(63,94,251,0.2) 0px 40px 29px 0px;
+  background: linear-gradient(0deg, rgba(137, 113, 113, 0.44) 0%, rgb(6, 6, 6) 50%);
+  box-shadow: rgba(10, 215, 92, 0.2) 0px 40px 29px 0px;
   will-change: transform;
   transition: all 0.3s;
-  border-bottom: 2px solid rgba(70,135,252,1);
+  border-bottom: 2px solid rgb(18, 251, 6);
  }
  
- .button:hover {
-  transform: perspective(180px) rotateX(45deg) translateY(5px);
+ .d3button:hover {
+  transform: perspective(150px) rotateX(30deg) translateY(5px);
  } 
 
  /* 苹果 */
@@ -32,43 +32,46 @@
 .jbbtn {
   --color: #0bdf3d;
   --color2: #212121;
+  --myrotate: {  syntax: "<angle>";  initial-value: 132deg;  inherits: true;};
   background-color: transparent;
   border-radius: 10px;
   border: 1.5px solid var(--color);
   transition: .5s ease;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
   z-index: 1;
-  font-weight: 300;
-  font-size: 17px;
-  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-decoration: none;
   text-transform: uppercase;
-  color: var(--color);
+  font-family: Arial;
+  letter-spacing: 5px;
+  color: var(--color3);
  }
- 
+
  .jbbtn::before {
   content: '';
   display: block;
-  height: 110%;
-  width: 310%;
+  height: 320%;
+  width: 320%;
   transform: translate(0, -50%);
   position: absolute;
-  top: 50%;
-  left: -5%;
+  top: 250%;
+  left: 100%;
   z-index: -1;
-  transition: .7s;
-  background: -moz-linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
-  background: -webkit-linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
-  background: linear-gradient(45deg, var(--color2) 33%, var(--color) 66%);
+  transition: 1s;
+  border-radius: 100px;
+  background: linear-gradient(var(--myrotate), #29dbbc, #655adc,#1eda63,#e440bb);
+  animation: myspin 5s linear infinite;
  }
+
+ @keyframes myspin {  0% {    --myrotate: 0deg;  }  100% {    --myrotate: 360deg;  }}
  
  .jbbtn:hover::before {
-  left: -200%;
+  left: -210%;
+  top:0%;
  }
  
  .jbbtn:hover {
-  color: var(--color2);
+  color: var(--color23);
  }
  
  .jbbtn:active {
@@ -77,14 +80,15 @@
  }
 /* 画框 */
  .drawborder {
-  box-shadow: inset 0 0 0 4px #58afd1;
-  color: #58afd1;
+  border-radius: 10px;
+
   transition: color 0.25s 0.0833333333s;
   position: relative;
  }
  
  .drawborder::before, .drawborder::after {
   border: 0 solid transparent;
+  border-radius: 10px;
   box-sizing: border-box;
   content: "";
   pointer-events: none;
@@ -124,13 +128,14 @@
   transition-delay: 0s, 0.25s, 0s;
  }
 
- /* From www.lingdaima.com */
- /* From www.lingdaima.com */
+ /* 液态按钮 */
 .lqbutton {
   position: relative;
   display: block;
   text-decoration: none;
   text-transform: uppercase;
+  font-family: Arial;
+  letter-spacing: 8px;
   overflow: hidden;
   border-radius: 40px;
   border: none;
@@ -189,47 +194,4 @@
   100% {
    transform: translate(-50%, -75%) rotate(360deg);
   }
- }
-
- /* From www.lingdaima.com */
-.kzbutton {
-  --color: #13e266;
-  font-family: inherit;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid var(--color);
-  transition: color .5s;
-  border-radius: 6px;
-  color: var(--color);
- }
- 
- .kzbutton:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  background: var(--color);
-  height: 150px;
-  width: 200px;
-  border-radius: 50%;
- }
- 
- .kzbutton:hover {
-  color: #fff;
- }
- 
- .kzbutton:before {
-  top: 100%;
-  left: 100%;
-  transition: all .7s;
- }
- 
- .kzbutton:hover:before {
-  top: -30px;
-  left: -30px;
- }
- 
- .kzbutton:active:before {
-  background: #3a0ca3;
-  transition: background 0s;
  }

@@ -8,15 +8,14 @@ import Tilts from '@/components/Code/Tilt'
 import Dloading from '@/components/Code/Dloading'
 import Card1 from '@/components/Code/Card1'
 import Card2 from '@/components/Code/Card2'
-import Button3D from '@/components/Code/Button'
-import { KZButton,JBButton,LQButton } from '@/components/Code/Button'
+import D3Button, { MacButton,KZButton,JBButton,LQButton,OLDButton } from '@/components/Code/Button'
 const Codes =({}) =>{
     const [mydisp,setMydisp ]=useState(Cod)
 return<>
 <Container title={BLOG.title} description={BLOG.description} ogimage={BLOG.ogimg} className={ ' m-auto text-gray-200 dark:text-gray-200 min-h-screen h-screen  flex flex-col  items-center '} >
         <div className="flex flex-wrap items-center justify-center  mb-16 gap-3 ">
-            <div onClick={() => setMydisp(Rings)}><KZButton text="Rings" /> </div>
-            <div onClick={() => setMydisp(Tilts)}><Button3D text="Tilts" /> </div>
+            <div onClick={() => setMydisp(Rings)}><D3Button text="Rings" /> </div>
+            <div onClick={() => setMydisp(Tilts)}><OLDButton text="Tilts" /> </div>
             <div onClick={() => setMydisp(Dloading)}><JBButton text="3Dloading" /> </div>
             <div onClick={() => setMydisp(Waves)}><LQButton text="Waves" /> </div>
 
@@ -34,7 +33,7 @@ return<>
           initial='out'
           exit='out'
           key={new Date()}
-        className=' justify-center items-center p-8 flex lg:ml-auto text-gray-200 ' >
+        className=' justify-center items-center   text-gray-200 ' >
             {mydisp}
         </motion.div>
         </AnimatePresence>
@@ -43,9 +42,20 @@ return<>
 export default Codes
 
 function Cod(){
-  return<>
-  123123132
-  </>
+  return<div className=' flex flex-col gap-3  '>
+             <div className=' h-8 my-8 '></div>
+            <LQButton text='液态按钮' />
+
+            <div className=' mypingcard h-36 w-36 justify-center items-center flex rounded-xl overflow-hidden '>
+              <div className=' w-[140px] h-[140px] rounded-xl bg-day dark:bg-night  '></div>
+            </div>
+              
+            <div className=' h-8 my-8 '></div>
+
+            <div className=' myrotatecard h-36 w-36 justify-center items-center flex rounded-xl overflow-hidden '>
+              <div className=' w-[140px] h-[140px] rounded-xl bg-day dark:bg-night  '></div>
+            </div>
+        </div>
 }
 
 
