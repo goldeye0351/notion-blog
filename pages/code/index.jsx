@@ -6,8 +6,7 @@ import Rings from '@/components/Code/Rings'
 import Waves from '@/components/Code/Waves'
 import Tilts from '@/components/Code/Tilt'
 import Dloading from '@/components/Code/Dloading'
-import Card1 from '@/components/Code/Card1'
-import Card2 from '@/components/Code/Card2'
+import RotateCard from '@/components/Myswiper/RotateCard'
 import D3Button, { MacButton,KZButton,JBButton,LQButton,OLDButton } from '@/components/Code/Button'
 const Codes =({}) =>{
     const [mydisp,setMydisp ]=useState(Cod)
@@ -44,17 +43,11 @@ export default Codes
 function Cod(){
   return<div className=' flex flex-col gap-3  '>
              <div className=' h-8 my-8 '></div>
-            <LQButton text='液态按钮' />
-
-            <div className=' mypingcard h-36 w-36 justify-center items-center flex rounded-xl overflow-hidden '>
-              <div className=' w-[140px] h-[140px] rounded-xl bg-day dark:bg-night  '></div>
-            </div>
-              
-            <div className=' h-8 my-8 '></div>
-
-            <div className=' myrotatecard h-36 w-36 justify-center items-center flex rounded-xl overflow-hidden '>
-              <div className=' w-[140px] h-[140px] rounded-xl bg-day dark:bg-night  '></div>
-            </div>
+            
+<RotateCard className='' > 
+  <LQButton text="123" />
+</RotateCard>
+            
         </div>
 }
 

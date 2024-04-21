@@ -1,5 +1,6 @@
+import RotateCard from "../Myswiper/RotateCard"
 const Rings =() =>{
-    return<div>
+    return<div><RotateCard>
     <div className="rings ">
         <i style={{ '--clr': '#00ff0a' }}></i>
         <i style={{ '--clr': '#ff0057' }}></i>
@@ -14,7 +15,7 @@ const Rings =() =>{
                 </code>
             </pre> 
         </div>
-    </div>
+    </div></RotateCard>
     </div>
 }
 export default Rings
