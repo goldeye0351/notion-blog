@@ -18,6 +18,7 @@ import Tilt from 'react-parallax-tilt'
 import Typed from 'typed.js'
 import { useRef, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs'
+import RotateCard from '@/components/Myswiper/RotateCard'
 const variants = {
   scaleDown: {
     scale: 0.8,
@@ -244,16 +245,17 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
               <UmamiData />
           </Link>
 
-          <div key='最近文章' id='bbuiya1' className='flex bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
           
-            <BubbleUI className="myBubbleUI h-72 w-80 overflow-y-scroll rounded-3xl ">
+          <div key='最近文章' id='bbuiya1' className='flex bg-gray-700 dark:bg-gray-800 rounded-xl mb-3 '>
+          <RotateCard className={'h-72 w-80 '}>
+            <BubbleUI className="myBubbleUI h-full w-full overflow-y-scroll rounded-3xl ">
               {posts.slice(0,21).map((data, i) => (
                 <Link passHref href={`${BLOG.path}/${data.slug}`} scroll={false} data-umami-event='手表控件'  key={data.id}>
                   <Image src={data.page_cover} alt={data.title} width={60} height={60}  
                   className="hover:scale-125 duration-300  rounded-full max-w-[100px] max-h-[100px] aspect-square " /> 
                 </Link>
               ))}
-            </BubbleUI>
+            </BubbleUI></RotateCard>
             
           </div>
           <div ref={el}   className={(!BLOG.tag[searchValue]? 'hidden' :'w-full italic text-sm  flex p-3 mb-6 whitespace-wrap shadow-[0_0_30px_1px_rgba(0,255,0,0.5)]  bg-day dark:bg-night ring-1 ring-green-400  dark:ring-green-400justify-center overflow-auto rounded-xl ')}  />

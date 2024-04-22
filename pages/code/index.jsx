@@ -2,6 +2,7 @@ import Container from '@/components/Container'
 import BLOG from '@/blog.config'
 import { useState } from 'react'
 import { motion,AnimatePresence } from 'framer-motion'
+import styles from "./code.module.css"
 import Rings from '@/components/Code/Rings'
 import Waves from '@/components/Code/Waves'
 import Tilts from '@/components/Code/Tilt'
@@ -13,10 +14,10 @@ const Codes =({}) =>{
 return<>
 <Container title={BLOG.title} description={BLOG.description} ogimage={BLOG.ogimg} className={ ' m-auto text-gray-200 dark:text-gray-200 min-h-screen h-screen  flex flex-col  items-center '} >
         <div className="flex flex-wrap items-center justify-center  mb-16 gap-3 ">
-            <div onClick={() => setMydisp(Rings)}><D3Button text="Rings" /> </div>
-            <div onClick={() => setMydisp(Tilts)}><OLDButton text="Tilts" /> </div>
-            <div onClick={() => setMydisp(Dloading)}><JBButton text="3Dloading" /> </div>
-            <div onClick={() => setMydisp(Waves)}><LQButton text="Waves" /> </div>
+            <div onClick={() => setMydisp(Rings)}><OLDButton text="Rings" /> </div>
+            <div onClick={() => setMydisp(Tilts)}><KZButton text="Tilts" /> </div>
+            <div onClick={() => setMydisp(Dloading)}><OLDButton text="3Dloading" /> </div>
+            <div onClick={() => setMydisp(Waves)}><KZButton text="Waves" /> </div>
 
         </div>
         <AnimatePresence initial={false}  mode="wait"  >
@@ -41,13 +42,19 @@ return<>
 export default Codes
 
 function Cod(){
-  return<div className=' flex flex-col gap-3  '>
+  return<div className=' flex flex-col gap-3  relative '>
              <div className=' h-8 my-8 '></div>
             
-<RotateCard className='' > 
-  <LQButton text="123" />
+<RotateCard className={'w-80 h-96 relative'} > 
+<div className=' flex flex-col gap-3 relative'>
+CSS
+</div>
+      <div className={styles.wrap}>
+        <div className={styles.ribbon}>css
+        </div>
+      </div>  
 </RotateCard>
-            
+
         </div>
 }
 

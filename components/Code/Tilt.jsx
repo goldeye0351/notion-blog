@@ -1,9 +1,10 @@
 import Tilt from 'react-parallax-tilt' 
 import Image from 'next/image'
 import mycover from '@/public/mycover.jpg'
+import RotateCard from '../Myswiper/RotateCard'
 const Tilts =() =>{
-    return<>
-    <Tilt className="my3d rounded-2xl w-80 h-80 flex justify-center items-center ring-2 ring-green-400 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  "
+    return<><RotateCard className={'w-80 h-96'}>
+    <Tilt className="my3d rounded-2xl w-60 h-80 flex justify-center items-center ring-2 ring-green-400 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  "
                           perspective={1500}
                           glareEnable={true}
                           glarePosition={'all'}
@@ -27,6 +28,7 @@ const Tilts =() =>{
                         >Tilt</Tilt>'
                       </div>
                   </Tilt>
+                  </RotateCard>
     </>
 }
 

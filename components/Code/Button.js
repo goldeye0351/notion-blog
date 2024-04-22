@@ -32,8 +32,8 @@ export function LQButton ({text}) {//液态按钮
 export function OLDButton ({text}) {//老按钮
   return<>
   <div className=" relative  rounded-xl w-24 h-12  ">
-      <svg className="myshape rounded-xl hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 w-full h-full" >
-          <rect  className=' w-full h-full  ' />
+      <svg  className="myshape rounded-xl hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 w-full h-full" >
+          <rect rx="12" ry="12" className=' w-full h-full rounded-xl ' />
       </svg>
       <div className='absolute inset-x-0 inset-y-0 bg-gray-700 rounded-xl  justify-center items-center flex '>
         {text} 
@@ -44,6 +44,6 @@ export function OLDButton ({text}) {//老按钮
 
 export function KZButton ({text}) {//渐变按钮
   return<>
-<div className={`${styles.drawborder} px-8 py-3 `  }>{text}</div>
+<div className={`${styles.drawborder} px-8 py-3 bg-gray-700 dark:bg-gray-800 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 `  }>{text}</div>
 </>
 }

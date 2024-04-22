@@ -30,7 +30,6 @@
     
 .myshape {
   position: relative;
-  border-radius: 12px;
   display: inline-block;
   fill: transparent;
   stroke-dasharray: 1 500;
@@ -48,6 +47,7 @@
 
 
 .myrotatecard {
+  position: relative;
   --color: #0bdf3d;
   --color2: #212121;
   background-image: linear-gradient(var(--myrotate), var(--color2) 25%, var(--color) 50%, var(--color2) 75% );
