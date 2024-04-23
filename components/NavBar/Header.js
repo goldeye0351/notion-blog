@@ -8,6 +8,7 @@ import xmisvglogo from '@/public/51xmi.svg'
 import { LoginIcon } from '@/Icon/Icon'
 import NavBar from './Nav'
 import { SignInButton,useUser,UserButton } from "@clerk/nextjs";
+import LangSwitcher from './LangSwitcher'
 const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
   const { user } = useUser();
   const useSticky = !BLOG.autoCollapsedNavBar
@@ -62,7 +63,7 @@ const Header = ({ navBarTitle, toggleFullWidth,fullWidth}) => {
                 <PYQ   alt='朋友圈' className='md:w-8 md:h-8 w-6 h-6   duration-500  hover:scale-125 ' />
           </Link>*/}
           <ThemeSwitcher />
-          
+          <LangSwitcher />
           <FullWidth fullWidth={fullWidth} toggleFullWidth={toggleFullWidth} />
           <div className='md:w-12 w-10 mr-2'>
             {!user && <SignInButton>
