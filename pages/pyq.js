@@ -85,7 +85,7 @@ const PyqPage = ({posts,fullWidth}) => {
                           </div>     
                         </div>
                       </div>
-                        <div className='   cursor-pointer pt-8 flex justify-center bg-transparent'>
+                        <div className='   cursor-pointer pt-8 flex justify-center bg-transparent text-gray-200'>
                           <emoji-reaction endpoint="https://up.51xmi.com" reactTargetId={post.slug}  ></emoji-reaction>  
                         </div>
                     </div>
