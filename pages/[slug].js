@@ -1,5 +1,5 @@
 import Layout from '@/layouts/layout'
-import { getAllPosts, getPostBlocks,getAllComments } from '@/lib/notion'
+import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { useRouter } from 'next/router'
 import Loading from '@/components/Loading'
@@ -46,7 +46,7 @@ const Post = props => {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts({ postAndPage:true })
+  const posts = await getAllPosts({ onlyPost:true })
   return {
     paths: posts.map((row) => `${BLOG.path}/${row.slug}`),
     fallback: true
@@ -54,14 +54,17 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const posts = await getAllPosts({ postAndPage:true })
+  const posts = await getAllPosts({ postAndComment:true })
+  const defposts= posts.filter( post => post.type[0] ==="Post")
 
   const post = posts.find((t) => t.slug === slug)
-  const allpl= await getAllComments()
-  const mypls= allpl.filter(pl => pl.Name === post.id)
-  const index = posts.indexOf(post)
-  const prev = posts.slice(index - 1, index)[0] ?? posts.slice(-1)[0]
-  const next = posts.slice(index + 1, index + 2)[0] ?? posts[0]
+
+  const allpl= posts.filter( post=> post.type[0] ==="Comment")
+  const mypls= allpl.filter(pl => pl.title === post.id)
+
+  const index = defposts.indexOf(post)
+  const prev = defposts.slice(index - 1, index)[0] ?? defposts.slice(-1)[0]
+  const next = defposts.slice(index + 1, index + 2)[0] ?? defposts[0]
 
   try {
     const blockMap = await getPostBlocks(post.id)
@@ -79,7 +82,7 @@ export async function getStaticProps({ params: { slug } }) {
 
     return {
       props: {
-        posts,
+        posts:defposts,
         post,
         prev,
         next,

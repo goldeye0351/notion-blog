@@ -4,8 +4,9 @@ const { Client } = require('@notionhq/client');
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
- const pinglunId =BLOG.notionCommentId
+ const pinglunId =BLOG.notionDatabaseId
 export default async function handler(req, res) {
+  const todaynow= new Date()
   if (req.method !== 'POST') {
     return res
       .status(405)
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
         emoji: "🥬"
       },
       properties: {
-        "Name": {
+        "title": {
           "title": [
             {
               "text": {
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
             }
           ]
         },
-        "Ren": {
+        "vip": {
           "rich_text": [
             {
               "text": {
@@ -39,7 +40,7 @@ export default async function handler(req, res) {
             }
           ]
         },
-        "Text": {
+        "summary": {
           "rich_text": [
             {
               "text": {
@@ -48,7 +49,7 @@ export default async function handler(req, res) {
             }
           ]
         },
-        "Title": {
+        "slug": {
           "rich_text": [
             {
               "text": {
@@ -57,17 +58,26 @@ export default async function handler(req, res) {
             }
           ]
         },
-        "LinkTo": {
-          "rich_text": [
-            {
-              "text": {
-                "content":linkTo
-              }
-            }
-          ]
-        },
         "Email": {
 	        "email": email
+        },
+        "status": {
+          "select": {
+            "name": "Published"
+          }
+        },
+        "type": {
+          "select": {
+            "name": "Comment"
+          }
+        },
+        "Link": {
+	        "url": linkTo || null
+        },
+        "date": {
+          "date": {
+            "start": todaynow
+          }
         },
         "IP": {
           "rich_text": [

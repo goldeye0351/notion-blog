@@ -1,6 +1,6 @@
 import BLOG from '@/blog.config';
 const apikey = process.env.NOTION_API_KEY;
-const pinglunId = BLOG.notionCommentId;
+const pinglunId = BLOG.notionDatabaseId;
 
 export default async function handler(req, res) {
   try {
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         "filter": {
-          "property": "Name",
+          "property": "title",
           "rich_text":  {
             "equals": postid
           }

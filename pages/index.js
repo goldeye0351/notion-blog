@@ -1,14 +1,16 @@
-import { getAllPosts, getAllComments,getAllTagsFromPosts } from '@/lib/notion'
+import { getAllPosts, getAllTagsFromPosts } from '@/lib/notion'
 import TwitterLayout from '@/layouts/layouttwitter'
 import BLOG from '@/blog.config'
 export default function search({ allpls,tags, posts,post,resdata,tuijian,fullWidth }) {
   return <TwitterLayout allpls={allpls}  tags={tags} posts={posts} tuijian={tuijian} index={posts.indexOf(post)} resdata={resdata} fullWidth={fullWidth}/>
 }
 export async function getStaticProps() {
-  const posts = await getAllPosts({ postAndPage: true })
-  const allpls= await getAllComments()
-  const tuijian  = posts.filter(post => parseInt(post.up) === 999);
-  const tags = getAllTagsFromPosts(posts)
+  const posts = await getAllPosts({ postAndComment: true })
+  const defposts= posts.filter( post => post.type[0] ==="Post")
+  const tuijian  = defposts.filter(post => post.IP ==='999');
+
+  const allpls= posts.filter( post=> post.type[0] ==="Comment")
+  const tags = getAllTagsFromPosts(defposts)
   //const cats = getAllCatsFromPosts(posts)
   const umiId = BLOG.analytics.umamiConfig.websiteId;
   const umiToken = BLOG.analytics.umamiConfig.token;
@@ -24,7 +26,7 @@ export async function getStaticProps() {
   const resdata = await response.json();
 
   return {
-    props: {    allpls,tags,posts, tuijian ,resdata  },
+    props: {    allpls,tags,posts:defposts, tuijian ,resdata  },
     revalidate: 1
   }
 }

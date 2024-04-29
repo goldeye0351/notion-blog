@@ -44,6 +44,6 @@ export function OLDButton ({text}) {//老按钮
 
 export function KZButton ({text}) {//渐变按钮
   return<>
-<div className={`${styles.drawborder} px-8 py-3 bg-gray-700 dark:bg-gray-800 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 `  }>{text}</div>
+<div className='drawborder px-8 py-3 bg-gray-700 dark:bg-gray-800 hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 '>{text}</div>
 </>
 }

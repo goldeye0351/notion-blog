@@ -15,7 +15,7 @@ import { useUser,SignInButton } from "@clerk/nextjs";
 const BlogPost = ({ index , post,resdata,allpls }) => {
   const [xie,setXie]=useState(false);
   const toggleXie = () => {      setXie(prevState => !prevState);    };
-  const mypls= allpls.filter(pl => pl.Name === post.id)
+  const mypls= allpls.filter(pl => pl.title === post.id)
     
     const {user} =useUser()
     const postid = post?.id

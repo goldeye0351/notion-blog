@@ -18,11 +18,11 @@ return<div key={post.id}   className={className}>
               </div>
               <div id='右边主体'  className="   flex flex-col  w-full">
                 <div id='姓名' className=" font-extrabold  text-blue-300 flex flex-row   w-full justify-between   ">
-                  <div>{post.Ren }</div>
+                  <div>{post.vip }</div>
                   <div>{DaysAgo(post.date) }</div>
                 </div>
                 <article id='主体文字' className=" border-b border-green-400/10  break-words text-sm  max-w-[190px] ">
-                  {post.Text }
+                  {post.summary }
                 </article>                
               </div>
   </div>  

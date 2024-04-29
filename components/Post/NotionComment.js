@@ -165,7 +165,7 @@ return< div>
           <ol className=" w-full">
             {comments.map((post) => {
                 const myemail = post.properties?.Email.email || post.Email;
-                const tolink= post.properties?.LinkTo.rich_text[0]?.text.content || post.LinkTo ;
+                const tolink= post.properties?.Link.url || post.Link ;
                 const parts = myemail ? myemail.split('@'): '';
                 const part0 = parts[0];
                 const part1 = parts[1];
@@ -179,10 +179,10 @@ return< div>
                 </div>
                 <div id='右边主体'  className=" space-y-1 text-gray-200 flex flex-col w-full ">
                   <div id='姓名' className=" font-extrabold text-lg text-blue-300  ">
-                    {post.properties?.Ren.rich_text[0].text.content  || post.Ren  }
+                    {post.properties?.vip.rich_text[0].text.content  || post.vip  }
                   </div>
                   <article id='主体文字' className="  break-words italic  ">
-                    {post.properties?.Text.rich_text[0].text.content || post.Text }
+                    {post.properties?.summary.rich_text[0].text.content || post.summary }
                   </article>
                   <div id='图' >
                   {tolink && tolink.slice(-3) === 'mp4' &&
@@ -196,8 +196,8 @@ return< div>
                   }
                   </div>
                   <div className=" flex flex-grow w-full justify-between ">                   
-                    <div>{DaysAgo(Date.parse(post.created_time) || post.date) }</div>
-                    <div><FormattedDate date={post.created_time} /></div>
+                    <div>{DaysAgo(Date.parse(post.date) || post.date) }</div>
+                    <div><FormattedDate date={post.date} /></div>
                   </div>
                   
                 </div>

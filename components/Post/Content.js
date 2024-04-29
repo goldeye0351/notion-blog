@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import FormattedDate from '@/components/Common/FormattedDate'
 import DaysAgo from '@/components/Common/DaysAgo'
 import NotionRenderer from '@/components/Post/NotionRenderer'
-import {ChatIcon, KeyIcon } from '@/Icon/Icon'
+import {ChatIcon, KeyIcon, LeftIcon, RightArrow } from '@/Icon/Icon'
 import ReadingProgress from '../ReadingProgress'
 import Typed from "typed.js";
 import  React from "react";
@@ -18,9 +18,10 @@ import { useState,useEffect } from 'react'
 import { Lock } from './Lock'
 import MyPay from './Mypay'
 import { useUser } from '@clerk/nextjs'
+import Link from 'next/link'
 export default function Content (props) {
   const user=useUser()
-  const { frontMatter, blockMap,tableOfContent,posts} = props
+  const { frontMatter, blockMap,tableOfContent,posts,prev,next} = props
   const erweima = `https://tool.oschina.net/action/qrcode/generate?data=${BLOG.link}/${frontMatter.slug}`;
   const [showPay, setShowPay] = useState(false)
   const el = React.useRef(null);
@@ -85,11 +86,18 @@ export default function Content (props) {
   <div id="biaoti"  className=' flex flex-col justify-start  p-3 '>
       <div className=' absolute -translate-y-28 left-0  w-screen h-96 opacity-50  '>
         <Image src={frontMatter?.page_cover} alt={frontMatter.title} fill className='  rounded-b-full  object-cover blur-md  '/>  
-      </div>
+      </div>      
       <div className='font-bold text-3xl flex justify-center mx-auto md:mt-20 text-gray-200  blur-0         '>
         {frontMatter.title}
       </div>
-
+      <div className='flex w-full flew-row justify-between cursor-pointer mt-5 blur-0 italic  '>
+        <Link passHref href={`/${prev.slug}`} scroll={false} className='w-1/3 h-6 overflow-hidden hover:text-amber-500'>
+          <RightArrow className={'w-6  inline-block rotate-180 mr-3'} />{prev.title}
+        </Link>
+        <Link passHref href={`/${next.slug}`} scroll={false} className=' w-1/3 h-6 overflow-hidden flex flex-row-reverse hover:text-amber-500  '>
+          <RightArrow className={'w-6 min-w-[24px] inline-block ml-3 '} /> <div className='inline-block '>{next.title}</div>
+        </Link>
+      </div>
       <nav className='flex mt-5 mb-10 items-start '>
         <div className='mr-2 mb-4 md:ml-0'>
           <FormattedDate date={frontMatter.date} /> &nbsp; {DaysAgo(frontMatter.date)}
@@ -110,7 +118,6 @@ export default function Content (props) {
           <Image src={erweima} alt={frontMatter.title} width={100} height={100} className='rounded-xl ' />
         </div>
       </div>
-
   </div>
 
   <div id= 'mainleft'className=' relative flex flex-row '>
@@ -128,7 +135,7 @@ export default function Content (props) {
       
       {frontMatter.vip && 
         <div className='  relative  p-3 w-fit mx-auto  '>
-        <div className='   p-3 italic text-amber-500  rounded-full   '>以下需要登录可见</div>
+        <div className='   p-3 italic text-amber-500  rounded-full   '>以下需要登录/login to view</div>
         <div className='  horse_run rounded-xl p-8 w-fit ring-1  ring-amber-500 min-w-[320px] hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)]  duration-300  '>
             
             {/*  会员登录后  */}
@@ -137,8 +144,8 @@ export default function Content (props) {
             {/*  会员没有登录时  */}
             { !user.isSignedIn &&         
               <div className=' flex justify-center p-3'>
-                <span className=' rounded-xl text-xl  myrotatecard blur-[2px] '>有加密内容</span>
-                <span>需要登录可见 </span>            
+                <span className=' rounded-xl text-xl   blur-[2px] '>******</span>
+                <span>需要登录/login to view </span>            
               </div>
             }
         </div>
@@ -184,7 +191,7 @@ export default function Content (props) {
 
 
   </div>
-  <div id="小屏几个" className=' fixed inset-y-[50%] right-0    lg:hidden'>
+  <div id="小屏几个" className=' fixed inset-y-[50%] right-0    lg:hidden z-10'>
         <div title='百分比' className='group   bg-gray-700 dark:bg-gray-800 rounded-2xl flex justify-center '>
             <ReadingProgress />
         </div>
