@@ -24,7 +24,7 @@ export async function getStaticProps() {
     props: {
       posts,blockMap,
     },
-    revalidate: 1
+    revalidate: 3600
   }
 }
 const FriendS = ({ blockMap,posts }) => {
