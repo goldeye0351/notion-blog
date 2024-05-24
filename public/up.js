@@ -24,7 +24,7 @@ var t;const i=window,s$1=i.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{creat
  * SPDX-License-Identifier: BSD-3-Clause
  */var l,o;class s extends u$1{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0;}createRenderRoot(){var t,e;const i=super.createRenderRoot();return null!==(t=(e=this.renderOptions).renderBefore)&&void 0!==t||(e.renderBefore=i.firstChild),i}update(t){const i=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(t),this._$Do=D(i,this.renderRoot,this.renderOptions);}connectedCallback(){var t;super.connectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(!0);}disconnectedCallback(){var t;super.disconnectedCallback(),null===(t=this._$Do)||void 0===t||t.setConnected(!1);}render(){return T}}s.finalized=!0,s._$litElement$=!0,null===(l=globalThis.litElementHydrateSupport)||void 0===l||l.call(globalThis,{LitElement:s});const n=globalThis.litElementPolyfillSupport;null==n||n({LitElement:s});(null!==(o=globalThis.litElementVersions)&&void 0!==o?o:globalThis.litElementVersions=[]).push("3.3.2");
 
-const DEFAULT_EMOJIS = '👍,thumbs-up;❤️,red-heart;🚀,rocket;';
+const DEFAULT_EMOJIS = '❤️,red-heart;';
 
 class EmojiReaction extends s {
   static properties = {
@@ -36,132 +36,38 @@ class EmojiReaction extends s {
     theme: {},
   };
   // Define scoped styles right with your component, in plain CSS
-  static styles = i$1`
-    /* default light */
-    .container {
-      --start-smile-border-color-default: #21262d;
-      --start-smile-border-color-hover-default: #8b949e;
-      --start-smile-bg-color-default: #30363d;
-
-      --reaction-got-not-reacted-bg-color-default: #00000000;
-      --reaction-got-not-reacted-bg-color-hover-default: #21262d;
-      --reaction-got-not-reacted-border-color-default: #FFFF0055;
-      --reaction-got-not-reacted-text-color-default: #FFFFFF;
-
-      --reaction-got-reacted-bg-color-default: #388bfd1a;
-      --reaction-got-reacted-bg-color-hover-default: #4ADE8066;
-      --reaction-got-reacted-border-color-default: #4ADE80;
-      --reaction-got-reacted-text-color-default: #FFFFFF;
-
-      --reaction-available-popup-bg-color-default: #161b22;
-      --reaction-available-popup-border-color-default: #30363d;
-      --reaction-available-popup-box-shadow-default: #010409 0px 8px 24px 0px;
-
-      --reaction-available-emoji-reacted-bg-color-default: #388bfd1a;
-      --reaction-available-emoji-bg-color-hover-default: #30363d;
-      --reaction-available-emoji-z-index-default: 100;
-      --reaction-available-mask-z-index-default: 80;
-    }
-
-    .anim-scale-in {
-      animation-name: scale-in;
-      animation-duration: .5s;
-      animation-timing-function: cubic-bezier(0.2, 0, 0.13, 1.5);
-    }
-
-    @keyframes scale-in {
-      0% {
-          opacity: 0;
-          transform: scale(0.5);
-      }
-      100% {
-          opacity: 1;
-          transform: scale(1);
-      }
-    }
-  `;
+  static styles = i$1``;
 
   // Render the UI as a function of component state
   render() {
     return x`
     <style>
-      #start-smile-svg {
-        fill: none;
-      }
       .reaction-got-not-reacted {
-        background-color: var(--reaction-got-not-reacted-bg-color, var(--reaction-got-not-reacted-bg-color-default));
         border-width: 0px;
+        border-radius:8px;
         border-style: dashed;
-        border-color: var(--reaction-got-not-reacted-border-color, var(--reaction-got-not-reacted-border-color-default));
-        color: var(--reaction-got-not-reacted-text-color, var(--reaction-got-not-reacted-text-color-default));
+        border-color: green;
       }
       .reaction-got-not-reacted:hover {
-        background-color: var(--reaction-got-not-reacted-bg-color-hover, var(--reaction-got-not-reacted-bg-color-hover-default));
+        background-color: green;
         border-width: 1px;
       }
       .reaction-got-reacted {
-        background-color: var(--reaction-got-reacted-bg-color, var(--reaction-got-reacted-bg-color-default));
-        border-width: 1px;
-        border-style: solid;
-        border-color: var(--reaction-got-reacted-border-color, var(--reaction-got-reacted-border-color-default));
-        color: var(--reaction-got-reacted-text-color, var(--reaction-got-reacted-text-color-default));
+        border-radius: 8px;
+        text-shadow: 0px 0px 20px #00ff00;
       }
       .reaction-got-reacted:hover {
-        background-color: var(--reaction-got-reacted-bg-color-hover, var(--reaction-got-reacted-bg-color-hover-default));
+        box-shadow: 1px 1px 20px 0px rgba(0, 255, 0, 0.5), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        background-color: green;
       }
 
-      .reaction-available-popup {
-
-        border-width: 1px;
-        border-style: solid;
-        border-color: var(--reaction-available-popup-border-color, var(--reaction-available-popup-border-color-default));
-        box-shadow: var(--reaction-available-popup-box-shadow, var(--reaction-available-popup-box-shadow-default));
-      }
-      .reaction-available-emoji {
-        z-index: var(--reaction-available-emoji-z-index, var(--reaction-available-emoji-z-index-default));
-      }
-      .reaction-available-emoji:hover {
-        background-color: var(--reaction-available-emoji-bg-color-hover, var(--reaction-available-emoji-bg-color-hover-default));
-      }
-      .reaction-available-emoji-reacted {
-        background-color: var(--reaction-available-emoji-reacted-bg-color, var(--reaction-available-emoji-reacted-bg-color-default));
-      }
-
-      .reaction-available-popup::before {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: var(--reaction-available-mask-z-index, var(--reaction-available-mask-z-index-default));
-        display: block;
-        cursor: default;
-        content: " ";
-        background: transparent;
-      }
     </style>
-    <!-- container -->
-    <div style="flex-wrap: nowrap; max-width: 100%; display: flex; gap: 0.375rem;" class="container">
-      <!-- 灰色笑脸 -->
-      <div style="position: relative; user-select: none;">
-        <div id="start-smile" @click="${this._showAvailable}"
-          style="border-radius: 800px; line-height: 1rem;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" id="start-smile-svg" style="cursor: pointer;" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" >
-          <path stroke-linecap="round" stroke-linejoin="round" 
-          d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-          </svg>
-        </div>
-        <div class="anim-scale-in reaction-available-popup" @click=${this._closePopup} style="display: ${this.showAvailable ? 'flex' : 'none'}; user-select: none; position: absolute; top: -3rem; font-size: 0.875rem; border-radius: 0.375rem; padding: 0 0.125rem;">
-          <!-- reactions available -->
-          ${this.availableReactions.map(item => x`
-            <span @click=${this._react} data-name="${item.reaction_name}" class="reaction-available-emoji ${item.meReacted ? 'reaction-available-emoji-reacted' : ''}" style="cursor: pointer; margin: 0.25rem 0.125rem; padding: 0.25rem; border-radius: 0.375rem;">${item.emoji}</span>
-          `)}
-        </div>
-      </div>
+    <div style="flex-wrap: nowrap; max-width: 100%; display: flex; gap: 0.375rem;" >
+
       <!-- reactions got -->
-      <div style="display: flex; overflow-x: auto; ">
+      <div style="display: flex;  ">
         ${this.availableReactions.map(item => x`
-          <div @click=${this._react} data-name="${item.reaction_name}" class="${item.meReacted ? 'reaction-got-reacted' : 'reaction-got-not-reacted'}" style="display: ${item?.count && item.count > 0 ? 'flex' : 'none'}; user-select: none; cursor: pointer; justify-content: center; align-items: center; border-radius: 108px; padding: 0 0.25rem; font-size: 0.75rem;">
+          <div @click=${this._react} data-name="${item.reaction_name}" class="${item.meReacted ? 'reaction-got-reacted' : 'reaction-got-not-reacted'}" style="display: flex"; user-select: none; cursor: pointer; justify-content: center; align-items: center; border-radius: 108px; padding: 0 0.25rem; font-size: 0.75rem;">
             <span style="pointer-events: none;">${item.emoji}</span><span style="pointer-events: none;">${item.count}</span>
           </div>
         `)}

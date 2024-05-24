@@ -6,8 +6,8 @@ import React from 'react'
 var umiId = BLOG.analytics.umamiConfig.websiteId
 
 const UmamiData = () => {
-  const [number, setNumber] = useState(1);
-  const [pv, setPv] = useState(9999999999);
+  //const [number, setNumber] = useState(1);
+  const [pv, setPv] = useState(0);
   
     useEffect(() => {
     function umiTongji() {
@@ -49,7 +49,7 @@ const UmamiData = () => {
 
     umiTongji();
   }, []);
-  useEffect(() => {
+  {/*useEffect(() => {
     const interval = setInterval(() => {
       if (number < pv) {
         setNumber((prevNumber) => prevNumber + 1);
@@ -59,7 +59,7 @@ const UmamiData = () => {
     }, 1); // 设置每次数字增加的时间间隔
 
     return () => clearInterval(interval); // 在组件卸载时清除定时器
-  }, [number]);
+  }, [number, pv]);*/}
   return (<div className=' p-2 mb-3 flex space-x-1 w-full bg-gray-700 dark:bg-gray-800 rounded-xl h-full justify-center flex-row content-center items-center hover:shadow-[0_0_30px_10px_rgba(0,255,0,0.5)] duration-300 hover:bg-day hover:dark:bg-night
   hover:ring-1 hover:ring-green-400  dark:hover:ring-green-400 '>
     <div className="   flex justify-center text-center flex-row content-center items-center  ">
@@ -67,7 +67,7 @@ const UmamiData = () => {
       <span id="online" className='online inline-block text-green-400 '>1</span>
     </div>
     <EyeIcon className=' h-8  ' />
-    <span id="pvstatic">{number}</span>
+    <span id="pvstatic">{pv}</span>
 </div>
   )
 }

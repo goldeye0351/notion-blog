@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }) {
     <div className='flex flex-col min-h-screen'>
       <Scripts />
       <StarrySky />
-      <ThemeProvider attribute='class' defaultTheme = 'dark' >
+      <ThemeProvider attribute='class' defaultTheme = 'light' >
         <Header
           toggleFullWidth={toggleFullWidth}
           navBarTitle={pageProps.post ? pageProps.post.title : null}

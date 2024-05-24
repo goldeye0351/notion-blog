@@ -21,17 +21,17 @@ import { useUser } from '@clerk/nextjs'
 import RotateCard from '@/components/Myswiper/RotateCard'
 const variants = {
   scaleDown: {
-    scale: 0.8,
+    scale: 0.5,
     y: 100,
     transition: {
-      duration: 0.4
+      duration: 0.4,
     }
   },
   out: {
     x: "-100%",
     transition: {
       duration: 0.4,
-      delay: 0.5
+      delay: 0.5,
     }
   },
   in: {
@@ -39,7 +39,7 @@ const variants = {
     y: 100,
     x: "100%",
     transition: {
-      duration: 0.4
+      duration: 0.4,
     }
   },
   center: {
@@ -47,7 +47,8 @@ const variants = {
     scale: 0.8,
     transformOrigin: 'top',
     transition: {
-      duration: 0.4
+      duration: 0.4,
+      staggerChildren: 0.1
     }
   },
   scaleUp: {
@@ -55,7 +56,9 @@ const variants = {
     y: 0,
     transition: {
       duration: 0.4,
-      delay: 0.5
+      delay: 0.5,
+      delayChildren: 0.3,
+      staggerChildren: 0.05
     }
   },
 }
@@ -222,7 +225,7 @@ const TwitterLayout = ({allpls, tags, posts, resdata,tuijian,fullWidth }) => {
           </div>
         <div id="midmain" className=' my-5 lg:my-8    '>
            {!deftag.length && (  <span>  {t.SEARCH.NOT_FOUND}  </span> )}
-              <AnimatePresence        initial={false}  mode="wait" >
+              <AnimatePresence        initial={true}  mode="wait" >
                 <motion.div   key={searchValue}
                   variants={variants}
                   initial="in"

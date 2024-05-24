@@ -12,6 +12,47 @@ import { lang } from '@/public/lang'
 import IpComponent from "./IpComponent";
 import { TgIcon,PicIcon } from "@/Icon/Icon";
 import { useUser,SignInButton } from "@clerk/nextjs";
+const variants = {
+  scaleDown: {
+    scale: 0.8,
+    y: 100,
+    transition: {
+      duration: 0.4,
+    }
+  },
+  out: {
+    x: "-100%",
+    transition: {
+      duration: 0.4,
+      delay: 0.5,
+    }
+  },
+  in: {
+    scale: 0.8,
+    y: 100,
+    x: "100%",
+    transition: {
+      duration: 0.4,
+    }
+  },
+  center: {
+    x: 0,
+    scale: 0.8,
+    transformOrigin: 'top',
+    transition: {
+      duration: 0.4,
+      staggerChildren: 0.1
+    }
+  },
+  scaleUp: {
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      delay: 0,
+    }
+  },
+}
 const BlogPost = ({ index , post,resdata,allpls }) => {
   const [xie,setXie]=useState(false);
   const toggleXie = () => {      setXie(prevState => !prevState);    };
@@ -108,7 +149,7 @@ const BlogPost = ({ index , post,resdata,allpls }) => {
     updateDOM();
   }, [resdata]);
   return (
-<div className=' relative border border-gray-700 dark:border-gray-800 text-gray-200 dark:text-gray-200 '>
+<motion.div variants={variants} key={"a"+post.id} className=' relative my-3 border-b border-gray-600 text-gray-200  '>
   <Link passHref href={`${BLOG.path}/${post.slug}`} scroll={false} data-umami-event={post.title} >
     <motion.div key={post.id} initial="hidden" whileInView="visible"
                 transition={{ delay: 0, duration: 1 }}
@@ -206,7 +247,7 @@ const BlogPost = ({ index , post,resdata,allpls }) => {
     </div>
         
   </div>
-</div>
+</motion.div>
   )
 }
 
