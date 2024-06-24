@@ -1,0 +1,63 @@
+ /* 画框 */
+.drawborder {
+  border-radius: 10px;
+  transition: color 0.25s 0.0833333333s;
+  position: relative;
+ }
+ 
+ .drawborder::before, .drawborder::after {
+  border: 0 solid transparent;
+  border-radius: 10px;
+  box-sizing: border-box;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: 0;
+ }
+ 
+ .drawborder::before {
+  border-bottom-width: 4px;
+  border-left-width: 4px;
+ }
+ 
+ .drawborder::after {
+  border-top-width: 4px;
+  border-right-width: 4px;
+ }
+ 
+
+ 
+ .drawborder:hover::before, .drawborder:hover::after {
+  border-color: #19fe00;
+  transition: border-color 0s, width 0.5s, height 0.5s;
+  width: 100%;
+  height: 100%;
+ }
+ 
+ .drawborder:hover::before {
+  transition-delay: 0s, 0s, 0.25s;
+ }
+ 
+ .drawborder:hover::after {
+  transition-delay: 0s, 0.25s, 0s;
+ }
+/* OLD button*/
+ .myshape {
+  position: relative;
+  display: inline-block;
+  fill: transparent;
+  stroke-dasharray: 1 500;
+  stroke-width: 8px;
+  stroke-dashoffset: 0;
+  transition: 1s all ease;
+  z-index:1;
+}
+.myshape:hover {
+  stroke-dasharray: 10 0;
+  stroke-width: 8px;
+  stroke-dashoffset: 50;
+  stroke: #06d61bfc;
+}

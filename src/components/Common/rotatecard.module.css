@@ -1,0 +1,9 @@
+.myrotatecard {
+    position: relative;
+    --color: #0bdf3d;
+    --color2: #212121;
+    background-image: linear-gradient(var(--myrotate), var(--color2) 25%, var(--color) 50%, var(--color2) 75% );
+    animation: myspin 5s linear infinite;
+  }
+  @property --myrotate {  syntax: "<angle>";  initial-value: 45deg;  inherits: true;}
+  @keyframes myspin {  0% {    --myrotate: 0deg;  }  100% {    --myrotate: 360deg;  }}

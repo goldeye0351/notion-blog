@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* 原来的跑马灯 */
+.marq {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marq 5s linear infinite;
+}
+@keyframes marq {
+    0% {transform: translate(0); } 
+    100% {transform: translate(-100%);  }}
+
+/* 自定义样式  */
+
+textarea:focus {
+  border: 1px solid rgb(97, 216, 19);
+  outline: none;
+} 
+
+::selection {
+  background: rgba(250, 180, 1, 0.618);
+}
+
+html {
+  scrollbar-width: none;
+  scrollbar-color: none;
+}
+::-webkit-scrollbar {
+  width: none;
+}
+
+.cl-internal-7ktxih {
+  @apply hidden;
+}
+
+.cl-userButtonPopoverFooter
+{@apply hidden;
+}
+
+.scalecard{
+  transform-origin: top;
+}

@@ -1,0 +1,44 @@
+.rings {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .rings i {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #17c640;
+    transition: 0.5s;
+  }
+  .rings i:nth-child(1) {
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    animation: animate 6s linear infinite;
+  }
+  .rings i:nth-child(2) {
+    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+    animation: animate 4s linear infinite;
+  }
+  .rings i:nth-child(3) {
+    border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
+    animation: animate2 10s linear infinite;
+  }
+  .rings:hover i {
+    border: 4px solid var(--clr);
+    filter: drop-shadow(0 0 20px var(--clr));
+  }
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes animate2 {
+    0% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }

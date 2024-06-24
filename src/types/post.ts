@@ -1,0 +1,21 @@
+export type Post = {
+  id: string;
+  type:string;
+  slug: string;
+  title: string;
+  tags:string[];
+  category: string;
+  cover: string;
+  date: string;
+  lastEditedAt: number;
+  emoji:any;
+  link: string;
+  summary:string;
+  IP?:string;
+  vip?:string;
+  password?:string;
+  status:string;
+  Email?:string;
+  numdate:number;
+  up:string;
+};

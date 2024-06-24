@@ -1,0 +1,4 @@
+.my3d {transform-style: preserve-3d;}
+.my3din80 {transform: translateZ(80px);  }    
+.my3din {transform: translateZ(50px);  }    
+.my3din300 {transform: translateZ(300px);  }

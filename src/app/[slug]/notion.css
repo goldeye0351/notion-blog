@@ -1,0 +1,90 @@
+/* 隐藏 最上面的部分 */
+.notion-collection {
+  @apply max-w-full;
+}
+.notion-collection > .notion-collection-header {
+  @apply px-0 !important;
+}
+.notion-collection > .notion-table {
+  @apply max-w-full !important;
+}
+.notion-collection > .notion-table > .notion-table-view {
+  @apply px-0 !important;
+}
+.notion-collection-view-type {
+  @apply hidden;
+}
+.notion-collection-row {
+  @apply hidden;
+}
+
+.notion-page {
+  @apply w-auto;
+}
+
+/* 标题 */
+.notion-h-title {
+  @apply text-amber-500 ;
+}
+
+.notion-page-title-text {
+  @apply text-amber-500 ;
+}
+
+.notion-list {
+  @apply w-full;
+}
+
+.notion-callout {  
+  @apply border border-green-400 rounded-3xl p-5 !important;
+}
+
+.notion-code {
+  border:none !important;
+  border-radius: 12px !important;
+}
+.notion-code-copy-button {
+  @apply text-green-500;
+  color: #00FF00!important;
+  background-color:#000 !important;
+  padding: 0.4em;
+  font-size: 1em;
+  border: none;
+  box-shadow: none;
+}
+
+
+.notion-bookmark:hover {
+  @apply border-green-400 !important;
+}
+.notion-bookmark{
+  background: radial-gradient(#e49a2130, transparent)!important;
+}
+.notion-external-block{
+  border:none !important;
+  background: linear-gradient(96deg, #ff9500, transparent)!important;
+}
+
+@keyframes toc-fade-in-animation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.toc-fade-in {
+  animation: toc-fade-in-animation 0.5s ease-in;
+}  
+
+
+.notion-quote {
+  font-style:italic !important;
+  font-size: 1rem !important;
+  background: linear-gradient(72deg, #00ff1329, #000000, #ff950052) !important;
+}
+
+.notion-hr {
+  @apply border-b border-b-gray-200 dark:border-b-gray-200
+}
+
+.notion-link {
+  @apply relative border-b-2 bg-origin-border bg-no-repeat text-green-400 border-b-gray-200 dark:text-green-400 dark:border-b-gray-600;
+  color: #00FF00 !important;
+}

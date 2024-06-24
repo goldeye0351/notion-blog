@@ -1,0 +1,12 @@
+.activeLine {
+    position: relative;
+  }
+  .activeLine:before {
+    content: "";
+    position: absolute;
+    top: 30%;
+    right: 100%;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent #02ff5f transparent transparent;
+  }
